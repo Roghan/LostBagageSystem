@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="Medewerkerscherm" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.FXMLDocumentControllerManagerScherm">
+   <children>
+      <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <top>
+            <HBox alignment="CENTER" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="57.0" prefWidth="74.0" HBox.hgrow="ALWAYS" />
+                  <Pane />
+                  <Pane prefHeight="57.0" prefWidth="48.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="zoekMedewerker" alignment="CENTER" layoutX="75.0" layoutY="16.0" promptText="Zoek medewerker" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <HBox style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+               <children>
+                  <Region prefHeight="40.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <SplitPane dividerPositions="0.19548872180451127" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" SplitPane.resizableWithParent="false">
+                     <children>
+                        <Button fx:id="Gevonden3Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#gevonden3Dagen" prefHeight="25.0" prefWidth="125.0" text="3 dagen" textAlignment="CENTER" />
+                        <Button fx:id="Gevonden21Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="21 dagen" textAlignment="CENTER" />
+                        <Button fx:id="verloren3Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="111.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="3 dagen" textAlignment="CENTER" />
+                        <Button fx:id="Verloren21Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="136.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="21 dagen" textAlignment="CENTER" />
+                        <Button fx:id="Vergelijk3Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="3 dagen" textAlignment="CENTER" />
+                        <Text layoutX="8.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gevonden" textAlignment="CENTER" wrappingWidth="134.2109375" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.7890625" />
+                        <Text layoutX="8.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verloren" textAlignment="CENTER" wrappingWidth="134.2109375" />
+                        <Text layoutX="8.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vergelijk" textAlignment="CENTER" wrappingWidth="134.2109375" />
+                        <Button fx:id="Vergelijk21Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="21 dagen" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="TableLeeg" SplitPane.resizableWithParent="false">
+                     <children>
+                        <TableView prefHeight="501.0" prefWidth="639.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
