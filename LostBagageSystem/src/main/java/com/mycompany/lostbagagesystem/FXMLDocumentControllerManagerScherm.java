@@ -1,25 +1,19 @@
 package com.mycompany.lostbagagesystem;
 
-
-
+import com.mycompany.lostbagagesystem.classes.PDFExport;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  *
- * @author is
+ * @author is Marcel van Wilgenburg
  */
 public class FXMLDocumentControllerManagerScherm {
 
@@ -54,15 +48,29 @@ public class FXMLDocumentControllerManagerScherm {
     private TableView<?> tableGevonden3;
 
     @FXML
-    private void gevonden3Dagen(ActionEvent event) throws IOException {
+    private Label statusMessage;
+
+    @FXML
+    public void gevonden3Dagen(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
         TableView pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden3Dagen.fxml"));
-
+        //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
-
+        //laad de nieuwe table in
         TableLeeg.getChildren().setAll(pane);
-
+        //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+
+    }
+
+    public void exportPDF(ActionEvent event) throws IOException {
+        System.out.println("Button Press Print PDF");
+        PDFExport doc = new PDFExport();
+        doc.addPage();
+        doc.savePDF();
+
+        statusMessage.setText(doc.getSavedLabelText());
 
     }
 
