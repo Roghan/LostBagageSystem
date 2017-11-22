@@ -16,22 +16,58 @@ public class FoundLuggage {
     private String timeFound;
     private String luggageType;
     private String brand;
-    private String Collor;
+    
 
 
+    public FoundLuggage(String registrationNumber, String dateFound, String timeFound, String luggageType, String brand) {
+        this.registrationNumber = registrationNumber;
+        this.dateFound = dateFound;
+        this.timeFound = timeFound;
+        this.luggageType = luggageType;
+        this.brand = brand;    }
 
-    public static List<FoundLuggage> importFoundLuggageFromExcel(String fileName) {
-        //create a new empty found luggage list
-        List<FoundLuggage> luggageList = new ArrayList<>();
-
-        //Todo process the excel file and build a list of found luggage
-        
-        //add some dummy dound luggage
-        luggageList.add(new FoundLuggage());
-        luggageList.add(new FoundLuggage());
-        
-        return luggageList;
-
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public String getDateFound() {
+        return dateFound;
+    }
+
+    public void setDateFound(String dateFound) {
+        this.dateFound = dateFound;
+    }
+
+    public String getTimeFound() {
+        return timeFound;
+    }
+
+    public void setTimeFound(String timeFound) {
+        this.timeFound = timeFound;
+    }
+
+    public String getLuggageType() {
+        return luggageType;
+    }
+
+    public void setLuggageType(String luggageType) {
+        this.luggageType = luggageType;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+
+    
+    
 
 }

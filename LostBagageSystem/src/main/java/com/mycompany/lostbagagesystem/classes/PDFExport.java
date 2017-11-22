@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.classes;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,12 +42,11 @@ public class PDFExport {
     }
 
     public void savePDF() throws IOException {
-
-        FileChooser fileChooser = new FileChooser();
-        File selceltedFile = fileChooser.showSaveDialog(null);
-
-        if (selceltedFile != null) {
-            fileName = selceltedFile.getAbsolutePath();
+        File selectedFile = MainApp.selectFileToSave();
+        
+        
+        if (selectedFile != null) {
+            fileName = selectedFile.getAbsolutePath();
 
             content.close(); //Makes sure the ContentStream is Closed before saving
             

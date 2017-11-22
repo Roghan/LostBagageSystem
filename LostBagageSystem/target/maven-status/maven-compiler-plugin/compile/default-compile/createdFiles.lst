@@ -1,4 +1,4 @@
 com\mycompany\lostbagagesystem\MainApp.class
+com\mycompany\lostbagagesystem\classes\FoundLuggage.class
 com\mycompany\lostbagagesystem\FXMLDocumentControllerManagerScherm.class
-com\mycompany\lostbagagesystem\FXMLController.class
 com\mycompany\lostbagagesystem\classes\PDFExport.class
