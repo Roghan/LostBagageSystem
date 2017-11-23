@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-C:\Users\User\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\FXMLController.java
-C:\Users\User\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\MainApp.java
-C:\Users\User\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\AdministratorschermController.java
-C:\Users\User\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\FXMLDocumentControllerManagerScherm.java
-=======
-C:\Users\Marcel\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\classes\PDFExport.java
-C:\Users\Marcel\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\FXMLDocumentControllerManagerScherm.java
-C:\Users\Marcel\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\classes\FoundLuggage.java
-C:\Users\Marcel\Documents\GitHub\LostBagageSystem\LostBagageSystem\src\main\java\com\mycompany\lostbagagesystem\MainApp.java
->>>>>>> Managerscherm-en-pdf-classes
+/Users/dono/LostBagageSystem/LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/MainApp.java
+/Users/dono/LostBagageSystem/LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/classes/PDFExport.java
+/Users/dono/LostBagageSystem/LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/FXMLAdministratorschermController.java
+/Users/dono/LostBagageSystem/LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/FXMLDocumentControllerManagerScherm.java
+/Users/dono/LostBagageSystem/LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/MedewerkersschermController.java
+/Users/dono/LostBagageSystem/LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/classes/FoundLuggage.java

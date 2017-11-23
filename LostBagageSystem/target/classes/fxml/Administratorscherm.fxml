@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.AdministratorschermController">
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.FXMLAdministratorschermController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -47,7 +47,7 @@
                   <Pane />
                   <Pane prefHeight="57.0" prefWidth="480.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="Zoekmedewerkerfield" layoutX="320.0" layoutY="14.0" promptText="Zoek medewerker" />
+                        <TextField fx:id="ZoekMedewerker" layoutX="320.0" layoutY="14.0" promptText="Zoek medewerker" />
                      </children>
                   </Pane>
                </children>
@@ -58,9 +58,9 @@
                <items>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="13.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
-                        <Button layoutX="13.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
-                        <Button layoutX="13.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
+                        <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
+                        <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
+                        <Button fx:id="Verwijderen" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
