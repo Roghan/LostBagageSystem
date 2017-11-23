@@ -1,25 +1,31 @@
 package com.mycompany.lostbagagesystem;
 
+import java.io.File;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+import javax.xml.stream.events.StartElement;
 
 public class MainApp extends Application {
+    
+    private static final FileChooser FILE_CHOOSER = new FileChooser();
 
     @Override
     public void start(Stage stage) throws Exception {
         final String SCHERMNAAM = "ManagerScherm";
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
-        
+
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("JavaFX and Maven");
+
+        stage.setTitle("Lost Bagage System");
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
@@ -36,4 +42,17 @@ public class MainApp extends Application {
         launch(args);
     }
 
+    public static File selectFileToSave() {
+       
+        File selceltedFile = FILE_CHOOSER.showSaveDialog(null);
+
+        return selceltedFile;
+    }
+
+    public static File selectFileToOpen() {
+        
+        File selceltedFile = FILE_CHOOSER.showOpenDialog(null);
+
+        return selceltedFile;
+    }
 }
