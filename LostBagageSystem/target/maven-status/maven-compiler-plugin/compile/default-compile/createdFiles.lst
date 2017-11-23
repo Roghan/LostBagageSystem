@@ -1,0 +1,9 @@
+com\mycompany\lostbagagesystem\MainApp.class
+com\mycompany\lostbagagesystem\classes\FoundLuggage.class
+com\mycompany\lostbagagesystem\FXMLDocumentControllerManagerScherm.class
+<<<<<<< HEAD
+com\mycompany\lostbagagesystem\FXMLController.class
+com\mycompany\lostbagagesystem\AdministratorschermController.class
+=======
+com\mycompany\lostbagagesystem\classes\PDFExport.class
+>>>>>>> Managerscherm-en-pdf-classes
