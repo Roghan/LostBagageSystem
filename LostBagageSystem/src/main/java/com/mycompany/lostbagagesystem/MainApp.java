@@ -17,17 +17,17 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-<<<<<<< HEAD
+
         final String SCHERMNAAM = "Administratorscherm";
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
         
-=======
-        final String SCHERMNAAM = "ManagerScherm";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
+//        final String SCHERMNAAM = "ManagerScherm";
+//
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
+//
 
->>>>>>> master
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
 
