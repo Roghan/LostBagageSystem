@@ -2,7 +2,10 @@ package com.mycompany.lostbagagesystem;
 
 import com.mycompany.lostbagagesystem.classes.FoundLuggage;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
+import com.mycompany.lostbagagesystem.models.User;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,50 +16,56 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.collections.FXCollections;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
  * @author is Marcel van Wilgenburg
  */
-public class FXMLDocumentControllerManagerScherm {
-    
+public class FXMLDocumentControllerManagerScherm implements Initializable {
+
     @FXML
     private AnchorPane Medewerkerscherm;
-    
+
     @FXML
     private TextField zoekMedewerker;
-    
+
     @FXML
     private Button Gevonden3Dagen;
-    
+
     @FXML
     private Button Gevonden21Dagen;
-    
+
     @FXML
     private Button verloren3Dagen;
-    
+
     @FXML
     private Button Verloren21Dagen;
-    
+
     @FXML
     private Button Vergelijk3Dagen;
-    
+
     @FXML
     private Button Vergelijk21Dagen;
-    
+
     @FXML
     private AnchorPane TableLeeg;
-    
+
     @FXML
     private TableView tableGevonden3;
-    
-    private ObservableList<FoundLuggage> luggageList;
-    
+
+    private ObservableList<FoundLuggage> userList;
+
     private int userIdCounter;
-    
+
     @FXML
     private Label statusMessage;
-    
+
+    @FXML
+    private TableView table;
+
     @FXML
     public void gevonden3Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
@@ -71,7 +80,7 @@ public class FXMLDocumentControllerManagerScherm {
         
 
     }
-    
+
     @FXML
     public void exportPDF(ActionEvent event) throws IOException {
         //Test output for console
@@ -82,9 +91,9 @@ public class FXMLDocumentControllerManagerScherm {
         doc.addPage();
         //Prompts the FileChooser
         doc.savePDF();
-        
+
         statusMessage.setText(doc.getSavedLabelText());
-        
+
     }
 
 //    @FXML
@@ -106,19 +115,13 @@ public class FXMLDocumentControllerManagerScherm {
 //        }
 //        
 //}
-    public ObservableList<FoundLuggage> getProduct() {
-//            ObservableList<FoundLuggage> luggage = FXCollections.observableArrayList();
-        luggageList = FXCollections.observableArrayList();
+    public void getProduct() {
         
-        luggageList.add(new FoundLuggage("1", "1212", "1212", "1212", "1212"));
-        luggageList.add(new FoundLuggage("1", "1212", "1212", "1212", "1212"));
-        luggageList.add(new FoundLuggage("1", "1212", "1212", "1212", "1212"));
-        
+    }
 
-        return luggageList;
-        
-    
-    
-}
-    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
 }
