@@ -1,4 +1,4 @@
-package com.mycompany.lostbagagesystem;
+package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.FoundLuggage;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
@@ -24,7 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author is Marcel van Wilgenburg
  */
-public class FXMLDocumentControllerManagerScherm implements Initializable {
+public class ManMainController implements Initializable {
 
     @FXML
     private AnchorPane Medewerkerscherm;

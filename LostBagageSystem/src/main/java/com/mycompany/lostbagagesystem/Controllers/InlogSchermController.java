@@ -1,4 +1,4 @@
-package com.mycompany.lostbagagesystem;
+package com.mycompany.lostbagagesystem.Controllers;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

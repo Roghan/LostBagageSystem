@@ -1,4 +1,4 @@
-package com.mycompany.lostbagagesystem;
+package com.mycompany.lostbagagesystem.Controllers;
 
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
 /**
  * @author is
  */
-public class FXMLAdministratorschermController implements Initializable {
+public class AdminMainController implements Initializable {
 
     @FXML
     private TableView table;
