@@ -2,13 +2,7 @@ package com.mycompany.lostbagagesystem;
 
 import com.mycompany.lostbagagesystem.classes.FoundLuggage;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,9 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.collections.FXCollections;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.poi.ss.usermodel.Footer;
 
 /**
  *

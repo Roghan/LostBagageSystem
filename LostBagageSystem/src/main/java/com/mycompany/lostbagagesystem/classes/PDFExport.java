@@ -34,7 +34,7 @@ public class PDFExport {
     public void addPage() throws IOException {
 
         doc.addPage(page);
-        PDImageXObject image = PDImageXObject.createFromFile("assets\\corendonlogo.jpg", doc);
+        PDImageXObject image = PDImageXObject.createFromFile("assets//corendonlogo.jpg", doc);
 
         content.drawImage(image, 25, 500);
 

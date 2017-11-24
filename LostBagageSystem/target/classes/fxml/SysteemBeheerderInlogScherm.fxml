@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.SysLogController">
+   <children>
+      <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="990.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+          <top>
+              <HBox alignment="CENTER" prefHeight="66.0" prefWidth="990.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER" />
+          </top>
+          <center>
+              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <children>
+                      <HBox prefHeight="650.0" prefWidth="503.0">
+                          <children>
+                              <AnchorPane prefHeight="650.0" prefWidth="466.0">
+                                  <children>
+                                      <AnchorPane layoutY="110.0" prefHeight="403.0" prefWidth="520.0" style="-fx-border-color: #d81e05; -fx-border-width: 5px;">
+                                          <children>
+                                              <Button fx:id="MedewerkerScherm" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#medewerkerKnop" prefHeight="28.0" prefWidth="146.0" style="-fx-background-color: #d81e05;" text="MedewerkerScherm" textFill="WHITE">
+                                                  <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                  </font>
+                                              </Button>
+                                              <Text layoutX="53.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Systeem Beheerder Inlog" textAlignment="CENTER" wrappingWidth="414.43310546875">
+                                                  <font>
+                                                      <Font size="26.0" />
+                                                  </font>
+                                              </Text>
+                                    <Button fx:id="AdminScherm" layoutX="186.0" layoutY="188.0" mnemonicParsing="false" onAction="#AdministratorKnop" prefHeight="28.0" prefWidth="149.0" style="-fx-background-color: #d81e05;" text="AdministratorScherm" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="ManagerScherm" layoutX="358.0" layoutY="188.0" mnemonicParsing="false" onAction="#managerKnop" prefHeight="28.0" prefWidth="148.0" style="-fx-background-color: #d81e05;" text="ManagerScherm" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                          </children>
+                                      </AnchorPane>
+                                  </children>
+                              </AnchorPane>
+                          </children>
+                      </HBox>
+                  </children>
+              </HBox>
+          </center>
+          <bottom>
+              <HBox prefHeight="52.0" prefWidth="990.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER" />
+          </bottom>
+      </BorderPane>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <Menu mnemonicParsing="false" text="Import">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Import File" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Export">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#exportPDF" text="Export PDF" />
+                     </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

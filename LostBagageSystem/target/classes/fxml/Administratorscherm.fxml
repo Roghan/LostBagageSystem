@@ -47,7 +47,11 @@
                   <Pane />
                   <Pane prefHeight="57.0" prefWidth="480.0" HBox.hgrow="ALWAYS">
                      <children>
+<<<<<<< HEAD
                         <TextField layoutX="320.0" layoutY="14.0" promptText="Zoek medewerker" />
+=======
+                        <TextField fx:id="ZoekMedewerker" layoutX="320.0" layoutY="14.0" promptText="Zoek medewerker" />
+>>>>>>> master
                      </children>
                   </Pane>
                </children>
@@ -58,9 +62,15 @@
                <items>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
+<<<<<<< HEAD
                         <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
                         <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
                         <Button fx:id="Verwijderen" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
+=======
+                        <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
+                        <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
+                        <Button fx:id="Verwijderen" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
+>>>>>>> master
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
