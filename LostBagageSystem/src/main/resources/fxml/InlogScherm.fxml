@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="com.mycompany.lostbagagesystem.Controllers.InlogController">
+    <stylesheets>
+        <URL value="@/styles/Styles.css" />
+    </stylesheets>
+   <children>
+      <MenuBar layoutX="10.0" layoutY="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <Menu mnemonicParsing="false" text="Import">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Import File" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Export">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#exportPDF" text="Export PDF" />
+                     </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="990.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+          <top>
+              <HBox alignment="CENTER" prefHeight="66.0" prefWidth="990.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+                  <children>
+                      <ImageView fitHeight="57.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../../../../Corendon%20Logo.jpg" />
+                          </image>
+                      </ImageView>
+                  </children>
+              </HBox>
+          </top>
+          <center>
+              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <children>
+                      <HBox prefHeight="650.0" prefWidth="503.0">
+                          <children>
+                              <AnchorPane prefHeight="650.0" prefWidth="466.0">
+                                  <children>
+                                      <AnchorPane layoutY="110.0" prefHeight="403.0" prefWidth="520.0" style="-fx-border-color: #d81e05; -fx-border-width: 5px;">
+                                          <children>
+                                              <Button fx:id="login" layoutX="228.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="28.0" prefWidth="64.0" style="-fx-background-color: #d81e05;" text="Log in" textFill="WHITE">
+                                                  <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                  </font>
+                                              </Button>
+                                              <PasswordField layoutX="151.0" layoutY="266.0" prefHeight="41.0" prefWidth="218.0" promptText="Wachtwoord" />
+                                              <Text layoutX="151.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wachtwoord">
+                                                  <font>
+                                                      <Font size="22.0" />
+                                                  </font>
+                                              </Text>
+                                              <TextField fx:id="username" layoutX="151.0" layoutY="158.0" prefHeight="42.0" prefWidth="218.0" promptText="Gebuikersnaam" />
+                                              <Text layoutX="151.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gebruikersnaam">
+                                                  <font>
+                                                      <Font size="22.0" />
+                                                  </font>
+                                              </Text>
+                                              <Text layoutX="222.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in" textAlignment="CENTER" wrappingWidth="75.43310546875">
+                                                  <font>
+                                                      <Font size="26.0" />
+                                                  </font>
+                                              </Text>
+                                          </children>
+                                      </AnchorPane>
+                                  </children>
+                              </AnchorPane>
+                          </children>
+                      </HBox>
+                  </children>
+              </HBox>
+          </center>
+          <bottom>
+              <HBox prefHeight="52.0" prefWidth="990.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER" />
+          </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
