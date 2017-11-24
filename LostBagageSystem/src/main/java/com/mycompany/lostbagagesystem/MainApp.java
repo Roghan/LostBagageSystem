@@ -48,18 +48,8 @@ public class MainApp extends Application {
 
     public static File selectFileToSave() {
 
-        
+        FILE_CHOOSER.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("pdf Files", "*.pdf"));
 
-        
-        FileFilter pdfFileFilter = new FileNameExtensionFilter("PDF File", "pdf");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.addChoosableFileFilter(pdfFileFilter);
-        
-
-        
-
-        
-        
         File selceltedFile = FILE_CHOOSER.showSaveDialog(null);
         return selceltedFile;
     }
