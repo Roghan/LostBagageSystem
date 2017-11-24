@@ -1,23 +1,21 @@
 package com.mycompany.lostbagagesystem;
-<<<<<<< HEAD
 
+import javafx.scene.control.TableView;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import com.mycompany.lostbagagesystem.models.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-=======
->>>>>>> master
-import javafx.scene.control.TableView;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.lostbagagesystem.User;
+import javafx.fxml.Initializable;
 
 /**
  * @author is
  */
-public class FXMLAdministratorschermController {
+public class FXMLAdministratorschermController implements Initializable {
 
     @FXML
     private TableView table;
@@ -48,8 +46,8 @@ public class FXMLAdministratorschermController {
 
         userList.remove(user);
     }
-
-//    @Override
+    
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         userList = FXCollections.observableArrayList();
 

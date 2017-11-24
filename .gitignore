@@ -1,8 +1,1 @@
-
-LostBagageSystem/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-LostBagageSystem/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
-LostBagageSystem/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-LostBagageSystem/target/maven-archiver/pom.properties
-LostBagageSystem/target/LostBagageSystem-1.0-SNAPSHOT.jar
-LostBagageSystem/target/classes/fxml/Scene.fxml
-LostBagageSystem/target/classes/com/mycompany/lostbagagesystem/MainApp.class
+/LostBagageSystem/target
