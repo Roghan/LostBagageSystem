@@ -2,9 +2,6 @@
  */
 package com.mycompany.lostbagagesystem.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Marcel van Wilgenburg
