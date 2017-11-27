@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
 /**
  * @author is
  */
-public class Gev3DController implements Initializable {
+public class Ver3DController implements Initializable {
 
     @FXML
     private TableView table;
@@ -46,7 +46,7 @@ public class Gev3DController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         userList = FXCollections.observableArrayList();
 
-        userList.add(new User(userIdCounter++, "Lennard", "Ooit", true));
+        userList.add(new User(userIdCounter++, "Marcel", "Ooit", true));
         userList.add(new User(userIdCounter++, "Peter", "Morgen", true));
         userList.add(new User(userIdCounter++, "Claar", "Gister", true));
 
