@@ -3,13 +3,11 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<TableView fx:id="table" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.FXMLDocumentControllerManagerScherm">
-  <columns>
-    <TableColumn fx:id="registrationNumber" prefWidth="75.0" text="registrationNumber" />
-    <TableColumn fx:id="dateFound" prefWidth="75.0" text="dateFound" />
-      <TableColumn fx:id="timeFound" prefWidth="75.0" text="timeFound" />
-      <TableColumn fx:id="luggageType" prefWidth="75.0" text="luggageType" />
-      <TableColumn fx:id="brand" prefWidth="75.0" text="brand" />
-      <TableColumn fx:id="Collor" prefWidth="75.0" text="Collor" />
-  </columns>
+<TableView fx:id="table" prefHeight="501.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.Gev3DController">
+   <columns>
+      <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+      <TableColumn fx:id="werknemer" prefWidth="75.0" text="Werknemer" />
+      <TableColumn fx:id="locatie" prefWidth="75.0" text="Locatie" />
+      <TableColumn fx:id="actief" prefWidth="75.0" text="Actief" />
+   </columns>
 </TableView>

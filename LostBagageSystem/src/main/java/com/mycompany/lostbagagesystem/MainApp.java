@@ -1,6 +1,7 @@
 package com.mycompany.lostbagagesystem;
 
 import java.io.File;
+import java.util.Locale;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -9,17 +10,27 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.stream.events.StartElement;
 
 public class MainApp extends Application {
-    
+
     private static final FileChooser FILE_CHOOSER = new FileChooser();
 
     @Override
     public void start(Stage stage) throws Exception {
-        final String SCHERMNAAM = "Medewerkersscherm";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
+        final String SCHERMNAAM = "ManagerScherm";
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
+        
+
+//        final String SCHERMNAAM = "ManagerScherm";
+//
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
+//
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
@@ -43,14 +54,15 @@ public class MainApp extends Application {
     }
 
     public static File selectFileToSave() {
-       
-        File selceltedFile = FILE_CHOOSER.showSaveDialog(null);
 
+        FILE_CHOOSER.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("pdf Files", "*.pdf"));
+
+        File selceltedFile = FILE_CHOOSER.showSaveDialog(null);
         return selceltedFile;
     }
 
     public static File selectFileToOpen() {
-        
+
         File selceltedFile = FILE_CHOOSER.showOpenDialog(null);
 
         return selceltedFile;
