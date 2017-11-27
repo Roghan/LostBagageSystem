@@ -65,12 +65,17 @@
          <left>
             <VBox prefHeight="468.0" prefWidth="133.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="194.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="194.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
                   <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefWidth="194.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="194.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
