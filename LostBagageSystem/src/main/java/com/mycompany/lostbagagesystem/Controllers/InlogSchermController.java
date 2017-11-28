@@ -14,6 +14,8 @@ import java.util.Scanner;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javax.swing.text.html.HTML;
 
 /**
  * FXML Controller class
@@ -27,11 +29,34 @@ public class InlogSchermController implements Initializable {
      *
      * @throws java.sql.SQLException
      */
+    
     @FXML
-    public void handleButtonAction() {
+    private TextField username;
 
+    @FXML
+    private TextField wachtwoord;
+    
+    @FXML
+    public void handleButtonAction() throws SQLException{
+        ConnectDB db = new ConnectDB("fystestdb");
+        ResultSet resultSet;
+        String user = username.getText();
+        String pass = wachtwoord.getText();
+        
+        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord` "
+                + "FROM gebruiker WHERE acountnaam = " + "'" + user + "'" + 
+                        " AND wachtwoord = " + "'" + pass + "'");
+        
+        System.out.println(resultSet);
+
+        if (resultSet.next()) {
+            System.out.println("Je bent COOL!!");
+        }else{
+            System.out.println("Je hoort hier niet!!!");
+        }
+        
     }
-
+    
     @FXML
     public void testdb() throws SQLException {
 
