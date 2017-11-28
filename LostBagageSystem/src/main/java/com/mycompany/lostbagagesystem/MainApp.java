@@ -1,7 +1,6 @@
 package com.mycompany.lostbagagesystem;
 
 import java.io.File;
-import java.util.Locale;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -9,11 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
-import javafx.stage.Window;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.xml.stream.events.StartElement;
 
 public class MainApp extends Application {
 
