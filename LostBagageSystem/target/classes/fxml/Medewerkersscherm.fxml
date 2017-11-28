@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.MedewerkersschermController">
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -65,7 +65,7 @@
          <left>
             <VBox prefHeight="468.0" prefWidth="133.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="194.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#schadeFormulier" prefWidth="194.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>

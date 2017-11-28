@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lostbagagesystem;
+package com.mycompany.lostbagagesystem.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,13 +23,13 @@ import javafx.stage.Stage;
  *
  * @author dono
  */
-public class MedewerkersschermController implements Initializable {
+public class MedMainController implements Initializable {
     
     @FXML
     private Button schadeformbtn;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) 
+    private void schadeFormulier(ActionEvent event) 
                           throws IOException {
     Stage stage; 
     Parent root;
