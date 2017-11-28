@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 
-
 public class MainApp extends Application {
 
     private static final FileChooser FILE_CHOOSER = new FileChooser();
@@ -17,7 +16,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        final String SCHERMNAAM = "InlogScherm";
+        final String SCHERMNAAM = "ManagerScherm";
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
         
