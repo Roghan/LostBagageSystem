@@ -133,7 +133,8 @@ public class ManMainController implements Initializable {
         //laad de nieuwe table in
         TableLeeg.getChildren().setAll(pane);
         //geeft de nieuwe table de juiste groote
-        
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
         
 
     }
@@ -147,7 +148,8 @@ public class ManMainController implements Initializable {
         //laad de nieuwe table in
         TableLeeg.getChildren().setAll(pane);
         //geeft de nieuwe table de juiste groote
-        
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
         
 
     }

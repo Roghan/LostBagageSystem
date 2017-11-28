@@ -22,7 +22,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane>
+      <AnchorPane fx:id="ver21D">
          <children>
             <LineChart layoutX="-64.0" title="Verloren 21 dagen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <xAxis>

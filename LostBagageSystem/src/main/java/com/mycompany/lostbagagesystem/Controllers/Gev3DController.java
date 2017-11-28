@@ -70,16 +70,11 @@ public class Gev3DController implements Initializable {
 
         table.setItems(userList);
         
-        getChard();
-        
-        
-        
-        
-
+        getChart();
 
     }
     @FXML
-    public void getChard () {
+    public void getChart () {
        
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
@@ -97,15 +92,7 @@ public class Gev3DController implements Initializable {
         series.getData().add(new XYChart.Data(1, 23));
         series.getData().add(new XYChart.Data(2, 14));
         series.getData().add(new XYChart.Data(3, 15));
-        series.getData().add(new XYChart.Data(4, 24));
-        series.getData().add(new XYChart.Data(5, 34));
-        series.getData().add(new XYChart.Data(6, 36));
-        series.getData().add(new XYChart.Data(7, 22));
-        series.getData().add(new XYChart.Data(8, 45));
-        series.getData().add(new XYChart.Data(9, 43));
-        series.getData().add(new XYChart.Data(10, 17));
-        series.getData().add(new XYChart.Data(11, 29));
-        series.getData().add(new XYChart.Data(12, 25));
+        
 
         
         lineChart.getData().add(series);
@@ -114,16 +101,7 @@ public class Gev3DController implements Initializable {
         
         lineChart.prefWidthProperty().bind(gev3D.widthProperty());
         lineChart.prefHeightProperty().bind(gev3D.heightProperty());
-        
-        
-        
-        
-
-     
-    }
-
-
-       
+    }   
 
 }
 
