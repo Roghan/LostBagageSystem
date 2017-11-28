@@ -8,6 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
+<<<<<<< HEAD
+=======
+
+>>>>>>> c79d3dd825a2120ef58fe3dcd27d9980eb57f825
 
 public class MainApp extends Application {
 
@@ -16,7 +20,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        final String SCHERMNAAM = "ManagerScherm";
+        final String SCHERMNAAM = "InlogScherm";
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
         
