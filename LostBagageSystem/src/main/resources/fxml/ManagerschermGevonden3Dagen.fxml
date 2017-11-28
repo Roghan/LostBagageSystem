@@ -24,12 +24,12 @@
       </AnchorPane>
       <AnchorPane>
          <children>
-            <LineChart layoutX="-64.0" title="Gevonden 3 dagen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <LineChart fx:id="Chart" layoutX="-64.0" title="Gevonden 3 dagen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis fx:id="xAxis" side="BOTTOM"/>
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis fx:id="yAxis" side="LEFT" />
               </yAxis>
             </LineChart>
          </children>
