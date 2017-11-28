@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lostbagagesystem.classes;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+
+import java.sql.*;
 import java.util.Enumeration;
 
-/**
- *
- * @author Youri
+/***
+ * Demonstrates use of JDBC in a plain Java Program
+ * @author somej
  */
-public class DBConnect {
-    
-    private static final String DB_DEFAULT_DATABASE = "fystestdb";
+public class MyJDBC {
+
+    private static final String DB_DEFAULT_DATABASE = "sys";
     private static final String DB_DEFAULT_SERVER_URL = "localhost:3306";
     private static final String DB_DEFAULT_ACCOUNT = "root";
     private static final String DB_DEFAULT_PASSWORD = "root";
@@ -37,19 +29,19 @@ public class DBConnect {
     private String errorMessage = null; 
     
     // constructors
-    public DBConnect() {
+    public MyJDBC() {
         this(DB_DEFAULT_DATABASE, DB_DEFAULT_SERVER_URL, DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
     }
     
-    public DBConnect(String dbName) {
+    public MyJDBC(String dbName) {
         this(dbName, DB_DEFAULT_SERVER_URL, DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
     }
     
-    public DBConnect(String dbName, String account, String password) {
+    public MyJDBC(String dbName, String account, String password) {
         this(dbName, DB_DEFAULT_SERVER_URL, account, password);
     }
     
-    public DBConnect(String dbName, String serverURL, String account, String password) {
+    public MyJDBC(String dbName, String serverURL, String account, String password) {
         try {
             // verify that a proper JDBC driver has been installed and linked
             if (!selectDriver(DB_DRIVER_URL)) {
@@ -199,7 +191,7 @@ public class DBConnect {
      */
     public void log(String message) {
         if (isVerbose()) {
-            System.out.println("DBConnect: " + message);
+            System.out.println("MyJDBC: " + message);
         }
     }
 
@@ -210,7 +202,7 @@ public class DBConnect {
      * @param e
      */
     public final void error(Exception e) {
-        String msg = "DBConnect-" + e.getClass().getName() + ": " + e.getMessage();
+        String msg = "MyJDBC-" + e.getClass().getName() + ": " + e.getMessage();
         
         // capture the message of the first error of the connection
         if (this.errorMessage == null) {
@@ -232,40 +224,40 @@ public class DBConnect {
         System.out.println("Creating the " + dbName + " database...");
         
         // use the sys schema for creating another db
-        DBConnect sysJDBC = new DBConnect("sys");
+        MyJDBC sysJDBC = new MyJDBC("sys");
         sysJDBC.executeUpdateQuery("CREATE DATABASE IF NOT EXISTS " + dbName);
         sysJDBC.close();
 
         // create or truncate Airport table in the Airline database
         System.out.println("Creating the Airport table...");
-        DBConnect DBConnect = new DBConnect(dbName);
-        DBConnect.executeUpdateQuery("CREATE TABLE IF NOT EXISTS Airport ("
+        MyJDBC myJDBC = new MyJDBC(dbName);
+        myJDBC.executeUpdateQuery("CREATE TABLE IF NOT EXISTS Airport ("
                 + " IATACode VARCHAR(3) NOT NULL PRIMARY KEY,"
                 + " Name VARCHAR(45),"
                 + " TimeZone INT(3) )");
         
         // truncate Airport, in case some data was already there
-        DBConnect.executeUpdateQuery("TRUNCATE TABLE Airport");
+        myJDBC.executeUpdateQuery("TRUNCATE TABLE Airport");
 
         // Populate the Airport table in the Airline database        
         System.out.println("Populating with Airport information...");
-        DBConnect.executeUpdateQuery("INSERT INTO Airport VALUES ("
+        myJDBC.executeUpdateQuery("INSERT INTO Airport VALUES ("
                 + "'AMS', 'Schiphol Amsterdam', 1 )");
-        DBConnect.executeUpdateQuery("INSERT INTO Airport VALUES ("
+        myJDBC.executeUpdateQuery("INSERT INTO Airport VALUES ("
                 + "'LHR', 'London Heathrow', 0 )");
-        DBConnect.executeUpdateQuery("INSERT INTO Airport VALUES ("
+        myJDBC.executeUpdateQuery("INSERT INTO Airport VALUES ("
                 + "'BRU', 'Brussels Airport', 1 )");
-        DBConnect.executeUpdateQuery("INSERT INTO Airport VALUES ("
+        myJDBC.executeUpdateQuery("INSERT INTO Airport VALUES ("
                 + "'ESB', 'Ankara Esenboğa Airport', 2 )");
-        DBConnect.executeUpdateQuery("INSERT INTO Airport VALUES ("
+        myJDBC.executeUpdateQuery("INSERT INTO Airport VALUES ("
                 + "'SUF', 'Sant\\'Eufemia Lamezia International Airport', 1 )");
-        DBConnect.executeUpdateQuery("INSERT INTO Airport VALUES ("
+        myJDBC.executeUpdateQuery("INSERT INTO Airport VALUES ("
                 + "'HKG', 'Hong Kong International', 8 )");
 
         // echo all airports in timezone 1
         System.out.println("Known Airports in time zone 1:");
         try {
-            ResultSet rs = DBConnect.executeResultSetQuery(
+            ResultSet rs = myJDBC.executeResultSetQuery(
                     "SELECT IATACode, Name FROM AirPort WHERE TimeZone=1");
             while (rs.next()) {
                 // echo the info of the next airport found
@@ -277,11 +269,11 @@ public class DBConnect {
             rs.close();
 
         } catch (SQLException ex) {
-            DBConnect.error(ex);
+            myJDBC.error(ex);
         }   
 
         // close the connection with the database
-        DBConnect.close();
+        myJDBC.close();
     }
 
     public boolean isVerbose() {
