@@ -9,9 +9,9 @@ import java.util.Enumeration;
  * Demonstrates use of JDBC in a plain Java Program
  * @author somej
  */
-public class MyJDBC {
+public class ConnectDB {
 
-    private static final String DB_DEFAULT_DATABASE = "sys";
+    private static final String DB_DEFAULT_DATABASE = "fystestdb";
     private static final String DB_DEFAULT_SERVER_URL = "localhost:3306";
     private static final String DB_DEFAULT_ACCOUNT = "root";
     private static final String DB_DEFAULT_PASSWORD = "root";
@@ -29,19 +29,19 @@ public class MyJDBC {
     private String errorMessage = null; 
     
     // constructors
-    public MyJDBC() {
+    public ConnectDB() {
         this(DB_DEFAULT_DATABASE, DB_DEFAULT_SERVER_URL, DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
     }
     
-    public MyJDBC(String dbName) {
+    public ConnectDB(String dbName) {
         this(dbName, DB_DEFAULT_SERVER_URL, DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
     }
     
-    public MyJDBC(String dbName, String account, String password) {
+    public ConnectDB(String dbName, String account, String password) {
         this(dbName, DB_DEFAULT_SERVER_URL, account, password);
     }
     
-    public MyJDBC(String dbName, String serverURL, String account, String password) {
+    public ConnectDB(String dbName, String serverURL, String account, String password) {
         try {
             // verify that a proper JDBC driver has been installed and linked
             if (!selectDriver(DB_DRIVER_URL)) {
@@ -224,13 +224,13 @@ public class MyJDBC {
         System.out.println("Creating the " + dbName + " database...");
         
         // use the sys schema for creating another db
-        MyJDBC sysJDBC = new MyJDBC("sys");
+        ConnectDB sysJDBC = new ConnectDB("sys");
         sysJDBC.executeUpdateQuery("CREATE DATABASE IF NOT EXISTS " + dbName);
         sysJDBC.close();
 
         // create or truncate Airport table in the Airline database
         System.out.println("Creating the Airport table...");
-        MyJDBC myJDBC = new MyJDBC(dbName);
+        ConnectDB myJDBC = new ConnectDB(dbName);
         myJDBC.executeUpdateQuery("CREATE TABLE IF NOT EXISTS Airport ("
                 + " IATACode VARCHAR(3) NOT NULL PRIMARY KEY,"
                 + " Name VARCHAR(45),"

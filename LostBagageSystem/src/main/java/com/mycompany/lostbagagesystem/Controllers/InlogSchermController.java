@@ -5,7 +5,7 @@ package com.mycompany.lostbagagesystem.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.mycompany.lostbagagesystem.classes.MyJDBC;
+import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +27,12 @@ public class InlogSchermController implements Initializable {
      *
      * @throws java.sql.SQLException
      */
+    
+    @FXML  
+    public void handleButtonAction(){
+        
+    }
+    
 //    @FXML
 //    private Button testdbbutton;
 //    
@@ -56,50 +62,66 @@ public class InlogSchermController implements Initializable {
     @FXML
     public void testdb() throws SQLException {
 
-        // test and demo the JDBC functionality
-//        MyJDBC.createTestDatabase("AirlineDemo");
-        MyJDBC db = new MyJDBC("AirlineDemo");
+        ConnectDB db = new ConnectDB("fystestdb");
 
-        Scanner scanner = new Scanner(System.in);
+        int id;
+        String voornaam;
+        String achternaam;
+                //show results
+        ResultSet resultSet;
 
-        System.out.println("Please enter a code, name and timezone: ");
-        String code = scanner.nextLine(); // hier stond scanner.next();
-        // je moet hier ff checken of de data in de db past, ik deed net length 4 en dan krijg ik dus error want field length in db is maar 3aha jaa
-        /*
-        maar ff waarom doet die het hier wel goed let op
-        */
+            resultSet = db.executeResultSetQuery("SELECT `id`, `voornaam`, `achternaam` FROM `gebruiker`");
 
-        String name = scanner.nextLine();
 
-        int timeZone = Integer.parseInt(scanner.nextLine());
-        // als je iets anders dan een int hier ingooit krijg je een error, dus moet je ff kijken hoe je die error gaat handelen
-
-        //Insert into
-        String query = String.format("INSERT INTO airport(`IATACode`, `Name`, `TimeZone`)"
-                + " VALUES('%s', '%s', %d)", code, name, timeZone);
-
-        int numberAffected = db.executeUpdateQuery(query);
-
-        ResultSet resultSet = null;
-        try {
-            resultSet = db.executeResultSetQuery("SELECT `Name`, `TimeZone` FROM Airport");
-        } catch (Exception e) {
-            System.out.println("SQLException: bv geen entries in db gevonden/connectie is niet geopend oid");
-            System.out.println(e);
-        }
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+                voornaam = resultSet.getString("voornaam");
+                achternaam = resultSet.getString("achternaam");
+                
+                
+                System.out.printf("%d = %s %s%n", id, voornaam, achternaam);
+            }
         
-        
-        if (resultSet == null) {
-            db.close();
-            return;
-        }
-        
-        while (resultSet.next()) {
-            name = resultSet.getString("Name");
-            timeZone = resultSet.getInt("TimeZone");
-
-            System.out.printf("%s = %d%n", name, timeZone);
-        }
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("Please enter a code, name and timezone: ");
+//        String code = scanner.nextLine(); // hier stond scanner.next();
+//        // je moet hier ff checken of de data in de db past, ik deed net length 4 en dan krijg ik dus error want field length in db is maar 3aha jaa
+//        /*
+//        maar ff waarom doet die het hier wel goed let op
+//        */
+//
+//        String name = scanner.nextLine();
+//
+//        int timeZone = Integer.parseInt(scanner.nextLine());
+//        // als je iets anders dan een int hier ingooit krijg je een error, dus moet je ff kijken hoe je die error gaat handelen
+//
+//        //Insert into
+//        String query = String.format("INSERT INTO airport(`IATACode`, `Name`, `TimeZone`)"
+//                + " VALUES('%s', '%s', %d)", code, name, timeZone);
+//
+//        int numberAffected = db.executeUpdateQuery(query);
+//
+//        ResultSet resultSet = null;
+//        try {
+//            resultSet = db.executeResultSetQuery("SELECT `Name`, `TimeZone` FROM Airport");
+//        } catch (Exception e) {
+//            System.out.println("SQLException: bv geen entries in db gevonden/connectie is niet geopend oid");
+//            System.out.println(e);
+//        }
+//        
+//        
+//        if (resultSet == null) {
+//            db.close();
+//            return;
+//        }
+//        
+//        while (resultSet.next()) {
+//            name = resultSet.getString("Name");
+//            timeZone = resultSet.getInt("TimeZone");
+//
+//            System.out.printf("%s = %d%n", name, timeZone);
+//        }
         db.close();
     }
 
