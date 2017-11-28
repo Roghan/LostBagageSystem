@@ -17,6 +17,7 @@ import javafx.scene.chart.Chart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -40,6 +41,8 @@ public class Gev3DController implements Initializable {
     private TableColumn<?, ?> locatie;
     @FXML
     private TableColumn<?, ?> actief;
+    @FXML
+    private AnchorPane gev3D;
 
     private void handleAdd(ActionEvent event) {
         userList.add(new User(userIdCounter++, "?", "?", false));
@@ -66,11 +69,18 @@ public class Gev3DController implements Initializable {
         }
 
         table.setItems(userList);
+        
+        getChard();
+        
+        
+        
+        
 
 
     }
-    public void start(Stage stage) {
-        stage.setTitle("Gevonden bagage, 3 dagen");
+    @FXML
+    public void getChard () {
+       
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -97,16 +107,22 @@ public class Gev3DController implements Initializable {
         series.getData().add(new XYChart.Data(11, 29));
         series.getData().add(new XYChart.Data(12, 25));
 
-        Scene scene = new Scene(lineChart, 1080, 920);
+        
         lineChart.getData().add(series);
+        gev3D.getChildren().setAll();
+        gev3D.getChildren().setAll(lineChart);
+        
+        lineChart.prefWidthProperty().bind(gev3D.widthProperty());
+        lineChart.prefHeightProperty().bind(gev3D.heightProperty());
+        
+        
+        
+        
 
-        stage.setScene(scene);
-        stage.show();
+     
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
        
 
 }
