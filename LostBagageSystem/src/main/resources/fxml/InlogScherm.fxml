@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.InlogSchermController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
@@ -25,12 +29,39 @@
             <Menu mnemonicParsing="false" text="File">
                <items>
                   <Menu mnemonicParsing="false" text="Import">
+=======
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.InlogController">
+    <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+              <HBox alignment="CENTER" prefHeight="84.0" prefWidth="990.0" style="-fx-background-color: #d81e05;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="File">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Import File" />
+                        <Menu mnemonicParsing="false" text="Import">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Import File" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Export">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#exportPDF" text="Export PDF" />
+                           </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" text="Close" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Export">
+                  <Menu mnemonicParsing="false" text="Edit">
+>>>>>>> master
                      <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+<<<<<<< HEAD
                         <MenuItem mnemonicParsing="false" text="Export PDF" />
                      </items>
                   </Menu>
@@ -108,3 +139,81 @@
       </BorderPane>
    </children>
 </AnchorPane>
+=======
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+    </top>
+    <center>
+      <AnchorPane fx:id="ROOT" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="386.0" layoutY="195.0" prefHeight="596.0" prefWidth="990.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox layoutX="386.0" layoutY="195.0">
+                     <children>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                                        <Button fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="28.0" prefWidth="64.0" style="-fx-background-color: #d81e05;" text="Log in" textFill="WHITE" GridPane.rowIndex="5">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Button>
+                                        <PasswordField fx:id="password" prefHeight="41.0" prefWidth="218.0" promptText="Wachtwoord" GridPane.rowIndex="4" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wachtwoord" GridPane.rowIndex="3">
+                                            <font>
+                                                <Font size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="username" prefHeight="42.0" prefWidth="218.0" promptText="Gebuikersnaam" GridPane.rowIndex="2" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gebruikersnaam" GridPane.rowIndex="1">
+                                            <font>
+                                                <Font size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Log in" textAlignment="CENTER" wrappingWidth="75.43310546875">
+                                            <font>
+                                                <Font size="26.0" />
+                                            </font>
+                                        </Text>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+    </center>
+    <bottom>
+        <HBox prefHeight="52.0" prefWidth="990.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="40.0" prefWidth="1358.0">
+               <children>
+                  <Label fx:id="statusMessage" prefHeight="140.0" prefWidth="990.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Region prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+    </bottom>
+</BorderPane>
+>>>>>>> master
