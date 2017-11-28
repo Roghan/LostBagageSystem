@@ -38,7 +38,7 @@ public class AdminMainController implements Initializable {
 //    @FXML
 //    private Button Verwijderen;
     @FXML
-    private void zoekMedewerkerField(ActionEvent event) {
+    private void blokkeer(ActionEvent event) {
 
     }
 
