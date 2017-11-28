@@ -68,9 +68,17 @@
                         <TableView fx:id="table" prefHeight="501.0" prefWidth="639.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-                            <TableColumn fx:id="werknemer" prefWidth="75.0" text="Werknemer" />
-                              <TableColumn fx:id="locatie" prefWidth="75.0" text="Locatie" />
-                              <TableColumn fx:id="actief" prefWidth="75.0" text="Actief" />
+                            <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
+                              <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
+                              <TableColumn fx:id="voornaam" prefWidth="75.0" text="Voornaam" />
+                              <TableColumn fx:id="achternaam" prefWidth="75.0" text="Achternaam" />
+                              <TableColumn fx:id="geboortedatum" prefWidth="75.0" text="Geboortedatum" />
+                              <TableColumn fx:id="postcode" prefWidth="75.0" text="Postcode" />
+                              <TableColumn fx:id="huisnummer" prefWidth="75.0" text="Huisnummer" />
+                              <TableColumn fx:id="telefoonnummer" prefWidth="75.0" text="Telefoonnummer" />
+                              <TableColumn fx:id="manVrouw" prefWidth="75.0" text="ManVrouw" />
+                              <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
+                              <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
                           </columns>
                         </TableView>
                      </children>
