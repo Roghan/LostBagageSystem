@@ -6,7 +6,7 @@ import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.lostbagagesystem.models.User;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +16,9 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * @author is
@@ -26,11 +28,7 @@ public class AdminMainController implements Initializable {
     @FXML
     private TableView table;
 
-//    private ObservableList<User> userList;
-
     private ObservableList<DbNaam> dbNaam;
-
-//    private int userIdCounter = 0;
 
 //    @FXML
 //    private Button Blokkeren;
@@ -41,11 +39,51 @@ public class AdminMainController implements Initializable {
     private void blokkeer(ActionEvent event) {
 
     }
+    
+        @FXML
+        private AnchorPane TableLeeg;
+    
+    
+        @FXML
+        public void handleAdd(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        
 
-    @FXML
-    private void handleAdd(ActionEvent event) {
-//        dbNaam.add(new DbNaam(userIdCounter++, "Acountnaam", "Voornaam", "Achternaam"));
     }
+
+//    @FXML
+//    private void handleAdd(ActionEvent event) {
+//        
+//        ConnectDB db = new ConnectDB("fystestdb");
+//        
+//        String acountN = acountnaam.getText();
+//        String wachtw = wachtwoord.getText();
+//        String voorN = voornaam.getText();
+//        String achterN = achternaam.getText();
+//        String geboorteD = geboortedatum.getText();
+//        String postC = postcode.getText();
+//        String huisN = huisnummer.getText();
+//        String telefoonN = telefoonnummer.getText();
+//        String manV = manVrouw.getText();
+//        String roll = rol.getText();
+//        
+//        String query = String.format("INSERT INTO `fystestdb`.`gebruiker` "
+//                + "(`acountnaam`, `wachtwoord`, `voornaam`, `achternaam`, "
+//                + "`geboortedatum`, `postcode`, `huisnummer`, `telefoonnummer`, "
+//                + "`man/vrouw`, `rol`)"
+//                + " VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
+//                acountN, wachtw, voorN, achterN, geboorteD, postC, huisN, telefoonN, manV, roll);
+//        
+////        dbNaam.add(new DbNaam(userIdCounter++, "Acountnaam", "Voornaam", "Achternaam"));
+//    }
 
     @FXML
     private void handleDelete(ActionEvent event) {
@@ -65,6 +103,9 @@ public class AdminMainController implements Initializable {
 
     }
 
+
+    
+    
     public void dbTableFill() throws SQLException{
         
         ConnectDB db = new ConnectDB("fystestdb");
