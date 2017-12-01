@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -31,9 +32,17 @@ public class AdminMainController implements Initializable {
 
     private ObservableList<DbNaam> dbNaam;
     
+    private Button Loguit;
     
     @FXML
+    private AnchorPane TableLeeg;
+    
+    @FXML
+    private AnchorPane AdminPane;
+    @FXML
     private BorderPane PaneLeeg;
+    
+   
 
 //    @FXML
 //    private Button Blokkeren;
@@ -45,8 +54,7 @@ public class AdminMainController implements Initializable {
        
     }
     
-        @FXML
-        private AnchorPane TableLeeg;
+        
     
     
         @FXML
@@ -63,7 +71,7 @@ public class AdminMainController implements Initializable {
         
 
     }
-
+        
     @FXML
     private void handleDelete(ActionEvent event) {
         //FAKE REMOVE
@@ -82,11 +90,21 @@ public class AdminMainController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AdminMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
 
-
-    
+        @FXML
+        public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        AdminPane.getChildren().setAll();
+        //laad de nieuwe table in
+        AdminPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
+        }
     
     public void dbTableFill() throws SQLException{
         
