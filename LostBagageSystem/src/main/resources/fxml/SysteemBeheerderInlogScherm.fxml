@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SysLogController">
+<BorderPane fx:id="PaneLeeg" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SysLogController">
     <center>
         <HBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
@@ -26,7 +25,7 @@
                                           <Font size="26.0" />
                                       </font>
                                   </Text>
-                        <Button fx:id="AdminScherm" layoutX="186.0" layoutY="188.0" mnemonicParsing="false" onAction="#AdministratorKnop" prefHeight="28.0" prefWidth="149.0" style="-fx-background-color: #d81e05;" text="AdministratorScherm" textFill="WHITE">
+                        <Button fx:id="AdminScherm" layoutX="186.0" layoutY="188.0" mnemonicParsing="false" onAction="#administratorKnop" prefHeight="28.0" prefWidth="149.0" style="-fx-background-color: #d81e05;" text="AdministratorScherm" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 /**
  * @author is
@@ -29,6 +30,9 @@ public class AdminMainController implements Initializable {
     private TableView table;
 
     private ObservableList<DbNaam> dbNaam;
+    
+    @FXML
+    private BorderPane PaneLeeg;
 
 //    @FXML
 //    private Button Blokkeren;
@@ -36,8 +40,8 @@ public class AdminMainController implements Initializable {
 //    @FXML
 //    private Button Verwijderen;
     @FXML
-    private void blokkeer(ActionEvent event) {
-
+    private void blokkeer(ActionEvent event) throws IOException {
+       
     }
     
         @FXML
@@ -59,37 +63,14 @@ public class AdminMainController implements Initializable {
 
     }
 
-//    @FXML
-//    private void handleAdd(ActionEvent event) {
-//        
-//        ConnectDB db = new ConnectDB("fystestdb");
-//        
-//        String acountN = acountnaam.getText();
-//        String wachtw = wachtwoord.getText();
-//        String voorN = voornaam.getText();
-//        String achterN = achternaam.getText();
-//        String geboorteD = geboortedatum.getText();
-//        String postC = postcode.getText();
-//        String huisN = huisnummer.getText();
-//        String telefoonN = telefoonnummer.getText();
-//        String manV = manVrouw.getText();
-//        String roll = rol.getText();
-//        
-//        String query = String.format("INSERT INTO `fystestdb`.`gebruiker` "
-//                + "(`acountnaam`, `wachtwoord`, `voornaam`, `achternaam`, "
-//                + "`geboortedatum`, `postcode`, `huisnummer`, `telefoonnummer`, "
-//                + "`man/vrouw`, `rol`)"
-//                + " VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
-//                acountN, wachtw, voorN, achterN, geboorteD, postC, huisN, telefoonN, manV, roll);
-//        
-////        dbNaam.add(new DbNaam(userIdCounter++, "Acountnaam", "Voornaam", "Achternaam"));
-//    }
-
     @FXML
     private void handleDelete(ActionEvent event) {
+        //FAKE REMOVE
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-
         dbNaam.remove(user);
+
+        //REMOVE FROM DB
+        //DELETE FROM `gebruiker` WHERE `id`='4';
     }
 
     @Override
