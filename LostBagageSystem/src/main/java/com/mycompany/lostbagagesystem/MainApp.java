@@ -17,11 +17,8 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-<<<<<<< HEAD
-        final String SCHERMNAAM = "Medewerkersscherm";
-=======
         final String SCHERMNAAM = "InlogScherm";
->>>>>>> 94c67c04c5151d4706776894423b5e7be06da4a4
+
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
         
