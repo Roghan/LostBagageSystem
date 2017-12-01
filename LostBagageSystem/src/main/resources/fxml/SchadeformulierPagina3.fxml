@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="651.0" prefWidth="1042.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierPagina2Controller">
+   <center>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@/styles/Styles.css" />
+         </stylesheets>
+         <children>
+            <AnchorPane prefHeight="651.0" prefWidth="1042.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text layoutX="77.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bagage verzekering" />
+                  <Text layoutX="77.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam Maatschappij" />
+                  <TextField fx:id="txtMaatschappijNaam" layoutX="226.0" layoutY="85.0" prefWidth="130.0" />
+                  <Text layoutX="119.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Polisnummer" />
+                  <TextField fx:id="txtPolisnummerBagageVerzekering" layoutX="226.0" layoutY="131.0" prefWidth="130.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
