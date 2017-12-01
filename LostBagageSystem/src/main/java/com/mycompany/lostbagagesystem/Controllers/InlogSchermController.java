@@ -98,30 +98,30 @@ public class InlogSchermController implements Initializable {
         }
     }
     
-    @FXML
-    public void testdb() throws SQLException {
-
-        ConnectDB db = new ConnectDB("fystestdb");
-
-        
-        String acountnaam;
-        String wachtwoord;
-        int rol;
-        //show results
-        ResultSet resultSet;
-
-        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` FROM `gebruiker`");
-
-        while (resultSet.next()) {
-            
-            acountnaam = resultSet.getString("acountnaam");
-            wachtwoord = resultSet.getString("wachtwoord");
-            rol = resultSet.getInt("rol");
-            System.out.printf("%d = %s %s%n", rol, acountnaam, wachtwoord);
-        }
-
-        db.close();
-    }
+//    @FXML
+//    public void testdb() throws SQLException {
+//
+//        ConnectDB db = new ConnectDB("fystestdb");
+//
+//        
+//        String acountnaam;
+//        String wachtwoord;
+//        int rol;
+//        //show results
+//        ResultSet resultSet;
+//
+//        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` FROM `gebruiker`");
+//
+//        while (resultSet.next()) {
+//            
+//            acountnaam = resultSet.getString("acountnaam");
+//            wachtwoord = resultSet.getString("wachtwoord");
+//            rol = resultSet.getInt("rol");
+//            System.out.printf("%d = %s %s%n", rol, acountnaam, wachtwoord);
+//        }
+//
+//        db.close();
+//    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
