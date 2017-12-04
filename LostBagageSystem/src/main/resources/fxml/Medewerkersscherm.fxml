@@ -49,13 +49,13 @@
             </HBox>
          </bottom>
          <center>
-            <SplitPane dividerPositions="0.2" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.5" BorderPane.alignment="CENTER">
                <items>
-                  <AnchorPane SplitPane.resizableWithParent="false">
+                  <AnchorPane maxHeight="468.0" maxWidth="164.0" prefHeight="466.0" prefWidth="164.0" SplitPane.resizableWithParent="false">
                      <children>
-                        <Button fx:id="schadeformbtn" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="125.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true" />
-                        <Button layoutX="5.0" layoutY="39.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true" />
-                        <Button layoutX="5.0" layoutY="90.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true" />
+                        <Button fx:id="schadeformbtn" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="137.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true" />
+                        <Button layoutX="5.0" layoutY="39.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true" />
+                        <Button layoutX="5.0" layoutY="90.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="formulierLeeg">
@@ -79,10 +79,10 @@
             <Region prefHeight="255.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
          </right>
          <top>
-            <HBox prefHeight="64.0" prefWidth="800.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+            <HBox style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
                <children>
                   <VBox prefHeight="73.0" prefWidth="126.0" />
-                  <Region HBox.hgrow="ALWAYS" />
+                  <Region prefHeight="38.0" prefWidth="681.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </top>

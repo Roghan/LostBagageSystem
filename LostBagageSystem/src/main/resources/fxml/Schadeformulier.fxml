@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,8 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-
-<ScrollPane hbarPolicy="NEVER" prefHeight="944.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
+<ScrollPane hbarPolicy="NEVER" prefHeight="996.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
    <content>
       <HBox>
          <children>
@@ -55,19 +53,19 @@
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gender" />
+                           </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="checkV" mnemonicParsing="false" text="V">
+                        <RadioButton fx:id="checkV" mnemonicParsing="false" text="V" toggleGroup="$gender">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="checkO" mnemonicParsing="false" text="O">
+                        <RadioButton fx:id="checkO" mnemonicParsing="false" text="O" toggleGroup="$gender">
                            <HBox.margin>
                               <Insets bottom="20.0" />
                            </HBox.margin>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="gender" />
-                           </toggleGroup>
                         </RadioButton>
                      </children>
                      <VBox.margin>
@@ -114,27 +112,47 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationaliteit">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Text>
                   <TextField fx:id="txtGeboorteDatum" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationaliteit">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
                   <TextField fx:id="txtLandnaam" prefHeight="30.0" prefWidth="360.0" promptText="Landnaam">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
                   <TextField fx:id="txtEmail" prefHeight="30.0" prefWidth="360.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -144,17 +162,27 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mobiel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
                   <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon">
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mobiel">
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bankrekening/IBAN">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -164,11 +192,6 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bankrekening/IBAN">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Text>
                </children>
                <padding>
                   <Insets left="10.0" />
@@ -176,154 +199,529 @@
             </VBox>
             <VBox fillWidth="false" prefHeight="1794.0" prefWidth="363.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Verschilt de naam en/of adres van de rekeninghouder met de ingevulde gegevens?" wrappingWidth="333.453125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur van de koffer" wrappingWidth="333.453125">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Achternaam">
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bagagelabel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtAchternaamGast" prefHeight="30.0" prefWidth="360.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode">
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Merk">
+                     <VBox.margin>
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtPostcodeGast" prefHeight="30.0" prefWidth="360.0" promptText="1234AB">
+                  <TextField fx:id="txtPostcodeGast" prefHeight="30.0" prefWidth="360.0" promptText="bv. Samsonite">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Huisnr.">
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Soort">
+                     <VBox.margin>
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtHuisNummerGast" prefHeight="30.0" prefWidth="360.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invullen door tussenpersoon">
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 1">
+                     <VBox.margin>
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agentnummer">
+                  <HBox prefHeight="62.0" prefWidth="576.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrBlack" mnemonicParsing="false" text="Black">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrWhite" mnemonicParsing="false" text="White">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrSilver" mnemonicParsing="false" text="Silver">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrGray" mnemonicParsing="false" text="Gray">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrRed" mnemonicParsing="false" text="Red">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrMaroon" mnemonicParsing="false" text="Maroon">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrOlive" mnemonicParsing="false" text="Olive">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrYellow" mnemonicParsing="false" text="Yellow">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrLime" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Lime">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrGreen" mnemonicParsing="false" text="Green">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrAqua" mnemonicParsing="false" text="Aqua">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrTeal" mnemonicParsing="false" text="Teal">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrBlue" mnemonicParsing="false" text="Blue">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrNavy" mnemonicParsing="false" text="Navy">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrPink" mnemonicParsing="false" text="Pink">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrPurple" mnemonicParsing="false" text="Purple">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 2">
+                     <VBox.margin>
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtAgentnummer" prefHeight="30.0" prefWidth="360.0">
+                  <HBox prefHeight="62.0" prefWidth="576.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrBlack1" mnemonicParsing="false" text="Black">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrWhite1" mnemonicParsing="false" text="White">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrSilver1" mnemonicParsing="false" text="Silver">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrGray1" mnemonicParsing="false" text="Gray">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrRed1" mnemonicParsing="false" text="Red">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrMaroon1" mnemonicParsing="false" text="Maroon">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrOlive1" mnemonicParsing="false" text="Olive">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrYellow1" mnemonicParsing="false" text="Yellow">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrLime1" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Lime">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrGreen1" mnemonicParsing="false" text="Green">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrAqua1" mnemonicParsing="false" text="Aqua">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrTeal1" mnemonicParsing="false" text="Teal">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrBlue1" mnemonicParsing="false" text="Blue">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrNavy1" mnemonicParsing="false" text="Navy">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrPink1" mnemonicParsing="false" text="Pink">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrPurple1" mnemonicParsing="false" text="Purple">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam">
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 3">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtNaamTussenpersoon" prefHeight="30.0" prefWidth="360.0">
+                  <HBox prefHeight="62.0" prefWidth="576.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrBlack2" mnemonicParsing="false" text="Black">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrWhite2" mnemonicParsing="false" text="White">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrSilver2" mnemonicParsing="false" text="Silver">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrGray2" mnemonicParsing="false" text="Gray">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrRed2" mnemonicParsing="false" text="Red">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrMaroon2" mnemonicParsing="false" text="Maroon">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrOlive2" mnemonicParsing="false" text="Olive">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrYellow2" mnemonicParsing="false" text="Yellow">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrLime2" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Lime">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrGreen2" mnemonicParsing="false" text="Green">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrAqua2" mnemonicParsing="false" text="Aqua">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrTeal2" mnemonicParsing="false" text="Teal">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <RadioButton fx:id="clrBlue2" mnemonicParsing="false" text="Blue">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrNavy2" mnemonicParsing="false" text="Navy">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrPink2" mnemonicParsing="false" text="Pink">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="clrPurple2" mnemonicParsing="false" text="Purple">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Woonplaats">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtWoonplaatsTussenpersoon" prefHeight="30.0" prefWidth="360.0">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bankrekening/IBAN">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtBankrekeningTussenpersoon" prefHeight="30.0" prefWidth="360.0">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </TextField>
+                  </Line>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schadegegevens">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schadedatum">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtSchadeDatum" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum begin reis">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtBeginDatumReis" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijdstip schade">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtTijdstipSchade" prefHeight="30.0" prefWidth="360.0" promptText="In Uren">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Plaats">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtSchadePlaats" prefHeight="30.0" prefWidth="360.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Land">
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Text>
                   <TextField fx:id="txtSchadeLand" prefHeight="30.0" prefWidth="360.0">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-               </children>
-            </VBox>
-            <VBox fillWidth="false" prefHeight="820.0" prefWidth="245.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bagage verzekering" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam Maatschappij" />
-                  <TextField fx:id="txtMaatschappijNaam" prefWidth="130.0" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Polisnummer" />
-                  <TextField fx:id="txtPolisnummerBagageVerzekering" prefWidth="130.0" />
-                  <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="Annuleren" />
-                  <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="Insturen" />
-                  <Button fx:id="lstPagina2" mnemonicParsing="false" onAction="#lstPagina2" text="Vorige pagina" />
-                  <ColorPicker />
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <HBox>
+                     <children>
+                        <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="Annuleren">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="Insturen">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
          </children>
