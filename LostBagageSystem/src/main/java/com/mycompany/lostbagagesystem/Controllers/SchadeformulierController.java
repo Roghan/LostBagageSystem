@@ -12,24 +12,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author dono
  */
-public class MedMainController implements Initializable {
-    
+public class SchadeformulierController implements Initializable {
+
     @FXML
     private TextField txtVoorletters;
     @FXML
@@ -61,36 +54,30 @@ public class MedMainController implements Initializable {
     @FXML
     private TextField txtEmail;
     @FXML
-    private Button schadeformbtn;
-    @FXML
-    private AnchorPane TableLeeg;
-    @FXML
-    private AnchorPane formulierLeeg;
-
+    private AnchorPane TableLeeg2;
     
     @FXML
-    public void schadeFormulier(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Schadeformulier.fxml"));
-        formulierLeeg.getChildren().setAll();
-        formulierLeeg.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
-        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+    public void annuleren(ActionEvent event) throws IOException {  
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"));
+        TableLeeg2.getChildren().setAll();
+        TableLeeg2.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(TableLeeg2.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
+    
     }
     
-
-    //    Stage stage; 
-//    Parent root;
-//    stage = new Stage();
-//    root = FXMLLoader.load(getClass().getResource("/fxml/Schadeformulier.fxml"));
-//    stage.setScene(new Scene(root));
-//    stage.initModality(Modality.APPLICATION_MODAL);
-//    stage.initOwner(schadeformbtn.getScene().getWindow());
-//    stage.showAndWait();
-
+    @FXML 
+    public void nxtPagina(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/SchadeformulierPagina2.fxml"));
+        TableLeeg2.getChildren().setAll();
+        TableLeeg2.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(TableLeeg2.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
+    
+    }
+    
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
