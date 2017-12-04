@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -48,46 +49,40 @@
             </HBox>
          </bottom>
          <center>
-            <VBox prefHeight="484.0" prefWidth="389.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField promptText="Zoek formulier" />
-                  <ListView prefHeight="443.0" prefWidth="567.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ListView>
-               </children>
-            </VBox>
+            <SplitPane dividerPositions="0.2" BorderPane.alignment="CENTER">
+               <items>
+                  <AnchorPane SplitPane.resizableWithParent="false">
+                     <children>
+                        <Button fx:id="schadeformbtn" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="125.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true" />
+                        <Button layoutX="5.0" layoutY="39.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true" />
+                        <Button layoutX="5.0" layoutY="90.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="125.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="formulierLeeg">
+                     <children>
+                        <VBox prefHeight="484.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TextField promptText="Zoek formulier" />
+                              <ListView prefHeight="443.0" prefWidth="567.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </ListView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
          </center>
          <right>
             <Region prefHeight="255.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
          </right>
-         <left>
-            <VBox prefHeight="468.0" prefWidth="133.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#schadeFormulier" prefWidth="194.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefWidth="194.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" prefWidth="194.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="2.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-         </left>
          <top>
-            <HBox style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+            <HBox prefHeight="64.0" prefWidth="800.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
                <children>
                   <VBox prefHeight="73.0" prefWidth="126.0" />
-                  <Region prefHeight="38.0" prefWidth="681.0" HBox.hgrow="ALWAYS" />
+                  <Region HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </top>
