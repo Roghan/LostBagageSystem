@@ -1,61 +1,332 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="TableLeeg2" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
-   <children>
-      <BorderPane prefHeight="651.0" prefWidth="1042.0">
-         <center>
-            <AnchorPane>
+
+<ScrollPane hbarPolicy="NEVER" prefHeight="944.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
+   <content>
+      <HBox>
+         <children>
+            <VBox fillWidth="false" prefHeight="820.0" prefWidth="382.0" HBox.hgrow="ALWAYS">
                <children>
-                  <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gegevens verzekerde">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtVoorletters" prefHeight="30.0" prefWidth="360.0" promptText="Voorletters">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtTussenvoegsel" prefHeight="30.0" prefWidth="360.0" promptText="Tussenvoegsel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAchternaam" prefHeight="30.0" prefWidth="360.0" promptText="Achternaam">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox>
                      <children>
-                        <Text layoutX="26.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gegevens verzekerde" />
-                        <Text layoutX="26.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam" />
-                        <TextField fx:id="txtVoorletters" layoutX="24.0" layoutY="105.0" prefHeight="28.0" prefWidth="102.0" promptText="Voorletters" />
-                        <TextField fx:id="txtTussenvoegsel" layoutX="140.0" layoutY="105.0" prefHeight="28.0" prefWidth="109.0" promptText="Tussenvoegsel" />
-                        <TextField fx:id="txtAchternaam" layoutX="265.0" layoutY="106.0" prefHeight="27.0" prefWidth="102.0" promptText="Achternaam" />
-                        <Text layoutX="26.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adres" />
-                        <TextField fx:id="txtStraatnaam" layoutX="25.0" layoutY="210.0" prefHeight="27.0" prefWidth="101.0" promptText="Straatnaam" />
-                        <TextField fx:id="txtHuisNummer" layoutX="144.0" layoutY="210.0" prefHeight="27.0" prefWidth="102.0" promptText="Huisnummer" />
-                        <TextField fx:id="txtPostcode" layoutX="266.0" layoutY="210.0" prefHeight="27.0" prefWidth="101.0" promptText="Postcode" />
-                        <TextField fx:id="txtWoonplaats" layoutX="574.0" layoutY="229.0" prefHeight="27.0" prefWidth="111.0" promptText="Woonplaats" />
-                        <Text layoutX="64.0" layoutY="370.568359375" strokeType="OUTSIDE" strokeWidth="0.0" text="Geboortedatum" />
-                        <TextField fx:id="txtGeboorteDatum" layoutX="209.0" layoutY="352.0" prefHeight="27.0" prefWidth="101.0" promptText="JJJJ-MM-DD" />
-                        <Text layoutX="521.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationaliteit" />
-                        <TextField fx:id="txtLandnaam" layoutX="648.0" layoutY="352.0" prefHeight="27.0" prefWidth="137.0" promptText="Landnaam" />
-                        <Text layoutX="121.0" layoutY="433.568359375" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
-                        <TextField fx:id="txtEmail" layoutX="209.0" layoutY="415.0" prefWidth="130.0" />
-                        <Text layoutX="106.0" layoutY="496.568359375" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon" />
-                        <TextField fx:id="txtTelefoon" layoutX="209.0" layoutY="478.0" prefWidth="130.0" />
-                        <Text layoutX="554.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobiel" />
-                        <Text layoutX="42.0" layoutY="559.568359375" strokeType="OUTSIDE" strokeWidth="0.0" text="Bankrekening/IBAN" />
-                        <TextField fx:id="txtBankrekening" layoutX="209.0" layoutY="541.0" prefHeight="27.0" prefWidth="199.0" />
-                        <Button fx:id="annuleren" layoutX="517.0" layoutY="555.0" mnemonicParsing="false" onAction="#annuleren" text="Annuleren" />
-                        <Button fx:id="nxtPagina" layoutX="648.0" layoutY="555.0" mnemonicParsing="false" onAction="#nxtPagina" text="Volgende pagina" />
-                        <TextField fx:id="txtMobielNummer" layoutX="648.0" layoutY="478.0" prefHeight="27.0" prefWidth="137.0" />
-                        <RadioButton fx:id="checkM" layoutX="493.0" layoutY="110.0" mnemonicParsing="false" text="M">
+                        <RadioButton fx:id="checkM" mnemonicParsing="false" text="M">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="checkV" mnemonicParsing="false" text="V">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="checkO" mnemonicParsing="false" text="O">
+                           <HBox.margin>
+                              <Insets bottom="20.0" />
+                           </HBox.margin>
                            <toggleGroup>
                               <ToggleGroup fx:id="gender" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="checkV" layoutX="558.0" layoutY="110.0" mnemonicParsing="false" text="V" toggleGroup="$gender" />
-                        <RadioButton fx:id="checkO" layoutX="615.0" layoutY="110.0" mnemonicParsing="false" text="O" toggleGroup="$gender" />
-                        <Line endX="100.0" layoutX="121.0" layoutY="78.0" startX="-100.0" />
-                        <Line endX="100.0" layoutX="124.0" layoutY="182.0" startX="-100.0" />
-                        <Line endX="100.0" layoutX="126.0" layoutY="274.0" startX="-100.0" />
                      </children>
-                  </AnchorPane>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adres">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtStraatnaam" prefHeight="30.0" prefWidth="360.0" promptText="Straatnaam">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtHuisNummer" prefHeight="30.0" prefWidth="360.0" promptText="Huisnummer">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtPostcode" prefHeight="30.0" prefWidth="360.0" promptText="Postcode">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtWoonplaats" prefHeight="30.0" prefWidth="360.0" promptText="Woonplaats">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Geboortedatum">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationaliteit">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtGeboorteDatum" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtLandnaam" prefHeight="30.0" prefWidth="360.0" promptText="Landnaam">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtEmail" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtTelefoon" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mobiel">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtBankrekening" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bankrekening/IBAN">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
                </children>
-            </AnchorPane>
-         </center>
-      </BorderPane>
-   </children>
-</AnchorPane>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </VBox>
+            <VBox fillWidth="false" prefHeight="1794.0" prefWidth="363.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Verschilt de naam en/of adres van de rekeninghouder met de ingevulde gegevens?" wrappingWidth="333.453125">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Achternaam">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtAchternaamGast" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtPostcodeGast" prefHeight="30.0" prefWidth="360.0" promptText="1234AB">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Huisnr.">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtHuisNummerGast" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Invullen door tussenpersoon">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agentnummer">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtAgentnummer" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtNaamTussenpersoon" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Woonplaats">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtWoonplaatsTussenpersoon" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bankrekening/IBAN">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtBankrekeningTussenpersoon" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schadegegevens">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schadedatum">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtSchadeDatum" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Datum begin reis">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtBeginDatumReis" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tijdstip schade">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtTijdstipSchade" prefHeight="30.0" prefWidth="360.0" promptText="In Uren">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Plaats">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtSchadePlaats" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Land">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtSchadeLand" prefHeight="30.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox fillWidth="false" prefHeight="820.0" prefWidth="245.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bagage verzekering" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam Maatschappij" />
+                  <TextField fx:id="txtMaatschappijNaam" prefWidth="130.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Polisnummer" />
+                  <TextField fx:id="txtPolisnummerBagageVerzekering" prefWidth="130.0" />
+                  <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="Annuleren" />
+                  <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="Insturen" />
+                  <Button fx:id="lstPagina2" mnemonicParsing="false" onAction="#lstPagina2" text="Vorige pagina" />
+                  <ColorPicker />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </content>
+</ScrollPane>
