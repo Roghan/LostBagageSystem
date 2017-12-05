@@ -43,14 +43,6 @@ public class Gev21DController implements Initializable {
     @FXML
     private AnchorPane gev21D;
 
-//    private void handleAdd(ActionEvent event) {
-//        userList.add(new User(userIdCounter++, "?", "?", false));
-//    }
-//    private void handleDelete(ActionEvent event) {
-//        User user = (User) table.getSelectionModel().getSelectedItem();
-//
-//        userList.remove(user);
-//    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -136,7 +128,7 @@ public class Gev21DController implements Initializable {
         xAxis.setLabel("Aantal dagen");
         //creating the chart
         final LineChart<Number, Number> lineChart
-                = new LineChart<Number, Number>(xAxis, yAxis);
+                = new LineChart<>(xAxis, yAxis);
 
         lineChart.setTitle("Gevonden bagage, 21 dagen");
         //defining a series
