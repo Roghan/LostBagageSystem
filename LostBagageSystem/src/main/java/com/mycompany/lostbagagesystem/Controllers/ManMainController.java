@@ -67,7 +67,23 @@ public class ManMainController implements Initializable {
 
     @FXML
     private TableView table;
+    private Button Loguit;
+    @FXML
+    private AnchorPane ManagerPane;
 
+    @FXML
+        public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        ManagerPane.getChildren().setAll();
+        //laad de nieuwe table in
+        ManagerPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(ManagerPane.widthProperty());
+        pane.prefHeightProperty().bind(ManagerPane.heightProperty());
+        }
+    
     @FXML
     public void medewerkers (ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
