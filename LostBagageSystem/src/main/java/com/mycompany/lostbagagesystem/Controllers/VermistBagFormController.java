@@ -1,6 +1,9 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
+<<<<<<< HEAD
 import java.io.File;
+=======
+>>>>>>> ea8a598e22f53912c1d2a73527f443344174b50d
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
