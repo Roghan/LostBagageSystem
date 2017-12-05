@@ -57,15 +57,15 @@ public class MainApp extends Application {
 
         FILE_CHOOSER.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("pdf Files", "*.pdf"));
 
-        File selceltedFile = FILE_CHOOSER.showSaveDialog(null);
-        return selceltedFile;
+        File selectedFile = FILE_CHOOSER.showSaveDialog(null);
+        return selectedFile;
     }
 
     public static File selectFileToOpen() {
 
-        File selceltedFile = FILE_CHOOSER.showOpenDialog(null);
+        File selectedFile = FILE_CHOOSER.showOpenDialog(null);
 
-        return selceltedFile;
+        return selectedFile;
     }
 //  Database connectie    
 //    public static void (String[] args) throws SQLException {

@@ -1,4 +1,4 @@
-package com.mycompany.lostbagagesystem.Controllers;
+package com.mycompany.lostbagagesystem.classes;
 
 import java.io.File;
 import javafx.event.ActionEvent;
@@ -8,7 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class VermistBagFormController {
+public class VermistBagFormulier {
 
     @FXML
     private TextField txtVoorletters;

@@ -18,7 +18,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 
 /**
  *
@@ -38,7 +37,7 @@ public class InlogController implements Initializable {
 
     @FXML
     AnchorPane ROOT;
-    
+
     @FXML
     private Label statusMessage;
 
@@ -57,8 +56,8 @@ public class InlogController implements Initializable {
         }
 
     }
-    
-        @FXML
+
+    @FXML
     public void exportPDF(ActionEvent event) throws IOException {
         //Test output for console
         System.out.println("Button Press Print PDF");
