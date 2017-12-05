@@ -94,7 +94,7 @@
                         <Text layoutX="9.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verloren" textAlignment="CENTER" wrappingWidth="134.2109375" />
                         <Text layoutX="9.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vergelijk" textAlignment="CENTER" wrappingWidth="134.2109375" />
                         <Button fx:id="Vergelijk21Dagen" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="281.0" mnemonicParsing="false" onAction="#vergelijk21Dagen" prefHeight="25.0" prefWidth="125.0" text="21 dagen" textAlignment="CENTER" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="ListView" textAlignment="CENTER" />
+                        <Button fx:id="Medewerkers" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="35.0" mnemonicParsing="false" onAction="#medewerkers" prefHeight="25.0" prefWidth="125.0" text="Medewerkers" textAlignment="CENTER" />
                         <Text layoutX="18.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Files" textAlignment="CENTER" wrappingWidth="121.2109375" />
                      </children>
                   </AnchorPane>
