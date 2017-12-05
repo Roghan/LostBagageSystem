@@ -67,7 +67,10 @@ public class ManMainController implements Initializable {
 
     @FXML
     private TableView table;
+    
+    @FXML
     private Button Loguit;
+    
     @FXML
     private AnchorPane ManagerPane;
 

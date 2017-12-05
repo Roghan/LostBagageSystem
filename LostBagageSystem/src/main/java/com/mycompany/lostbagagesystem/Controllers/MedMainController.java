@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -29,8 +30,26 @@ public class MedMainController implements Initializable {
     private Button schadeformbtn;
     
     @FXML
-    private void schadeFormulier(ActionEvent event) 
-                          throws IOException {
+    private Button Loguit;
+    
+    @FXML
+    private AnchorPane MedewerkerPane;
+
+    @FXML
+        public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        MedewerkerPane.getChildren().setAll();
+        //laad de nieuwe table in
+        MedewerkerPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(MedewerkerPane.widthProperty());
+        pane.prefHeightProperty().bind(MedewerkerPane.heightProperty());
+        }
+        
+    @FXML
+    private void schadeFormulier(ActionEvent event) throws IOException {
     Stage stage; 
     Parent root;
     stage = new Stage();

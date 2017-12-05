@@ -12,10 +12,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="TableLeeg" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
+<AnchorPane id="AnchorPane" fx:id="MedewerkerPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -84,10 +85,15 @@
             </VBox>
          </left>
          <top>
-            <HBox style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
+            <HBox prefHeight="57.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
                <children>
-                  <VBox prefHeight="73.0" prefWidth="126.0" />
-                  <Region prefHeight="38.0" prefWidth="681.0" HBox.hgrow="ALWAYS" />
+                  <Pane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="Uitloggen" />
+                     </children>
+                  </Pane>
+                  <Pane />
+                  <Pane prefWidth="480.0" />
                </children>
             </HBox>
          </top>
