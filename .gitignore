@@ -3,3 +3,6 @@
 *.txt
 LostBagageSystem/target/classes/META-INF/LICENSE
 LostBagageSystem/target/classes/META-INF/DEPENDENCIES
+LostBagageSystem/target/classes/com/mycompany/lostbagagesystem/classes/FoundLuggage.class
+LostBagageSystem/target/LostBagageSystem-1.0-SNAPSHOT.jar
+LostBagageSystem/target/maven-archiver/pom.properties
