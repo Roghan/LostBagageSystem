@@ -20,6 +20,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -75,6 +76,34 @@ public class MedMainController implements Initializable {
         formulierLeeg.getChildren().setAll(pane);
         pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
         pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+    private Button Loguit;
+    
+    @FXML
+    private AnchorPane MedewerkerPane;
+
+    @FXML
+        public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        MedewerkerPane.getChildren().setAll();
+        //laad de nieuwe table in
+        MedewerkerPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(MedewerkerPane.widthProperty());
+        pane.prefHeightProperty().bind(MedewerkerPane.heightProperty());
+        }
+        
+    @FXML
+    private void schadeFormulier(ActionEvent event) throws IOException {
+    Stage stage; 
+    Parent root;
+    stage = new Stage();
+    root = FXMLLoader.load(getClass().getResource("/fxml/Schadeformulier.fxml"));
+    stage.setScene(new Scene(root));
+    stage.initModality(Modality.APPLICATION_MODAL);
+    stage.initOwner(schadeformbtn.getScene().getWindow());
+    stage.showAndWait();
     }
     
 

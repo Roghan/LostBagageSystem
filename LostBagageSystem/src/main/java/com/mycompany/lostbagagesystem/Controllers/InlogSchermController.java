@@ -86,7 +86,7 @@ public class InlogSchermController implements Initializable {
       
 
         }else if(rol == 2){
-                        //laad de nieuwe table in de bestaande anchorpane
+        //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
@@ -95,6 +95,16 @@ public class InlogSchermController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        }else if(rol == 3){
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());            
         }
     }
     

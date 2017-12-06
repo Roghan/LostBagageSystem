@@ -1,5 +1,6 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.FoundLuggage;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
 import java.io.IOException;
@@ -30,6 +31,9 @@ public class ManMainController implements Initializable {
     @FXML
     private TextField zoekMedewerker;
 
+    @FXML
+    private Button Medewerkers;
+    
     @FXML
     private Button Gevonden3Dagen;
 
@@ -63,8 +67,40 @@ public class ManMainController implements Initializable {
 
     @FXML
     private TableView table;
+    
+    @FXML
+    private Button Loguit;
+    
+    @FXML
+    private AnchorPane ManagerPane;
 
     @FXML
+        public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        ManagerPane.getChildren().setAll();
+        //laad de nieuwe table in
+        ManagerPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(ManagerPane.widthProperty());
+        pane.prefHeightProperty().bind(ManagerPane.heightProperty());
+        }
+    
+    @FXML
+    public void medewerkers (ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerMedewerkerview.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+    }
+    
+    
     public void gevonden3Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
         SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden3Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
@@ -75,6 +111,7 @@ public class ManMainController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        
         
 
     }
@@ -90,6 +127,8 @@ public class ManMainController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        
+        
         
 
     }
@@ -196,5 +235,8 @@ public class ManMainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
+   
 
 }

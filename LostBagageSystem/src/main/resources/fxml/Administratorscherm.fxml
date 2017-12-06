@@ -43,7 +43,7 @@
          <top>
             <HBox alignment="CENTER" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="57.0" prefWidth="74.0" HBox.hgrow="ALWAYS">
+                  <Pane HBox.hgrow="ALWAYS">
                      <children>
                         <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="Uitloggen" />
                      </children></Pane>
@@ -59,16 +59,16 @@
          <center>
             <SplitPane dividerPositions="0.25" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <items>
-                  <AnchorPane prefHeight="501.0" prefWidth="234.0">
+                  <AnchorPane prefHeight="494.0" prefWidth="140.0">
                      <children>
                         <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
                         <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
                         <Button fx:id="Verwijderen" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="TableLeeg" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane fx:id="TableLeeg" prefHeight="200.0" prefWidth="644.0">
                      <children>
-                        <TableView fx:id="table" prefHeight="501.0" prefWidth="639.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="table" layoutX="-42.0" prefHeight="501.0" prefWidth="637.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />

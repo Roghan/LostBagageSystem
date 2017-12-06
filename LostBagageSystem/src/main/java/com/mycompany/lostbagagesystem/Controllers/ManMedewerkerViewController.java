@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lostbagagesystem.Controllers;
 
+
+import com.mycompany.lostbagagesystem.Controllers.ManMainController;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.models.DbNaam;
 import java.net.URL;
@@ -22,12 +19,19 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 /**
  * FXML Controller class
  *
  * @author Youri
  */
-public class AdminMedewerkerViewController implements Initializable {
+public class ManMedewerkerViewController implements Initializable {
 
     @FXML
     private TableView table;
@@ -46,7 +50,7 @@ public class AdminMedewerkerViewController implements Initializable {
         try {
             dbTableFill();
         } catch (SQLException ex) {
-            Logger.getLogger(AdminMainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -75,7 +79,7 @@ public class AdminMedewerkerViewController implements Initializable {
         resultSet = db.executeResultSetQuery("SELECT `id`, `acountnaam`, "
                 + "`wachtwoord`, `voornaam`, `achternaam`, `geboortedatum`, "
                 + "`postcode`, `huisnummer`, `telefoonnummer`, `man/vrouw`, "
-                + "`rol`, `blok` FROM `gebruiker`");
+                + "`rol`, `blok` FROM `gebruiker` WHERE `rol` = 3");
 
         while (resultSet.next()) {
             id = resultSet.getInt("id");
