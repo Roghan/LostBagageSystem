@@ -218,7 +218,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -245,7 +245,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -272,7 +272,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -299,7 +299,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -346,7 +346,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -373,7 +373,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -400,7 +400,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -427,7 +427,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -474,7 +474,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -501,7 +501,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -528,7 +528,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -555,7 +555,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>

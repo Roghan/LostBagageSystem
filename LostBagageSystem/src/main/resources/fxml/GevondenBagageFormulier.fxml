@@ -13,7 +13,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-
 <ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.GevBagFormController">
    <content>
       <HBox>
@@ -205,7 +204,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -232,7 +231,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -259,7 +258,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -286,7 +285,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -330,7 +329,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -357,7 +356,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -384,7 +383,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -411,7 +410,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -455,7 +454,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -482,7 +481,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -509,7 +508,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -536,7 +535,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
