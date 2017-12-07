@@ -45,7 +45,6 @@ public class MainApp extends Application {
      * support. NetBeans ignores main().
      *
      * @param args the command line arguments
-     * @throws java.sql.SQLException
      */
     public static void main(String[] args){
         launch(args);
