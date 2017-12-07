@@ -100,11 +100,8 @@
                         </RadioButton>
                      </children>
                      <VBox.margin>
-<<<<<<< HEAD
                         <Insets left="10.0" right="10.0" top="10.0" />
-=======
                         <Insets left="10.0" top="10.0" />
->>>>>>> ea8a598e22f53912c1d2a73527f443344174b50d
                      </VBox.margin>
                      <opaqueInsets>
                         <Insets left="10.0" right="10.0" />
