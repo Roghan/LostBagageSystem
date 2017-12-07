@@ -256,25 +256,15 @@ public class SchadeformulierController implements Initializable {
     @FXML
     private AnchorPane TableLeeg2;
 
-    @FXML
-    public void annuleren(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"));
-        TableLeeg2.getChildren().setAll();
-        TableLeeg2.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(TableLeeg2.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
-
-    }
-
-    @FXML
-    public void nxtPagina(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/SchadeformulierPagina2.fxml"));
-        TableLeeg2.getChildren().setAll();
-        TableLeeg2.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(TableLeeg2.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
-
-    }
+//    @FXML
+//    public void annuleren(ActionEvent event) throws IOException {
+//        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"));
+//        TableLeeg2.getChildren().setAll();
+//        TableLeeg2.getChildren().setAll(pane);
+//        pane.prefWidthProperty().bind(TableLeeg2.widthProperty());
+//        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
+//
+//    }
     
         @FXML
     void annuleren3(ActionEvent event) {

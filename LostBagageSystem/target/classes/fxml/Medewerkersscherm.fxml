@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,10 +12,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="TableLeeg" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
+<AnchorPane id="AnchorPane" fx:id="MedewerkerPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
 
     <stylesheets>
         <URL value="@/styles/Styles.css" />
@@ -54,9 +54,18 @@
                             <children>
                         <VBox layoutX="5.0" layoutY="5.0" prefHeight="468.0" prefWidth="142.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                                      <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="137.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true" />
-                                      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true" />
-                                      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true" />
+                                      <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="137.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin></Button>
+                                      <Button fx:id="gevformbtn" mnemonicParsing="false" onAction="#gevondenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin></Button>
+                                      <Button fx:id="verlorenformbtn" mnemonicParsing="false" onAction="#verlorenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin></Button>
                            </children>
                         </VBox>
                             </children>
@@ -65,9 +74,6 @@
                     </items>
                 </SplitPane>
             </center>
-            <right>
-                <Region prefHeight="255.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
-            </right>
             <top>
                 <HBox prefHeight="57.0" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
                     <children>

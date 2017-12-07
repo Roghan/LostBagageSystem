@@ -75,6 +75,24 @@ public class MedMainController implements Initializable {
         pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
 
     }
+    
+    @FXML
+    public void gevondenBagageFormulier(ActionEvent event) throws IOException {
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/GevondenBagageFormulier.fxml"));
+        formulierLeeg.getChildren().setAll();
+        formulierLeeg.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
+        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+    }
+    
+    @FXML
+    public void verlorenBagageFormulier(ActionEvent event) throws IOException {
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/VermisteBagageFormulier.fxml"));
+        formulierLeeg.getChildren().setAll();
+        formulierLeeg.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
+        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+    }
 
     @FXML
     public void logUit(ActionEvent event) throws IOException {

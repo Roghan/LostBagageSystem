@@ -49,17 +49,12 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gegevens Klant">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Naam">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gegevens Klant">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -89,7 +84,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <HBox prefHeight="37.0" prefWidth="79.0">
+                  <HBox>
                      <children>
                         <RadioButton fx:id="checkM" mnemonicParsing="false" text="M">
                            <HBox.margin>
@@ -106,7 +101,7 @@
                         </RadioButton>
                         <RadioButton fx:id="checkO" mnemonicParsing="false" text="O" toggleGroup="$gender">
                            <HBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets right="20.0" />
                            </HBox.margin>
                         </RadioButton>
                      </children>
@@ -163,12 +158,12 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtTelefoon" prefHeight="30.0" prefWidth="360.0" promptText="Telefoon">
+                  <TextField fx:id="txtTelefoon" prefHeight="30.0" prefWidth="360.0" promptText="Telefoon (072)">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0" promptText="Mobiel">
+                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0" promptText="Mobiel (06)">
                      <VBox.margin>
                         <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -218,7 +213,17 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtHuisNummerGast" prefHeight="30.0" prefWidth="360.0" promptText="bvb, Koffer">
+                  <TextField fx:id="txtHuisNummerGast11" prefHeight="30.0" prefWidth="360.0" promptText="Bagage label">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtHuisNummerGast1" prefHeight="30.0" prefWidth="360.0" promptText="Type bagage, bv. Koffer of tas">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtHuisNummerGast" prefHeight="30.0" prefWidth="360.0" promptText="Merk, bv. Samsonite">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -259,7 +264,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -286,7 +291,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -313,7 +318,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -340,7 +345,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -384,7 +389,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -411,7 +416,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -438,7 +443,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -465,7 +470,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -509,7 +514,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -536,7 +541,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -563,7 +568,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -590,7 +595,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -598,6 +603,16 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Button fx:id="btnFotoToevoegen" mnemonicParsing="false" text="Foto toevoegen">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -613,21 +628,26 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
                   <HBox>
                      <children>
-                        <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="Annuleren">
+                        <Button fx:id="annuleren3" mnemonicParsing="false" text="Annuleren">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="Insturen">
+                        <Button fx:id="insturen" mnemonicParsing="false" text="Insturen">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
                </children>
