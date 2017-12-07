@@ -9,13 +9,14 @@ import com.mycompany.lostbagagesystem.models.bagageTabel;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -29,36 +30,28 @@ public class Gev21DController implements Initializable {
     @FXML
     private TableView table;
     private ObservableList<bagageTabel> bagagetabel;
-//    private ObservableList<User> userList;
 
-//    private int userIdCounter = 0;
-//    @FXML
-//    private TableColumn<?, ?> id;
-//    @FXML
-//    private TableColumn<?, ?> werknemer;
-//    @FXML
-//    private TableColumn<?, ?> locatie;
-//    @FXML
-//    private TableColumn<?, ?> actief;
     @FXML
     private AnchorPane gev21D;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         try {
             dbTableFill();
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
         getChart();
-        
-   
 
     }
-   
+
+    /**
+     * @throws SQLException Hiermeer word de tabel gevuld met alle verloren
+     * baggage die jonger is dan 21 dagen
+     */
     @FXML
     public void dbTableFill() throws SQLException {
-
         ConnectDB db = new ConnectDB("fystestdb");
 
         String registration_nr;
@@ -104,19 +97,29 @@ public class Gev21DController implements Initializable {
             city = resultSet.getString("city");
             other_characteristics = resultSet.getString("other_characteristics");
 
-            bagagetabel.add(new bagageTabel(registration_nr, date_found, time_found,
-                    luggage_type, brand, arrived_with_flight, luggage_tag,
-                    location_found, main_color, second_color, size, weight, passanger_name,
-                    city, other_characteristics));
-        }
+            //Current date - aantal dagen
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            c.add(Calendar.DATE, -21);
+            String date = sdf.format(c.getTime());
+            //database date
+            String datadb = date_found + " " + time_found;
 
-        for (int i = 0; i < table.getColumns().size(); i++) {
-            TableColumn column = (TableColumn) table.getColumns().get(i);
-            column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+            if (date.compareTo(datadb) <= 0) {
+
+                bagagetabel.add(new bagageTabel(registration_nr, date_found, time_found,
+                        luggage_type, brand, arrived_with_flight, luggage_tag,
+                        location_found, main_color, second_color, size, weight, passanger_name,
+                        city, other_characteristics));
+
+                for (int i = 0; i < table.getColumns().size(); i++) {
+                    TableColumn column = (TableColumn) table.getColumns().get(i);
+                    column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+                }
+            }
         }
 
         table.setItems(bagagetabel);
-
     }
 
     @FXML
@@ -135,7 +138,7 @@ public class Gev21DController implements Initializable {
         XYChart.Series series = new XYChart.Series();
         series.setName("Bagage");
         //populating the series with data
-        
+
         series.getData().add(new XYChart.Data(1, 1));
         series.getData().add(new XYChart.Data(2, 2));
         series.getData().add(new XYChart.Data(3, 3));
@@ -166,5 +169,3 @@ public class Gev21DController implements Initializable {
         lineChart.prefHeightProperty().bind(gev21D.heightProperty());
     }
 }
-
-
