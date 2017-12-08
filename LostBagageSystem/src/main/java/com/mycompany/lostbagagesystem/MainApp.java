@@ -60,7 +60,7 @@ public class MainApp extends Application {
         File selectedFile = FILE_CHOOSER.showSaveDialog(null);
         return selectedFile;
     }
-
+  
     public static File selectFileToOpen() {
 
         File selectedFile = FILE_CHOOSER.showOpenDialog(null);
