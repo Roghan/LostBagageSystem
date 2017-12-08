@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
@@ -12,13 +13,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.GevBagFormController">
    <content>
       <HBox>
          <children>
-            <VBox fillWidth="false" prefHeight="894.0" prefWidth="378.0" HBox.hgrow="ALWAYS">
+            <VBox fillWidth="false" HBox.hgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formulier">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gevonden Bagage Formulier">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -33,17 +34,22 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <JFXDatePicker defaultColor="#d81e05" prefHeight="30.0" prefWidth="360.0" promptText="Datum">
+                  <DatePicker fx:id="txtDatum" prefHeight="30.0" prefWidth="360.0" promptText="Date picker">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </JFXDatePicker>
-                  <JFXDatePicker defaultColor="#d81e05" prefHeight="30.0" prefWidth="360.0" promptText="Tijd" showTime="true">
+                  </DatePicker>
+                  <TextField fx:id="txtTime" prefHeight="30.0" prefWidth="360.0" promptText="00:00">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </JFXDatePicker>
-                  <TextField prefHeight="30.0" prefWidth="360.0" promptText="Vliegveld">
+                  </TextField>
+                  <TextField fx:id="txtVliegveldID" prefHeight="30.0" prefWidth="360.0" promptText="Vliegveld">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtLostAndFoundID" prefHeight="30.0" prefWidth="360.0" promptText="Lost and found ID">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -78,7 +84,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <HBox prefHeight="37.0" prefWidth="79.0">
+                  <HBox>
                      <children>
                         <RadioButton fx:id="checkM" mnemonicParsing="false" text="M">
                            <HBox.margin>
@@ -95,16 +101,13 @@
                         </RadioButton>
                         <RadioButton fx:id="checkO" mnemonicParsing="false" text="O" toggleGroup="$gender">
                            <HBox.margin>
-                              <Insets bottom="20.0" />
+                              <Insets right="20.0" />
                            </HBox.margin>
                         </RadioButton>
                      </children>
                      <VBox.margin>
-<<<<<<< HEAD
                         <Insets left="10.0" right="10.0" top="10.0" />
-=======
                         <Insets left="10.0" top="10.0" />
->>>>>>> ea8a598e22f53912c1d2a73527f443344174b50d
                      </VBox.margin>
                      <opaqueInsets>
                         <Insets left="10.0" right="10.0" />
@@ -115,102 +118,22 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adres">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vluchtgegevens" wrappingWidth="333.453125">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtStraatnaam" prefHeight="30.0" prefWidth="360.0" promptText="Straatnaam">
+                  <TextField fx:id="txtLabelNummer" prefHeight="30.0" prefWidth="360.0" promptText="Label Nummer">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtHuisNummer" prefHeight="30.0" prefWidth="360.0" promptText="Huisnummer">
+                  <TextField fx:id="txtVluchtNummer" prefHeight="30.0" prefWidth="360.0" promptText="Vlucht Nummer">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtPostcode" prefHeight="30.0" prefWidth="360.0" promptText="Postcode">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="txtWoonplaats" prefHeight="30.0" prefWidth="360.0" promptText="Woonplaats">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Line endX="100.0" startX="-100.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Geboortedatum">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtGeboorteDatum" prefHeight="30.0" prefWidth="360.0" promptText="JJJJ-MM-DD">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Line endX="100.0" startX="-100.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationaliteit">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtLandnaam" prefHeight="30.0" prefWidth="360.0" promptText="Landnaam">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Line endX="100.0" startX="-100.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtEmail" prefHeight="30.0" prefWidth="360.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Line endX="100.0" startX="-100.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoon">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtTelefoon" prefHeight="30.0" prefWidth="360.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Line endX="100.0" startX="-100.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mobiel">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0">
+                  <TextField fx:id="txtBestemming" prefHeight="30.0" prefWidth="360.0" promptText="Bestemming">
                      <VBox.margin>
                         <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -225,7 +148,7 @@
             </VBox>
             <VBox fillWidth="false" HBox.hgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vluchtgegevens" wrappingWidth="333.453125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bagage">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -235,32 +158,12 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <TextField fx:id="txtAchternaamGast" prefHeight="30.0" prefWidth="360.0" promptText="Label Nummer">
+                  <TextField fx:id="txtTypeBagage" prefHeight="30.0" prefWidth="360.0" promptText="Type bagage, bv. Koffer">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtPostcodeGast" prefHeight="30.0" prefWidth="360.0" promptText="Vlucht Nummer">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField prefHeight="30.0" prefWidth="360.0" promptText="Bestemming">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Line endX="100.0" startX="-100.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type bagage">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="txtHuisNummerGast" prefHeight="30.0" prefWidth="360.0" promptText="bvb, Koffer">
+                  <TextField fx:id="txtMerkBagage" prefHeight="30.0" prefWidth="360.0" promptText="Merk bagage, bv. Samsonite">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -301,7 +204,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -328,7 +231,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -355,7 +258,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -382,7 +285,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -426,7 +329,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -453,7 +356,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -480,7 +383,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -507,7 +410,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -551,7 +454,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -578,7 +481,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -605,7 +508,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                         <VBox>
@@ -632,7 +535,7 @@
                               </RadioButton>
                            </children>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets right="4.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -645,21 +548,26 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
+                  <TextArea fx:id="txtBijzondereOpmerking" prefHeight="100.0" prefWidth="360.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextArea>
                   <HBox>
                      <children>
-                        <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="Annuleren">
+                        <Button fx:id="annuleren3" mnemonicParsing="false" text="Annuleren">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="Insturen">
+                        <Button fx:id="insturen" mnemonicParsing="false" text="Insturen">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
                </children>

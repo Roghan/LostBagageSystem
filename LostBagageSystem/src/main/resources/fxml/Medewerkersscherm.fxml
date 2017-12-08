@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="TableLeeg" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
+<AnchorPane id="AnchorPane" fx:id="MedewerkerPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MedMainController">
 
     <stylesheets>
         <URL value="@/styles/Styles.css" />
@@ -58,11 +58,11 @@
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin></Button>
-                                      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true">
+                                      <Button fx:id="gevformbtn" mnemonicParsing="false" onAction="#gevondenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin></Button>
-                                      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="137.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true">
+                                      <Button fx:id="verlorenformbtn" mnemonicParsing="false" onAction="#verlorenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin></Button>
