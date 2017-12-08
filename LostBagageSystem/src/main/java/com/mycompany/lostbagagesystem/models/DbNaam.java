@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*Test model voor het importeren en exporteren van data uit de database
  */
 package com.mycompany.lostbagagesystem.models;
 
 /**
  *
- * @author Youri
+ * @author Youri Pel
  */
 public class DbNaam {
 

@@ -1,3 +1,5 @@
+/*Controller Class voor het vermiste BagageScherm
+ */
 package com.mycompany.lostbagagesystem.Controllers;
 
 import java.io.File;
@@ -8,6 +10,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
+/**
+ *
+ * @author Marcel van Wilgenburg
+ */
 public class VermistBagFormController {
 
     @FXML
@@ -228,24 +234,10 @@ public class VermistBagFormController {
     }
 
     @FXML
-    public File opslaanDocument (){
-        
-        
-        
-        
-        
+    public File opslaanDocument() {
+
         return null;
-            
-            
-            }
-    
-    
-    
-    
-    
-    
+
+    }
 
 }
-
-
-

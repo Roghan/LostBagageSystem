@@ -1,15 +1,11 @@
+/*Controller Class voor het Gevonden3Dagen Scherm
+*/
+
 package com.mycompany.lostbagagesystem.Controllers;
 
-import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.lostbagagesystem.models.User;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -17,7 +13,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * @author is
+ * @author is Koen van der Tuin
  */
 public class Verg3DController implements Initializable {
 

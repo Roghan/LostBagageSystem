@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*Class voor het importeren en exporteren van Bagage gegevens
  */
 package com.mycompany.lostbagagesystem.models;
 
 /**
  *
- * @author User
+ * @author Marcel van Wilgenburg
  */
 public class bagageTabel {
         private String registration_nr;

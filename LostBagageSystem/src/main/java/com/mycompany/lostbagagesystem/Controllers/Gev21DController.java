@@ -1,3 +1,5 @@
+/*Controller Class voor het gevonden 21 scherm
+ */
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
@@ -23,7 +25,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * @author is
+ * @author is Koen van der tuin
  */
 public class Gev21DController implements Initializable {
 

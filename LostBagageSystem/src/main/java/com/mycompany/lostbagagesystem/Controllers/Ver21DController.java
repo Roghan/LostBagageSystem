@@ -1,3 +1,5 @@
+/*Controller Class voor het Verloren21dagenScherm
+ */
 package com.mycompany.lostbagagesystem.Controllers;
 
 import javafx.scene.control.TableView;
@@ -17,15 +19,15 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * @author is
+ * @author is Koen van der Tuin
  */
 public class Ver21DController implements Initializable {
 
     @FXML
     private TableView table;
-    
+
     private ObservableList<User> userList;
-    
+
     private int userIdCounter = 0;
     @FXML
     private TableColumn<?, ?> id;
@@ -37,17 +39,17 @@ public class Ver21DController implements Initializable {
     private TableColumn<?, ?> actief;
     @FXML
     private AnchorPane ver21D;
-    
+
     private void handleAdd(ActionEvent event) {
         userList.add(new User(userIdCounter++, "?", "?", false));
     }
-    
+
     private void handleDelete(ActionEvent event) {
         User user = (User) table.getSelectionModel().getSelectedItem();
 
         userList.remove(user);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         userList = FXCollections.observableArrayList();
@@ -60,14 +62,15 @@ public class Ver21DController implements Initializable {
             TableColumn column = (TableColumn) table.getColumns().get(i);
             column.setCellValueFactory(new PropertyValueFactory(column.getId()));
         }
-        
+
         table.setItems(userList);
         getChart();
 
     }
+
     @FXML
-    public void getChart () {
-       
+    public void getChart() {
+
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -100,13 +103,13 @@ public class Ver21DController implements Initializable {
         series.getData().add(new XYChart.Data(17, 22));
         series.getData().add(new XYChart.Data(18, 45));
         series.getData().add(new XYChart.Data(19, 43));
-                
+
         lineChart.getData().add(series);
         ver21D.getChildren().setAll();
         ver21D.getChildren().setAll(lineChart);
-        
+
         lineChart.prefWidthProperty().bind(ver21D.widthProperty());
         lineChart.prefHeightProperty().bind(ver21D.heightProperty());
     }
-    
+
 }

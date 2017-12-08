@@ -1,4 +1,5 @@
-/*This Class is the main class for the found luggage Form in the Lost Bagage System
+/*Class voor het testen van het importeren van gegevens
+*Word momenteel niet gebruikt
  */
 package com.mycompany.lostbagagesystem.classes;
 

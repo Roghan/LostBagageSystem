@@ -1,15 +1,10 @@
+/*Controller Class voor het Gevonden21Dagen Scherm
+ */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.lostbagagesystem.models.User;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -17,21 +12,22 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * @author is
+ * @author is Koen van der Tuin
  */
 public class Verg21DController implements Initializable {
 
     @FXML
     private AnchorPane verg21D;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    getChart();    
+        getChart();
 
     }
+
     @FXML
-    public void getChart () {
-       
+    public void getChart() {
+
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -39,7 +35,7 @@ public class Verg21DController implements Initializable {
         //creating the chart
         final LineChart<Number, Number> lineChart
                 = new LineChart<Number, Number>(xAxis, yAxis);
-      
+
         lineChart.setTitle("Verloren bagage, 21 dagen");
         //defining a series
         XYChart.Series series = new XYChart.Series();
@@ -66,7 +62,7 @@ public class Verg21DController implements Initializable {
         series.getData().add(new XYChart.Data(19, 43));
         series.getData().add(new XYChart.Data(20, 17));
         series.getData().add(new XYChart.Data(21, 29));
-        
+
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Bagage gevonden");
         //populating the series with data
@@ -92,11 +88,10 @@ public class Verg21DController implements Initializable {
         series2.getData().add(new XYChart.Data(20, 20));
         series2.getData().add(new XYChart.Data(21, 21));
 
-                
         lineChart.getData().addAll(series, series2);
         verg21D.getChildren().setAll();
         verg21D.getChildren().setAll(lineChart);
-        
+
         lineChart.prefWidthProperty().bind(verg21D.widthProperty());
         lineChart.prefHeightProperty().bind(verg21D.heightProperty());
     }

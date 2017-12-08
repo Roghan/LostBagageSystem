@@ -1,3 +1,6 @@
+/*Controller Class voor het verloren3Dagen Scherm
+*/
+
 package com.mycompany.lostbagagesystem.Controllers;
 
 import javafx.scene.control.TableView;
@@ -17,7 +20,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * @author is
+ * @author is Koen van der Tuin
  */
 public class Ver3DController implements Initializable {
 

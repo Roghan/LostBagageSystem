@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*Controller Class voor het SchadeFormulier
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -21,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author dono
+ * @author Donovan Schaafsma
  */
 public class SchadeformulierController implements Initializable {
 
@@ -265,8 +260,7 @@ public class SchadeformulierController implements Initializable {
 //        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
 //
 //    }
-    
-        @FXML
+    @FXML
     void annuleren3(ActionEvent event) {
 
     }

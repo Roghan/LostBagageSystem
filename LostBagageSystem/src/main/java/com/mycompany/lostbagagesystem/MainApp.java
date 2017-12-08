@@ -1,5 +1,6 @@
+/*Main Class van de app. Hier start het programma.
+ */
 package com.mycompany.lostbagagesystem;
-
 
 import java.io.File;
 import javafx.application.Application;
@@ -10,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 
-
+/**
+ *
+ * @author Marcel van Wilgenburg
+ */
 public class MainApp extends Application {
 
     private static final FileChooser FILE_CHOOSER = new FileChooser();
@@ -20,14 +24,7 @@ public class MainApp extends Application {
 
         final String SCHERMNAAM = "InlogScherm";
 
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM +".fxml"));
-        
-
-//        final String SCHERMNAAM = "ManagerScherm";
-//
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
-//
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
@@ -46,13 +43,11 @@ public class MainApp extends Application {
      *
      * @param args the command line arguments
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
-        
+
     }
 
-    
-    
     public static File selectFileToSave() {
 
         FILE_CHOOSER.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("pdf Files", "*.pdf"));
@@ -60,36 +55,12 @@ public class MainApp extends Application {
         File selectedFile = FILE_CHOOSER.showSaveDialog(null);
         return selectedFile;
     }
-  
+
     public static File selectFileToOpen() {
 
         File selectedFile = FILE_CHOOSER.showOpenDialog(null);
 
         return selectedFile;
     }
-//  Database connectie    
-//    public static void (String[] args) throws SQLException {
-//        
-//
-//        
-//        int id;
-//        String voornaam;
-//        String achternaam;
-//                //show results
-//        ResultSet resultSet = null;
-//
-//            resultSet = db.executeResultSetQuery("SELECT `id`, `voornaam`, `achternaam`");
-//
-//            while (resultSet.next()) {
-//                id = resultSet.getInt("id");
-//                voornaam = resultSet.getString("voornaam");
-//                achternaam = resultSet.getString("achternaam");
-//                
-//                
-//                System.out.printf("%d = %s %s%n", id, voornaam, achternaam);
-//            }
-//
-//
-//    }
-    
+
 }

@@ -1,3 +1,6 @@
+/*Controller Class voor de medewerker Table voor het ManagerScherm
+*/
+
 package com.mycompany.lostbagagesystem.Controllers;
 
 
@@ -29,7 +32,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author Youri
+ * @author Youri Pel
  */
 public class ManMedewerkerViewController implements Initializable {
 

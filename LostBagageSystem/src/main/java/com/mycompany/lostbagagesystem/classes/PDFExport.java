@@ -1,4 +1,4 @@
-/*Class that runs a PDF export Using PDFBox
+/*Class voor het exporteren van een PDF
  */
 package com.mycompany.lostbagagesystem.classes;
 
@@ -42,15 +42,14 @@ public class PDFExport {
 
     public void savePDF() throws IOException {
         File selectedFile = MainApp.selectFileToSave();
-        
-        
+
         if (selectedFile != null) {
             fileName = selectedFile.getAbsolutePath();
 
             content.close(); //Makes sure the ContentStream is Closed before saving
-            
-            doc.save(fileName + ".pdf"); //Saves The PDF
-            
+
+            doc.save(fileName); //Saves The PDF
+
             doc.close(); //Cleans the Memory
         }
 

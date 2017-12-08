@@ -1,3 +1,5 @@
+/*Controller Class voor het gevonden bagage Scherm
+ */
 package com.mycompany.lostbagagesystem.Controllers;
 
 import javafx.scene.control.TableView;
@@ -7,27 +9,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import com.mycompany.lostbagagesystem.models.User;
 import java.net.URL;
 import java.util.ResourceBundle;
-import static javafx.application.Application.launch;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.chart.Chart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
- * @author is
+ * @author is Marcel van Wilgenburg
  */
 public class Gev3DController implements Initializable {
 
     @FXML
     private TableView table;
-    
+
     @FXML
 
     private ObservableList<User> userList;
@@ -69,13 +67,14 @@ public class Gev3DController implements Initializable {
         }
 
         table.setItems(userList);
-        
+
         getChart();
 
     }
+
     @FXML
-    public void getChart () {
-       
+    public void getChart() {
+
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
@@ -92,19 +91,13 @@ public class Gev3DController implements Initializable {
         series.getData().add(new XYChart.Data(1, 23));
         series.getData().add(new XYChart.Data(2, 14));
         series.getData().add(new XYChart.Data(3, 15));
-        
 
-        
         lineChart.getData().add(series);
         gev3D.getChildren().setAll();
         gev3D.getChildren().setAll(lineChart);
-        
+
         lineChart.prefWidthProperty().bind(gev3D.widthProperty());
         lineChart.prefHeightProperty().bind(gev3D.heightProperty());
-    }   
+    }
 
 }
-
-      
-      
-

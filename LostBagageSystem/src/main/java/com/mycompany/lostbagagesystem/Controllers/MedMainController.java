@@ -1,7 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*Controller Class voor het MedewerkerScherm
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
@@ -21,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author dono
+ * @author Donovan Schaafsma
  */
 public class MedMainController implements Initializable {
 
@@ -75,7 +72,7 @@ public class MedMainController implements Initializable {
         pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
 
     }
-    
+
     @FXML
     public void gevondenBagageFormulier(ActionEvent event) throws IOException {
         ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/GevondenBagageFormulier.fxml"));
@@ -84,7 +81,7 @@ public class MedMainController implements Initializable {
         pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
         pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
     }
-    
+
     @FXML
     public void verlorenBagageFormulier(ActionEvent event) throws IOException {
         ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/VermisteBagageFormulier.fxml"));

@@ -1,3 +1,5 @@
+/*Controller Class voor het Administratiescherm
+ */
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
@@ -23,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 /**
- * @author is
+ * @author is Youri Pel
  */
 public class AdminMainController implements Initializable {
 
@@ -31,18 +33,16 @@ public class AdminMainController implements Initializable {
     private TableView table;
 
     private ObservableList<DbNaam> dbNaam;
-    
+
     private Button Loguit;
-    
+
     @FXML
     private AnchorPane TableLeeg;
-    
+
     @FXML
     private AnchorPane AdminPane;
     @FXML
     private BorderPane PaneLeeg;
-    
-   
 
 //    @FXML
 //    private Button Blokkeren;
@@ -51,14 +51,11 @@ public class AdminMainController implements Initializable {
 //    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
-       
+
     }
-    
-        
-    
-    
-        @FXML
-        public void handleAdd(ActionEvent event) throws IOException {
+
+    @FXML
+    public void handleAdd(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml")); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
@@ -68,10 +65,9 @@ public class AdminMainController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
-        
 
     }
-        
+
     @FXML
     private void handleDelete(ActionEvent event) {
         //FAKE REMOVE
@@ -90,11 +86,11 @@ public class AdminMainController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AdminMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
-        @FXML
-        public void logUit(ActionEvent event) throws IOException {
+    @FXML
+    public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
@@ -104,10 +100,10 @@ public class AdminMainController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(AdminPane.widthProperty());
         pane.prefHeightProperty().bind(AdminPane.heightProperty());
-        }
-    
-    public void dbTableFill() throws SQLException{
-        
+    }
+
+    public void dbTableFill() throws SQLException {
+
         ConnectDB db = new ConnectDB("fystestdb");
 
         int id;
@@ -117,12 +113,12 @@ public class AdminMainController implements Initializable {
         String achternaam;
         String geboortedatum;
         String postcode;
-        String huisnummer;    
+        String huisnummer;
         String telefoonnummer;
         int manVrouw;
-        int rol;    
+        int rol;
         int blok;
-        
+
         ResultSet resultSet;
 
         dbNaam = FXCollections.observableArrayList();
@@ -145,10 +141,10 @@ public class AdminMainController implements Initializable {
             manVrouw = resultSet.getInt("man/vrouw");
             rol = resultSet.getInt("rol");
             blok = resultSet.getInt("blok");
-            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord, 
-            voornaam, achternaam, geboortedatum, 
-            postcode, huisnummer, telefoonnummer, 
-            manVrouw, rol, blok));
+            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord,
+                    voornaam, achternaam, geboortedatum,
+                    postcode, huisnummer, telefoonnummer,
+                    manVrouw, rol, blok));
         }
 
         for (int i = 0; i < table.getColumns().size(); i++) {
@@ -156,8 +152,8 @@ public class AdminMainController implements Initializable {
             column.setCellValueFactory(new PropertyValueFactory(column.getId()));
         }
 
-        table.setItems(dbNaam);        
-        
+        table.setItems(dbNaam);
+
     }
-    
+
 }
