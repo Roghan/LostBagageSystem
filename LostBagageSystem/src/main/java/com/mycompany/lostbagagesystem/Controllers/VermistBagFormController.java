@@ -284,7 +284,6 @@ public class VermistBagFormController implements Initializable {
         
         ConnectDB db = new ConnectDB("fystestdb");
 
-
         String query = String.format("INSERT INTO `vermistebagage` "
                 + "(`voorletters`,`tussenvoegsel`, `achternaam`, `geboortedatum`, `nationaliteit`)"
                 + " VALUES('%s', '%s', '%s', '%s', '%s')",

@@ -2,8 +2,11 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.classes.VermisteBagageFormulier;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -13,6 +16,10 @@ import javafx.fxml.Initializable;
  */
 public class GevBagFormController implements Initializable {
 
+//    @FXML
+//    void insturen(ActionEvent insturen) {
+//        System.out.println("KNOP INSTUREN INGEDRUKT");
+//        GevBagageFormulier vermistBagForm = new GevBagageFormulier(
     /**
      * Initializes the controller class.
      */
