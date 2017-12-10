@@ -5,19 +5,21 @@ package com.mycompany.lostbagagesystem.Controllers;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.VermisteBagageFormulier;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
-import java.io.File;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -185,9 +187,11 @@ public class VermistBagFormController implements Initializable {
     private Button btnAnnuleren3;
     @FXML
     private Button btnInsturen;
+    @FXML
+    private Text Kleur1Text;
 
     private String time;
-    private LocalDate datum;
+    private String datum;
     private String vliegveldID;
     private String voorLetters;
     private String tussenVoegsel;
@@ -214,14 +218,85 @@ public class VermistBagFormController implements Initializable {
     private String colour2;
     private String colour3;
 
+    TextField[] reqFields = new TextField[]{
+        txtVluchtNummer,
+        txtLabelNummer,
+        txtBestemming,
+        txtVoorletters,
+        txtAchternaam,
+        txtStraatnaam,
+        txtHuisNummer,
+        txtPostcode,
+        txtBagageLabel
+    };
+
     @FXML
     void annuleren3(ActionEvent event) {
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
     }
 
     @FXML
     void insturen(ActionEvent insturen) {
         System.out.println("KNOP INSTUREN INGEDRUKT");
+        boolean fieldNotFilled = reqFieldsCheck();
+        try {
+
+            datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            txtDatum.setStyle("");
+
+        } catch (Exception e) {
+            txtDatum.setStyle("-fx-border-color : #ff0000;");
+            fieldNotFilled = true;
+
+        }
+
+        time = txtTime.getText();
+        vliegveldID = txtVliegveldID.getText();
+        voorLetters = txtVoorletters.getText();
+        tussenVoegsel = txtTussenvoegsel.getText();
+        achterNaam = txtAchternaam.getText();
+        geboorteDatum = txtGeboorteDatum.getText();
+        landNaam = txtLandnaam.getText();
+        gender = ToggleGroupResult.getPick(genderGroup);
+        straatNaam = txtStraatnaam.getText();
+        huisNummer = txtHuisNummer.getText();
+        postCode = txtPostcode.getText();
+        woonPlaats = txtWoonplaats.getText();
+        email = txtEmail.getText();
+        telefoonNummer = txtTelefoon.getText();
+        mobielNummer = txtMobielNummer.getText();
+        labelNummer = txtLabelNummer.getText();
+        vluchtNummer = txtVluchtNummer.getText();
+        bestemming = txtBestemming.getText();
+        bagageLabel = txtBagageLabel.getText();
+        typeBagage = txtTypeBagage.getText();
+        merk = txtMerk.getText();
+        bijzondereOpmerking = txtBijzondereOpmerking.getText();
+        
+        
+        
+        colour = ToggleGroupResult.getPick(kleur1);
+        colour2 = ToggleGroupResult.getPick(kleur2);
+        colour3 = ToggleGroupResult.getPick(kleur3);
+
+        if (fieldNotFilled) {
+            warningBox();
+
+        } else {
+            System.out.println("Document is goed ingevuld");
+            sendToDatabase();
+
+
+        }
+        System.out.println(colour);
+    }
+
+    public void makeVermistBagForm() {
         VermisteBagageFormulier vermistBagForm = new VermisteBagageFormulier(
                 time,
                 datum,
@@ -251,60 +326,122 @@ public class VermistBagFormController implements Initializable {
                 colour3
         );
 
-        time = txtTime.getText();
-        datum = txtDatum.getValue();
-        vliegveldID = txtVliegveldID.getText();
-        voorLetters = txtVoorletters.getText();
-        tussenVoegsel = txtTussenvoegsel.getText();
-        achterNaam = txtAchternaam.getText();
-        geboorteDatum = txtGeboorteDatum.getText();
-        landNaam = txtLandnaam.getText();
-        gender = ToggleGroupResult.getPick(genderGroup);
-        straatNaam = txtStraatnaam.getText();
-        huisNummer = txtHuisNummer.getText();
-        postCode = txtPostcode.getText();
-        woonPlaats = txtWoonplaats.getText();
-        email = txtEmail.getText();
-        telefoonNummer = txtTelefoon.getText();
-        mobielNummer = txtMobielNummer.getText();
-        labelNummer = txtLabelNummer.getText();
-        vluchtNummer = txtVluchtNummer.getText();
-        bestemming = txtBestemming.getText();
-        bagageLabel = txtBagageLabel.getText();
-        typeBagage = txtTypeBagage.getText();
-        merk = txtMerk.getText();
-        bijzondereOpmerking = txtBijzondereOpmerking.getText();
-        colour = ToggleGroupResult.getPick(kleur1);
-        colour2 = ToggleGroupResult.getPick(kleur2);
-        colour3 = ToggleGroupResult.getPick(kleur3);
+    }
+
+    public boolean reqFieldsCheck() {
+
+        boolean fieldNotFilled = false;
+
+        if (txtVluchtNummer.getText().trim().isEmpty()) {
+            reqFieldWarning(txtVluchtNummer);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtVluchtNummer);
+        }
+
+        if (txtLabelNummer.getText().trim().isEmpty()) {
+            reqFieldWarning(txtLabelNummer);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtLabelNummer);
+        }
+
+        if (txtBestemming.getText().trim().isEmpty()) {
+            reqFieldWarning(txtBestemming);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtBestemming);
+        }
+
+        if (txtVoorletters.getText().trim().isEmpty()) {
+            reqFieldWarning(txtVoorletters);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtVoorletters);
+        }
+
+        if (txtAchternaam.getText().trim().isEmpty()) {
+            reqFieldWarning(txtAchternaam);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtAchternaam);
+        }
+
+        if (txtStraatnaam.getText().trim().isEmpty()) {
+            reqFieldWarning(txtStraatnaam);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtStraatnaam);
+        }
+
+        if (txtHuisNummer.getText().trim().isEmpty()) {
+            reqFieldWarning(txtHuisNummer);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtHuisNummer);
+        }
+
+        if (txtPostcode.getText().trim().isEmpty()) {
+            reqFieldWarning(txtPostcode);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtPostcode);
+
+        }
+        if (txtBagageLabel.getText().trim().isEmpty()) {
+            reqFieldWarning(txtBagageLabel);
+            fieldNotFilled = true;
+        } else {
+            reqFieldWarningReset(txtBagageLabel);
+
+        }
+            
         
         
-        
-        System.out.println(vermistBagForm.toString());
-        
+        //        for (int i = 0; i < reqFields.length; i++) {
+        //            if (reqFields[i].getText().trim().isEmpty()) {
+        //                reqFieldWarning(reqFields[i]);
+        //                fieldNotFilled = true;
+        //                
+        //            }
+
+        return fieldNotFilled;
+    }
+
+    public void reqFieldWarning(TextField textField) {
+        textField.setStyle("-fx-border-color : #ff0000;");
+
+    }
+
+
+    public void reqFieldWarningReset(TextField textField) {
+        textField.setStyle("");
+
+    }
+
+    public void sendToDatabase() {
         ConnectDB db = new ConnectDB("fystestdb");
 
         String query = String.format("INSERT INTO `vermistebagage` "
                 + "(`voorletters`,`tussenvoegsel`, `achternaam`, `geboortedatum`, `nationaliteit`)"
                 + " VALUES('%s', '%s', '%s', '%s', '%s')",
-                voorLetters,tussenVoegsel,achterNaam,geboorteDatum,landNaam);
+                voorLetters, tussenVoegsel, achterNaam, geboorteDatum, landNaam);
 
         int numberAffected = db.executeUpdateQuery(query);
+
         System.out.println(numberAffected);
 
-        
-        
-    }
-
-    @FXML
-    public File opslaanDocument() {
-
-        return null;
+        System.out.println(datum);
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void warningBox() {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("informatie vereist");
+        alert.setHeaderText(null);
+        alert.setContentText("Vul alle vereiste informatie in!");
+
+        alert.showAndWait();
 
     }
 

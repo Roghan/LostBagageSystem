@@ -236,7 +236,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 1">
+                  <Text fx:id="Kleur1Text" strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 1">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -492,7 +492,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 3">
+                  <Text stroke="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 3">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

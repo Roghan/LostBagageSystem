@@ -23,7 +23,7 @@ public class VermisteBagageFormulier {
     }
 
     private String time;
-    private LocalDate datum;
+    private String datum;
     private String vliegveldID;
     private String voorLetters;
     private String tussenVoegsel;
@@ -52,7 +52,7 @@ public class VermisteBagageFormulier {
 
     private ToggleGroup group;
 
-    public VermisteBagageFormulier(String time, LocalDate datum, String vliegveldID, String voorLetters,
+    public VermisteBagageFormulier(String time, String datum, String vliegveldID, String voorLetters,
             String tussenVoegsel, String achterNaam, String geboorteDatum, String landNaam, String gender, String straatNaam, String huisNummer, String postCode,
             String woonPlaats, String email, String telefoonNummer, String mobielNummer, String labelNummer,
             String vluchtNummer, String bestemming, String bagageLabel, String typeBagage, String merk,

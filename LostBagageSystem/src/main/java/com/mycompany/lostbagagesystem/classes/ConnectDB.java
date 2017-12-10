@@ -241,4 +241,21 @@ public class ConnectDB {
     public String getErrorMessage() {
         return errorMessage;
     }
+    
+    public static Connection getDBConnection() {
+        Connection dbConnection = null;
+        
+        try {
+            Class.forName(DB_DRIVER_URL);
+        } catch (ClassNotFoundException e) {
+        }
+        
+        try {
+            dbConnection = DriverManager.getConnection(DB_DEFAULT_SERVER_URL, 
+                DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
+            return dbConnection;
+        } catch (SQLException e) {
+        }
+        return dbConnection;
+    }
 }
