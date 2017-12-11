@@ -6,6 +6,7 @@ import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.VermisteBagageFormulier;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -35,6 +36,8 @@ public class GevBagFormController implements Initializable {
     private TextField txtVliegveldID;
     @FXML
     private TextField txtLostAndFoundID;
+    @FXML
+    private TextField txtVoorletters;
     @FXML
     private TextField txtTussenvoegsel;
     @FXML
@@ -189,28 +192,42 @@ public class GevBagFormController implements Initializable {
     private String colour2;
     private String colour3;
     
+    @FXML
+    void insturen(ActionEvent insturen) throws SQLException {
+        voorLetters = txtVoorletters.getText();
+        tussenVoegsel = txtTussenvoegsel.getText();
+        achternaam = txtAchternaam.getText();
+        sendToDatabase();
+    }
     
-    public void sendToDatabase() throws SQLException {
+    
+    public void sendToDatabase() throws SQLException{
+        // Making a new prepared statement 
         PreparedStatement myStmt = null;
-        int numberAffected = 0;
+        Connection conn = null;
         ConnectDB db = new ConnectDB();
+        int numberAffected = 0;
         
-        String query = String.format("INSERT INTO `gevondenbagage` "
-                + "(`voorletters`,`tussenvoegsel`, `achternaam`)"
-                + " VALUES(?, ?, ?)");
+        // This is a test query 
+        String query = "INSERT INTO `vermistebagage` "
+                + "(`voorletters`,`tussenvoegsel`, `achternaam`) VALUES"
+                + "(?, ?, ?)";
         
         try {
-            myStmt = db.getDBConnection().prepareStatement(query);
+            conn = db.getDBConnection();
+            myStmt = conn.prepareStatement(query);
+            // Filling in the question marks from the query
             myStmt.setString(1, voorLetters);
             myStmt.setString(2, tussenVoegsel);
             myStmt.setString(3, achternaam);
             
-            // execute INSERT sql statement
+            // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
+            // Closing the prepared statement for memory purposes
             if (myStmt != null) {
                 myStmt.close();
             }
@@ -219,8 +236,6 @@ public class GevBagFormController implements Initializable {
 
 
         System.out.println(numberAffected);
-
-        System.out.println(datum);
 
     }
     
