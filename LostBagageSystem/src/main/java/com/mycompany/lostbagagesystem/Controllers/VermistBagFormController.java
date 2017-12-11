@@ -4,7 +4,9 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.VermisteBagageFormulier;
+import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
+import com.mycompany.lostbagagesystem.models.reqFieldsCheck;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -39,8 +41,6 @@ public class VermistBagFormController implements Initializable {
     private TextField txtTussenvoegsel;
     @FXML
     private TextField txtAchternaam;
-    @FXML
-    private TextField txtGeboorteDatum;
     @FXML
     private TextField txtLandnaam;
     @FXML
@@ -189,6 +189,8 @@ public class VermistBagFormController implements Initializable {
     private Button btnInsturen;
     @FXML
     private Text Kleur1Text;
+    @FXML
+    private DatePicker txtGeboorteDatum;
 
     private String time;
     private String datum;
@@ -218,18 +220,6 @@ public class VermistBagFormController implements Initializable {
     private String colour2;
     private String colour3;
 
-    TextField[] reqFields = new TextField[]{
-        txtVluchtNummer,
-        txtLabelNummer,
-        txtBestemming,
-        txtVoorletters,
-        txtAchternaam,
-        txtStraatnaam,
-        txtHuisNummer,
-        txtPostcode,
-        txtBagageLabel
-    };
-
     @FXML
     void annuleren3(ActionEvent event) {
 
@@ -243,24 +233,12 @@ public class VermistBagFormController implements Initializable {
     @FXML
     void insturen(ActionEvent insturen) {
         System.out.println("KNOP INSTUREN INGEDRUKT");
-        boolean fieldNotFilled = reqFieldsCheck();
-        try {
-
-            datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            txtDatum.setStyle("");
-
-        } catch (Exception e) {
-            txtDatum.setStyle("-fx-border-color : #ff0000;");
-            fieldNotFilled = true;
-
-        }
 
         time = txtTime.getText();
         vliegveldID = txtVliegveldID.getText();
         voorLetters = txtVoorletters.getText();
         tussenVoegsel = txtTussenvoegsel.getText();
         achterNaam = txtAchternaam.getText();
-        geboorteDatum = txtGeboorteDatum.getText();
         landNaam = txtLandnaam.getText();
         gender = ToggleGroupResult.getPick(genderGroup);
         straatNaam = txtStraatnaam.getText();
@@ -273,27 +251,130 @@ public class VermistBagFormController implements Initializable {
         labelNummer = txtLabelNummer.getText();
         vluchtNummer = txtVluchtNummer.getText();
         bestemming = txtBestemming.getText();
-        bagageLabel = txtBagageLabel.getText();
-        typeBagage = txtTypeBagage.getText();
-        merk = txtMerk.getText();
-        bijzondereOpmerking = txtBijzondereOpmerking.getText();
-        
-        
-        
-        colour = ToggleGroupResult.getPick(kleur1);
-        colour2 = ToggleGroupResult.getPick(kleur2);
-        colour3 = ToggleGroupResult.getPick(kleur3);
 
-        if (fieldNotFilled) {
-            warningBox();
+        TextField[] reqFields = new TextField[]{
+            txtVluchtNummer,
+            txtLabelNummer,
+            txtBestemming,
+            txtVoorletters,
+            txtAchternaam,
+            txtStraatnaam,
+            txtHuisNummer,
+            txtPostcode,
+            txtVliegveldID,
+            txtTime,
+            txtWoonplaats,
+            txtEmail,
+            txtLandnaam
+
+        };
+
+        DatePicker[] datePickers = new DatePicker[]{
+            txtDatum,
+            txtGeboorteDatum
+
+        };
+
+        TextField[] PhoneFields = new TextField[]{
+            txtTelefoon,
+            txtMobielNummer
+
+        };
+
+        TextField[] reqIntFields = new TextField[]{};
+
+        int totalArrayLenght = (reqFields.length + datePickers.length + PhoneFields.length);
+
+        boolean fieldsAreFilled = fieldsAreFilled(reqFields, datePickers, PhoneFields, totalArrayLenght);
+        boolean phoneIsInt = isInteger(PhoneFields);
+        boolean txtIsNotInt = isNotInteger(reqFields);
+
+        if (fieldsAreFilled) {
+            if (phoneIsInt && txtIsNotInt) {
+                System.out.println("Document is goed ingevuld");
+                //sendToDatabase();
+
+            } else {
+
+                if (phoneIsInt != true) {
+                    for (int i = 0; i < PhoneFields.length; i++) {
+
+                        if (PhoneFields[i].getText().isEmpty() != true) {
+                            reqFieldWarning(PhoneFields[i]);
+                        }
+                    }
+
+                    PopupNietIngevuldeVelden.warningBoxPhone();
+                }
+
+                if (txtIsNotInt != true) {
+                    for (int i = 0; i < reqFields.length; i++) {
+                        boolean wrongField = isWrongField(reqFields[i]);
+                        if (wrongField) {
+                            reqFieldWarning(reqFields[i]);
+
+                        }
+                    }
+
+                }
+
+            }
 
         } else {
-            System.out.println("Document is goed ingevuld");
-            sendToDatabase();
 
+            System.out.println("WARNING BOX TRIGGER");
+            warningBox();
+        }
+
+    }
+
+    public boolean fieldsAreFilled(TextField reqFields[], DatePicker datePickers[], TextField PhoneFields[], int totalArrayLenght) {
+        boolean[] checkList = new boolean[totalArrayLenght];
+        int count = 0;
+
+        for (TextField reqField : reqFields) {
+            checkList[count] = reqFieldsCheck(reqField);
+            count++;
+        }
+
+        for (DatePicker datePicker : datePickers) {
+            checkList[count] = datePickerCheck(datePicker);
+            count++;
+        }
+        int phoneCount = 0;
+        do {
+
+            if (phoneFieldChecker(PhoneFields[phoneCount]) != true) {
+                for (TextField PhoneField : PhoneFields) {
+                    System.out.println("TELEFOON VELD GOED");
+                    checkList[count] = false;
+                    count++;
+                    reqFieldWarningReset(PhoneField);
+                }
+                phoneCount = PhoneFields.length;
+            } else {
+                System.out.println("TELEFOON VELD FOUT");
+                reqFieldWarning(PhoneFields[phoneCount]);
+
+                checkList[phoneCount] = true;
+                phoneCount++;
+
+            }
+
+        } while (phoneCount < PhoneFields.length);
+
+        boolean formIsComplete = true;
+
+        for (int i = 0; i < checkList.length;
+                i++) {
+            if (checkList[i]) {
+                formIsComplete = false;
+                break;
+
+            }
 
         }
-        System.out.println(colour);
+        return formIsComplete;
     }
 
     public void makeVermistBagForm() {
@@ -328,84 +409,41 @@ public class VermistBagFormController implements Initializable {
 
     }
 
-    public boolean reqFieldsCheck() {
+    public boolean reqFieldsCheck(TextField textField) {
 
         boolean fieldNotFilled = false;
 
-        if (txtVluchtNummer.getText().trim().isEmpty()) {
-            reqFieldWarning(txtVluchtNummer);
+        if (textField.getText().trim().isEmpty()) {
+            reqFieldWarning(textField);
             fieldNotFilled = true;
         } else {
-            reqFieldWarningReset(txtVluchtNummer);
+            reqFieldWarningReset(textField);
         }
-
-        if (txtLabelNummer.getText().trim().isEmpty()) {
-            reqFieldWarning(txtLabelNummer);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtLabelNummer);
-        }
-
-        if (txtBestemming.getText().trim().isEmpty()) {
-            reqFieldWarning(txtBestemming);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtBestemming);
-        }
-
-        if (txtVoorletters.getText().trim().isEmpty()) {
-            reqFieldWarning(txtVoorletters);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtVoorletters);
-        }
-
-        if (txtAchternaam.getText().trim().isEmpty()) {
-            reqFieldWarning(txtAchternaam);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtAchternaam);
-        }
-
-        if (txtStraatnaam.getText().trim().isEmpty()) {
-            reqFieldWarning(txtStraatnaam);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtStraatnaam);
-        }
-
-        if (txtHuisNummer.getText().trim().isEmpty()) {
-            reqFieldWarning(txtHuisNummer);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtHuisNummer);
-        }
-
-        if (txtPostcode.getText().trim().isEmpty()) {
-            reqFieldWarning(txtPostcode);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtPostcode);
-
-        }
-        if (txtBagageLabel.getText().trim().isEmpty()) {
-            reqFieldWarning(txtBagageLabel);
-            fieldNotFilled = true;
-        } else {
-            reqFieldWarningReset(txtBagageLabel);
-
-        }
-            
-        
-        
-        //        for (int i = 0; i < reqFields.length; i++) {
-        //            if (reqFields[i].getText().trim().isEmpty()) {
-        //                reqFieldWarning(reqFields[i]);
-        //                fieldNotFilled = true;
-        //                
-        //            }
 
         return fieldNotFilled;
+    }
+
+    public boolean datePickerCheck(DatePicker datePicker) {
+        boolean check = false;
+
+        try {
+
+            datum = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            datePicker.setStyle("");
+
+        } catch (Exception e) {
+            datePicker.setStyle("-fx-border-color : #ff0000;");
+            check = true;
+
+        }
+        return check;
+    }
+
+    public boolean phoneFieldChecker(TextField textField) {
+        boolean check;
+        check = textField.getText().isEmpty();
+
+        return check;
     }
 
     public void reqFieldWarning(TextField textField) {
@@ -434,12 +472,67 @@ public class VermistBagFormController implements Initializable {
     }
 
     public void warningBox() {
-        Alert alert = new Alert(AlertType.WARNING);
-        alert.setTitle("informatie vereist");
-        alert.setHeaderText(null);
-        alert.setContentText("Vul alle vereiste informatie in!");
+        PopupNietIngevuldeVelden.warningBox();
 
-        alert.showAndWait();
+    }
+
+    public boolean isInteger(TextField phoneFields[]) {
+
+        boolean isValidInteger = false;
+        for (int i = 0; i < phoneFields.length; i++) {
+            try {
+                Long.parseLong(phoneFields[i].getText());
+
+                // s is a valid integer
+                isValidInteger = true;
+            } catch (NumberFormatException ex) {
+                // s is not an integer
+            }
+
+        }
+
+        return isValidInteger;
+    }
+
+    public boolean isNotInteger(TextField textField[]) {
+        System.out.println("CHECK NOT INT");
+
+        boolean isNotInteger = false;
+        for (int i = 0; i < textField.length; i++) {
+            try {
+                Long.parseLong(textField[i].getText());
+                System.out.println("NOT INT FALSE");
+                isNotInteger = false;
+                break;
+
+            } catch (NumberFormatException ex) {
+                isNotInteger = true;
+                System.out.println("NOT INT TRUE");
+
+            }
+
+        }
+
+        return isNotInteger;
+
+    }
+
+    public boolean isWrongField(TextField textField) {
+        System.out.println("CHECK WRONG FIELD");
+
+        boolean wrongField = false;
+
+        try {
+            Long.parseLong(textField.getText());
+            System.out.println("WRONG FIELD");
+            wrongField = true;
+
+        } catch (NumberFormatException ex) {
+            System.out.println("NOT WRONG FIELD");
+
+        }
+
+        return wrongField;
 
     }
 

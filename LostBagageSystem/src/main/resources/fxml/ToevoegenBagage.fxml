@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
+   <children>
+      <VBox fillWidth="false" layoutX="-90.5" layoutY="-3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bagage Toevoegen">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type bagage">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <TextField fx:id="txtBagageLabel" prefHeight="30.0" prefWidth="360.0" promptText="Bagage label">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtTypeBagage" prefHeight="30.0" prefWidth="360.0" promptText="Type bagage, bv. Koffer of tas">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtMerk" prefHeight="30.0" prefWidth="360.0" promptText="Merk, bv. Samsonite">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <Text fx:id="Kleur1Text" strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 1">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <HBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrBlack" mnemonicParsing="false" text="Black">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="clrWhite" mnemonicParsing="false" text="White" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrSilver" mnemonicParsing="false" text="Silver" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrGray" mnemonicParsing="false" text="Gray" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrRed" mnemonicParsing="false" text="Red" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrMaroon" mnemonicParsing="false" text="Maroon" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrOlive" mnemonicParsing="false" text="Olive" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrYellow" mnemonicParsing="false" text="Yellow" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrLime" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Lime" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrGreen" mnemonicParsing="false" text="Green" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrAqua" mnemonicParsing="false" text="Aqua" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrTeal" mnemonicParsing="false" text="Teal" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrBlue" mnemonicParsing="false" text="Blue" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrNavy" mnemonicParsing="false" text="Navy" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrPink" mnemonicParsing="false" text="Pink" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrPurple" mnemonicParsing="false" text="Purple" toggleGroup="$kleur1">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 2">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <HBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrBlack1" mnemonicParsing="false" text="Black">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur2" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="clrWhite1" mnemonicParsing="false" text="White" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrSilver1" mnemonicParsing="false" text="Silver" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrGray1" mnemonicParsing="false" text="Gray" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrRed1" mnemonicParsing="false" text="Red" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrMaroon1" mnemonicParsing="false" text="Maroon" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrOlive1" mnemonicParsing="false" text="Olive" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrYellow1" mnemonicParsing="false" text="Yellow" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrLime1" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Lime" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrGreen1" mnemonicParsing="false" text="Green" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrAqua1" mnemonicParsing="false" text="Aqua" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrTeal1" mnemonicParsing="false" text="Teal" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrBlue1" mnemonicParsing="false" text="Blue" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrNavy1" mnemonicParsing="false" text="Navy" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrPink1" mnemonicParsing="false" text="Pink" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrPurple1" mnemonicParsing="false" text="Purple" toggleGroup="$kleur2">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <Text stroke="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Kleur 3">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <HBox>
+               <children>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrBlack2" mnemonicParsing="false" text="Black">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur3" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="clrWhite2" mnemonicParsing="false" text="White" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrSilver2" mnemonicParsing="false" text="Silver" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrGray2" mnemonicParsing="false" text="Gray" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrRed2" mnemonicParsing="false" text="Red" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrMaroon2" mnemonicParsing="false" text="Maroon" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrOlive2" mnemonicParsing="false" text="Olive" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrYellow2" mnemonicParsing="false" text="Yellow" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrLime2" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Lime" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrGreen2" mnemonicParsing="false" text="Green" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrAqua2" mnemonicParsing="false" text="Aqua" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrTeal2" mnemonicParsing="false" text="Teal" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <RadioButton fx:id="clrBlue2" mnemonicParsing="false" text="Blue" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrNavy2" mnemonicParsing="false" text="Navy" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrPink2" mnemonicParsing="false" text="Pink" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="clrPurple2" mnemonicParsing="false" text="Purple" toggleGroup="$kleur3">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="4.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <Button fx:id="btnFotoToevoegen" mnemonicParsing="false" text="Foto toevoegen">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bijzondere kenmerken">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextArea fx:id="txtBijzondereOpmerking" prefHeight="100.0" prefWidth="360.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextArea>
+            <Line endX="100.0" startX="-100.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <HBox>
+               <children>
+                  <Button fx:id="btnAnnuleren3" mnemonicParsing="false" text="Annuleren">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnInsturen" mnemonicParsing="false" onAction="#insturen" text="Insturen" />
+                  <Button fx:id="btnInsturen1" mnemonicParsing="false" onAction="#nogMeerBagageToevoegen" text="Nog meer bagage toevoegen">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
