@@ -451,6 +451,7 @@ public class VermistBagFormController implements Initializable {
 
     }
 
+
     public void reqFieldWarningReset(TextField textField) {
         textField.setStyle("");
 
@@ -458,6 +459,7 @@ public class VermistBagFormController implements Initializable {
 
     public void sendToDatabase() {
         ConnectDB db = new ConnectDB("fystestdb");
+
         String query = String.format("INSERT INTO `vermistebagage` "
                 + "(`voorletters`,`tussenvoegsel`, `achternaam`, `geboortedatum`, `nationaliteit`)"
                 + " VALUES('%s', '%s', '%s', '%s', '%s')",

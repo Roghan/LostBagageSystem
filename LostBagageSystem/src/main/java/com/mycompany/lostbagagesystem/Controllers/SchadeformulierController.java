@@ -250,6 +250,29 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private AnchorPane TableLeeg2;
+    
+    private String voorletters;
+    private String tussenvoegsel;
+    private String achternaam;
+    private String geboortedatum;
+    private String landnaam;
+    private String bankRekening;
+    private String straatnaam;
+    private String huisnummer;
+    private String postcode;
+    private String woonplaats;
+    private String email;
+    private String telefoon;
+    private String mobiel;
+    private String bagageLabel;
+    private String typeBagage;
+    private String merkBagage;
+    private String bijzondereKenmerken;
+    private String schadeDatum;
+    private String datumBeginReis;
+    private String schadeTijd;
+    private String schadePlaats;
+    private String schadeLand;
 
 //    @FXML
 //    public void annuleren(ActionEvent event) throws IOException {
