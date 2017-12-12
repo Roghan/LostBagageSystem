@@ -4,6 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.models.FormulierCheck;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -197,7 +198,30 @@ public class GevBagFormController implements Initializable {
         voorLetters = txtVoorletters.getText();
         tussenVoegsel = txtTussenvoegsel.getText();
         achternaam = txtAchternaam.getText();
-        sendToDatabase();
+        
+        TextField[] reqFields = new TextField[]{
+            txtVoorletters,
+            txtAchternaam,
+            txtTime,
+            txtVliegveldID,
+            txtLostAndFoundID,
+            txtLabelNummer,
+            txtVluchtNummer,
+            txtBestemming
+
+        };
+        
+        DatePicker[] datePickers = new DatePicker[]{
+            txtDatum
+
+        };
+        
+        TextField[] PhoneFields = new TextField[]{
+            
+        };
+        
+        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers);
+        //sendToDatabase();
     }
     
     /**
