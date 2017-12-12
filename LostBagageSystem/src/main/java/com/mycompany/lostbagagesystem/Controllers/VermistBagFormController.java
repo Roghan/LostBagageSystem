@@ -277,8 +277,7 @@ public class VermistBagFormController implements Initializable {
         };
 
         TextField[] PhoneFields = new TextField[]{
-            txtTelefoon,
-            txtMobielNummer
+
 
         };
 

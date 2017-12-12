@@ -472,12 +472,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnInsturen" mnemonicParsing="false" onAction="#insturen" text="Insturen" />
-                  <Button fx:id="btnInsturen1" mnemonicParsing="false" onAction="#nogMeerBagageToevoegen" text="Nog meer bagage toevoegen">
-                     <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </HBox.margin>
-                  </Button>
+                  <Button fx:id="btnInsturen" mnemonicParsing="false" onAction="#insturen" text="Toevoegen" />
                </children>
                <VBox.margin>
                   <Insets bottom="50.0" left="10.0" right="10.0" top="10.0" />
