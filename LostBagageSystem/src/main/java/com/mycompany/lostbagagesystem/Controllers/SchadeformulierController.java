@@ -273,6 +273,10 @@ public class SchadeformulierController implements Initializable {
     private String schadeTijd;
     private String schadePlaats;
     private String schadeLand;
+    
+    private String colour;
+    private String colour2;
+    private String colour3;
 
 //    @FXML
 //    public void annuleren(ActionEvent event) throws IOException {

@@ -4,7 +4,6 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.VermisteBagageFormulier;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +18,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import sun.applet.Main;
 
 /**
  * FXML Controller class
@@ -194,13 +192,19 @@ public class GevBagFormController implements Initializable {
     
     @FXML
     void insturen(ActionEvent insturen) throws SQLException {
+        System.out.println("KNOP INSTUREN INGEDRUKT");
+        
         voorLetters = txtVoorletters.getText();
         tussenVoegsel = txtTussenvoegsel.getText();
         achternaam = txtAchternaam.getText();
         sendToDatabase();
     }
     
-    
+    /**
+     * Creates a prepared statement that sends an INSERT query to the database 
+     * for the Gevonden Bagage table
+     * @throws SQLException
+     */
     public void sendToDatabase() throws SQLException{
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
@@ -231,7 +235,10 @@ public class GevBagFormController implements Initializable {
             if (myStmt != null) {
                 myStmt.close();
             }
-            
+            // Closing the database connection for memory purposes
+            if (conn != null) {
+                conn.close();
+            }
         }
 
 
@@ -239,10 +246,6 @@ public class GevBagFormController implements Initializable {
 
     }
     
-//    @FXML
-//    void insturen(ActionEvent insturen) {
-//        System.out.println("KNOP INSTUREN INGEDRUKT");
-//        GevBagageFormulier vermistBagForm = new GevBagageFormulier(
     /**
      * Initializes the controller class.
      */
