@@ -32,12 +32,22 @@ public class PopupNietIngevuldeVelden {
         alert.showAndWait();
 
     }
-    
-        public static void warningBoxText() {
+
+    public static void warningBoxText() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Text");
         alert.setHeaderText(null);
         alert.setContentText("Textvelden mogen geen cijfers bevatten!");
+
+        alert.showAndWait();
+
+    }
+
+    public static void warningBoxIsNotInt() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Text");
+        alert.setHeaderText(null);
+        alert.setContentText("Cijfer velden mogen alleen cijfers Bevatten");
 
         alert.showAndWait();
 

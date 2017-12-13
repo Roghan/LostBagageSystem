@@ -26,7 +26,7 @@ import javafx.scene.control.ToggleGroup;
  * @author Donovan Schaafsma
  */
 public class GevBagFormController implements Initializable {
-    
+
     @FXML
     private DatePicker txtDatum;
     @FXML
@@ -171,7 +171,7 @@ public class GevBagFormController implements Initializable {
     private Button btnInsturen;
     @FXML
     private TextField txtBagageLabel;
-    
+
     private String datum;
     private String tijd;
     private String vliegveldID;
@@ -186,19 +186,19 @@ public class GevBagFormController implements Initializable {
     private String typeBagage;
     private String merkBagage;
     private String bijzondereOpmerking;
-    
+
     private String colour;
     private String colour2;
     private String colour3;
-    
+
     @FXML
     void insturen(ActionEvent insturen) throws SQLException {
         System.out.println("KNOP INSTUREN INGEDRUKT");
-        
+
         voorLetters = txtVoorletters.getText();
         tussenVoegsel = txtTussenvoegsel.getText();
         achternaam = txtAchternaam.getText();
-        
+
         TextField[] reqFields = new TextField[]{
             txtVoorletters,
             txtAchternaam,
@@ -210,37 +210,38 @@ public class GevBagFormController implements Initializable {
             txtBestemming
 
         };
-        
+
         DatePicker[] datePickers = new DatePicker[]{
             txtDatum
 
         };
-        
-        TextField[] PhoneFields = new TextField[]{
-            
-        };
-        
-        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers);
+
+        TextField[] PhoneFields = new TextField[]{};
+
+        TextField[] reqIntFields = new TextField[]{};
+
+        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers, reqIntFields);
         //sendToDatabase();
     }
-    
+
     /**
-     * Creates a prepared statement that sends an INSERT query to the database 
+     * Creates a prepared statement that sends an INSERT query to the database
      * for the Gevonden Bagage table
+     *
      * @throws SQLException
      */
-    public void sendToDatabase() throws SQLException{
+    public void sendToDatabase() throws SQLException {
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
         Connection conn = null;
         ConnectDB db = new ConnectDB();
         int numberAffected = 0;
-        
+
         // This is a test query 
         String query = "INSERT INTO `vermistebagage` "
                 + "(`voorletters`,`tussenvoegsel`, `achternaam`) VALUES"
                 + "(?, ?, ?)";
-        
+
         try {
             conn = db.getDBConnection();
             myStmt = conn.prepareStatement(query);
@@ -248,7 +249,7 @@ public class GevBagFormController implements Initializable {
             myStmt.setString(1, voorLetters);
             myStmt.setString(2, tussenVoegsel);
             myStmt.setString(3, achternaam);
-            
+
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
 
@@ -265,17 +266,16 @@ public class GevBagFormController implements Initializable {
             }
         }
 
-
         System.out.println(numberAffected);
 
     }
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

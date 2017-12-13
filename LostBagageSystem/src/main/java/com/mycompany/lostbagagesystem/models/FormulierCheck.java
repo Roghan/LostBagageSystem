@@ -5,7 +5,6 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
-import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -16,23 +15,31 @@ import javafx.scene.control.TextField;
  */
 public class FormulierCheck {
 
-    public static void verificaton(TextField[] reqFields, TextField[] PhoneFields, DatePicker[] datePickers) {
-        
-        int totalArrayLenght = (reqFields.length + datePickers.length + PhoneFields.length);
-        boolean fieldsAreFilled = fieldsAreFilled(reqFields, datePickers, PhoneFields, totalArrayLenght);
-        boolean phoneIsInt = isInteger(PhoneFields);
-        boolean txtIsNotInt = isNotInteger(reqFields);
+    private static boolean fieldsAreFilled;
+    private static boolean phoneIsInt;
+    private static boolean txtIsNotInt;
+    private static int totalArrayLenght;
+    private static boolean txtIsInt;
 
-        checkForm(fieldsAreFilled, phoneIsInt, txtIsNotInt, reqFields, PhoneFields, datePickers);
+    public static boolean verificaton(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields) {
+
+        totalArrayLenght = (reqTextFields.length + datePickers.length + PhoneFields.length + intTextFields.length);
+        fieldsAreFilled = fieldsAreFilled(reqTextFields, datePickers, PhoneFields, intTextFields, totalArrayLenght);
+        phoneIsInt = isInteger(PhoneFields);
+        txtIsNotInt = isNotInteger(reqTextFields);
+        txtIsInt = isTextFieldInteger(intTextFields);
+
+        return checkForm(fieldsAreFilled, phoneIsInt, txtIsNotInt, txtIsInt, reqTextFields, PhoneFields, datePickers, intTextFields);
+
     }
 
-    public static void checkForm(boolean fieldsAreFilled, boolean phoneIsInt, boolean txtIsNotInt,
-            TextField[] reqFields, TextField[] PhoneFields, DatePicker[] datePickers) {
+    public static boolean checkForm(boolean fieldsAreFilled, boolean phoneIsInt, boolean txtIsNotInt, boolean txtIsInt,
+            TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields) {
 
         if (fieldsAreFilled) {
-            if (phoneIsInt && txtIsNotInt) {
+            if (phoneIsInt && txtIsNotInt && txtIsInt) {
                 System.out.println("Document is goed ingevuld");
-                //sendToDatabase();
+                return true;
 
             } else {
 
@@ -48,14 +55,27 @@ public class FormulierCheck {
                 }
 
                 if (txtIsNotInt != true) {
-                    for (int i = 0; i < reqFields.length; i++) {
-                        boolean wrongField = isWrongField(reqFields[i]);
+                    for (int i = 0; i < reqTextFields.length; i++) {
+                        boolean wrongField = isWrongField(reqTextFields[i]);
                         if (wrongField) {
-                            reqFieldWarning(reqFields[i]);
+                            reqFieldWarning(reqTextFields[i]);
+
+                        }
+                    }
+                    PopupNietIngevuldeVelden.warningBoxText();
+
+                }
+
+                if (txtIsInt != true) {
+                    for (int i = 0; i < intTextFields.length; i++) {
+                        boolean wrongField = isWrongField(intTextFields[i]);
+                        if (wrongField != true) {
+                            reqFieldWarning(intTextFields[i]);
 
                         }
                     }
 
+                    PopupNietIngevuldeVelden.warningBoxIsNotInt();
                 }
 
             }
@@ -64,44 +84,65 @@ public class FormulierCheck {
 
             System.out.println("WARNING BOX TRIGGER");
             warningBox();
-        }
 
+        }
+        return false;
     }
 
-    public static boolean fieldsAreFilled(TextField reqFields[], DatePicker datePickers[], TextField PhoneFields[], int totalArrayLenght) {
+    public static boolean fieldsAreFilled(TextField reqTextFields[], DatePicker datePickers[], TextField PhoneFields[], TextField intIsTextField[], int totalArrayLenght) {
         boolean[] checkList = new boolean[totalArrayLenght];
         int count = 0;
 
-        for (TextField reqField : reqFields) {
-            checkList[count] = reqFieldsCheck(reqField);
-            count++;
-        }
-
-        for (DatePicker datePicker : datePickers) {
-            checkList[count] = datePickerCheck(datePicker);
-            count++;
-        }
-        int phoneCount = 0;
-        do {
-
-            if (phoneFieldChecker(PhoneFields[phoneCount]) != true) {
-                for (TextField PhoneField : PhoneFields) {
-                    System.out.println("TELEFOON VELD GOED");
-                    checkList[count] = false;
-                    count++;
-                    reqFieldWarningReset(PhoneField);
-                }
-                phoneCount = PhoneFields.length;
-            } else {
-                System.out.println("TELEFOON VELD FOUT");
-                reqFieldWarning(PhoneFields[phoneCount]);
-
-                checkList[phoneCount] = true;
-                phoneCount++;
+        if (reqTextFields.length != 0) {
+            for (TextField reqField : reqTextFields) {
+                checkList[count] = reqTextFieldsCheck(reqField);
+                count++;
 
             }
 
-        } while (phoneCount < PhoneFields.length);
+        }
+
+        if (datePickers.length != 0) {
+            for (DatePicker datePicker : datePickers) {
+                checkList[count] = datePickerCheck(datePicker);
+                count++;
+
+            }
+
+        }
+
+        if (intIsTextField.length != 0) {
+            for (int i = 0; i < intIsTextField.length; i++) {
+                checkList[count] = reqTextFieldsCheck(intIsTextField[i]);
+                count++;
+            }
+
+        }
+
+        if (PhoneFields.length != 0) {
+            int phoneCount = 0;
+            do {
+
+                if (phoneFieldChecker(PhoneFields[phoneCount]) != true) {
+                    for (TextField PhoneField : PhoneFields) {
+                        System.out.println("TELEFOON VELD GOED");
+                        checkList[count] = false;
+                        count++;
+                        reqFieldWarningReset(PhoneField);
+                    }
+                    phoneCount = PhoneFields.length;
+                } else {
+                    System.out.println("TELEFOON VELD FOUT");
+                    reqFieldWarning(PhoneFields[phoneCount]);
+
+                    checkList[phoneCount] = true;
+                    phoneCount++;
+
+                }
+
+            } while (phoneCount < PhoneFields.length);
+
+        }
 
         boolean formIsComplete = true;
 
@@ -116,7 +157,7 @@ public class FormulierCheck {
         return formIsComplete;
     }
 
-    public static boolean reqFieldsCheck(TextField textField) {
+    public static boolean reqTextFieldsCheck(TextField textField) {
 
         boolean fieldNotFilled = false;
 
@@ -168,12 +209,30 @@ public class FormulierCheck {
 
     }
 
-    public static boolean isInteger(TextField phoneFields[]) {
+    public static boolean isInteger(TextField[] phoneFields) {
 
         boolean isValidInteger = false;
         for (int i = 0; i < phoneFields.length; i++) {
             try {
                 Long.parseLong(phoneFields[i].getText());
+
+                // s is a valid integer
+                isValidInteger = true;
+            } catch (NumberFormatException ex) {
+                // s is not an integer
+            }
+
+        }
+
+        return isValidInteger;
+    }
+
+    public static boolean isTextFieldInteger(TextField[] intTextFields) {
+
+        boolean isValidInteger = false;
+        for (int i = 0; i < intTextFields.length; i++) {
+            try {
+                Long.parseLong(intTextFields[i].getText());
 
                 // s is a valid integer
                 isValidInteger = true;

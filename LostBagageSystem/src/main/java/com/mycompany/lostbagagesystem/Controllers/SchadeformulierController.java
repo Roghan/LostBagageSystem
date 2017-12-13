@@ -244,13 +244,13 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private TextField txtSchadeLand;
-    
+
     @FXML
     private DatePicker txtSchadeDatum;
-    
+
     @FXML
     private DatePicker txtDatumBeginReis;
-    
+
     @FXML
     private TextField txtSchadeTijd;
 
@@ -262,7 +262,7 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private AnchorPane TableLeeg2;
-    
+
     private String voorletters;
     private String tussenvoegsel;
     private String achternaam;
@@ -286,7 +286,7 @@ public class SchadeformulierController implements Initializable {
     private String schadeTijd;
     private String schadePlaats;
     private String schadeLand;
-    
+
     private String colour;
     private String colour2;
     private String colour3;
@@ -308,7 +308,7 @@ public class SchadeformulierController implements Initializable {
     @FXML
     void insturen(ActionEvent event) {
         System.out.println("KNOP INSTUREN INGEDRUKT");
-        
+
         voorletters = txtVoorletters.getText();
         tussenvoegsel = txtTussenvoegsel.getText();
         achternaam = txtAchternaam.getText();
@@ -329,36 +329,38 @@ public class SchadeformulierController implements Initializable {
         schadeTijd = txtSchadeTijd.getText();
         schadePlaats = txtSchadePlaats.getText();
         schadeLand = txtSchadeLand.getText();
-        
-        TextField[] reqFields = new TextField[]{
+
+        TextField[] reqTextFields = new TextField[]{
             txtVoorletters,
             txtAchternaam,
             txtBankrekening,
             txtStraatnaam,
-            txtHuisNummer,
             txtPostcode,
             txtWoonplaats,
             txtEmail,
             txtLandnaam
 
         };
-        
+
         DatePicker[] datePickers = new DatePicker[]{
             txtGeboorteDatum,
             txtSchadeDatum,
             txtDatumBeginReis
 
         };
-        
+
         TextField[] PhoneFields = new TextField[]{
             txtTelefoon,
             txtMobielNummer
 
         };
-        
-        TextField[] reqIntFields = new TextField[]{};
 
-        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers);
+        TextField[] reqIntFields = new TextField[]{
+            txtHuisNummer
+
+        };
+
+        FormulierCheck.verificaton(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
 

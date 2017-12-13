@@ -2,20 +2,17 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.VermisteBagageFormulier;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
-import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
-import com.mycompany.lostbagagesystem.models.reqFieldsCheck;
+import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -23,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  *
@@ -232,6 +230,21 @@ public class VermistBagFormController implements Initializable {
     }
 
     @FXML
+    public void bagageToevoegen(ActionEvent toevoegen) throws IOException {
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage.fxml"));
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+
+        stage.setTitle("Bagage Toevoegen");
+        stage.setMaximized(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void insturen(ActionEvent insturen) {
         System.out.println("KNOP INSTUREN INGEDRUKT");
 
@@ -253,14 +266,13 @@ public class VermistBagFormController implements Initializable {
         vluchtNummer = txtVluchtNummer.getText();
         bestemming = txtBestemming.getText();
 
-        TextField[] reqFields = new TextField[]{
+        TextField[] reqTextFields = new TextField[]{
             txtVluchtNummer,
             txtLabelNummer,
             txtBestemming,
             txtVoorletters,
             txtAchternaam,
             txtStraatnaam,
-            txtHuisNummer,
             txtPostcode,
             txtVliegveldID,
             txtTime,
@@ -277,13 +289,15 @@ public class VermistBagFormController implements Initializable {
         };
 
         TextField[] PhoneFields = new TextField[]{
-
+            txtTelefoon,
+            txtMobielNummer
 
         };
 
-        TextField[] reqIntFields = new TextField[]{};
+        TextField[] reqIntFields = new TextField[]{
+            txtHuisNummer};
 
-        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers);
+        FormulierCheck.verificaton(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
 
