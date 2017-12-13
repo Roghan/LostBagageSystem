@@ -216,11 +216,11 @@ public class GevBagFormController implements Initializable {
 
         };
         
-        TextField[] PhoneFields = new TextField[]{
-            
-        };
+//        TextField[] PhoneFields = new TextField[]{
+//            
+//        };
         
-        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers);
+        FormulierCheck.verification(reqFields, datePickers);
         //sendToDatabase();
     }
     

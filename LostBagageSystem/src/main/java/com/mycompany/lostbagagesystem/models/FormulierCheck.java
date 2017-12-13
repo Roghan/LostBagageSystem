@@ -25,7 +25,16 @@ public class FormulierCheck {
 
         checkForm(fieldsAreFilled, phoneIsInt, txtIsNotInt, reqFields, PhoneFields, datePickers);
     }
-
+    
+    public static void verification(TextField[] reqFields, DatePicker[] datePickers){
+        
+        int totalArrayLenght = (reqFields.length + datePickers.length);
+        boolean fieldsAreFilledNoPhone = fieldsAreFilledNoPhone(reqFields, datePickers, totalArrayLenght);
+        boolean txtIsNotInt = isNotInteger(reqFields);
+        
+        checkFormNoPhone(fieldsAreFilledNoPhone, txtIsNotInt, reqFields, datePickers);
+    }
+    
     public static void checkForm(boolean fieldsAreFilled, boolean phoneIsInt, boolean txtIsNotInt,
             TextField[] reqFields, TextField[] PhoneFields, DatePicker[] datePickers) {
 
@@ -66,6 +75,32 @@ public class FormulierCheck {
             warningBox();
         }
 
+    }
+    
+    public static void checkFormNoPhone(boolean fieldsAreFilledNoPhone, boolean txtIsNotInt, TextField[] reqFields, DatePicker[] datePickers){
+        
+        if (fieldsAreFilledNoPhone) {
+            if (txtIsNotInt) {
+                System.out.println("Document is goed ingevuld");
+                //sendToDatabase();
+
+            } else { 
+                if (txtIsNotInt != true) {
+                    for (int i = 0; i < reqFields.length; i++) {
+                        boolean wrongField = isWrongField(reqFields[i]);
+                        if (wrongField) {
+                            reqFieldWarning(reqFields[i]);
+
+                        }
+                    }
+                }
+            }
+            
+        } else {
+
+            System.out.println("WARNING BOX TRIGGER");
+            warningBox();
+        }
     }
 
     public static boolean fieldsAreFilled(TextField reqFields[], DatePicker datePickers[], TextField PhoneFields[], int totalArrayLenght) {
@@ -115,7 +150,34 @@ public class FormulierCheck {
         }
         return formIsComplete;
     }
+    
+    public static boolean fieldsAreFilledNoPhone(TextField reqFields[], DatePicker datePickers[], int totalArrayLenght) {
+        boolean[] checkList = new boolean[totalArrayLenght];
+        int count = 0;
 
+        for (TextField reqField : reqFields) {
+            checkList[count] = reqFieldsCheck(reqField);
+            count++;
+        }
+
+        for (DatePicker datePicker : datePickers) {
+            checkList[count] = datePickerCheck(datePicker);
+            count++;
+        } 
+        
+        boolean formIsComplete = true;
+
+        for (int i = 0; i < checkList.length; i++) {
+            if (checkList[i]) {
+                formIsComplete = false;
+                break;
+
+            }
+
+        }
+        return formIsComplete;
+    }
+    
     public static boolean reqFieldsCheck(TextField textField) {
 
         boolean fieldNotFilled = false;
