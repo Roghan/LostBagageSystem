@@ -33,7 +33,9 @@ public class Gev21DController implements Initializable {
     @FXML
     private TableView table;
     private ObservableList<bagageTabel> bagagetabel;
-
+    
+    
+    
     @FXML
     private AnchorPane gev21D;
 
@@ -41,12 +43,12 @@ public class Gev21DController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(-21, table);
+            TableFillMan.dbTableFill(21, table, gev21D);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        getChart();
+
 
     }
 
@@ -56,50 +58,5 @@ public class Gev21DController implements Initializable {
      */
 
 
-    @FXML
-    public void getChart() {
 
-        //defining the axes
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Aantal dagen");
-        //creating the chart
-        final LineChart<Number, Number> lineChart
-                = new LineChart<>(xAxis, yAxis);
-
-        lineChart.setTitle("Gevonden bagage, 21 dagen");
-        //defining a series
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Bagage");
-        //populating the series with data
-
-        series.getData().add(new XYChart.Data(1, 1));
-        series.getData().add(new XYChart.Data(2, 2));
-        series.getData().add(new XYChart.Data(3, 3));
-        series.getData().add(new XYChart.Data(4, 4));
-        series.getData().add(new XYChart.Data(5, 5));
-        series.getData().add(new XYChart.Data(6, 6));
-        series.getData().add(new XYChart.Data(7, 7));
-        series.getData().add(new XYChart.Data(8, 8));
-        series.getData().add(new XYChart.Data(9, 9));
-        series.getData().add(new XYChart.Data(10, 10));
-        series.getData().add(new XYChart.Data(11, 11));
-        series.getData().add(new XYChart.Data(12, 12));
-        series.getData().add(new XYChart.Data(13, 13));
-        series.getData().add(new XYChart.Data(14, 14));
-        series.getData().add(new XYChart.Data(15, 15));
-        series.getData().add(new XYChart.Data(16, 16));
-        series.getData().add(new XYChart.Data(17, 17));
-        series.getData().add(new XYChart.Data(18, 18));
-        series.getData().add(new XYChart.Data(19, 19));
-        series.getData().add(new XYChart.Data(20, 20));
-        series.getData().add(new XYChart.Data(21, 21));
-
-        lineChart.getData().add(series);
-        gev21D.getChildren().setAll();
-        gev21D.getChildren().setAll(lineChart);
-
-        lineChart.prefWidthProperty().bind(gev21D.widthProperty());
-        lineChart.prefHeightProperty().bind(gev21D.heightProperty());
-    }
 }

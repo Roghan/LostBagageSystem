@@ -49,7 +49,7 @@ public class Gev3DController implements Initializable {
     @FXML
     private TableColumn<?, ?> actief;
     @FXML
-    private AnchorPane gev3D;
+    private AnchorPane gev21D;
     @FXML
     private ObservableList<bagageTabel> bagagetabel;
 
@@ -67,10 +67,10 @@ public class Gev3DController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        getChart();
+
 
         try {
-            TableFillMan.dbTableFill(-3, table);
+            TableFillMan.dbTableFill(3, table, gev21D);
         } catch (SQLException ex) {
             Logger.getLogger(Gev3DController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -82,33 +82,6 @@ public class Gev3DController implements Initializable {
 //    public void dbTableFill(int aantalDagen) throws SQLException {
 //
 //    }
-    @FXML
-    public void getChart() {
-
-        //defining the axes
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Aantal dagen");
-        //creating the chart
-        final LineChart<Number, Number> lineChart
-                = new LineChart<Number, Number>(xAxis, yAxis);
-
-        lineChart.setTitle("Gevonden bagage, 3 dagen");
-        //defining a series
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Bagage");
-        //populating the series with data
-        series.getData().add(new XYChart.Data(1, 23));
-        series.getData().add(new XYChart.Data(2, 14));
-        series.getData().add(new XYChart.Data(3, 15));
-
-        lineChart.getData().add(series);
-        gev3D.getChildren().setAll();
-        gev3D.getChildren().setAll(lineChart);
-
-        lineChart.prefWidthProperty().bind(gev3D.widthProperty());
-        lineChart.prefHeightProperty().bind(gev3D.heightProperty());
-
-    }
+    
 
 }
