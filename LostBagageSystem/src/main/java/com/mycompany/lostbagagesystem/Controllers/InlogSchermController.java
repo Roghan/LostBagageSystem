@@ -40,21 +40,25 @@ public class InlogSchermController implements Initializable {
     public void handleButtonAction() throws SQLException, IOException {
         ConnectDB db = new ConnectDB("fystestdb");
         ResultSet resultSet;
+        int blok;
         int rol;
         String user = username.getText();
         String pass = wachtwoord.getText();
 
-        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
+        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol`, `blok` "
                 + "FROM gebruiker WHERE acountnaam = " + "'" + user + "'"
                 + " AND wachtwoord = " + "'" + pass + "'");
 
         System.out.println(resultSet);
-
+        
         if (resultSet.next()) {
             System.out.println("Je bent COOL!!");
             rol = resultSet.getInt("rol");
+            blok = resultSet.getInt("blok");
             System.out.println(rol);
+            if(blok == 0){
             adminPad(rol);
+            }
         } else {
             System.out.println("Je hoort hier niet!!!");
         }

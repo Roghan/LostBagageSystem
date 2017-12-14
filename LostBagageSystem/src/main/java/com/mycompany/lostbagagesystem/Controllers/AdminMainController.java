@@ -10,8 +10,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +53,11 @@ public class AdminMainController implements Initializable {
 //    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
+        ConnectDB db = new ConnectDB("fystestdb");
 
+        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+        String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
+        db.executeUpdateQuery(query);
     }
 
     @FXML
@@ -69,13 +75,12 @@ public class AdminMainController implements Initializable {
     }
 
     @FXML
-    private void handleDelete(ActionEvent event) {
-        //FAKE REMOVE
-        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-        dbNaam.remove(user);
+    private void deBlokkeer(ActionEvent event) {
+        ConnectDB db = new ConnectDB("fystestdb");
 
-        //REMOVE FROM DB
-        //DELETE FROM `gebruiker` WHERE `id`='4';
+        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+        String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
+        db.executeUpdateQuery(query);
     }
 
     @Override

@@ -102,11 +102,6 @@ public class TableFillMan {
 
         table.setItems(bagagetabel);
 
-//        int[] aantalKoffers = aantalVerloren(aantalDagen);
-//        for (int i = 0; i < aantalDagen; i++) {
-//        System.out.println("Koffers? dag"+i+" "+aantalKoffers[i]);            
-//        }
-
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
