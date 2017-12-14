@@ -58,6 +58,8 @@ public class InlogSchermController implements Initializable {
             System.out.println(rol);
             if(blok == 0){
             adminPad(rol);
+            }else{
+                System.out.println("Je bent geblokkeerd!!!");
             }
         } else {
             System.out.println("Je hoort hier niet!!!");
