@@ -58,6 +58,8 @@ public class AdminMainController implements Initializable {
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
         String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
         db.executeUpdateQuery(query);
+        user.setBlok(1);
+        table.refresh();
     }
 
     @FXML
@@ -81,6 +83,8 @@ public class AdminMainController implements Initializable {
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
         String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
         db.executeUpdateQuery(query);
+        user.setBlok(0);
+        table.refresh();
     }
 
     @Override

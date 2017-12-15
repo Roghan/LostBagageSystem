@@ -7,6 +7,8 @@ import com.mycompany.lostbagagesystem.classes.PDFExport;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -223,7 +225,11 @@ public class ManMainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            medewerkers(null);
+        } catch (IOException ex) {
+            Logger.getLogger(ManMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
