@@ -73,7 +73,6 @@ public class AdminMainController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
-
     }
 
     @FXML
@@ -87,14 +86,32 @@ public class AdminMainController implements Initializable {
         table.refresh();
     }
 
+    
+    public void loadTabel() throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminMedewerkerView.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            dbTableFill();
-        } catch (SQLException ex) {
+            loadTabel();
+        } catch (IOException ex) {
             Logger.getLogger(AdminMainController.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        try {
+//            dbTableFill();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AdminMainController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
 
@@ -111,58 +128,58 @@ public class AdminMainController implements Initializable {
         pane.prefHeightProperty().bind(AdminPane.heightProperty());
     }
 
-    public void dbTableFill() throws SQLException {
-
-        ConnectDB db = new ConnectDB("fystestdb");
-
-        int id;
-        String acountnaam;
-        String wachtwoord;
-        String voornaam;
-        String achternaam;
-        String geboortedatum;
-        String postcode;
-        String huisnummer;
-        String telefoonnummer;
-        int manVrouw;
-        int rol;
-        int blok;
-
-        ResultSet resultSet;
-
-        dbNaam = FXCollections.observableArrayList();
-
-        resultSet = db.executeResultSetQuery("SELECT `id`, `acountnaam`, "
-                + "`wachtwoord`, `voornaam`, `achternaam`, `geboortedatum`, "
-                + "`postcode`, `huisnummer`, `telefoonnummer`, `man/vrouw`, "
-                + "`rol`, `blok` FROM `gebruiker`");
-
-        while (resultSet.next()) {
-            id = resultSet.getInt("id");
-            acountnaam = resultSet.getString("acountnaam");
-            wachtwoord = resultSet.getString("wachtwoord");
-            voornaam = resultSet.getString("voornaam");
-            achternaam = resultSet.getString("achternaam");
-            geboortedatum = resultSet.getString("geboortedatum");
-            postcode = resultSet.getString("postcode");
-            huisnummer = resultSet.getString("huisnummer");
-            telefoonnummer = resultSet.getString("telefoonnummer");
-            manVrouw = resultSet.getInt("man/vrouw");
-            rol = resultSet.getInt("rol");
-            blok = resultSet.getInt("blok");
-            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord,
-                    voornaam, achternaam, geboortedatum,
-                    postcode, huisnummer, telefoonnummer,
-                    manVrouw, rol, blok));
-        }
-
-        for (int i = 0; i < table.getColumns().size(); i++) {
-            TableColumn column = (TableColumn) table.getColumns().get(i);
-            column.setCellValueFactory(new PropertyValueFactory(column.getId()));
-        }
-
-        table.setItems(dbNaam);
-
-    }
+//    public void dbTableFill() throws SQLException {
+//
+//        ConnectDB db = new ConnectDB("fystestdb");
+//
+//        int id;
+//        String acountnaam;
+//        String wachtwoord;
+//        String voornaam;
+//        String achternaam;
+//        String geboortedatum;
+//        String postcode;
+//        String huisnummer;
+//        String telefoonnummer;
+//        int manVrouw;
+//        int rol;
+//        int blok;
+//
+//        ResultSet resultSet;
+//
+//        dbNaam = FXCollections.observableArrayList();
+//
+//        resultSet = db.executeResultSetQuery("SELECT `id`, `acountnaam`, "
+//                + "`wachtwoord`, `voornaam`, `achternaam`, `geboortedatum`, "
+//                + "`postcode`, `huisnummer`, `telefoonnummer`, `man/vrouw`, "
+//                + "`rol`, `blok` FROM `gebruiker`");
+//
+//        while (resultSet.next()) {
+//            id = resultSet.getInt("id");
+//            acountnaam = resultSet.getString("acountnaam");
+//            wachtwoord = resultSet.getString("wachtwoord");
+//            voornaam = resultSet.getString("voornaam");
+//            achternaam = resultSet.getString("achternaam");
+//            geboortedatum = resultSet.getString("geboortedatum");
+//            postcode = resultSet.getString("postcode");
+//            huisnummer = resultSet.getString("huisnummer");
+//            telefoonnummer = resultSet.getString("telefoonnummer");
+//            manVrouw = resultSet.getInt("man/vrouw");
+//            rol = resultSet.getInt("rol");
+//            blok = resultSet.getInt("blok");
+//            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord,
+//                    voornaam, achternaam, geboortedatum,
+//                    postcode, huisnummer, telefoonnummer,
+//                    manVrouw, rol, blok));
+//        }
+//
+//        for (int i = 0; i < table.getColumns().size(); i++) {
+//            TableColumn column = (TableColumn) table.getColumns().get(i);
+//            column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+//        }
+//
+//        table.setItems(dbNaam);
+//
+//    }
 
 }

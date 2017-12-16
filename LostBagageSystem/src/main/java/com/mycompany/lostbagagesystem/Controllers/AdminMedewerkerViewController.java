@@ -4,6 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.models.DbNaam;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -36,6 +38,10 @@ public class AdminMedewerkerViewController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
