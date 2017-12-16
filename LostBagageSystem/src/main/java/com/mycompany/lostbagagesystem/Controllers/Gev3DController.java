@@ -2,13 +2,21 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.mycompany.lostbagagesystem.models.User;
+import com.mycompany.lostbagagesystem.models.bagageTabel;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,6 +49,8 @@ public class Gev3DController implements Initializable {
     private TableColumn<?, ?> actief;
     @FXML
     private AnchorPane gev3D;
+    @FXML
+    private ObservableList<bagageTabel> bagagetabel;
 
     private void handleAdd(ActionEvent event) {
         userList.add(new User(userIdCounter++, "?", "?", false));
@@ -55,21 +65,87 @@ public class Gev3DController implements Initializable {
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
-        userList = FXCollections.observableArrayList();
-
-        userList.add(new User(userIdCounter++, "Lennard", "Ooit", true));
-        userList.add(new User(userIdCounter++, "Peter", "Morgen", true));
-        userList.add(new User(userIdCounter++, "Claar", "Gister", true));
-
-        for (int i = 0; i < table.getColumns().size(); i++) {
-            TableColumn column = (TableColumn) table.getColumns().get(i);
-            column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+        
+        try {
+            dbTableFill();
+        } catch (SQLException ex) {
+            Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        table.setItems(userList);
 
         getChart();
 
+    }
+    
+    @FXML
+    public void dbTableFill() throws SQLException {
+        ConnectDB db = new ConnectDB("fystestdb");
+
+        String registration_nr;
+        String date_found;
+        String time_found;
+        String luggage_type;
+        String brand;
+        String arrived_with_flight;
+        String luggage_tag;
+        String location_found;
+        String main_color;
+        String second_color;
+        String size;
+        String weight;
+        String passanger_name;
+        String city;
+        String other_characteristics;
+
+        ResultSet resultSet;
+
+        bagagetabel = FXCollections.observableArrayList();
+
+        resultSet = db.executeResultSetQuery("SELECT `registration_nr`, "
+                + "`date_found`,`time_found`, `luggage_type`, `brand`, "
+                + "`arrived_with_flight`, `luggage_tag`, `location_found`, "
+                + "`main_color`, `second_color`, `size`, `weight`, "
+                + "`passanger_name`, `city`, `other_characteristics` FROM `gev310sep`");
+
+        while (resultSet.next()) {
+            registration_nr = resultSet.getString("registration_nr");
+            date_found = resultSet.getString("date_found");
+            time_found = resultSet.getString("time_found");
+            luggage_type = resultSet.getString("luggage_type");
+            brand = resultSet.getString("brand");
+            arrived_with_flight = resultSet.getString("arrived_with_flight");
+            luggage_tag = resultSet.getString("luggage_tag");
+            location_found = resultSet.getString("location_found");
+            main_color = resultSet.getString("main_color");
+            second_color = resultSet.getString("second_color");
+            size = resultSet.getString("size");
+            weight = resultSet.getString("weight");
+            passanger_name = resultSet.getString("passanger_name");
+            city = resultSet.getString("city");
+            other_characteristics = resultSet.getString("other_characteristics");
+
+            //Current date - aantal dagen
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            c.add(Calendar.DATE, -3);
+            String date = sdf.format(c.getTime());
+            //database date
+            String datadb = date_found + " " + time_found;
+
+            if (date.compareTo(datadb) <= 0) {
+
+                bagagetabel.add(new bagageTabel(registration_nr, date_found, time_found,
+                        luggage_type, brand, arrived_with_flight, luggage_tag,
+                        location_found, main_color, second_color, size, weight, passanger_name,
+                        city, other_characteristics));
+
+                for (int i = 0; i < table.getColumns().size(); i++) {
+                    TableColumn column = (TableColumn) table.getColumns().get(i);
+                    column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+                }
+            }
+        }
+
+        table.setItems(bagagetabel);
     }
 
     @FXML
