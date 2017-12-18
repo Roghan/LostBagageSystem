@@ -34,48 +34,25 @@ public class Gev3DController implements Initializable {
 
     @FXML
     private TableView table;
-
-    @FXML
-
-    private ObservableList<User> userList;
-
-    private int userIdCounter = 0;
-    @FXML
-    private TableColumn<?, ?> id;
-    @FXML
-    private TableColumn<?, ?> werknemer;
-    @FXML
-    private TableColumn<?, ?> locatie;
-    @FXML
-    private TableColumn<?, ?> actief;
+    private ObservableList<bagageTabel> bagagetabel;
+    
+    
+    
     @FXML
     private AnchorPane gev21D;
-    @FXML
-    private ObservableList<bagageTabel> bagagetabel;
-
-    private void handleAdd(ActionEvent event) {
-        userList.add(new User(userIdCounter++, "?", "?", false));
-    }
-
-    private void handleDelete(ActionEvent event) {
-        User user = (User) table.getSelectionModel().getSelectedItem();
-
-        userList.remove(user);
-    }
-
+    private int aantalDagen = 3;
+    private String gevVer = "Gevonden";
     @Override
-
     public void initialize(URL url, ResourceBundle rb) {
 
-
-
         try {
-            TableFillMan.dbTableFill(3, table, gev21D);
+            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer);
         } catch (SQLException ex) {
-            Logger.getLogger(Gev3DController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+
+
     }
 
 //    @FXML

@@ -34,7 +34,7 @@ public class TableFillMan {
     public static ResultSet resultSet;
 
     @FXML
-    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D) throws SQLException {
+    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer) throws SQLException {
 
         String registration_nr;
         String date_found;
@@ -110,7 +110,7 @@ public class TableFillMan {
         final LineChart<Number, Number> lineChart
                 = new LineChart<>(xAxis, yAxis);
 
-        lineChart.setTitle("Gevonden bagage, 21 dagen");
+        lineChart.setTitle(gevVer +" bagage, " + aantalDagen + " dagen");
         //defining a series
         XYChart.Series series = new XYChart.Series();
         series.setName("Bagage");

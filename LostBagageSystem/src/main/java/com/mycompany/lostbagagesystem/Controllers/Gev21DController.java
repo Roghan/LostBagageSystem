@@ -38,12 +38,13 @@ public class Gev21DController implements Initializable {
     
     @FXML
     private AnchorPane gev21D;
-
+    private int aantalDagen = 21;
+    private String gevVer = "Gevonden";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(21, table, gev21D);
+            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
