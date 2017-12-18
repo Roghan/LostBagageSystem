@@ -22,9 +22,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * @author is Youri Pel
@@ -34,7 +37,7 @@ public class AdminMainController implements Initializable {
     @FXML
     private TableView table;
 
-    private ObservableList<DbNaam> dbNaam;
+    public ObservableList<DbNaam> dbNaam;
 
     private Button Loguit;
 
@@ -52,27 +55,26 @@ public class AdminMainController implements Initializable {
 //    @FXML
 //    private Button Verwijderen;
     @FXML
-    private void blokkeer(ActionEvent event) throws IOException {
-        ConnectDB db = new ConnectDB("fystestdb");
+    public void blokkeer(ActionEvent event) throws IOException {
 
-        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-        String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
-        db.executeUpdateQuery(query);
-        user.setBlok(1);
-        table.refresh();
+        AdminMedewerkerViewController c = new AdminMedewerkerViewController();
+        
+        c.viewController(table);// maar deze code is 
+        
     }
 
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
         TableLeeg.getChildren().setAll(pane);
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());        
     }
 
     @FXML

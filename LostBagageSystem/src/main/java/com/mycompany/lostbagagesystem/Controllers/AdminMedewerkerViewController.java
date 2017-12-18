@@ -28,8 +28,8 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AdminMedewerkerViewController implements Initializable {
 
-    @FXML
-    private TableView table;
+//    @FXML
+//    private TableView table;
 
     private ObservableList<DbNaam> dbNaam;
     @FXML
@@ -38,10 +38,17 @@ public class AdminMedewerkerViewController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-    
+    public void viewController(TableView table) {// je moet deze table hebben... vrij zeker want die andere 
+        ConnectDB db = new ConnectDB("fystestdb");
+        System.out.println("selectionmodel = " + table.getSelectionModel());
+        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+        System.out.println("user = " + user);
+        String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
+        db.executeUpdateQuery(query);
+        user.setBlok(1);
+        table.refresh();
+    }
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
