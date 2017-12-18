@@ -122,11 +122,6 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtLabelNummer" prefHeight="30.0" prefWidth="360.0" promptText="Label Nummer">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
                   <TextField fx:id="txtVluchtNummer" prefHeight="30.0" prefWidth="360.0" promptText="Vlucht Nummer">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
