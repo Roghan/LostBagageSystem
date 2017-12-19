@@ -33,13 +33,12 @@ public class Gev21DController implements Initializable {
     @FXML
     private TableView table;
     private ObservableList<bagageTabel> bagagetabel;
-    
-    
-    
+
     @FXML
     private AnchorPane gev21D;
     private int aantalDagen = 21;
     private String gevVer = "Gevonden";
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -49,15 +48,10 @@ public class Gev21DController implements Initializable {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-
     }
 
     /**
      * @throws SQLException Hiermeer word de tabel gevuld met alle verloren
      * baggage die jonger is dan 21 dagen
      */
-
-
-
 }

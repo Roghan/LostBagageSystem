@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -28,40 +30,45 @@ public class Vergelijk {
     
         public static void vergelijken(int aantalDagen, AnchorPane gev21D) throws SQLException{
             
-        final NumberAxis xAxis = new NumberAxis();
+        final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Aantal dagen");
         //creating the chart
-        final LineChart<Number, Number> lineChart
-                = new LineChart<>(xAxis, yAxis);
+        final BarChart<String, Number> bc
+                = new BarChart<>(xAxis, yAxis);
 
-        lineChart.setTitle("Bagage, " + aantalDagen +" dagen");
+        bc.setTitle("Bagage, " + aantalDagen +" dagen");
         //defining a series
         XYChart.Series series = new XYChart.Series();
         series.setName("Bagage gevonden");
         //populating the series with data
-        
+        int j = 0;
         int[] gevondenKoffers = aantalGevonden(aantalDagen);
         for (int i = 0; i < aantalDagen; i++) {
-            series.getData().add(new XYChart.Data(i, gevondenKoffers[i]));
+            j++;
+            String nummer = Integer.toString(j);
+            series.getData().add(new XYChart.Data(nummer, gevondenKoffers[i]));
         }
+        j = 0;
         int[] verlorenKoffers = aantalVerloren(aantalDagen);
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Bagage verloren");
         //populating the series with data
             for (int i = 0; i < aantalDagen; i++) {
-                series2.getData().add(new XYChart.Data(i, verlorenKoffers[i]));
+                j++;
+                String nummer = Integer.toString(j);
+                series2.getData().add(new XYChart.Data(nummer, verlorenKoffers[i]));
         
             }
         
         
-        lineChart.getData().addAll(series, series2);
+        bc.getData().addAll(series, series2);
         gev21D.getChildren().setAll();
-        gev21D.getChildren().setAll(lineChart);
+        gev21D.getChildren().setAll(bc);
         
         
-        lineChart.prefWidthProperty().bind(gev21D.widthProperty());
-        lineChart.prefHeightProperty().bind(gev21D.heightProperty());
+        bc.prefWidthProperty().bind(gev21D.widthProperty());
+        bc.prefHeightProperty().bind(gev21D.heightProperty());
         
     }
 
