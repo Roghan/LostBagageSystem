@@ -28,8 +28,8 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AdminMedewerkerViewController implements Initializable {
 
-//    @FXML
-//    private TableView table;
+    @FXML
+    private TableView table;
 
     private ObservableList<DbNaam> dbNaam;
     @FXML
@@ -38,7 +38,7 @@ public class AdminMedewerkerViewController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    public void viewController(TableView table) {// je moet deze table hebben... vrij zeker want die andere 
+    public void blokkeerUsr() {// je moet deze table hebben... vrij zeker want die andere 
         ConnectDB db = new ConnectDB("fystestdb");
         System.out.println("selectionmodel = " + table.getSelectionModel());
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
