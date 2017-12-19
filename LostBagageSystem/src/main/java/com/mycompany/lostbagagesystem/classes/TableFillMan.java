@@ -14,6 +14,8 @@ import java.util.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -34,7 +36,7 @@ public class TableFillMan {
     public static ResultSet resultSet;
 
     @FXML
-    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D) throws SQLException {
+    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer) throws SQLException {
 
         String registration_nr;
         String date_found;
@@ -103,30 +105,33 @@ public class TableFillMan {
         table.setItems(bagagetabel);
 
         //defining the axes
-        final NumberAxis xAxis = new NumberAxis();
+        final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Aantal dagen");
         //creating the chart
-        final LineChart<Number, Number> lineChart
-                = new LineChart<>(xAxis, yAxis);
+        final BarChart<String,Number> bc
+                = new BarChart<>(xAxis, yAxis);
 
-        lineChart.setTitle("Gevonden bagage, 21 dagen");
+        bc.setTitle(gevVer +" bagage, " + aantalDagen + " dagen");
         //defining a series
         XYChart.Series series = new XYChart.Series();
         series.setName("Bagage");
         //populating the series with data
-        
+        int j = 0;
         int[] aantalKoffers = aantalVerloren(aantalDagen);
         for (int i = 0; i < aantalDagen; i++) {
-            series.getData().add(new XYChart.Data(i, aantalKoffers[i]));
+            j++;
+            String nummer = Integer.toString(j);
+            series.getData().add(new XYChart.Data(nummer, aantalKoffers[i]));
+            
         }
 
-        lineChart.getData().add(series);
+        bc.getData().add(series);
         gev21D.getChildren().setAll();
-        gev21D.getChildren().setAll(lineChart);
+        gev21D.getChildren().setAll(bc);
 
-        lineChart.prefWidthProperty().bind(gev21D.widthProperty());
-        lineChart.prefHeightProperty().bind(gev21D.heightProperty());
+        bc.prefWidthProperty().bind(gev21D.widthProperty());
+        bc.prefHeightProperty().bind(gev21D.heightProperty());
 
     }
 
@@ -159,5 +164,6 @@ public class TableFillMan {
             }
         }
         return aantalVerloren;
+
     }
 }
