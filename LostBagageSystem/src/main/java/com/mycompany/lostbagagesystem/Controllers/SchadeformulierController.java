@@ -2,12 +2,15 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -33,7 +36,7 @@ public class SchadeformulierController implements Initializable {
     private RadioButton checkM;
 
     @FXML
-    private ToggleGroup gender;
+    private ToggleGroup genderGroup;
 
     @FXML
     private RadioButton checkV;
@@ -54,7 +57,7 @@ public class SchadeformulierController implements Initializable {
     private TextField txtWoonplaats;
 
     @FXML
-    private TextField txtGeboorteDatum;
+    private DatePicker txtGeboorteDatum;
 
     @FXML
     private TextField txtLandnaam;
@@ -243,6 +246,15 @@ public class SchadeformulierController implements Initializable {
     private TextField txtSchadeLand;
 
     @FXML
+    private DatePicker txtSchadeDatum;
+
+    @FXML
+    private DatePicker txtDatumBeginReis;
+
+    @FXML
+    private TextField txtSchadeTijd;
+
+    @FXML
     private Button annuleren3;
 
     @FXML
@@ -250,6 +262,34 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private AnchorPane TableLeeg2;
+
+    private String voorletters;
+    private String tussenvoegsel;
+    private String achternaam;
+    private String geboortedatum;
+    private String landnaam;
+    private String gender;
+    private String bankRekening;
+    private String straatnaam;
+    private String huisnummer;
+    private String postcode;
+    private String woonplaats;
+    private String email;
+    private String telefoon;
+    private String mobiel;
+    private String bagageLabel;
+    private String typeBagage;
+    private String merkBagage;
+    private String bijzondereKenmerken;
+    private String schadeDatum;
+    private String datumBeginReis;
+    private String schadeTijd;
+    private String schadePlaats;
+    private String schadeLand;
+
+    private String colour;
+    private String colour2;
+    private String colour3;
 
 //    @FXML
 //    public void annuleren(ActionEvent event) throws IOException {
@@ -267,6 +307,60 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     void insturen(ActionEvent event) {
+        System.out.println("KNOP INSTUREN INGEDRUKT");
+
+        voorletters = txtVoorletters.getText();
+        tussenvoegsel = txtTussenvoegsel.getText();
+        achternaam = txtAchternaam.getText();
+        landnaam = txtLandnaam.getText();
+        gender = ToggleGroupResult.getPick(genderGroup);
+        bankRekening = txtBankrekening.getText();
+        straatnaam = txtStraatnaam.getText();
+        huisnummer = txtHuisNummer.getText();
+        postcode = txtPostcode.getText();
+        woonplaats = txtWoonplaats.getText();
+        email = txtEmail.getText();
+        telefoon = txtTelefoon.getText();
+        mobiel = txtMobielNummer.getText();
+        bagageLabel = null;
+        typeBagage = null;
+        merkBagage = null;
+        bijzondereKenmerken = null;
+        schadeTijd = txtSchadeTijd.getText();
+        schadePlaats = txtSchadePlaats.getText();
+        schadeLand = txtSchadeLand.getText();
+
+        TextField[] reqTextFields = new TextField[]{
+            txtVoorletters,
+            txtAchternaam,
+            txtBankrekening,
+            txtStraatnaam,
+            txtPostcode,
+            txtWoonplaats,
+            txtEmail,
+            txtLandnaam
+
+        };
+
+        DatePicker[] datePickers = new DatePicker[]{
+            txtGeboorteDatum,
+            txtSchadeDatum,
+            txtDatumBeginReis
+
+        };
+
+        TextField[] PhoneFields = new TextField[]{
+            txtTelefoon,
+            txtMobielNummer
+
+        };
+
+        TextField[] reqIntFields = new TextField[]{
+            txtHuisNummer
+
+        };
+
+        FormulierCheck.verificaton(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
 

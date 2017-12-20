@@ -241,4 +241,23 @@ public class ConnectDB {
     public String getErrorMessage() {
         return errorMessage;
     }
+    
+    public static Connection getDBConnection() {
+        Connection dbConnection = null;
+        
+        try {
+            Class.forName(DB_DRIVER_URL);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        try {
+            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306"
+                    + "/fystestdb?useSSL=false", DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
+            return dbConnection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dbConnection;
+    }
 }
