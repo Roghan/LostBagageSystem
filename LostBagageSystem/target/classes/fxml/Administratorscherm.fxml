@@ -45,12 +45,12 @@
                <children>
                   <Pane HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="Uitloggen" />
+                        <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="%TLK78" />
                      </children></Pane>
                   <Pane />
                   <Pane prefHeight="57.0" prefWidth="480.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField layoutX="320.0" layoutY="14.0" promptText="Zoek medewerker" />
+                        <TextField layoutX="320.0" layoutY="14.0" promptText="%TLK96" />
                      </children>
                   </Pane>
                </children>
@@ -61,9 +61,8 @@
                <items>
                   <AnchorPane prefHeight="494.0" prefWidth="140.0">
                      <children>
-                        <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
-                        <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
-                        <Button fx:id="Verwijderen" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
+                        <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="%TLK99" />
+                        <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="%TLK100" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="TableLeeg" prefHeight="200.0" prefWidth="644.0">

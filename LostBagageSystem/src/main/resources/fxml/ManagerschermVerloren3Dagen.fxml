@@ -14,17 +14,17 @@
          <children>
             <TableView fx:id="table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
-                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="werknemer" prefWidth="75.0" text="Werknemer" />
-                  <TableColumn fx:id="locatie" prefWidth="75.0" text="Locatie" />
-                  <TableColumn fx:id="actief" prefWidth="75.0" text="Actief" />
+                  <TableColumn fx:id="id" prefWidth="75.0" text="%TLK85" />
+                  <TableColumn fx:id="werknemer" prefWidth="75.0" text="%TLK86" />
+                  <TableColumn fx:id="locatie" prefWidth="75.0" text="%TLK87" />
+                  <TableColumn fx:id="actief" prefWidth="75.0" text="%TLK88" />
                </columns>
             </TableView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="ver3D">
          <children>
-            <LineChart layoutX="-64.0" title="Verloren 3 dagen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <LineChart layoutX="-64.0" title="%TLK79" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>

@@ -3,6 +3,7 @@
 
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.classes.language;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -18,6 +19,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
+import sun.reflect.LangReflectAccess;
 
 /**
  * @author is Koen van der Tuin
@@ -78,8 +80,7 @@ public class Ver3DController implements Initializable {
         //creating the chart
         final LineChart<Number, Number> lineChart
                 = new LineChart<Number, Number>(xAxis, yAxis);
-
-        lineChart.setTitle("Verloren bagage, 3 dagen");
+        lineChart.setTitle(language.getTranslationString("TLK79"));
         //defining a series
         XYChart.Series series = new XYChart.Series();
         series.setName("Bagage");
