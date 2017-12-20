@@ -1,5 +1,4 @@
 /LostBagageSystem/target
-*.properties
 *.txt
 LostBagageSystem/target/classes/META-INF/LICENSE
 LostBagageSystem/target/classes/META-INF/DEPENDENCIES
