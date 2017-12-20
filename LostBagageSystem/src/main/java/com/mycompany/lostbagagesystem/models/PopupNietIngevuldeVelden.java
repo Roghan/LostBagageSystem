@@ -56,7 +56,7 @@ public class PopupNietIngevuldeVelden {
     
         public static void warningBoxPass() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Text");
+        alert.setTitle(language.getTranslationString("TLK105"));
         alert.setHeaderText(null);
         alert.setContentText(language.getTranslationString("TLK105"));
 
