@@ -64,6 +64,7 @@
                         <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
                         <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
                         <Button fx:id="Verwijderen" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="25.0" prefWidth="125.0" text="Verwijderen" />
+                        <Button fx:id="btnWijzigen" layoutX="13.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="125.0" text="Wijzigen" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="TableLeeg" prefHeight="200.0" prefWidth="644.0">

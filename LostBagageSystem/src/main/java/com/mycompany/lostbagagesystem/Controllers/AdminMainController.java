@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -52,6 +53,17 @@ public class AdminMainController implements Initializable {
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
 
+    }
+    
+    @FXML
+    private void handleEdit(ActionEvent event) throws IOException, SQLException{
+        EditMedewerkerController Edit = new EditMedewerkerController();
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+        TableLeeg.getChildren().setAll();
+        TableLeeg.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
+        Edit.medewerkerWijzigen();
     }
 
     @FXML
