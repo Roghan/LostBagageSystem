@@ -4,15 +4,22 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -37,32 +44,91 @@ public class InlogSchermController implements Initializable {
     private AnchorPane TableLeeg;
 
     @FXML
+    private ToggleButton langNL;
+
+    @FXML
+    private ToggleButton langGB;
+
+    @FXML
+    private RadioMenuItem langTR;
+
+    @FXML
+    private RadioMenuItem langES;
+
+    @FXML
+    private ToggleGroup langSetting;
+
+    private Locale GB = new Locale("en", "GB");
+    private Locale NL = new Locale("nl", "NL");
+    private Locale TR = new Locale("tr", "TR");
+    private Locale ES = new Locale("es", "ES");
+    private Locale locale;
+
+    @FXML
     public void handleButtonAction() throws SQLException, IOException {
         ConnectDB db = new ConnectDB("fystestdb");
         ResultSet resultSet;
-        int blok;
         int rol;
         String user = username.getText();
         String pass = wachtwoord.getText();
 
-        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol`, `blok` "
+        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
                 + "FROM gebruiker WHERE acountnaam = " + "'" + user + "'"
                 + " AND wachtwoord = " + "'" + pass + "'");
 
         System.out.println(resultSet);
-        
+
+        setLang();
+
         if (resultSet.next()) {
+
             System.out.println("Je bent COOL!!");
             rol = resultSet.getInt("rol");
-            blok = resultSet.getInt("blok");
             System.out.println(rol);
-            if(blok == 0){
             adminPad(rol);
-            }else{
-                System.out.println("Je bent geblokkeerd!!!");
-            }
         } else {
             System.out.println("Je hoort hier niet!!!");
+        }
+
+    }
+
+    public Locale setLang() {
+
+        if (langNL.isSelected()) {
+            language.setCurrentLocale(NL);
+            return NL;
+
+        } else if (langGB.isSelected()) {
+            language.setCurrentLocale(GB);
+            return GB;
+
+        } else if (langTR.isSelected()) {
+            language.setCurrentLocale(TR);
+            return TR;
+
+        } else if (langES.isSelected()) {
+            language.setCurrentLocale(ES);
+            return ES;
+
+        }
+        return null;
+    }
+
+    public void changeLang() throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", setLang())); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        
+        if (setLang().equals(GB)) {
+            langGB.setSelected(true);
+            
         }
 
     }
@@ -71,7 +137,7 @@ public class InlogSchermController implements Initializable {
     public void adminPad(int rol) throws IOException {
         if (rol == 1) {
             //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
             //maakt de oude table leeg
             TableLeeg.getChildren().setAll();
             //laad de nieuwe table in
@@ -83,7 +149,7 @@ public class InlogSchermController implements Initializable {
 
         } else if (rol == 2) {
             //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
             //maakt de oude table leeg
             TableLeeg.getChildren().setAll();
             //laad de nieuwe table in
@@ -93,7 +159,7 @@ public class InlogSchermController implements Initializable {
             pane.prefHeightProperty().bind(TableLeeg.heightProperty());
         } else if (rol == 3) {
             //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
             //maakt de oude table leeg
             TableLeeg.getChildren().setAll();
             //laad de nieuwe table in
@@ -104,30 +170,6 @@ public class InlogSchermController implements Initializable {
         }
     }
 
-//    @FXML
-//    public void testdb() throws SQLException {
-//
-//        ConnectDB db = new ConnectDB("fystestdb");
-//
-//        
-//        String acountnaam;
-//        String wachtwoord;
-//        int rol;
-//        //show results
-//        ResultSet resultSet;
-//
-//        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` FROM `gebruiker`");
-//
-//        while (resultSet.next()) {
-//            
-//            acountnaam = resultSet.getString("acountnaam");
-//            wachtwoord = resultSet.getString("wachtwoord");
-//            rol = resultSet.getInt("rol");
-//            System.out.printf("%d = %s %s%n", rol, acountnaam, wachtwoord);
-//        }
-//
-//        db.close();
-//    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

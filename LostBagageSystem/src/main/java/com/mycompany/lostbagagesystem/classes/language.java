@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author Zilverdrake
+ * @author Marcel van Wilgenburg
  */
 public class language {
 
