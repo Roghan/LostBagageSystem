@@ -2,7 +2,10 @@
  */
 package com.mycompany.lostbagagesystem;
 
+import com.mycompany.lostbagagesystem.classes.language;
 import java.io.File;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +21,17 @@ import javafx.stage.FileChooser;
 public class MainApp extends Application {
 
     private static final FileChooser FILE_CHOOSER = new FileChooser();
+    private Locale NL = new Locale("nl", "NL");
+
 
     @Override
     public void start(Stage stage) throws Exception {
+        language.setCurrentLocale(NL);
 
-        final String SCHERMNAAM = "Administratorscherm";
+        final String SCHERMNAAM = "Medewerkers scherm";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("/Bundles.Lang", language.getCurrentLocale()));
+        
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");

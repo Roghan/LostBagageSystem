@@ -2,8 +2,11 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.classes.language;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util.baseName;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,7 +68,10 @@ public class MedMainController implements Initializable {
 
     @FXML
     public void schadeFormulier(ActionEvent event) throws IOException {
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/Schadeformulier.fxml"));
+        Locale locale = new Locale("en", "GB");
+
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/Schadeformulier.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+
         formulierLeeg.getChildren().setAll();
         formulierLeeg.getChildren().setAll(pane);
         pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
@@ -75,7 +81,7 @@ public class MedMainController implements Initializable {
 
     @FXML
     public void gevondenBagageFormulier(ActionEvent event) throws IOException {
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/GevondenBagageFormulier.fxml"));
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/GevondenBagageFormulier.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
         formulierLeeg.getChildren().setAll();
         formulierLeeg.getChildren().setAll(pane);
         pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
@@ -84,7 +90,8 @@ public class MedMainController implements Initializable {
 
     @FXML
     public void verlorenBagageFormulier(ActionEvent event) throws IOException {
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/VermisteBagageFormulier.fxml"));
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/VermisteBagageFormulier.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+
         formulierLeeg.getChildren().setAll();
         formulierLeeg.getChildren().setAll(pane);
         pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
@@ -94,7 +101,7 @@ public class MedMainController implements Initializable {
     @FXML
     public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         MedewerkerPane.getChildren().setAll();
         //laad de nieuwe table in

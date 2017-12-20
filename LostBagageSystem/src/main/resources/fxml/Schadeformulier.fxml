@@ -19,7 +19,7 @@
          <children>
             <VBox fillWidth="false" HBox.hgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schadeformulier">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK1">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -29,44 +29,44 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gegevens verzekerde">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK3">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtVoorletters" prefHeight="30.0" prefWidth="360.0" promptText="Voorletters">
+                  <TextField fx:id="txtVoorletters" prefHeight="30.0" prefWidth="360.0" promptText="%TLK8">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtTussenvoegsel" prefHeight="30.0" prefWidth="360.0" promptText="Tussenvoegsel">
+                  <TextField fx:id="txtTussenvoegsel" prefHeight="30.0" prefWidth="360.0" promptText="%TLK9">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAchternaam" prefHeight="30.0" prefWidth="360.0" promptText="Achternaam">
+                  <TextField fx:id="txtAchternaam" prefHeight="30.0" prefWidth="360.0" promptText="%TLK10">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <DatePicker fx:id="txtGeboorteDatum" prefHeight="30.0" prefWidth="360.0" promptText="Geboortedatum">
+                  <DatePicker fx:id="txtGeboorteDatum" prefHeight="30.0" prefWidth="360.0" promptText="%TLK11">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <TextField fx:id="txtLandnaam" prefHeight="30.0" prefWidth="360.0" promptText="Landnaam">
+                  <TextField fx:id="txtLandnaam" prefHeight="30.0" prefWidth="360.0" promptText="%TLK14">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtBankrekening" prefHeight="30.0" prefWidth="360.0" promptText="Bankrekening/IBAN">
+                  <TextField fx:id="txtBankrekening" prefHeight="30.0" prefWidth="360.0" promptText="%TLK13">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
                   <HBox>
                      <children>
-                        <RadioButton fx:id="checkM" mnemonicParsing="false" text="M">
+                        <RadioButton fx:id="checkM" mnemonicParsing="false" text="%TLK15">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
@@ -74,12 +74,12 @@
                               <ToggleGroup fx:id="genderGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="checkV" mnemonicParsing="false" text="V" toggleGroup="$genderGroup">
+                        <RadioButton fx:id="checkV" mnemonicParsing="false" text="%TLK16" toggleGroup="$genderGroup">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="checkO" mnemonicParsing="false" text="O" toggleGroup="$genderGroup">
+                        <RadioButton fx:id="checkO" mnemonicParsing="false" text="%TLK17" toggleGroup="$genderGroup">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
@@ -94,27 +94,27 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adres">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK18">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtStraatnaam" prefHeight="30.0" prefWidth="360.0" promptText="Straatnaam">
+                  <TextField fx:id="txtStraatnaam" prefHeight="30.0" prefWidth="360.0" promptText="%TLK19">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtHuisNummer" prefHeight="30.0" prefWidth="360.0" promptText="Huisnummer">
+                  <TextField fx:id="txtHuisNummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK20">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtPostcode" prefHeight="30.0" prefWidth="360.0" promptText="Postcode">
+                  <TextField fx:id="txtPostcode" prefHeight="30.0" prefWidth="360.0" promptText="%TLK21">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtWoonplaats" prefHeight="30.0" prefWidth="360.0" promptText="Woonplaats">
+                  <TextField fx:id="txtWoonplaats" prefHeight="30.0" prefWidth="360.0" promptText="%TLK22">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -124,22 +124,22 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contact">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK24">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtEmail" prefHeight="30.0" prefWidth="360.0" promptText="voorbeeld@gmail.com">
+                  <TextField fx:id="txtEmail" prefHeight="30.0" prefWidth="360.0" promptText="%TLK25">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtTelefoon" prefHeight="30.0" prefWidth="360.0" promptText="Telefoon (072)">
+                  <TextField fx:id="txtTelefoon" prefHeight="30.0" prefWidth="360.0" promptText="%TLK26">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0" promptText="Mobiel (06)">
+                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK27">
                      <VBox.margin>
                         <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -154,7 +154,7 @@
             </VBox>
             <VBox fillWidth="false" HBox.hgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schadegegevens">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK28">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -164,32 +164,32 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gegevens">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK29">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <DatePicker fx:id="txtSchadeDatum" prefHeight="30.0" prefWidth="360.0" promptText="Datum schade">
+                  <DatePicker fx:id="txtSchadeDatum" prefHeight="30.0" prefWidth="360.0" promptText="%TLK30">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <DatePicker fx:id="txtDatumBeginReis" prefHeight="30.0" prefWidth="360.0" promptText="Datum begin reis">
+                  <DatePicker fx:id="txtDatumBeginReis" prefHeight="30.0" prefWidth="360.0" promptText="%TLK31">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <TextField fx:id="txtSchadeTijd" prefHeight="30.0" prefWidth="360.0" promptText="Tijdstip schade, bv. 10:10">
+                  <TextField fx:id="txtSchadeTijd" prefHeight="30.0" prefWidth="360.0" promptText="%TLK32">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtSchadePlaats" prefHeight="30.0" prefWidth="360.0" promptText="Plaats">
+                  <TextField fx:id="txtSchadePlaats" prefHeight="30.0" prefWidth="360.0" promptText="%TLK33">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtSchadeLand" prefHeight="30.0" prefWidth="360.0" promptText="Land">
+                  <TextField fx:id="txtSchadeLand" prefHeight="30.0" prefWidth="360.0" promptText="%TLK34">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -199,7 +199,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <Button fx:id="annuleren31" mnemonicParsing="false" onAction="#annuleren3" text="Bagage Toevoegen">
+                  <Button fx:id="annuleren31" mnemonicParsing="false" onAction="#annuleren3" text="%TLK39">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -216,12 +216,12 @@
                   </Line>
                   <HBox>
                      <children>
-                        <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="Annuleren">
+                        <Button fx:id="annuleren3" mnemonicParsing="false" onAction="#annuleren3" text="%TLK40">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="Insturen">
+                        <Button fx:id="insturen" mnemonicParsing="false" onAction="#insturen" text="%TLK41">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
