@@ -26,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -62,6 +63,7 @@ public class AdminMainController implements Initializable {
     }
     
     @FXML
+<<<<<<< HEAD
     private void deBlokkeer(ActionEvent event) {
 //        ConnectDB db = new ConnectDB("fystestdb");
 //
@@ -77,6 +79,18 @@ public class AdminMainController implements Initializable {
      * @param event
      * @throws IOException
      */
+=======
+    private void handleEdit(ActionEvent event) throws IOException, SQLException{
+        EditMedewerkerController Edit = new EditMedewerkerController();
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+        TableLeeg.getChildren().setAll();
+        TableLeeg.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
+        Edit.medewerkerWijzigen();
+    }
+
+>>>>>>> Medewerkerscherm
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
