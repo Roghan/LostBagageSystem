@@ -8,6 +8,8 @@ import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -199,32 +201,17 @@ public class ManMainController implements Initializable {
 
     }
 
-//    @FXML
-//    public void listView(ActionEvent event) throws IOException {
-//        //Test output to concole
-//        System.out.println("Button Press Import Excel File");
-//        
-//        File file = MainApp.selectFileToOpen();
-//        
-//        if (file != null) {
-//            String fileName = file.getAbsolutePath();
-//            
-//            List<FoundLuggage> foundLuggage = FoundLuggage.importFoundLuggageFromExcel(fileName);
-//            
-//            statusMessage.setText("Aantal Koffers") ;
-//            
-//        } else {
-//            statusMessage.setText("Import Cancelled");
-//        }
-//        
-//}
     public void getProduct() {
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            medewerkers(null);
+        } catch (IOException ex) {
+            Logger.getLogger(ManMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

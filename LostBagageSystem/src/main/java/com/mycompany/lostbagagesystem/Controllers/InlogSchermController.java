@@ -5,6 +5,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
@@ -87,6 +88,7 @@ public class InlogSchermController implements Initializable {
             System.out.println(rol);
             adminPad(rol);
         } else {
+            PopupNietIngevuldeVelden.warningBoxPass();
             System.out.println("Je hoort hier niet!!!");
         }
 
