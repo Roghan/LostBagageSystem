@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -39,24 +40,28 @@ public class NewMedewerker {
     @FXML
     private TextField rol;
     @FXML
-    private AnchorPane TableLeeg;
+    private AnchorPane AdminPane;
+//    @FXML
+//    private AnchorPane AdminPane;
+    
 
     public void terug() throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminMedewerkerView.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
+        AdminPane.getChildren().setAll();
         //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
+        AdminPane.getChildren().setAll(pane);
+
         //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
     }
 
-    @FXML
-    public void annuleeredit(ActionEvent event) throws IOException {
-        terug();
-    }
+//    @FXML
+//    public void annuleeredit(ActionEvent event) throws IOException {
+//        terug();
+//    }
 
     @FXML
     public void sendtodatabase() throws IOException {
