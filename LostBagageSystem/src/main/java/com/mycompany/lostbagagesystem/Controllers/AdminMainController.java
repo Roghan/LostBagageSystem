@@ -3,6 +3,7 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.DbNaam;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
@@ -79,8 +80,12 @@ public class AdminMainController implements Initializable {
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
+<<<<<<< HEAD
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"));
         
+=======
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+>>>>>>> master
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -122,7 +127,11 @@ public class AdminMainController implements Initializable {
     @FXML
     public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
+<<<<<<< HEAD
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"));
+=======
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+>>>>>>> master
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in

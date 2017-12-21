@@ -3,7 +3,9 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +30,7 @@ public class SysLogController {
     @FXML
     public void managerKnop(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane    
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane    
     }
 
     public void exportPDF(ActionEvent event) {
