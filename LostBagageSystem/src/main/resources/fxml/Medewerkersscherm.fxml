@@ -54,15 +54,15 @@
                             <children>
                         <VBox layoutX="5.0" layoutY="5.0" prefHeight="468.0" prefWidth="142.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                                      <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="137.0" text="Schadeformulier" textAlignment="CENTER" wrapText="true">
+                                      <Button fx:id="schadeformbtn" mnemonicParsing="false" onAction="#schadeFormulier" prefHeight="27.0" prefWidth="137.0" text="%TLK75" textAlignment="CENTER" wrapText="true">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin></Button>
-                                      <Button fx:id="gevformbtn" mnemonicParsing="false" onAction="#gevondenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="Gevonden bagage formulier" textAlignment="CENTER" wrapText="true">
+                                      <Button fx:id="gevformbtn" mnemonicParsing="false" onAction="#gevondenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="%TLK76" textAlignment="CENTER" wrapText="true">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin></Button>
-                                      <Button fx:id="verlorenformbtn" mnemonicParsing="false" onAction="#verlorenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="Verloren bagage formulier" textAlignment="CENTER" wrapText="true">
+                                      <Button fx:id="verlorenformbtn" mnemonicParsing="false" onAction="#verlorenBagageFormulier" prefHeight="45.0" prefWidth="137.0" text="%TLK77" textAlignment="CENTER" wrapText="true">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin></Button>
@@ -79,7 +79,7 @@
                     <children>
                         <Pane HBox.hgrow="ALWAYS">
                             <children>
-                                <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="Uitloggen" />
+                                <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="%TLK78" />
                             </children>
                         </Pane>
                         <Pane />

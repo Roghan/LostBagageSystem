@@ -2,10 +2,12 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -190,6 +192,10 @@ public class VermistBagFormController implements Initializable {
     private Text Kleur1Text;
     @FXML
     private DatePicker txtGeboorteDatum;
+    @FXML
+    private ResourceBundle bundle;
+    private Locale locale;
+    
 
     private String time;
     private String datum;
@@ -226,6 +232,8 @@ public class VermistBagFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
 
     }
 
@@ -233,7 +241,8 @@ public class VermistBagFormController implements Initializable {
     public void bagageToevoegen(ActionEvent toevoegen) throws IOException {
         Stage stage = new Stage();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
@@ -300,5 +309,14 @@ public class VermistBagFormController implements Initializable {
         FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
+    
+    private void loadLang(String lang){
+        locale = new Locale(lang);
+        bundle = ResourceBundle.getBundle("Bundles.Lang", locale);
+        
+        
+        
+    }
+    
 
 }

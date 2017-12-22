@@ -4,9 +4,12 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.FoundLuggage;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
+import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,7 +80,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         ManagerPane.getChildren().setAll();
         //laad de nieuwe table in
@@ -90,7 +93,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void medewerkers(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerMedewerkerview.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerMedewerkerview.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -102,7 +105,7 @@ public class ManMainController implements Initializable {
 
     public void gevonden3Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden3Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden3Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -116,7 +119,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void gevonden21Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden21Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden21Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -130,7 +133,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void verloren3Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVerloren3Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVerloren3Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -144,7 +147,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void verloren21Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVerloren21Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVerloren21Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -158,7 +161,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void vergelijk3Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVergelijk3Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVergelijk3Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -172,7 +175,7 @@ public class ManMainController implements Initializable {
     @FXML
     public void vergelijk21Dagen(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVergelijk21Dagen.fxml")); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVergelijk21Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -198,32 +201,17 @@ public class ManMainController implements Initializable {
 
     }
 
-//    @FXML
-//    public void listView(ActionEvent event) throws IOException {
-//        //Test output to concole
-//        System.out.println("Button Press Import Excel File");
-//        
-//        File file = MainApp.selectFileToOpen();
-//        
-//        if (file != null) {
-//            String fileName = file.getAbsolutePath();
-//            
-//            List<FoundLuggage> foundLuggage = FoundLuggage.importFoundLuggageFromExcel(fileName);
-//            
-//            statusMessage.setText("Aantal Koffers") ;
-//            
-//        } else {
-//            statusMessage.setText("Import Cancelled");
-//        }
-//        
-//}
     public void getProduct() {
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            medewerkers(null);
+        } catch (IOException ex) {
+            Logger.getLogger(ManMainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

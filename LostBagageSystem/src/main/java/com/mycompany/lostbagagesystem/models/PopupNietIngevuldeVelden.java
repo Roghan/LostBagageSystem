@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
+import com.mycompany.lostbagagesystem.classes.language;
 import javafx.scene.control.Alert;
 
 /**
@@ -48,6 +49,16 @@ public class PopupNietIngevuldeVelden {
         alert.setTitle("Text");
         alert.setHeaderText(null);
         alert.setContentText("Cijfer velden mogen alleen cijfers Bevatten");
+
+        alert.showAndWait();
+
+    }
+    
+        public static void warningBoxPass() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(language.getTranslationString("TLK105"));
+        alert.setHeaderText(null);
+        alert.setContentText(language.getTranslationString("TLK105"));
 
         alert.showAndWait();
 
