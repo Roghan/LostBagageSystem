@@ -176,7 +176,7 @@ public class ToevoegenBagageController extends VermistBagFormController{
 
         TextField[] reqIntFields = new TextField[]{};
 
-        boolean formGoedIngevuld = FormulierCheck.verificaton(reqTextFields, PhoneFields, datePickers, reqIntFields);
+        boolean formGoedIngevuld = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
 
     }

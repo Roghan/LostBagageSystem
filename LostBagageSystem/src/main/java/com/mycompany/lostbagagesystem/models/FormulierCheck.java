@@ -21,7 +21,7 @@ public class FormulierCheck {
     private static int totalArrayLenght;
     private static boolean txtIsInt;
 
-    public static boolean verificaton(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields) {
+    public static boolean verification(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields) {
 
         totalArrayLenght = (reqTextFields.length + datePickers.length + PhoneFields.length + intTextFields.length);
         fieldsAreFilled = fieldsAreFilled(reqTextFields, datePickers, PhoneFields, intTextFields, totalArrayLenght);

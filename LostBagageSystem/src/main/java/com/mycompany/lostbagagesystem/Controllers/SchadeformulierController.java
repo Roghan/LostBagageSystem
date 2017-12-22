@@ -360,7 +360,7 @@ public class SchadeformulierController implements Initializable {
 
         };
 
-        FormulierCheck.verificaton(reqTextFields, PhoneFields, datePickers, reqIntFields);
+        FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
 

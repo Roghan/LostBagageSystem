@@ -297,7 +297,7 @@ public class VermistBagFormController implements Initializable {
         TextField[] reqIntFields = new TextField[]{
             txtHuisNummer};
 
-        FormulierCheck.verificaton(reqTextFields, PhoneFields, datePickers, reqIntFields);
+        FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
 
