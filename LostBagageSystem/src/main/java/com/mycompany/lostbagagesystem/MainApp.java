@@ -2,7 +2,7 @@
  */
 package com.mycompany.lostbagagesystem;
 
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -26,11 +26,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        language.setCurrentLocale(NL);
+        Language.setCurrentLocale(NL);
 
         final String SCHERMNAAM = "InlogScherm";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale()));
         
 
         Scene scene = new Scene(root);

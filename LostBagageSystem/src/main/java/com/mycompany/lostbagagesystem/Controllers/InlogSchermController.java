@@ -4,7 +4,7 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
@@ -88,6 +88,8 @@ public class InlogSchermController implements Initializable {
             System.out.println(rol);
             adminPad(rol);
         } else {
+            username.setStyle("-fx-border-color : #ff0000;");
+            wachtwoord.setStyle("-fx-border-color : #ff0000;");
             PopupNietIngevuldeVelden.warningBoxPass();
             System.out.println("Je hoort hier niet!!!");
         }
@@ -97,19 +99,19 @@ public class InlogSchermController implements Initializable {
     public Locale setLang() {
 
         if (langNL.isSelected()) {
-            language.setCurrentLocale(NL);
+            Language.setCurrentLocale(NL);
             return NL;
 
         } else if (langGB.isSelected()) {
-            language.setCurrentLocale(GB);
+            Language.setCurrentLocale(GB);
             return GB;
 
         } else if (langTR.isSelected()) {
-            language.setCurrentLocale(TR);
+            Language.setCurrentLocale(TR);
             return TR;
 
         } else if (langES.isSelected()) {
-            language.setCurrentLocale(ES);
+            Language.setCurrentLocale(ES);
             return ES;
 
         }
@@ -139,7 +141,7 @@ public class InlogSchermController implements Initializable {
     public void adminPad(int rol) throws IOException {
         if (rol == 1) {
             //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
             //maakt de oude table leeg
             TableLeeg.getChildren().setAll();
             //laad de nieuwe table in
@@ -151,7 +153,7 @@ public class InlogSchermController implements Initializable {
 
         } else if (rol == 2) {
             //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
             //maakt de oude table leeg
             TableLeeg.getChildren().setAll();
             //laad de nieuwe table in
@@ -161,7 +163,7 @@ public class InlogSchermController implements Initializable {
             pane.prefHeightProperty().bind(TableLeeg.heightProperty());
         } else if (rol == 3) {
             //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
             //maakt de oude table leeg
             TableLeeg.getChildren().setAll();
             //laad de nieuwe table in

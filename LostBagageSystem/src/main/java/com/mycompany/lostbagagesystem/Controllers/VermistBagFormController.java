@@ -2,7 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
@@ -241,7 +241,7 @@ public class VermistBagFormController implements Initializable {
     public void bagageToevoegen(ActionEvent toevoegen) throws IOException {
         Stage stage = new Stage();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale()));
         
 
         Scene scene = new Scene(root);
