@@ -220,7 +220,7 @@ public class GevBagFormController implements Initializable {
 
         TextField[] reqIntFields = new TextField[]{};
 
-        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers, reqIntFields);
+        FormulierCheck.verification(reqFields, PhoneFields, datePickers, reqIntFields);
         //sendToDatabase();
     }
 

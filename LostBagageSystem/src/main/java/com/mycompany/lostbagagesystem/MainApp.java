@@ -28,9 +28,9 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         language.setCurrentLocale(NL);
 
-        final String SCHERMNAAM = "Medewerkers scherm";
+        final String SCHERMNAAM = "InlogScherm";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("/Bundles.Lang", language.getCurrentLocale()));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
         
 
         Scene scene = new Scene(root);
