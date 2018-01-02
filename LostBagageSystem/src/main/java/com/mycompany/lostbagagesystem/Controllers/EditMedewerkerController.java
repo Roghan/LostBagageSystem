@@ -96,10 +96,11 @@ public class EditMedewerkerController implements Initializable {
         
         rs = db.executeResultSetQuery(query);
         try {
-            if (rs.next()) {
+            if (true) {
                  txtVoornaam.setPromptText("text");
                 //txtVoornaam.setText(voornaam);
                 achternaam = rs.getString("achternaam");
+                System.out.println(rs.getString("achternaam"));
                 txtAchternaam.setText(achternaam);
             }
         } catch (Exception e) {
