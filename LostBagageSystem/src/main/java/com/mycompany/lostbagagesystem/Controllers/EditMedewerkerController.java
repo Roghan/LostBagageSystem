@@ -84,58 +84,66 @@ public class EditMedewerkerController implements Initializable {
     
     @FXML
     public void medewerkerWijzigen() throws SQLException{
-        // Vul de textvelden in met de gegevens
-        ResultSet rs = null;
-        //voornaam = rs.getString("voornaam");
-        rs = query();
-        try {
-            if (true) {
-                txtAccountnaam.setText(rs.getString("voornaam"));
-                System.out.println("huh");
-                achternaam = rs.getString("achternaam");
-                txtAchternaam.setText(achternaam);
-                System.out.println("hode");
-            } else {
-                JOptionPane.showMessageDialog(null, "rip");
-            }
-            
-        } catch (Exception e) {
-        }
-            
-    }
-    
-    public ResultSet query() throws SQLException{
-    PreparedStatement myStmt = null;
-        Connection conn = null;
+//        PreparedStatement myStmt = null;
+//        Connection conn = null;
         ConnectDB db = new ConnectDB();
         ResultSet rs = null;
 
         // This is a test query 
         String query = "SELECT `voornaam`, `achternaam`"
-                + "FROM gebruiker WHERE `id` = ?";
+                + "FROM `gebruiker` WHERE `id` = 1";
         
+        
+        rs = db.executeResultSetQuery(query);
         try {
-            conn = db.getDBConnection();
-            myStmt = conn.prepareStatement(query);
-            myStmt.setString(1, "1");
-            // Execute INSERT sql statement
-            rs = myStmt.executeQuery();
-            
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            // Closing the prepared statement for memory purposes
-            if (myStmt != null) {
-                myStmt.close();
+            if (true) {
+                 txtVoornaam.setPromptText("text");
+                //txtVoornaam.setText(voornaam);
+                achternaam = rs.getString("achternaam");
+                System.out.println(rs.getString("achternaam"));
+                txtAchternaam.setText(achternaam);
             }
-            // Closing the database connection for memory purposes
-            if (conn != null) {
-                conn.close();
-            }
+        } catch (Exception e) {
         }
-        System.out.println("gelukt");
-        return rs;
+        
+//        try {
+//            conn = db.getDBConnection();
+//            myStmt = conn.prepareStatement(query);
+//            myStmt.setInt(1, 1);
+//            // Execute INSERT sql statement
+//            rs = myStmt.executeQuery();
+//            System.out.println(myStmt.executeQuery());
+//            //System.out.println(rs);
+//            if (rs.next()) {
+//                System.out.println("yee");
+//                txtVoornaam.setText(rs.getString("voornaam"));
+//                System.out.println("huh");
+//                achternaam = rs.getString("achternaam");
+//                txtAchternaam.setText(achternaam);
+//                System.out.println("hode");
+//            }
+//            
+//            
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        } finally {
+//            // Closing the prepared statement for memory purposes
+//            if (myStmt != null) {
+//                myStmt.close();
+//            }
+//            // Closing the database connection for memory purposes
+//            if (conn != null) {
+//                conn.close();
+//            }
+//        }
+//        System.out.println("gelukt");
+//        return rs;
+        
     }
+    
+//    public ResultSet query() throws SQLException{
+//    
+//    }
     
     /**
      * Initializes the controller class.

@@ -67,9 +67,13 @@ public class AdminMainController implements Initializable {
     @FXML
     private void handleEdit(ActionEvent event) throws IOException, SQLException{
         EditMedewerkerController Edit = new EditMedewerkerController();
+        //laad de nieuwe table in de bestaande anchorpane
         ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+        //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
         TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.widthProperty());
         Edit.medewerkerWijzigen();
