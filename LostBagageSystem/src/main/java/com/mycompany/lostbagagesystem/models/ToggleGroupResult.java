@@ -10,7 +10,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *
@@ -20,20 +19,17 @@ public class ToggleGroupResult {
 
     private static String pick;
 
-    public static String getPick(ToggleGroup group) {
+    public static String getPick(final ToggleGroup group) {
 
-        RadioButton selectedButton = (RadioButton) group.getSelectedToggle();
-        if (selectedButton == null) {
-            pick = "Empty";
-
-        } else {
-
-            pick = selectedButton.getText();
-
-            System.out.println("RADIO BUTTON CHECK");
-
-        }
-
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov,
+                    Toggle old_toggle, Toggle new_toggle) {
+                if (group.getSelectedToggle() != null) {
+                    RadioButton selectedButton = (RadioButton) group.getSelectedToggle();
+                    pick = selectedButton.getText();
+                }
+            }
+        });
         return pick;
     }
 

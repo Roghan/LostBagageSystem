@@ -2,18 +2,13 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import com.mycompany.lostbagagesystem.classes.BagageToevoegenObject;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
-import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -198,10 +192,10 @@ public class VermistBagFormController implements Initializable {
     private Text Kleur1Text;
     @FXML
     private DatePicker txtGeboorteDatum;
-
     @FXML
     private ResourceBundle bundle;
     private Locale locale;
+    
 
     private String time;
     private String datum;
@@ -230,9 +224,6 @@ public class VermistBagFormController implements Initializable {
     private String colour;
     private String colour2;
     private String colour3;
-    private ArrayList<BagageToevoegenObject> koffers = new ArrayList<>();
-    private int koffercount;
-    
 
     @FXML
     void annuleren3(ActionEvent event) {
@@ -241,19 +232,8 @@ public class VermistBagFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        koffercount = 0;
-        setItems();
-
-    }
-
-    @FXML
-    void annulerenKofferToevoegen(ActionEvent event) {
-        System.out.println("Knop Bagage Toevoegen Annuleren ingedrukt");
-
-        Stage stage = (Stage) btnAnnuleren3.getScene().getWindow();
-
-        stage.close();
+        
+        
 
     }
 
@@ -261,7 +241,8 @@ public class VermistBagFormController implements Initializable {
     public void bagageToevoegen(ActionEvent toevoegen) throws IOException {
         Stage stage = new Stage();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage_Vermist.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ToevoegenBagage.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
@@ -328,67 +309,14 @@ public class VermistBagFormController implements Initializable {
         FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
 
     }
-
-    @FXML
-    public void toevoegenKoffer(ActionEvent event) {
-        System.out.println("Knop bagage Toevoegen ingedrukt");
-
-        bagageLabel = txtBagageLabel.getText();
-        typeBagage = txtTypeBagage.getText();
-        merk = txtMerk.getText();
-        bijzondereOpmerking = txtBijzondereOpmerking.getText();
-
-        colour = ToggleGroupResult.getPick(kleur1);
-        System.out.println(colour);
-        colour2 = ToggleGroupResult.getPick(kleur2);
-        System.out.println(colour2);
-        colour3 = ToggleGroupResult.getPick(kleur3);
-        System.out.println(colour3);
-
-        if (colour.equals("Empty") && colour2.equals("Empty") && colour3.equals("Empty")) {
-            PopupNietIngevuldeVelden.warningBox();
-
-        } else {
-            TextField[] reqTextFields = new TextField[]{
-                txtBagageLabel,
-                txtMerk,
-                txtTypeBagage
-
-            };
-            DatePicker[] datePickers = new DatePicker[]{};
-
-            TextField[] PhoneFields = new TextField[]{};
-
-            TextField[] reqIntFields = new TextField[]{};
-
-            //boolean formGoedIngevuld = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
-            if (true) {
-                koffers.add(koffercount, new BagageToevoegenObject(bagageLabel, typeBagage, merk, bijzondereOpmerking, colour, colour2, colour3));
-               // items.add(koffers.get(koffercount).getBagageLabel());
-                System.out.println(koffers.get(koffercount).getBagageLabel());
-
-                koffercount++;
-
-                Stage stage = (Stage) btnAnnuleren3.getScene().getWindow();
-
-                stage.close();
-                //items.add("TEST");
-                setItems();
-
-            }
-
-        }
-
+    
+    private void loadLang(String lang){
+        locale = new Locale(lang);
+        bundle = ResourceBundle.getBundle("Bundles.Lang", locale);
+        
+        
+        
     }
-
-    @FXML
-    public void setItems() {
-        ObservableList<String> items = FXCollections.observableArrayList();
-        ListView<String> listView = new ListView<>();
-        items.add("TEST");
-        listView.getItems().setAll(items);
-        listView.refresh();
-
-    }
+    
 
 }
