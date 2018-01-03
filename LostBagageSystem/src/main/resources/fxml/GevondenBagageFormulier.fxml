@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.GevBagFormController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.GevBagFormController">
    <content>
       <HBox>
          <children>
@@ -150,7 +150,12 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtBestemming" prefHeight="30.0" prefWidth="360.0" promptText="%TLK38">
+                  <TextField fx:id="txtVan" prefHeight="30.0" prefWidth="360.0" promptText="%TLK130">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtNaar" prefHeight="30.0" prefWidth="360.0" promptText="%TLK131">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
