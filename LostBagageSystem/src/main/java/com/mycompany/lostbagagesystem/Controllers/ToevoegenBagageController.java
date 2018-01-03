@@ -1,9 +1,10 @@
-/*Controller Class voor het Toevoegen Bagage Scherm
+/*Controller Class voor het Toevoegen BagageToevoegenObject Scherm
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import com.mycompany.lostbagagesystem.classes.Bagage;
+import com.mycompany.lostbagagesystem.classes.BagageToevoegenObject;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author Marcel van Wilgenburg
  */
-public class ToevoegenBagageController extends VermistBagFormController{
+public class ToevoegenBagageController extends VermistBagFormController {
 
     @FXML
     private TextField txtBagageLabel;
@@ -151,7 +152,10 @@ public class ToevoegenBagageController extends VermistBagFormController{
     private String colour2;
     private String colour3;
 
+    private static BagageToevoegenObject koffer;
+
     @FXML
+    @Override
     void insturen(ActionEvent event) {
         System.out.println("Knop bagage Toevoegen ingedrukt");
 
@@ -161,23 +165,35 @@ public class ToevoegenBagageController extends VermistBagFormController{
         bijzondereOpmerking = txtBijzondereOpmerking.getText();
 
         colour = ToggleGroupResult.getPick(kleur1);
+        System.out.println(colour);
         colour2 = ToggleGroupResult.getPick(kleur2);
+        System.out.println(colour2);
         colour3 = ToggleGroupResult.getPick(kleur3);
+        System.out.println(colour3);
 
-        TextField[] reqTextFields = new TextField[]{
-            txtBagageLabel,
-            txtMerk,
-            txtTypeBagage
+        if (colour.equals("Empty") && colour2.equals("Empty") && colour3.equals("Empty")) {
+            PopupNietIngevuldeVelden.warningBox();
 
-        };
-        DatePicker[] datePickers = new DatePicker[]{};
+        } else {
+            TextField[] reqTextFields = new TextField[]{
+                txtBagageLabel,
+                txtMerk,
+                txtTypeBagage
 
-        TextField[] PhoneFields = new TextField[]{};
+            };
+            DatePicker[] datePickers = new DatePicker[]{};
 
-        TextField[] reqIntFields = new TextField[]{};
+            TextField[] PhoneFields = new TextField[]{};
 
-        boolean formGoedIngevuld = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
+            TextField[] reqIntFields = new TextField[]{};
 
+            boolean formGoedIngevuld = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
+            if (formGoedIngevuld) {
+                koffer = new BagageToevoegenObject(bagageLabel, typeBagage, merk, bijzondereOpmerking, colour, colour2, colour3);
+
+            }
+
+        }
 
     }
 
