@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
+    <stylesheets>
+        <URL value="@/styles/Styles.css" />
+    </stylesheets>
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <TextField alignment="TOP_LEFT" prefHeight="25.0" prefWidth="711.0" />
+                  <RadioButton fx:id="filterLost" mnemonicParsing="false" text="Lost" textAlignment="CENTER">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="State" />
+                     </toggleGroup>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" top="4.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="filterFound" mnemonicParsing="false" text="Found" textAlignment="CENTER" toggleGroup="$State">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" top="4.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <TableView>
+              <columns>
+                <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="BagageID" />
+                <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="State" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="95.0" text="Labelnumber" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="72.0" text="Type" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="58.0" text="Brand" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color1" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color2" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="93.0" text="Characteristics" />
+                  <TableColumn minWidth="0.0" prefWidth="113.0" text="Location" />
+                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="Airport" />
+                  <TableColumn prefWidth="75.0" text="From" />
+                  <TableColumn prefWidth="75.0" text="To" />
+                  <TableColumn prefWidth="75.0" text="Initial" />
+                  <TableColumn prefWidth="75.0" text="Insertion" />
+                  <TableColumn fx:id="is" prefWidth="75.0" text="Surname" />
+                  <TableColumn prefWidth="75.0" text="IsReturned" />
+              </columns>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
