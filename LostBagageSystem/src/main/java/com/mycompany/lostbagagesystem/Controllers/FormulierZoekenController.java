@@ -3,13 +3,13 @@ package com.mycompany.lostbagagesystem.Controllers;
 /*Controller Class voor het zoeken naar gevonden en verloren bagage formulieren
  */
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.models.bagageTabel;
+import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +19,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -32,94 +31,88 @@ public class FormulierZoekenController implements Initializable {
     private RadioButton filterLost;
 
     @FXML
-    private ToggleGroup State;
+    private ToggleGroup StateSelect;
 
     @FXML
     private RadioButton filterFound;
 
     @FXML
     private TableView<?> searchTable;
+    @FXML
+    private TableView<MedewerkerBagageTable> bagage;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            dbTableFill();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormulierZoekenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-//    private static ObservableList<bagageTabel> bagagetabel;
-//
-//    private static ConnectDB db = new ConnectDB("fystestdb");
-//    private static ResultSet resultSet;
+    private ConnectDB db = new ConnectDB("lbs_database");
+    private ResultSet resultSet;
 
-//    @FXML
-//    public static void dbTableFill() throws SQLException {
-//
-//        String registration_nr;
-//        String date_found;
-//        String time_found;
-//        String luggage_type;
-//        String brand;
-//        String arrived_with_flight;
-//        String luggage_tag;
-//        String location_found;
-//        String main_color;
-//        String second_color;
-//        String size;
-//        String weight;
-//        String passanger_name;
-//        String city;
-//        String other_characteristics;
-//
-//        bagagetabel = FXCollections.observableArrayList();
-//        //SQL query
-//        resultSet = db.executeResultSetQuery("SELECT `registration_nr`, "
-//                + "`date_found`,`time_found`, `luggage_type`, `brand`, "
-//                + "`arrived_with_flight`, `luggage_tag`, `location_found`, "
-//                + "`main_color`, `second_color`, `size`, `weight`, "
-//                + "`passanger_name`, `city`, `other_characteristics` FROM `gev310sep`");
-//        //Get all the results out of the database
-//        while (resultSet.next()) {
-//            registration_nr = resultSet.getString("registration_nr");
-//            date_found = resultSet.getString("date_found");
-//            time_found = resultSet.getString("time_found");
-//            luggage_type = resultSet.getString("luggage_type");
-//            brand = resultSet.getString("brand");
-//            arrived_with_flight = resultSet.getString("arrived_with_flight");
-//            luggage_tag = resultSet.getString("luggage_tag");
-//            location_found = resultSet.getString("location_found");
-//            main_color = resultSet.getString("main_color");
-//            second_color = resultSet.getString("second_color");
-//            size = resultSet.getString("size");
-//            weight = resultSet.getString("weight");
-//            passanger_name = resultSet.getString("passanger_name");
-//            city = resultSet.getString("city");
-//            other_characteristics = resultSet.getString("other_characteristics");
-//
-//            //Current date - aantal dagen
-//            Calendar c = Calendar.getInstance();
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            c.add(Calendar.DATE, -aantalDagen);
-//            String date = sdf.format(c.getTime());
-//            //database date
-//            String datadb = date_found + " " + time_found;
-//
-//            //if currentdate -aantaldagen <= to database date than show
-//            if (date.compareTo(datadb) <= 0) {
-//
-//                bagagetabel.add(new bagageTabel(registration_nr, date_found, time_found,
-//                        luggage_type, brand, arrived_with_flight, luggage_tag,
-//                        location_found, main_color, second_color, size, weight, passanger_name,
-//                        city, other_characteristics));
-//
-//                for (int i = 0; i < table.getColumns().size(); i++) {
-//                    TableColumn column = (TableColumn) table.getColumns().get(i);
-//                    column.setCellValueFactory(new PropertyValueFactory(column.getId()));
-//                }
-//            }
-//        }
-//
-//        table.setItems(bagagetabel);
-//
-  }
+    @FXML
+    public void dbTableFill() throws SQLException {
+        ObservableList<MedewerkerBagageTable> bagagetabel = FXCollections.observableArrayList();
+
+        String BagageID;
+        String State;
+        String Labelnumber;
+        String Type;
+        String Brand;
+        String Color1;
+        String Color2;
+        String Characteristics;
+        String Location;
+        String Airport;
+        String From;
+        String To;
+        String Initial;
+        String Insertion;
+        String Surname;
+        String IsReturned;
+
+        //SQL query
+        resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage`");
+        //Get all the results out of the database
+        while (resultSet.next()) {
+            BagageID = resultSet.getString("BagageID");
+            System.out.println(BagageID);
+            State = resultSet.getString("State");
+            System.out.println(State);
+            Labelnumber = resultSet.getString("Labelnumber");
+            Type = resultSet.getString("Type");
+            Brand = resultSet.getString("Brand");
+            Color1 = resultSet.getString("Color1");
+            Color2 = resultSet.getString("Color2");
+            Characteristics = resultSet.getString("Characteristics");
+            Location = resultSet.getString("Location");
+            Airport = resultSet.getString("Airport");
+            From = resultSet.getString("From");
+            To = resultSet.getString("To");
+            Initial = resultSet.getString("Initial");
+            Insertion = resultSet.getString("Insertion");
+            Surname = resultSet.getString("Surname");
+            IsReturned = resultSet.getString("IsReturned");
+
+            bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Type,Labelnumber, Brand, Color1, Color2,
+                    Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
+
+            for (int i = 0; i < bagage.getColumns().size(); i++) {
+                TableColumn column = (TableColumn) bagage.getColumns().get(i);
+                column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+            }
+
+        }
+
+        bagage.setItems(bagagetabel);
+
+    }
+
+}

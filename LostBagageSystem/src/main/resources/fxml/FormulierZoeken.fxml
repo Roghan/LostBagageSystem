@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -41,24 +41,24 @@
             </HBox>
          </top>
          <center>
-            <TableView>
+            <TableView fx:id="bagage">
               <columns>
-                <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="BagageID" />
-                <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="State" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="95.0" text="Labelnumber" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="72.0" text="Type" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="58.0" text="Brand" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color1" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color2" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="93.0" text="Characteristics" />
-                  <TableColumn minWidth="0.0" prefWidth="113.0" text="Location" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="Airport" />
-                  <TableColumn prefWidth="75.0" text="From" />
-                  <TableColumn prefWidth="75.0" text="To" />
-                  <TableColumn prefWidth="75.0" text="Initial" />
-                  <TableColumn prefWidth="75.0" text="Insertion" />
-                  <TableColumn fx:id="is" prefWidth="75.0" text="Surname" />
-                  <TableColumn prefWidth="75.0" text="IsReturned" />
+                <TableColumn fx:id="BagageID" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="BagageID" />
+                <TableColumn fx:id="State" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="State" />
+                  <TableColumn fx:id="Labelnumber" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="95.0" text="Labelnumber" />
+                  <TableColumn fx:id="Type" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="72.0" text="Type" />
+                  <TableColumn fx:id="Brand" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="58.0" text="Brand" />
+                  <TableColumn fx:id="Color1" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color1" />
+                  <TableColumn fx:id="Color2" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color2" />
+                  <TableColumn fx:id="Characteristics" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="93.0" text="Characteristics" />
+                  <TableColumn fx:id="Location" minWidth="0.0" prefWidth="113.0" text="Location" />
+                  <TableColumn fx:id="Airport" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="Airport" />
+                  <TableColumn fx:id="From" prefWidth="75.0" text="From" />
+                  <TableColumn fx:id="To" prefWidth="75.0" text="To" />
+                  <TableColumn fx:id="Initial" prefWidth="75.0" text="Initial" />
+                  <TableColumn fx:id="Insertion" prefWidth="75.0" text="Insertion" />
+                  <TableColumn fx:id="Surname" prefWidth="75.0" text="Surname" />
+                  <TableColumn fx:id="IsReturned" prefWidth="75.0" text="IsReturned" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
