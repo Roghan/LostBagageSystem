@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.GevBagFormController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.GevBagFormController">
    <content>
       <HBox>
          <children>
@@ -144,21 +144,98 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtVluchtNummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK37">
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <TextField fx:id="txtVluchtNummer1" prefHeight="30.0" prefWidth="360.0" promptText="%TLK37">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtVan" prefHeight="30.0" prefWidth="360.0" promptText="%TLK130">
+                  <MenuButton fx:id="btnVanVliegveldID" mnemonicParsing="false" text="%TLK130">
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="AMS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="IATA_VAN" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="AYT" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="IST" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="BJV" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="DLM" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="ADB" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="GZP" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="ECN" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="RAK" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="HER" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="KGS" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="RHO" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="ZTH" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="CFU" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="MJT" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="OHD" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="SMI" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="LPA" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="TFO" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="PMI" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="AGP" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="FUE" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="FAO" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="ACE" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="HRG" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="NBE" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="DXB" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="BOJ" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#vanDropDown" text="BJL" toggleGroup="$IATA_VAN" />
+                        <RadioMenuItem fx:id="IATACHECK1" mnemonicParsing="false" onAction="#vanDropDown" text="CTA" toggleGroup="$IATA_VAN" />
+                     </items>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="txtNaar" prefHeight="30.0" prefWidth="360.0" promptText="%TLK131">
+                  </MenuButton>
+                  <MenuButton fx:id="btnNaarVliegveldID" mnemonicParsing="false" text="%TLK131">
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="AMS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="IATA_NAAR" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="AYT" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="IST" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="BJV" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="DLM" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="ADB" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="GZP" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="ECN" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="RAK" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="HER" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="KGS" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="RHO" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="ZTH" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="CFU" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="MJT" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="OHD" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="SMI" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="LPA" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="TFO" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="PMI" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="AGP" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="FUE" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="FAO" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="ACE" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="HRG" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="NBE" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="DXB" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="BOJ" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#naarDropDown" text="BJL" toggleGroup="$IATA_NAAR" />
+                        <RadioMenuItem fx:id="IATACHECK11" mnemonicParsing="false" onAction="#naarDropDown" text="CTA" toggleGroup="$IATA_NAAR" />
+                     </items>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </TextField>
+                  </MenuButton>
                </children>
                <padding>
                   <Insets left="10.0" />

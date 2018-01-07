@@ -82,6 +82,7 @@ public class FormulierZoekenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         try {
             resultSetNoFilter();
             fillTable();
@@ -190,7 +191,7 @@ public class FormulierZoekenController implements Initializable {
             bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2,
                     Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
 
-            for (int i = 0; i < bagage.getColumns().size(); i++) {
+            for (int i = 0; i < bagage.getColumns().size() && i > 50 ; i++) {
                 TableColumn column = (TableColumn) bagage.getColumns().get(i);
                 column.setCellValueFactory(new PropertyValueFactory(column.getId()));
             }
