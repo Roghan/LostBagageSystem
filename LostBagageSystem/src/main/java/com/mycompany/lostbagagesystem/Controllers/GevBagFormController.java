@@ -174,7 +174,7 @@ public class GevBagFormController implements Initializable {
     private Button btnInsturen;
     @FXML
     private TextField txtBagageLabel;
-    @FXML  
+    @FXML
     private MenuButton kleur1Menu;
     @FXML
     private MenuButton kleur2Menu;
@@ -182,6 +182,10 @@ public class GevBagFormController implements Initializable {
     private ToggleGroup IATA;
     @FXML
     private MenuButton btnVliegveldID;
+    @FXML
+    private MenuButton btnVanVliegveldID;
+    @FXML
+    private MenuButton btnNaarVliegveldID;
 
     private String datum;
     private String tijd;
@@ -230,8 +234,14 @@ public class GevBagFormController implements Initializable {
 
         TextField[] reqIntFields = new TextField[]{};
 
-        FormulierCheck.verification(reqFields, PhoneFields, datePickers, reqIntFields);
-        //sendToDatabase();
+        MenuButton[] reqMenuButtons = new MenuButton[]{
+            btnVliegveldID,
+            btnVanVliegveldID,
+            btnNaarVliegveldID
+
+        };
+
+        FormulierCheck.verification(reqIntFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
     }
 
     /**
@@ -279,7 +289,7 @@ public class GevBagFormController implements Initializable {
 //        System.out.println(numberAffected);
 //
 //    }
-        public void sendToDatabase() throws SQLException {
+    public void sendToDatabase() throws SQLException {
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
         Connection conn = null;
@@ -311,7 +321,6 @@ public class GevBagFormController implements Initializable {
             myStmt.setString(12, ralcode2);
             myStmt.setString(13, bijzondereOpmerking);
             myStmt.setString(14, iataString);
-            
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
@@ -360,7 +369,7 @@ public class GevBagFormController implements Initializable {
         System.out.println(kleur);
         ralcode2 = ColourPicker.GetColour(kleur);
     }
-    
+
     /**
      * Initializes the controller class.
      */

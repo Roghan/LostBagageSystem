@@ -89,19 +89,19 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private TextField txtHuisNummerGast;
-    
+
     @FXML
     private TextField txtBagageLabel;
-    
+
     @FXML
     private TextField txtTypeBagage;
-    
+
     @FXML
     private TextField txtMerk;
-    
+
     @FXML
     private MenuButton kleur1Menu;
-    
+
     @FXML
     private MenuButton kleur2Menu;
 
@@ -285,6 +285,13 @@ public class SchadeformulierController implements Initializable {
     @FXML
     private AnchorPane TableLeeg2;
 
+    @FXML
+    private MenuButton btnVanVliegveldID;
+    @FXML
+    private MenuButton btnNaarVliegveldID;
+    @FXML
+    private MenuButton btnVliegveldID;
+
     private String voorletters;
     private String tussenvoegsel;
     private String achternaam;
@@ -312,15 +319,6 @@ public class SchadeformulierController implements Initializable {
     private String ralcode2;
     private String iataString;
 
-//    @FXML
-//    public void annuleren(ActionEvent event) throws IOException {
-//        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"));
-//        TableLeeg2.getChildren().setAll();
-//        TableLeeg2.getChildren().setAll(pane);
-//        pane.prefWidthProperty().bind(TableLeeg2.widthProperty());
-//        pane.prefHeightProperty().bind(TableLeeg2.heightProperty());
-//
-//    }
     @FXML
     void annuleren3(ActionEvent event) {
 
@@ -380,10 +378,17 @@ public class SchadeformulierController implements Initializable {
 
         };
 
-        FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
+        MenuButton[] reqMenuButtons = new MenuButton[]{
+            btnVliegveldID,
+            btnVanVliegveldID,
+            btnNaarVliegveldID
+
+        };
+
+        FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqTextFields, reqMenuButtons);
 
     }
-    
+
     public void sendToDatabase() throws SQLException {
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
@@ -425,7 +430,6 @@ public class SchadeformulierController implements Initializable {
             myStmt.setString(12, ralcode2);
             myStmt.setString(13, bijzondereOpmerking);
             //myStmt.setString(14, iataString);
-            
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
@@ -455,7 +459,6 @@ public class SchadeformulierController implements Initializable {
 //        System.out.println(iataString);
 //
 //    }
-
     @FXML
     public void kleurkiezer1(ActionEvent event) {
         RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();

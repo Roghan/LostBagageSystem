@@ -2,7 +2,9 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -23,16 +25,36 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </BorderPane.margin>
                <children>
-                  <TextField alignment="TOP_LEFT" prefHeight="25.0" prefWidth="711.0" />
-                  <RadioButton fx:id="filterLost" mnemonicParsing="false" text="Lost" textAlignment="CENTER">
+                  <TextField fx:id="txtFilter" alignment="TOP_LEFT" onAction="#dbTableFill" prefHeight="25.0" prefWidth="711.0" />
+                  <MenuButton fx:id="filterBox" mnemonicParsing="false" text="MenuButton">
+                    <items>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#setTxtFilter" text="%TLK36">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="txtBoxFilter" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#setTxtFilter" text="%TLK130" toggleGroup="$txtBoxFilter" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#setTxtFilter" text="%TLK131" toggleGroup="$txtBoxFilter" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#setTxtFilter" text="%TLK10" toggleGroup="$txtBoxFilter" />
+                    </items>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </MenuButton>
+                  <RadioButton fx:id="filterLost" mnemonicParsing="false" onAction="#dbTableFill" text="%TLK136" textAlignment="CENTER">
                      <toggleGroup>
-                        <ToggleGroup fx:id="State" />
+                        <ToggleGroup fx:id="Filter" />
                      </toggleGroup>
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="4.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <RadioButton fx:id="filterFound" mnemonicParsing="false" text="Found" textAlignment="CENTER" toggleGroup="$State">
+                  <RadioButton fx:id="filterFound" mnemonicParsing="false" onAction="#dbTableFill" text="%TLK137" textAlignment="CENTER" toggleGroup="$Filter">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" top="4.0" />
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="filterAll" mnemonicParsing="false" onAction="#dbTableFill" selected="true" text="%TLK138" textAlignment="CENTER" toggleGroup="$Filter">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="4.0" />
                      </HBox.margin>

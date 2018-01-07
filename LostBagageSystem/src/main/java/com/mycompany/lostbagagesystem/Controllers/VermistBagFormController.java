@@ -87,6 +87,14 @@ public class VermistBagFormController implements Initializable {
     private TextField txtNaar;
     @FXML
     private ToggleGroup IATA;
+    @FXML
+    private ToggleGroup IATA_VAN;
+    @FXML
+    private ToggleGroup IATA_NAAR;
+    @FXML
+    private MenuButton btnVanVliegveldID;
+    @FXML
+    private MenuButton btnNaarVliegveldID;
 
     //String's voor het bewaren van de gegevens uit de textvelden
     private String time;
@@ -135,10 +143,8 @@ public class VermistBagFormController implements Initializable {
             txtVoorletters,
             txtAchternaam,
             txtStraatnaam,
-            txtPostcode,
             txtWoonplaats,
-            txtVan,
-            txtNaar,
+            txtVluchtNummer,
             txtTime
 
         };
@@ -154,12 +160,17 @@ public class VermistBagFormController implements Initializable {
 
         };
 
-        TextField[] reqIntFields = new TextField[]{
-            txtHuisNummer
+        TextField[] reqIntFields = new TextField[]{};
+
+        MenuButton[] reqMenuButtons = new MenuButton[]{
+            btnVliegveldID,
+            btnVanVliegveldID,
+            btnNaarVliegveldID,
+            kleur1Menu
 
         };
 
-        boolean form = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields);
+        boolean form = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
         if (form) {
             time = txtTime.getText();
             datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -174,8 +185,6 @@ public class VermistBagFormController implements Initializable {
             telefoonNummer = txtTelefoon.getText();
             mobielNummer = txtMobielNummer.getText();
             vluchtNummer = txtVluchtNummer.getText();
-            van = txtVan.getText();
-            naar = txtNaar.getText();
             bagageLabel = txtBagageLabel.getText();
             typeBagage = txtTypeBagage.getText();
             merk = txtMerk.getText();
@@ -268,6 +277,22 @@ public class VermistBagFormController implements Initializable {
         btnVliegveldID.setText(iataString);
         System.out.println(iataString);
 
+    }
+
+    @FXML
+    public void vanDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
+        van = iattaItem.getText();
+        btnVanVliegveldID.setText(van);
+        System.out.println(van);
+    }
+
+    @FXML
+    public void naarDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA_NAAR.getSelectedToggle();
+        naar = iattaItem.getText();
+        btnNaarVliegveldID.setText(naar);
+        System.out.println(naar);
     }
 
     @FXML
