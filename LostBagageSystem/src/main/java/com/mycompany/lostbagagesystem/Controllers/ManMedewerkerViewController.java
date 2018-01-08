@@ -60,7 +60,7 @@ public class ManMedewerkerViewController implements Initializable {
 
     public void dbTableFill() throws SQLException {
 
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         int id;
         String acountnaam;

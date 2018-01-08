@@ -55,7 +55,7 @@ public class AdminMainController implements Initializable {
 //    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
         String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
@@ -95,7 +95,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     private void deBlokkeer(ActionEvent event) {
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
         String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
@@ -130,7 +130,7 @@ public class AdminMainController implements Initializable {
 
     public void dbTableFill() throws SQLException {
 
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         int id;
         String acountnaam;
