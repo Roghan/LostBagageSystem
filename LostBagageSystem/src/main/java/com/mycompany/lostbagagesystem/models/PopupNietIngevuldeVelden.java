@@ -2,7 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import javafx.scene.control.Alert;
 
 /**
@@ -56,9 +56,9 @@ public class PopupNietIngevuldeVelden {
     
         public static void warningBoxPass() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(language.getTranslationString("TLK105"));
+        alert.setTitle(Language.getTranslationString("TLK105"));
         alert.setHeaderText(null);
-        alert.setContentText(language.getTranslationString("TLK105"));
+        alert.setContentText(Language.getTranslationString("TLK105"));
 
         alert.showAndWait();
 

@@ -3,7 +3,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 /*Controller Class voor het zoeken naar gevonden en verloren bagage formulieren
  */
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -51,9 +51,9 @@ public class FormulierZoekenController implements Initializable {
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
-    private final String noFilter = language.getTranslationString("TLK138");
-    private final String lost = language.getTranslationString("TLK136");
-    private final String found = language.getTranslationString("TLK137");
+    private final String noFilter = Language.getTranslationString("TLK138");
+    private final String lost = Language.getTranslationString("TLK136");
+    private final String found = Language.getTranslationString("TLK137");
     private String filterText;
     private String BagageID;
     private String State;
@@ -191,7 +191,7 @@ public class FormulierZoekenController implements Initializable {
             bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2,
                     Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
 
-            for (int i = 0; i < bagage.getColumns().size() && i > 50 ; i++) {
+            for (int i = 0; i < bagage.getColumns().size() ; i++) {
                 TableColumn column = (TableColumn) bagage.getColumns().get(i);
                 column.setCellValueFactory(new PropertyValueFactory(column.getId()));
             }
@@ -250,16 +250,16 @@ public class FormulierZoekenController implements Initializable {
         RadioMenuItem tg = (RadioMenuItem) txtBoxFilter.getSelectedToggle();
         String menuTxt = tg.getText();
         filterBox.setText(menuTxt);
-        if (language.getTranslationString("TLK36").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK36").equals(menuTxt)) {
             txtBoxFilterString = "Labelnumber";
         }
-        if (language.getTranslationString("TLK130").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK130").equals(menuTxt)) {
             txtBoxFilterString = "From";
         }
-        if (language.getTranslationString("TLK131").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK131").equals(menuTxt)) {
             txtBoxFilterString = "To";
         }
-        if (language.getTranslationString("TLK10").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK10").equals(menuTxt)) {
             txtBoxFilterString = "Surname";
         }
 
