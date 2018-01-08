@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.mycompany.lostbagagesystem.models.User;
-import com.mycompany.lostbagagesystem.models.bagageTabel;
+import com.mycompany.lostbagagesystem.models.BagageTabel;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +34,7 @@ public class Gev3DController implements Initializable {
 
     @FXML
     private TableView table;
-    private ObservableList<bagageTabel> bagagetabel;
+    private ObservableList<BagageTabel> bagagetabel;
     
     
     

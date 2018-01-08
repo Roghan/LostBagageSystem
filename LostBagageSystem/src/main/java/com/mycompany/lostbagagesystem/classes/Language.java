@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  *
  * @author Marcel van Wilgenburg
  */
-public class language {
+public class Language {
 
     private static Locale currentLocale;
 
@@ -21,7 +21,7 @@ public class language {
     }
 
     public static void setCurrentLocale(Locale currentLocale) {
-        language.currentLocale = currentLocale;
+        Language.currentLocale = currentLocale;
     }
 
     public static String getTranslationString(String TLK) {
