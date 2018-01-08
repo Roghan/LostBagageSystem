@@ -12,7 +12,7 @@ import java.util.Enumeration;
  */
 public class ConnectDB {
 
-    private static final String DB_DEFAULT_DATABASE = "fystestdb";
+    private static final String DB_DEFAULT_DATABASE = "lbs_database";
     private static final String DB_DEFAULT_SERVER_URL = "localhost:3306";
     private static final String DB_DEFAULT_ACCOUNT = "root";
     private static final String DB_DEFAULT_PASSWORD = "root";
@@ -253,7 +253,7 @@ public class ConnectDB {
         
         try {
             dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306"
-                    + "/fystestdb?useSSL=false", DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
+                    + "/lbs_database?useSSL=false", DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
             return dbConnection;
         } catch (SQLException e) {
             e.printStackTrace();
