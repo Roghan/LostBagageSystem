@@ -191,7 +191,7 @@ public class FormulierZoekenController implements Initializable {
             bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2,
                     Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
 
-            for (int i = 0; i < bagage.getColumns().size() && i > 50 ; i++) {
+            for (int i = 0; i < bagage.getColumns().size() ; i++) {
                 TableColumn column = (TableColumn) bagage.getColumns().get(i);
                 column.setCellValueFactory(new PropertyValueFactory(column.getId()));
             }
