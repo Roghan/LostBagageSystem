@@ -4,7 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.TableFillMan;
 import com.mycompany.lostbagagesystem.classes.Vergelijk;
-import com.mycompany.lostbagagesystem.models.BagageTabel;
+import com.mycompany.lostbagagesystem.models.bagageTabel;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.sql.SQLException;

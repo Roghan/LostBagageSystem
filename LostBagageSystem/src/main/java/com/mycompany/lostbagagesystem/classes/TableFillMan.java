@@ -5,7 +5,7 @@
  */
 package com.mycompany.lostbagagesystem.classes;
 
-import com.mycompany.lostbagagesystem.models.BagageTabel;
+import com.mycompany.lostbagagesystem.models.bagageTabel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -28,9 +28,9 @@ import javafx.scene.layout.AnchorPane;
  */
 public class TableFillMan {
 
-    private static ObservableList<BagageTabel> bagagetabel;
+    private static ObservableList<bagageTabel> bagagetabel;
 
-    public static ConnectDB db = new ConnectDB("fystestdb");
+    public static ConnectDB db = new ConnectDB("lbs_database");
     public static ResultSet resultSet;
 
     @FXML
@@ -88,7 +88,7 @@ public class TableFillMan {
             //if currentdate -aantaldagen <= to database date than show
             if (date.compareTo(datadb) <= 0) {
 
-                bagagetabel.add(new BagageTabel(registration_nr, date_found, time_found,
+                bagagetabel.add(new bagageTabel(registration_nr, date_found, time_found,
                         luggage_type, brand, arrived_with_flight, luggage_tag,
                         location_found, main_color, second_color, size, weight, passanger_name,
                         city, other_characteristics));

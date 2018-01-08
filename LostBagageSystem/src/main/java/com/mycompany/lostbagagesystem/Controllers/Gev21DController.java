@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.lostbagagesystem.models.BagageTabel;
+import com.mycompany.lostbagagesystem.models.bagageTabel;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +32,7 @@ public class Gev21DController implements Initializable {
 
     @FXML
     private TableView table;
-    private ObservableList<BagageTabel> bagagetabel;
+    private ObservableList<bagageTabel> bagagetabel;
 
     @FXML
     private AnchorPane gev21D;

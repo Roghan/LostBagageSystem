@@ -3,7 +3,7 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.Language;
+import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.DbNaam;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
@@ -55,7 +55,7 @@ public class AdminMainController implements Initializable {
 //    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
         String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
@@ -82,7 +82,7 @@ public class AdminMainController implements Initializable {
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -95,7 +95,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     private void deBlokkeer(ActionEvent event) {
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
         String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
@@ -118,7 +118,7 @@ public class AdminMainController implements Initializable {
     @FXML
     public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in
@@ -130,7 +130,7 @@ public class AdminMainController implements Initializable {
 
     public void dbTableFill() throws SQLException {
 
-        ConnectDB db = new ConnectDB("fystestdb");
+        ConnectDB db = new ConnectDB("lbs_database");
 
         int id;
         String acountnaam;
