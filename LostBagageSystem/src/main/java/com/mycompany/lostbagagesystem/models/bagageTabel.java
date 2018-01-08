@@ -6,7 +6,7 @@ package com.mycompany.lostbagagesystem.models;
  *
  * @author Marcel van Wilgenburg
  */
-public class BagageTabel {
+public class bagageTabel {
         private String registration_nr;
         private String date_found;
         private String time_found;
@@ -23,7 +23,7 @@ public class BagageTabel {
         private String city;
         private String other_characteristics;
         
-    public BagageTabel(String registration_nr, String date_found, String time_found, String luggage_type, String brand, String arrived_with_flight, String luggage_tag, String location_found, String main_color, String second_color, String size, String weight, String passanger_name, String city, String other_characteristics) {
+    public bagageTabel(String registration_nr, String date_found, String time_found, String luggage_type, String brand, String arrived_with_flight, String luggage_tag, String location_found, String main_color, String second_color, String size, String weight, String passanger_name, String city, String other_characteristics) {
         this.registration_nr = registration_nr;
         this.date_found = date_found;
         this.time_found = time_found;
