@@ -313,5 +313,11 @@ public class VermistBagFormController implements Initializable {
         System.out.println(kleur);
         ralcode2 = ColourPicker.GetColour(kleur);
     }
+    
+    
+    
+    
+    
+    
 
 }

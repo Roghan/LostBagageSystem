@@ -3,8 +3,9 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class NewMedewerker {
 
     public void terug() throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminMedewerkerView.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminMedewerkerView.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         TableLeeg.getChildren().setAll();
         //laad de nieuwe table in
@@ -58,6 +59,25 @@ public class NewMedewerker {
         terug();
     }
 
+    @FXML
+    public static String sha256(String base) {
+    try{
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(base.getBytes("UTF-8"));
+        StringBuffer hexString = new StringBuffer();
+
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
+    } catch(Exception ex){
+       throw new RuntimeException(ex);
+    }
+}
+    
     @FXML
     public void sendtodatabase() throws IOException {
 
@@ -74,12 +94,14 @@ public class NewMedewerker {
         String manV = manVrouw.getText();
         String roll = rol.getText();
 
+        String wachtwoord1 = sha256(wachtw);
+        
         String query = String.format("INSERT INTO `gebruiker` "
                 + "(`acountnaam`, `wachtwoord`, `voornaam`, `achternaam`, "
                 + "`geboortedatum`, `postcode`, `huisnummer`, `telefoonnummer`, "
                 + "`man/vrouw`, `rol`)"
                 + " VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                acountN, wachtw, voorN, achterN, geboorteD, postC, huisN, telefoonN, manV, roll);
+                acountN, wachtwoord1, voorN, achterN, geboorteD, postC, huisN, telefoonN, manV, roll);
 
         int numberAffected = db.executeUpdateQuery(query);
         System.out.println(numberAffected);
