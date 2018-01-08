@@ -67,7 +67,7 @@ public class InlogSchermController implements Initializable {
 
     @FXML
     public void handleButtonAction() throws SQLException, IOException {
-        ConnectDB db = new ConnectDB("lbs_database");
+        ConnectDB db = new ConnectDB("fystestdb");
         ResultSet resultSet;
         int rol;
         String user = username.getText();
