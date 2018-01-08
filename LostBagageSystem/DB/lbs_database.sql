@@ -91,7 +91,7 @@ CREATE TABLE `gebruiker` (
 
 LOCK TABLES `gebruiker` WRITE;
 /*!40000 ALTER TABLE `gebruiker` DISABLE KEYS */;
-INSERT INTO `gebruiker` VALUES (1,'YouriPel','123',1,0),(2,'Marcel','1234',2,0),(3,'Donovan','12345',3,0),(4,'Koenvd','Koenie',3,0);
+INSERT INTO `gebruiker` VALUES (1,'YouriPel','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',1,0),(2,'Marcel','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',2,0),(3,'Donovan','5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5',3,0),(4,'Koenvd','c7e132f19e09c2ac251c2cafb4f8a19b765fdd8fbf822510335801805d2673b7',3,0);
 /*!40000 ALTER TABLE `gebruiker` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-04 19:16:12
+-- Dump completed on 2018-01-08 12:50:08
