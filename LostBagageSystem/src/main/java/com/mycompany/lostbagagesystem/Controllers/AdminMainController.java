@@ -24,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -61,6 +62,21 @@ public class AdminMainController implements Initializable {
         db.executeUpdateQuery(query);
         user.setBlok(1);
         table.refresh();
+    }
+    
+    @FXML
+    private void handleEdit(ActionEvent event) throws IOException, SQLException{
+        EditMedewerkerController Edit = new EditMedewerkerController();
+        //laad de nieuwe table in de bestaande anchorpane
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
+        Edit.medewerkerWijzigen();
     }
 
     @FXML

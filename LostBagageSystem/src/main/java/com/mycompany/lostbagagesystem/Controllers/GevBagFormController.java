@@ -4,6 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
 import java.net.URL;
 import java.sql.Connection;
@@ -15,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -171,6 +174,18 @@ public class GevBagFormController implements Initializable {
     private Button btnInsturen;
     @FXML
     private TextField txtBagageLabel;
+    @FXML
+    private MenuButton kleur1Menu;
+    @FXML
+    private MenuButton kleur2Menu;
+    @FXML
+    private ToggleGroup IATA;
+    @FXML
+    private MenuButton btnVliegveldID;
+    @FXML
+    private MenuButton btnVanVliegveldID;
+    @FXML
+    private MenuButton btnNaarVliegveldID;
 
     private String datum;
     private String tijd;
@@ -178,18 +193,17 @@ public class GevBagFormController implements Initializable {
     private String lostAndFound;
     private String voorLetters;
     private String tussenVoegsel;
-    private String achternaam;
-    private String gender;
+    private String achterNaam;
+    private String merk;
     private String labelNummer;
     private String vluchtNummer;
     private String bestemming;
     private String typeBagage;
     private String merkBagage;
     private String bijzondereOpmerking;
-
-    private String colour;
-    private String colour2;
-    private String colour3;
+    private String ralcode1;
+    private String ralcode2;
+    private String iataString;
 
     @FXML
     void insturen(ActionEvent insturen) throws SQLException {
@@ -197,7 +211,7 @@ public class GevBagFormController implements Initializable {
 
         voorLetters = txtVoorletters.getText();
         tussenVoegsel = txtTussenvoegsel.getText();
-        achternaam = txtAchternaam.getText();
+        achterNaam = txtAchternaam.getText();
 
         TextField[] reqFields = new TextField[]{
             txtVoorletters,
@@ -220,8 +234,14 @@ public class GevBagFormController implements Initializable {
 
         TextField[] reqIntFields = new TextField[]{};
 
-        FormulierCheck.verificaton(reqFields, PhoneFields, datePickers, reqIntFields);
-        //sendToDatabase();
+        MenuButton[] reqMenuButtons = new MenuButton[]{
+            btnVliegveldID,
+            btnVanVliegveldID,
+            btnNaarVliegveldID
+
+        };
+
+        FormulierCheck.verification(reqIntFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
     }
 
     /**
@@ -230,6 +250,45 @@ public class GevBagFormController implements Initializable {
      *
      * @throws SQLException
      */
+//    public void sendToDatabase() throws SQLException {
+//        // Making a new prepared statement 
+//        PreparedStatement myStmt = null;
+//        Connection conn = null;
+//        ConnectDB db = new ConnectDB();
+//        int numberAffected = 0;
+//
+//        // This is a test query 
+//        String query = "INSERT INTO `vermistebagage` "
+//                + "(`voorletters`,`tussenvoegsel`, `achternaam`) VALUES"
+//                + "(?, ?, ?)";
+//
+//        try {
+//            conn = db.getDBConnection();
+//            myStmt = conn.prepareStatement(query);
+//            // Filling in the question marks from the query
+//            myStmt.setString(1, voorLetters);
+//            myStmt.setString(2, tussenVoegsel);
+//            myStmt.setString(3, achternaam);
+//
+//            // Execute INSERT sql statement
+//            numberAffected = myStmt.executeUpdate();
+//
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        } finally {
+//            // Closing the prepared statement for memory purposes
+//            if (myStmt != null) {
+//                myStmt.close();
+//            }
+//            // Closing the database connection for memory purposes
+//            if (conn != null) {
+//                conn.close();
+//            }
+//        }
+//
+//        System.out.println(numberAffected);
+//
+//    }
     public void sendToDatabase() throws SQLException {
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
@@ -237,18 +296,31 @@ public class GevBagFormController implements Initializable {
         ConnectDB db = new ConnectDB();
         int numberAffected = 0;
 
-        // This is a test query 
-        String query = "INSERT INTO `vermistebagage` "
-                + "(`voorletters`,`tussenvoegsel`, `achternaam`) VALUES"
-                + "(?, ?, ?)";
+        // Updates persoonsgegevens
+        String persoonsgegevens = "INSERT INTO `klant` "
+                + "(`Voorletter`,`Tussenvoegsel`, `Achternaam`, `VluchtNummer`,"
+                + "`State`, `Date`, `Time`, `LabelNummer`, `Type`, `Brand`, `Color1`, `Color2`,"
+                + "`Characteristics`, `Luchthaven`) VALUES"
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = db.getDBConnection();
-            myStmt = conn.prepareStatement(query);
+            myStmt = conn.prepareStatement(persoonsgegevens);
             // Filling in the question marks from the query
             myStmt.setString(1, voorLetters);
             myStmt.setString(2, tussenVoegsel);
-            myStmt.setString(3, achternaam);
+            myStmt.setString(3, achterNaam);
+            myStmt.setString(4, vluchtNummer);
+            myStmt.setString(5, "Found");
+            myStmt.setString(6, datum);
+            myStmt.setString(7, tijd);
+            myStmt.setString(8, labelNummer);
+            myStmt.setString(9, typeBagage);
+            myStmt.setString(10, merk);
+            myStmt.setString(11, ralcode1);
+            myStmt.setString(12, ralcode2);
+            myStmt.setString(13, bijzondereOpmerking);
+            myStmt.setString(14, iataString);
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
@@ -268,6 +340,34 @@ public class GevBagFormController implements Initializable {
 
         System.out.println(numberAffected);
 
+    }
+
+    @FXML
+    public void IATACHECK(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA.getSelectedToggle();
+        iataString = iattaItem.getText();
+        btnVliegveldID.setText(iataString);
+        System.out.println(iataString);
+
+    }
+
+    @FXML
+    public void kleurkiezer1(ActionEvent event) {
+        RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();
+        String kleur = item.getText();
+        kleur1Menu.setText(kleur);
+        System.out.println(kleur);
+        ralcode1 = ColourPicker.GetColour(kleur);
+
+    }
+
+    @FXML
+    public void kleurkiezer2(ActionEvent event) {
+        RadioMenuItem item = (RadioMenuItem) kleur2.getSelectedToggle();
+        String kleur = item.getText();
+        kleur2Menu.setText(kleur);
+        System.out.println(kleur);
+        ralcode2 = ColourPicker.GetColour(kleur);
     }
 
     /**

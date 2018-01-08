@@ -20,16 +20,9 @@ public class ToggleGroupResult {
     private static String pick;
 
     public static String getPick(final ToggleGroup group) {
+        RadioButton selectedButton = (RadioButton) group.getSelectedToggle();
+        pick = selectedButton.getText();
 
-        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> ov,
-                    Toggle old_toggle, Toggle new_toggle) {
-                if (group.getSelectedToggle() != null) {
-                    RadioButton selectedButton = (RadioButton) group.getSelectedToggle();
-                    pick = selectedButton.getText();
-                }
-            }
-        });
         return pick;
     }
 

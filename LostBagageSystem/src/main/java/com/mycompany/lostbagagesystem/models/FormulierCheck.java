@@ -5,8 +5,10 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
+import com.mycompany.lostbagagesystem.classes.language;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -20,24 +22,29 @@ public class FormulierCheck {
     private static boolean txtIsNotInt;
     private static int totalArrayLenght;
     private static boolean txtIsInt;
+    private static boolean menuButtonIsFilled;
 
-    public static boolean verificaton(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields) {
+    public static boolean verification(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields, MenuButton[] reqMenuButtons) {
 
-        totalArrayLenght = (reqTextFields.length + datePickers.length + PhoneFields.length + intTextFields.length);
-        fieldsAreFilled = fieldsAreFilled(reqTextFields, datePickers, PhoneFields, intTextFields, totalArrayLenght);
+        totalArrayLenght = (reqTextFields.length + datePickers.length + PhoneFields.length + intTextFields.length + reqMenuButtons.length);
+        fieldsAreFilled = fieldsAreFilled(reqTextFields, datePickers, PhoneFields, intTextFields, totalArrayLenght, reqMenuButtons);
         phoneIsInt = isInteger(PhoneFields);
         txtIsNotInt = isNotInteger(reqTextFields);
         txtIsInt = isTextFieldInteger(intTextFields);
+        menuButtonIsFilled = isMenuButtonFilled(reqMenuButtons);
 
-        return checkForm(fieldsAreFilled, phoneIsInt, txtIsNotInt, txtIsInt, reqTextFields, PhoneFields, datePickers, intTextFields);
+        return checkForm(reqTextFields, PhoneFields, datePickers, intTextFields, reqMenuButtons);
 
     }
 
-    public static boolean checkForm(boolean fieldsAreFilled, boolean phoneIsInt, boolean txtIsNotInt, boolean txtIsInt,
-            TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields) {
-
+    public static boolean checkForm(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields, MenuButton menuButtons[]) {
+        System.out.println(fieldsAreFilled);
+        System.out.println(phoneIsInt);
+        System.out.println(txtIsNotInt);
+        System.out.println(txtIsInt);
+        System.out.println(menuButtonIsFilled);
         if (fieldsAreFilled) {
-            if (phoneIsInt && txtIsNotInt && txtIsInt) {
+            if (phoneIsInt && txtIsNotInt && txtIsInt && menuButtonIsFilled) {
                 System.out.println("Document is goed ingevuld");
                 return true;
 
@@ -89,41 +96,64 @@ public class FormulierCheck {
         return false;
     }
 
-    public static boolean fieldsAreFilled(TextField reqTextFields[], DatePicker datePickers[], TextField PhoneFields[], TextField intIsTextField[], int totalArrayLenght) {
+    public static boolean fieldsAreFilled(TextField reqTextFields[], DatePicker datePickers[], TextField PhoneFields[], TextField intIsTextField[], int totalArrayLenght, MenuButton[] reqMenuButtons) {
         boolean[] checkList = new boolean[totalArrayLenght];
+        //Set initial Count for Boolean array
         int count = 0;
 
+        //Check Req Text Fields
         if (reqTextFields.length != 0) {
             for (TextField reqField : reqTextFields) {
                 checkList[count] = reqTextFieldsCheck(reqField);
+                System.out.println(checkList[count] + " REQ  TEXT FIELDS");
                 count++;
 
             }
 
         }
 
+        //Check Req Date Fields
         if (datePickers.length != 0) {
             for (DatePicker datePicker : datePickers) {
                 checkList[count] = datePickerCheck(datePicker);
+                System.out.println(checkList[count] + " REQ DATE FIELDS");
                 count++;
 
             }
 
         }
 
+        //Check if text fields are ints
         if (intIsTextField.length != 0) {
             for (int i = 0; i < intIsTextField.length; i++) {
                 checkList[count] = reqTextFieldsCheck(intIsTextField[i]);
+                System.out.println(checkList[count] + " REQ TEXT IS INT");
+                count++;
+            }
+
+        }
+        //Check Menu Buttons
+        if (reqMenuButtons.length != 0) {
+            for (int i = 0; i < reqMenuButtons.length; i++) {
+                checkList[count] = menuButtonCheck(reqMenuButtons[i]);
+                System.out.println(checkList[count] + "MENU BUTTON");
                 count++;
             }
 
         }
 
+        //Check Phone Fields
         if (PhoneFields.length != 0) {
+            //Set initial Phone fields
             int phoneCount = 0;
+
+            //Start loop trough Phone Fields
             do {
 
-                if (phoneFieldChecker(PhoneFields[phoneCount]) != true) {
+                //Checks the phone fields
+                if (phoneFieldCheck(PhoneFields[phoneCount]) != true) {
+
+                    //resets phone fields error when one field is filled
                     for (TextField PhoneField : PhoneFields) {
                         System.out.println("TELEFOON VELD GOED");
                         checkList[count] = false;
@@ -147,6 +177,7 @@ public class FormulierCheck {
         boolean formIsComplete = true;
 
         for (int i = 0; i < checkList.length; i++) {
+            System.out.println(checkList[i] + " Checklist Status ");
             if (checkList[i]) {
                 formIsComplete = false;
                 break;
@@ -187,11 +218,30 @@ public class FormulierCheck {
         return check;
     }
 
-    public static boolean phoneFieldChecker(TextField textField) {
+    public static boolean phoneFieldCheck(TextField textField) {
         boolean check;
         check = textField.getText().isEmpty();
 
         return check;
+    }
+
+    public static boolean menuButtonCheck(MenuButton menuButton) {
+        boolean check;
+        boolean result;
+        check = (menuButton.getText().equals(language.getTranslationString("TLK6")) != true
+                && menuButton.getText().equals(language.getTranslationString("TLK130")) != true
+                && menuButton.getText().equals(language.getTranslationString("TLK131")) != true
+                && menuButton.getText().equals(language.getTranslationString("TLK106")) != true);
+        if (check != true) {
+            menuButton.setStyle("-fx-border-color : #ff0000;");
+            return true;
+
+        } else {
+            menuButton.setStyle("");
+            return false;
+
+        }
+
     }
 
     public static void reqFieldWarning(TextField textField) {
@@ -285,6 +335,23 @@ public class FormulierCheck {
 
         return wrongField;
 
+    }
+
+    public static boolean isMenuButtonFilled(MenuButton menuButton[]) {
+        boolean menuButtonStatus = true;
+        for (int i = 0; i < menuButton.length; i++) {
+            if (menuButton[i].getText().equals(language.getTranslationString("TLK6"))
+                    || menuButton[i].getText().equals(language.getTranslationString("TLK130"))
+                    || menuButton[i].getText().equals(language.getTranslationString("TLK131"))
+                    || menuButton[i].getText().equals(language.getTranslationString("TLK106"))) {
+                menuButtonStatus = false;
+                System.out.println(menuButtonStatus + " MENU BUTTON STATE ");
+                break;
+
+            }
+
+        }
+        return menuButtonStatus;
     }
 
 }
