@@ -61,7 +61,7 @@ public class NewMedewerker {
     @FXML
     public void sendtodatabase() throws IOException {
 
-        ConnectDB db = new ConnectDB("lbs_database");
+        ConnectDB db = new ConnectDB("fystestdb");
 
         String acountN = acountnaam.getText();
         String wachtw = wachtwoord.getText();

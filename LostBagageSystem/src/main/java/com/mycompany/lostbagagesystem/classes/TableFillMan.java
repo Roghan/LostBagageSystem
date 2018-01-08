@@ -30,7 +30,7 @@ public class TableFillMan {
 
     private static ObservableList<bagageTabel> bagagetabel;
 
-    public static ConnectDB db = new ConnectDB("lbs_database");
+    public static ConnectDB db = new ConnectDB("fystestdb");
     public static ResultSet resultSet;
 
     @FXML
