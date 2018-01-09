@@ -34,7 +34,7 @@ public class TableFillMan {
     public static ResultSet resultSet;
 
     @FXML
-    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer) throws SQLException {
+    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer, boolean isGevonden) throws SQLException {
 
         int BagageID;
         String Date;
@@ -63,11 +63,11 @@ public class TableFillMan {
         String From;
         String To;
         String Vstreet;
-        String Vhuisnummer;
+        String Vhousenumber;
         String Vzipcode;
         String Vcity;
         String Hotelname;
-        
+
         bagagetabel = FXCollections.observableArrayList();
         //SQL query
         resultSet = db.executeResultSetQuery("SELECT `BagageID`, "
@@ -77,7 +77,7 @@ public class TableFillMan {
                 + "`Location`, `Initial`, `Insertion`, `Surname`, "
                 + "`Street`, `Housenumber`, `Zipcode`, `City`,"
                 + " `Email`, `Phone1`, `Phone2`, `Flightnumber`,"
-                + " `From`, `To`, `Vstreet`, `Vhuisnummer`,"
+                + " `From`, `To`, `Vstreet`, `Vhousenumber`,"
                 + " `Vzipcode`, `Vcity`, `Hotelname` FROM `bagage`");
         //Get all the results out of the database
         while (resultSet.next()) {
@@ -108,7 +108,7 @@ public class TableFillMan {
             From = resultSet.getString("From");
             To = resultSet.getString("To");
             Vstreet = resultSet.getString("Vstreet");
-            Vhuisnummer = resultSet.getString("Vhuisnummer");
+            Vhousenumber = resultSet.getString("Vhousenumber");
             Vcity = resultSet.getString("Vcity");
             Vzipcode = resultSet.getString("Vzipcode");
             Hotelname = resultSet.getString("Hotelname");
@@ -120,16 +120,17 @@ public class TableFillMan {
             String date = sdf.format(c.getTime());
             //database date
             String datadb = Date + " " + Time;
+            boolean returnBagage = IsReturned;
 
             //if currentdate -aantaldagen <= to database date than show
-            if (date.compareTo(datadb) <= 0) {
+            if (date.compareTo(datadb) <= 0 && isGevonden == returnBagage) {
 
                 bagagetabel.add(new bagageTabel(BagageID, Date, Time, State,
-                Labelnumber, Type, Brand, Color1, Color2, Characteristics,
-                IsReturned, Airport, Location, Initial, Insertion, Surname,
-                Street, Housenumber, Zipcode, City, Email, Phone1, Phone2,
-                Flightnumber, From, To, Vstreet, Vhuisnummer, Vcity, Vzipcode,
-                Hotelname));
+                        Labelnumber, Type, Brand, Color1, Color2, Characteristics,
+                        IsReturned, Airport, Location, Initial, Insertion, Surname,
+                        Street, Housenumber, Zipcode, City, Email, Phone1, Phone2,
+                        Flightnumber, From, To, Vstreet, Vhousenumber, Vcity, Vzipcode,
+                        Hotelname));
 
                 for (int i = 0; i < table.getColumns().size(); i++) {
                     TableColumn column = (TableColumn) table.getColumns().get(i);
@@ -145,21 +146,22 @@ public class TableFillMan {
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Aantal dagen");
         //creating the chart
-        final BarChart<String,Number> bc
+        final BarChart<String, Number> bc
                 = new BarChart<>(xAxis, yAxis);
 
-        bc.setTitle(gevVer +" bagage, " + aantalDagen + " dagen");
+        bc.setTitle(gevVer + " bagage, " + aantalDagen + " dagen");
         //defining a series
         XYChart.Series series = new XYChart.Series();
         series.setName("Bagage");
         //populating the series with data
         int j = 0;
-        int[] aantalKoffers = aantalVerloren(aantalDagen);
+        int[] aantalKoffers = aantalVerloren(aantalDagen, isGevonden);
         for (int i = 0; i < aantalDagen; i++) {
             j++;
             String nummer = Integer.toString(j);
             series.getData().add(new XYChart.Data(nummer, aantalKoffers[i]));
-            
+            System.out.println("nummer = " + nummer);
+            System.out.println("aantal = " + aantalKoffers[i]);
         }
 
         bc.getData().add(series);
@@ -171,14 +173,15 @@ public class TableFillMan {
 
     }
 
-    public static int[] aantalVerloren(int aantalDagen) throws SQLException {
+    public static int[] aantalVerloren(int aantalDagen, boolean isGevonden) throws SQLException {
         int aantalKoffers = 0;
         String date_found;
         int[] aantalVerloren = new int[aantalDagen];
 
-        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage`");
+        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage` WHERE IsReturned = '" + isGevonden + "'");
+        System.out.println(isGevonden);
         while (resultSet.next()) {
-            
+
             for (int i = 0; i < aantalDagen; i++) {
 
                 date_found = resultSet.getString("Date");

@@ -38,7 +38,7 @@
                   <TableColumn fx:id="From" prefWidth="75.0" text="From" />
                   <TableColumn fx:id="To" prefWidth="75.0" text="To" />
                   <TableColumn fx:id="Vstreet" prefWidth="75.0" text="Vstreet" />
-                  <TableColumn fx:id="Vhuisnummer" prefWidth="75.0" text="Vhuisnummer" />
+                  <TableColumn fx:id="Vhousenumber" prefWidth="75.0" text="Vhousenumber" />
                   <TableColumn fx:id="Vzipcode" prefWidth="75.0" text="Vzipcode" />
                   <TableColumn fx:id="Vcity" prefWidth="75.0" text="Vcity" />
                   <TableColumn fx:id="Hotelname" prefWidth="75.0" text="Hotelname" />
