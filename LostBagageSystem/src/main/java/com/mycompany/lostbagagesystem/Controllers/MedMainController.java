@@ -85,6 +85,17 @@ public class MedMainController implements Initializable {
         pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
     }
 
+    @FXML
+    public void importExcel(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ExcelImportExport.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+
+        formulierLeeg.getChildren().setAll();
+        formulierLeeg.getChildren().setAll(pane);
+        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
+        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+    }
+
     /**
      * Initializes the controller class.
      *

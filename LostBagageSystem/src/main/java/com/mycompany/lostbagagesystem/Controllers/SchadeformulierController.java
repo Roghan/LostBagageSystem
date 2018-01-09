@@ -5,7 +5,6 @@ package com.mycompany.lostbagagesystem.Controllers;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
-import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
