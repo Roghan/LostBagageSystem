@@ -20,7 +20,7 @@ public class LostAndFoundLuggageInventory {
     private String luggageType;
     private String brand;
     private String flightNumber;
-    private String luggageTag;
+    private int luggageTag;
     private String locationFound;
     private String mainColor;
     private String secondColor;
@@ -29,7 +29,7 @@ public class LostAndFoundLuggageInventory {
     private String passNameAndCity;
     private String charateristics;
 
-    public LostAndFoundLuggageInventory(String registrationNr, Date dateFound, String timeFound, String luggageType, String brand, String flightNumber, String luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
+    public LostAndFoundLuggageInventory(String registrationNr, Date dateFound, String timeFound, String luggageType, String brand, String flightNumber, int luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
         this.registrationNr = registrationNr;
         this.dateFound = dateFound;
         this.timeFound = timeFound;
@@ -94,11 +94,11 @@ public class LostAndFoundLuggageInventory {
         this.flightNumber = flightNumber;
     }
 
-    public String getLuggageTag() {
+    public int getLuggageTag() {
         return luggageTag;
     }
 
-    public void setLuggageTag(String luggageTag) {
+    public void setLuggageTag(int luggageTag) {
         this.luggageTag = luggageTag;
     }
 

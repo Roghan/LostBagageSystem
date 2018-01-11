@@ -3,8 +3,10 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.PDFExport;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +28,7 @@ import javafx.scene.control.ToggleGroup;
  * @author Marcel van Wilgenburg
  */
 public class VermistBagFormController implements Initializable {
-
+    
     @FXML
     private MenuButton btnVliegveldID;
     @FXML
@@ -124,21 +126,21 @@ public class VermistBagFormController implements Initializable {
     private String ralcode1;
     private String ralcode2;
     private String iataString;
-
+    
     @FXML
     void annuleren3(ActionEvent event) {
-
+        
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
     }
-
+    
     @FXML
     void insturen(ActionEvent insturen) throws SQLException {
         System.out.println("KNOP INSTUREN INGEDRUKT");
-
+        
         TextField[] reqTextFields = new TextField[]{
             txtVoorletters,
             txtAchternaam,
@@ -146,30 +148,30 @@ public class VermistBagFormController implements Initializable {
             txtWoonplaats,
             txtVluchtNummer,
             txtTime
-
+        
         };
-
+        
         DatePicker[] datePickers = new DatePicker[]{
             txtDatum
-
+        
         };
-
+        
         TextField[] PhoneFields = new TextField[]{
             txtTelefoon,
             txtMobielNummer
-
+        
         };
-
+        
         TextField[] reqIntFields = new TextField[]{};
-
+        
         MenuButton[] reqMenuButtons = new MenuButton[]{
             btnVliegveldID,
             btnVanVliegveldID,
             btnNaarVliegveldID,
             kleur1Menu
-
+        
         };
-
+        
         boolean form = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
         if (form) {
             time = txtTime.getText();
@@ -194,12 +196,12 @@ public class VermistBagFormController implements Initializable {
             vakantiePostCode = txtVakantiePostcode.getText();
             vakantieWoonPlaats = txtVakantiePlaats.getText();
             naamHotel = txthotelNaam.getText();
-
+            
             sendToDatabase();
         }
-
+        
     }
-
+    
     public void sendToDatabase() throws SQLException {
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
@@ -216,7 +218,7 @@ public class VermistBagFormController implements Initializable {
                 + "`Phone1`, `Phone2`, `Flightnumber`, `From`, `To`,"
                 + "`Vstreet`, `Vhousenumber`, `Vzipcode`, `Vcity`, `Hotelname`) VALUES"
                 + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        
         try {
             conn = db.getDBConnection();
             myStmt = conn.prepareStatement(persoonsgegevens);
@@ -252,7 +254,7 @@ public class VermistBagFormController implements Initializable {
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
-
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -265,20 +267,20 @@ public class VermistBagFormController implements Initializable {
                 conn.close();
             }
         }
-
+        
         System.out.println(numberAffected);
-
+        
     }
-
+    
     @FXML
     public void IATACHECK(ActionEvent event) {
         RadioMenuItem iattaItem = (RadioMenuItem) IATA.getSelectedToggle();
         iataString = iattaItem.getText();
         btnVliegveldID.setText(iataString);
         System.out.println(iataString);
-
+        
     }
-
+    
     @FXML
     public void vanDropDown(ActionEvent event) {
         RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
@@ -287,7 +289,7 @@ public class VermistBagFormController implements Initializable {
         System.out.println(van);
         
     }
-
+    
     @FXML
     public void naarDropDown(ActionEvent event) {
         RadioMenuItem iattaItem = (RadioMenuItem) IATA_NAAR.getSelectedToggle();
@@ -296,7 +298,7 @@ public class VermistBagFormController implements Initializable {
         System.out.println(naar);
         
     }
-
+    
     @FXML
     public void kleurkiezer1(ActionEvent event) {
         RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();
@@ -304,9 +306,9 @@ public class VermistBagFormController implements Initializable {
         kleur1Menu.setText(kleur);
         System.out.println(kleur);
         ralcode1 = ColourPicker.GetColour(kleur);
-
+        
     }
-
+    
     @FXML
     public void kleurkiezer2(ActionEvent event) {
         RadioMenuItem item = (RadioMenuItem) kleur2.getSelectedToggle();
@@ -316,10 +318,17 @@ public class VermistBagFormController implements Initializable {
         ralcode2 = ColourPicker.GetColour(kleur);
     }
     
+    @FXML
+    public void exportPDF(ActionEvent event) throws IOException {
+        //Test output for console
+        System.out.println("Button Press Print PDF");
+        //Call the PDFExport class
+        PDFExport doc = new PDFExport();
+        //Add a new page to the pdf file
+        doc.addPage(txtBagageLabel.getText());
+        //Prompts the FileChooser
+        doc.savePDF();
+        
+    }
     
-    
-    
-    
-    
-
 }

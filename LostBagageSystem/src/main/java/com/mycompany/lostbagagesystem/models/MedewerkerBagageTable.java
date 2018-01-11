@@ -177,4 +177,9 @@ public class MedewerkerBagageTable {
         this.IsReturned = IsReturned;
     }
 
+    @Override
+    public String toString() {
+        return "State : " + State + " , Labelnumber : " + Labelnumber + " , Type : " + Type + " , Characteristics : " + Characteristics + " , Surname : " + Surname;
+    }
+
 }

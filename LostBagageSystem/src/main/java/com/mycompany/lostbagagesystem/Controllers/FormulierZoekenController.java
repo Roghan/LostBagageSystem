@@ -10,8 +10,6 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,11 +24,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -225,23 +221,13 @@ public class FormulierZoekenController implements Initializable {
 //                    + " /Insertion: " + Insertion
 //                    + " /Surname: " + Surname
 //                    + " /IsReturned: " + IsReturned;
-            String bagageString = bagageTables.get(bagageID).getLabelnumber();
+            String bagageString = bagageTables.get(bagageID).toString();
             bagagetabel.add(bagageString);
             bagageID++;
 
             System.out.println(Labelnumber);
             System.out.println(bagagetabel);
 
-//            bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2,
-//                    Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
-//            for (int i = 0; i < bagage.getColumns().size(); i++) {
-//                TableColumn column = (TableColumn) bagage.getColumns().get(i);
-//                column.setCellValueFactory(new PropertyValueFactory(column.getId()));
-//            }
-//
-//        }
-//
-//        bagage.setItems(bagagetabel);
         }
         listView.setItems(bagagetabel);
     }
@@ -342,15 +328,10 @@ public class FormulierZoekenController implements Initializable {
                 + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
     }
-    
-    public static String getLabel(){
+
+    public static String getLabel() {
         return labelNumberForMatch;
-        
-        
+
     }
-    
-   
-
-
 
 }
