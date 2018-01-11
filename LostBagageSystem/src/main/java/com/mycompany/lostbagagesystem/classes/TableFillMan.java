@@ -124,7 +124,6 @@ public class TableFillMan {
 
             //if currentdate -aantaldagen <= to database date than show
             if (date.compareTo(datadb) <= 0 && isGevonden == returnBagage) {
-
                 bagagetabel.add(new bagageTabel(BagageID, Date, Time, State,
                         Labelnumber, Type, Brand, Color1, Color2, Characteristics,
                         IsReturned, Airport, Location, Initial, Insertion, Surname,
@@ -161,7 +160,7 @@ public class TableFillMan {
             String nummer = Integer.toString(j);
             series.getData().add(new XYChart.Data(nummer, aantalKoffers[i]));
             System.out.println("nummer = " + nummer);
-            System.out.println("aantal = " + aantalKoffers[i]);
+            System.out.println("aantal = " + aantalKoffers[i] + " IS GEVONDEN: " + isGevonden);
         }
 
         bc.getData().add(series);
@@ -197,7 +196,7 @@ public class TableFillMan {
                     break;
                 }
 
-                System.out.println(aantalKoffers);
+                System.out.println(aantalKoffers + " Is gevonden: " + isGevonden);
                 aantalKoffers = 0;
             }
         }

@@ -51,7 +51,7 @@ public class Gev21DController implements Initializable {
     }
 
     /**
-     * @throws SQLException Hiermeer word de tabel gevuld met alle verloren
+     * @throws SQLException Hiermee wordt de tabel gevuld met alle verloren
      * baggage die jonger is dan 21 dagen
      */
 }
