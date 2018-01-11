@@ -9,6 +9,7 @@ import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
@@ -66,16 +67,37 @@ public class InlogSchermController implements Initializable {
     private Locale locale;
 
     @FXML
+    public static String sha256(String base) {
+    try{
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(base.getBytes("UTF-8"));
+        StringBuffer hexString = new StringBuffer();
+
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
+    } catch(Exception ex){
+       throw new RuntimeException(ex);
+    }
+}
+    
+    @FXML
     public void handleButtonAction() throws SQLException, IOException {
         ConnectDB db = new ConnectDB("lbs_database");
         ResultSet resultSet;
         int rol;
         String user = username.getText();
         String pass = wachtwoord.getText();
-
+        
+        String shawachtwoord = sha256(pass);
+        int requiredBlok = 0;
         resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
                 + "FROM gebruiker WHERE acountnaam = " + "'" + user + "'"
-                + " AND wachtwoord = " + "'" + pass + "'");
+                + " AND wachtwoord = " + "'" + shawachtwoord + "'" + "AND blok = " + "'" + requiredBlok + "'");
 
         System.out.println(resultSet);
 
