@@ -43,7 +43,7 @@ public class Gev21DController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, true);
+            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, 1);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
