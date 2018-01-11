@@ -14,12 +14,8 @@ public class DbNaam {
     private int rol;    
     private int blok;
 
-<<<<<<< HEAD
+
     public DbNaam(int id, String acountnaam, String wachtwoord, int rol, int blok) {
-=======
-    public DbNaam(int id, String acountnaam, String wachtwoord, 
-             int rol, int blok) {
->>>>>>> master
         this.id = id;
         this.acountnaam = acountnaam;
         this.wachtwoord = wachtwoord;
@@ -52,11 +48,7 @@ public class DbNaam {
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> master
     public int getRol() {
         return rol;
     }
