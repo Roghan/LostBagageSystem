@@ -65,6 +65,7 @@
                         <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
                         <Button fx:id="DeBlokkeer" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#deBlokkeer" prefHeight="25.0" prefWidth="125.0" text="DeBlokkeer" />
                         <Button fx:id="btnEdit" layoutX="13.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="125.0" text="Wijzigen" />
+                        <Button fx:id="Medewerkers" layoutX="13.0" layoutY="133.0" mnemonicParsing="false" onAction="#terug" prefHeight="25.0" prefWidth="125.0" text="Medewerkers" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="TableLeeg" prefHeight="200.0" prefWidth="644.0">
@@ -74,13 +75,6 @@
                             <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
                               <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
-                              <TableColumn fx:id="voornaam" prefWidth="75.0" text="Voornaam" />
-                              <TableColumn fx:id="achternaam" prefWidth="75.0" text="Achternaam" />
-                              <TableColumn fx:id="geboortedatum" prefWidth="75.0" text="Geboortedatum" />
-                              <TableColumn fx:id="postcode" prefWidth="75.0" text="Postcode" />
-                              <TableColumn fx:id="huisnummer" prefWidth="75.0" text="Huisnummer" />
-                              <TableColumn fx:id="telefoonnummer" prefWidth="75.0" text="Telefoonnummer" />
-                              <TableColumn fx:id="manVrouw" prefWidth="75.0" text="ManVrouw" />
                               <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
                               <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
                           </columns>

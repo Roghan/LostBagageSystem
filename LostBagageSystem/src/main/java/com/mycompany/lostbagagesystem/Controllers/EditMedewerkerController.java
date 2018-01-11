@@ -90,8 +90,7 @@ public class EditMedewerkerController implements Initializable {
         ResultSet rs = null;
 
         // This is a test query 
-        String query = "SELECT `voornaam`, `achternaam`"
-                + "FROM `gebruiker` WHERE `id` = 1";
+        String query = "SELECT `accountnaam`FROM `gebruiker` WHERE `id` = 5";
         
         
         rs = db.executeResultSetQuery(query);

@@ -65,13 +65,6 @@ public class ManMedewerkerViewController implements Initializable {
         int id;
         String acountnaam;
         String wachtwoord;
-        String voornaam;
-        String achternaam;
-        String geboortedatum;
-        String postcode;
-        String huisnummer;
-        String telefoonnummer;
-        int manVrouw;
         int rol;
         int blok;
 
@@ -80,27 +73,15 @@ public class ManMedewerkerViewController implements Initializable {
         dbNaam = FXCollections.observableArrayList();
 
         resultSet = db.executeResultSetQuery("SELECT `id`, `acountnaam`, "
-                + "`wachtwoord`, `voornaam`, `achternaam`, `geboortedatum`, "
-                + "`postcode`, `huisnummer`, `telefoonnummer`, `man/vrouw`, "
-                + "`rol`, `blok` FROM `gebruiker` WHERE `rol` = 3");
+                + "`wachtwoord`, `rol`, `blok` FROM `gebruiker` WHERE `rol` = 3");
 
         while (resultSet.next()) {
             id = resultSet.getInt("id");
             acountnaam = resultSet.getString("acountnaam");
             wachtwoord = resultSet.getString("wachtwoord");
-            voornaam = resultSet.getString("voornaam");
-            achternaam = resultSet.getString("achternaam");
-            geboortedatum = resultSet.getString("geboortedatum");
-            postcode = resultSet.getString("postcode");
-            huisnummer = resultSet.getString("huisnummer");
-            telefoonnummer = resultSet.getString("telefoonnummer");
-            manVrouw = resultSet.getInt("man/vrouw");
             rol = resultSet.getInt("rol");
             blok = resultSet.getInt("blok");
-            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord,
-                    voornaam, achternaam, geboortedatum,
-                    postcode, huisnummer, telefoonnummer,
-                    manVrouw, rol, blok));
+            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord, rol, blok));
         }
 
         for (int i = 0; i < table.getColumns().size(); i++) {
