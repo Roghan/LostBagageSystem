@@ -36,46 +36,82 @@ public class TableFillMan {
     @FXML
     public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer) throws SQLException {
 
-        String registration_nr;
-        String date_found;
-        String time_found;
-        String luggage_type;
-        String brand;
-        String arrived_with_flight;
-        String luggage_tag;
-        String location_found;
-        String main_color;
-        String second_color;
-        String size;
-        String weight;
-        String passanger_name;
-        String city;
-        String other_characteristics;
-
+        int BagageID;
+        String Date;
+        String Time;
+        String State;
+        String Labelnumber;
+        String Type;
+        String Brand;
+        int Color1;
+        int Color2;
+        String Characteristics;
+        boolean IsReturned;
+        String Airport;
+        String Location;
+        String Initial;
+        String Insertion;
+        String Surname;
+        String Street;
+        String Housenumber;
+        String Zipcode;
+        String City;
+        String Email;
+        String Phone1;
+        String Phone2;
+        String Flightnumber;
+        String From;
+        String To;
+        String Vstreet;
+        String Vhuisnummer;
+        String Vzipcode;
+        String Vcity;
+        String Hotelname;
+        
         bagagetabel = FXCollections.observableArrayList();
         //SQL query
-        resultSet = db.executeResultSetQuery("SELECT `registration_nr`, "
-                + "`date_found`,`time_found`, `luggage_type`, `brand`, "
-                + "`arrived_with_flight`, `luggage_tag`, `location_found`, "
-                + "`main_color`, `second_color`, `size`, `weight`, "
-                + "`passanger_name`, `city`, `other_characteristics` FROM `gev310sep`");
+        resultSet = db.executeResultSetQuery("SELECT `BagageID`, "
+                + " `State`, `Date`,`Time`, `Labelnumber`, "
+                + "`Type`, `Brand`, `Color1`, "
+                + "`Color2`, `Characteristics`, `IsReturned`, `Airport`, "
+                + "`Location`, `Initial`, `Insertion`, `Surname`, "
+                + "`Street`, `Housenumber`, `Zipcode`, `City`,"
+                + " `Email`, `Phone1`, `Phone2`, `Flightnumber`,"
+                + " `From`, `To`, `Vstreet`, `Vhuisnummer`,"
+                + " `Vzipcode`, `Vcity`, `Hotelname` FROM `bagage`");
         //Get all the results out of the database
         while (resultSet.next()) {
-            registration_nr = resultSet.getString("registration_nr");
-            date_found = resultSet.getString("date_found");
-            time_found = resultSet.getString("time_found");
-            luggage_type = resultSet.getString("luggage_type");
-            brand = resultSet.getString("brand");
-            arrived_with_flight = resultSet.getString("arrived_with_flight");
-            luggage_tag = resultSet.getString("luggage_tag");
-            location_found = resultSet.getString("location_found");
-            main_color = resultSet.getString("main_color");
-            second_color = resultSet.getString("second_color");
-            size = resultSet.getString("size");
-            weight = resultSet.getString("weight");
-            passanger_name = resultSet.getString("passanger_name");
-            city = resultSet.getString("city");
-            other_characteristics = resultSet.getString("other_characteristics");
+            BagageID = resultSet.getInt("BagageID");
+            Date = resultSet.getString("Date");
+            Time = resultSet.getString("Time");
+            State = resultSet.getString("State");
+            Labelnumber = resultSet.getString("Labelnumber");
+            Type = resultSet.getString("Type");
+            Brand = resultSet.getString("Brand");
+            Color1 = resultSet.getInt("Color1");
+            Color2 = resultSet.getInt("Color2");
+            Characteristics = resultSet.getString("Characteristics");
+            IsReturned = resultSet.getBoolean("IsReturned");
+            Airport = resultSet.getString("Airport");
+            Location = resultSet.getString("Location");
+            Initial = resultSet.getString("Initial");
+            Insertion = resultSet.getString("Insertion");
+            Surname = resultSet.getString("Surname");
+            Street = resultSet.getString("Street");
+            Housenumber = resultSet.getString("Housenumber");
+            Zipcode = resultSet.getString("Zipcode");
+            City = resultSet.getString("City");
+            Email = resultSet.getString("Email");
+            Phone1 = resultSet.getString("Phone1");
+            Phone2 = resultSet.getString("Phone2");
+            Flightnumber = resultSet.getString("Flightnumber");
+            From = resultSet.getString("From");
+            To = resultSet.getString("To");
+            Vstreet = resultSet.getString("Vstreet");
+            Vhuisnummer = resultSet.getString("Vhuisnummer");
+            Vcity = resultSet.getString("Vcity");
+            Vzipcode = resultSet.getString("Vzipcode");
+            Hotelname = resultSet.getString("Hotelname");
 
             //Current date - aantal dagen
             Calendar c = Calendar.getInstance();
@@ -83,15 +119,17 @@ public class TableFillMan {
             c.add(Calendar.DATE, -aantalDagen);
             String date = sdf.format(c.getTime());
             //database date
-            String datadb = date_found + " " + time_found;
+            String datadb = Date + " " + Time;
 
             //if currentdate -aantaldagen <= to database date than show
             if (date.compareTo(datadb) <= 0) {
 
-                bagagetabel.add(new bagageTabel(registration_nr, date_found, time_found,
-                        luggage_type, brand, arrived_with_flight, luggage_tag,
-                        location_found, main_color, second_color, size, weight, passanger_name,
-                        city, other_characteristics));
+                bagagetabel.add(new bagageTabel(BagageID, Date, Time, State,
+                Labelnumber, Type, Brand, Color1, Color2, Characteristics,
+                IsReturned, Airport, Location, Initial, Insertion, Surname,
+                Street, Housenumber, Zipcode, City, Email, Phone1, Phone2,
+                Flightnumber, From, To, Vstreet, Vhuisnummer, Vcity, Vzipcode,
+                Hotelname));
 
                 for (int i = 0; i < table.getColumns().size(); i++) {
                     TableColumn column = (TableColumn) table.getColumns().get(i);
@@ -138,12 +176,12 @@ public class TableFillMan {
         String date_found;
         int[] aantalVerloren = new int[aantalDagen];
 
-        resultSet = db.executeResultSetQuery("SELECT `date_found` FROM `gev310sep`");
+        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage`");
         while (resultSet.next()) {
             
             for (int i = 0; i < aantalDagen; i++) {
 
-                date_found = resultSet.getString("date_found");
+                date_found = resultSet.getString("Date");
 
                 String datadb = date_found;
 

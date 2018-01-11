@@ -5,6 +5,8 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
+import java.util.Date;
+
 /**
  *
  * @author Marcel van Wilgenburg

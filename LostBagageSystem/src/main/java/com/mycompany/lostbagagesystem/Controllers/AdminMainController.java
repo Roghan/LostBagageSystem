@@ -164,7 +164,12 @@ public class AdminMainController implements Initializable {
             wachtwoord = resultSet.getString("wachtwoord");
             rol = resultSet.getInt("rol");
             blok = resultSet.getInt("blok");
+<<<<<<< HEAD
             dbNaam.add(new DbNaam(id, acountnaam, wachtwoord, rol, blok));
+=======
+            dbNaam.add(new DbNaam(id, acountnaam, wachtwoord,
+                    rol, blok));
+>>>>>>> master
         }
 
         for (int i = 0; i < table.getColumns().size(); i++) {
