@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -277,26 +279,45 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private Button annuleren3;
+    
+    @FXML
+    private DatePicker txtDatum;
+    
+    @FXML
+    private TextArea txtBijzondereOpmerking;
+    
+    @FXML
+    private TextField txtVluchtNummer;
 
     @FXML
     private Button insturen;
+    
+    @FXML
+    private ToggleGroup IATA;
+    
+    @FXML
+    private ToggleGroup IATA_VAN;
+    
+    @FXML
+    private ToggleGroup IATA_NAAR;
 
     @FXML
     private AnchorPane TableLeeg2;
 
     @FXML
     private MenuButton btnVanVliegveldID;
+    
     @FXML
     private MenuButton btnNaarVliegveldID;
+    
     @FXML
     private MenuButton btnVliegveldID;
 
+    //String's voor het bewaren van de gegevens uit de textvelden
     private String voorletters;
     private String tussenvoegsel;
     private String achternaam;
-    private String geboortedatum;
-    private String landnaam;
-    private String merk;
+    private String datum;
     private String bankRekening;
     private String straatnaam;
     private String huisnummer;
@@ -305,15 +326,15 @@ public class SchadeformulierController implements Initializable {
     private String email;
     private String telefoon;
     private String mobiel;
-    private String bagageLabel;
+    private String bagagelabel;
     private String typeBagage;
-    private String merkBagage;
+    private String merk;
     private String bijzondereOpmerking;
-    private String schadeDatum;
-    private String datumBeginReis;
-    private String schadeTijd;
+    private String vluchtNummer;
     private String schadePlaats;
     private String schadeLand;
+    private String van;
+    private String naar;
     private String ralcode1;
     private String ralcode2;
     private String iataString;
@@ -324,28 +345,10 @@ public class SchadeformulierController implements Initializable {
     }
 
     @FXML
-    void insturen(ActionEvent event) {
+    void insturen(ActionEvent event) throws SQLException {
         System.out.println("KNOP INSTUREN INGEDRUKT");
 
-        voorletters = txtVoorletters.getText();
-        tussenvoegsel = txtTussenvoegsel.getText();
-        achternaam = txtAchternaam.getText();
-        landnaam = txtLandnaam.getText();
-        bankRekening = txtBankrekening.getText();
-        straatnaam = txtStraatnaam.getText();
-        huisnummer = txtHuisNummer.getText();
-        postcode = txtPostcode.getText();
-        woonplaats = txtWoonplaats.getText();
-        email = txtEmail.getText();
-        telefoon = txtTelefoon.getText();
-        mobiel = txtMobielNummer.getText();
-        bagageLabel = txtBagageLabel.getText();
-        typeBagage = txtTypeBagage.getText();
-        merkBagage = txtMerk.getText();
-        bijzondereOpmerking = null;
-        schadeTijd = txtSchadeTijd.getText();
-        schadePlaats = txtSchadePlaats.getText();
-        schadeLand = txtSchadeLand.getText();
+        
 
         TextField[] reqTextFields = new TextField[]{
             txtVoorletters,
@@ -354,16 +357,15 @@ public class SchadeformulierController implements Initializable {
             txtStraatnaam,
             txtPostcode,
             txtWoonplaats,
+            txtVluchtNummer,
             txtEmail,
-            txtLandnaam
+            txtSchadePlaats,
+            txtSchadeLand
 
         };
 
         DatePicker[] datePickers = new DatePicker[]{
-            txtGeboorteDatum,
-            txtSchadeDatum,
-            txtDatumBeginReis
-
+            txtDatum
         };
 
         TextField[] PhoneFields = new TextField[]{
@@ -380,12 +382,36 @@ public class SchadeformulierController implements Initializable {
         MenuButton[] reqMenuButtons = new MenuButton[]{
             btnVliegveldID,
             btnVanVliegveldID,
-            btnNaarVliegveldID
+            btnNaarVliegveldID,
+            kleur1Menu
 
         };
 
-        FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqTextFields, reqMenuButtons);
-
+        boolean form = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqTextFields, reqMenuButtons);
+        if (form) {
+            voorletters = txtVoorletters.getText();
+            tussenvoegsel = txtTussenvoegsel.getText();
+            achternaam = txtAchternaam.getText();
+            bankRekening = txtBankrekening.getText();
+            datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            straatnaam = txtStraatnaam.getText();
+            huisnummer = txtHuisNummer.getText();
+            postcode = txtPostcode.getText();
+            woonplaats = txtWoonplaats.getText();
+            email = txtEmail.getText();
+            telefoon = txtTelefoon.getText();
+            mobiel = txtMobielNummer.getText();
+            vluchtNummer = txtVluchtNummer.getText();
+            schadePlaats = txtSchadePlaats.getText();
+            schadeLand = txtSchadeLand.getText();
+            bagagelabel = txtBagageLabel.getText();
+            typeBagage = txtTypeBagage.getText();
+            merk = txtMerk.getText();
+            bijzondereOpmerking = txtBijzondereOpmerking.getText();
+            
+            sendToDatabase();
+        }
+        
     }
 
     public void sendToDatabase() throws SQLException {
@@ -396,39 +422,40 @@ public class SchadeformulierController implements Initializable {
         int numberAffected = 0;
 
         // Updates persoonsgegevens
-        String persoonsgegevens = "INSERT INTO `klant` "
-                + "(`Voorletter`,`Tussenvoegsel`, `Achternaam`, `Straat`, `HuisNummer`, `Postcode`, "
-                + "`Woonplaats`, `Email`, `Telefoon1`, `Telefoon2`, `VluchtNummer`,"
-                + "`State`, `Date`, `Time`, `LabelNummer`, `Type`, `Brand`, `Color1`, `Color2`,"
-                + "`Characteristics`, `Luchthaven`) VALUES"
-                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String persoonsgegevens = "INSERT INTO `bagage` "
+                + "(`State`, `Date`, `Labelnumber`, `Type`, "
+                + "`Brand`,`Color1`, `Color2`, `Characteristics`, `Airport`,"
+                + "`Initial`, `Insertion`, `Surname`,"
+                + "`Street`, `Housenumber`, `Zipcode`, `City`, `Email`,"
+                + "`Phone1`, `Phone2`, `Flightnumber`, `From`, `To`) VALUES"
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = db.getDBConnection();
             myStmt = conn.prepareStatement(persoonsgegevens);
             // Filling in the question marks from the query
-            myStmt.setString(1, voorletters);
-            myStmt.setString(2, tussenvoegsel);
-            myStmt.setString(3, achternaam);
-            //myStmt.setString(4, vluchtNummer);
-            myStmt.setString(4, straatnaam);
-            myStmt.setString(5, huisnummer);
-            myStmt.setString(6, postcode);
-            myStmt.setString(7, woonplaats);
-            myStmt.setString(8, email);
-            myStmt.setString(9, telefoon);
-            myStmt.setString(10, mobiel);
-            //myStmt.setString(11, vluchtNummer);
-            myStmt.setString(5, "Damaged");
-            //myStmt.setString(6, datum);
-            //myStmt.setString(7, tijd);
-            myStmt.setString(8, bagageLabel);
-            myStmt.setString(9, typeBagage);
-            myStmt.setString(10, merk);
-            myStmt.setString(11, ralcode1);
-            myStmt.setString(12, ralcode2);
-            myStmt.setString(13, bijzondereOpmerking);
-            //myStmt.setString(14, iataString);
+            myStmt.setString(1, "Damaged");
+            myStmt.setString(2, datum);
+            myStmt.setString(3, bagagelabel);
+            myStmt.setString(4, typeBagage);
+            myStmt.setString(5, merk);
+            myStmt.setString(6, ralcode1);
+            myStmt.setString(7, ralcode2);
+            myStmt.setString(8, bijzondereOpmerking);
+            myStmt.setString(9, iataString);
+            myStmt.setString(10, voorletters);
+            myStmt.setString(11, tussenvoegsel);
+            myStmt.setString(12, achternaam);
+            myStmt.setString(13, straatnaam);
+            myStmt.setString(14, huisnummer);
+            myStmt.setString(15, postcode);
+            myStmt.setString(16, woonplaats);
+            myStmt.setString(17, email);
+            myStmt.setString(18, telefoon);
+            myStmt.setString(19, mobiel);
+            myStmt.setString(20, vluchtNummer);
+            myStmt.setString(21, van);
+            myStmt.setString(22, naar);
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
@@ -450,14 +477,31 @@ public class SchadeformulierController implements Initializable {
 
     }
 
-//    @FXML
-//    public void IATACHECK(ActionEvent event) {
-//        RadioMenuItem iattaItem = (RadioMenuItem) IATA.getSelectedToggle();
-//        iataString = iattaItem.getText();
-//        btnVliegveldID.setText(iataString);
-//        System.out.println(iataString);
-//
-//    }
+    @FXML
+    public void IATACHECK(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA.getSelectedToggle();
+        iataString = iattaItem.getText();
+        btnVliegveldID.setText(iataString);
+        System.out.println(iataString);
+
+    }
+    
+    @FXML
+    public void vanDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
+        van = iattaItem.getText();
+        btnVanVliegveldID.setText(van);
+        System.out.println(van);
+    }
+
+    @FXML
+    public void naarDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA_NAAR.getSelectedToggle();
+        naar = iattaItem.getText();
+        btnNaarVliegveldID.setText(naar);
+        System.out.println(naar);
+    }
+    
     @FXML
     public void kleurkiezer1(ActionEvent event) {
         RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();

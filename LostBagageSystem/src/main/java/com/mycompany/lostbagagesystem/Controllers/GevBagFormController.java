@@ -10,6 +10,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -179,7 +180,15 @@ public class GevBagFormController implements Initializable {
     @FXML
     private MenuButton kleur2Menu;
     @FXML
+    private MenuButton btnGevondenPlaats;
+    @FXML
+    private ToggleGroup plaats;
+    @FXML
     private ToggleGroup IATA;
+    @FXML
+    private ToggleGroup IATA_VAN;
+    @FXML
+    private ToggleGroup IATA_NAAR;
     @FXML
     private MenuButton btnVliegveldID;
     @FXML
@@ -189,39 +198,33 @@ public class GevBagFormController implements Initializable {
 
     private String datum;
     private String tijd;
-    private String vliegveldID;
     private String lostAndFound;
-    private String voorLetters;
-    private String tussenVoegsel;
-    private String achterNaam;
-    private String merk;
-    private String labelNummer;
-    private String vluchtNummer;
-    private String bestemming;
+    private String voorletters;
+    private String tussenvoegsel;
+    private String achternaam;
+    private String bagagelabel;
+    private String vluchtnummer;
     private String typeBagage;
-    private String merkBagage;
+    private String merk;
     private String bijzondereOpmerking;
+    private String van;
+    private String naar;
     private String ralcode1;
     private String ralcode2;
     private String iataString;
+    private String gevondenPlaats;
 
     @FXML
     void insturen(ActionEvent insturen) throws SQLException {
         System.out.println("KNOP INSTUREN INGEDRUKT");
 
-        voorLetters = txtVoorletters.getText();
-        tussenVoegsel = txtTussenvoegsel.getText();
-        achterNaam = txtAchternaam.getText();
-
         TextField[] reqFields = new TextField[]{
             txtVoorletters,
             txtAchternaam,
             txtTime,
-            txtVliegveldID,
             txtLostAndFoundID,
             txtLabelNummer,
             txtVluchtNummer,
-            txtBestemming
 
         };
 
@@ -232,16 +235,34 @@ public class GevBagFormController implements Initializable {
 
         TextField[] PhoneFields = new TextField[]{};
 
-        TextField[] reqIntFields = new TextField[]{};
+        TextField[] reqIntFields = new TextField[]{
+            txtTime
+                
+        };
 
         MenuButton[] reqMenuButtons = new MenuButton[]{
             btnVliegveldID,
             btnVanVliegveldID,
-            btnNaarVliegveldID
+            btnNaarVliegveldID,
+            btnGevondenPlaats
 
         };
 
-        FormulierCheck.verification(reqIntFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
+        boolean form = FormulierCheck.verification(reqIntFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
+        if (form) {
+            tijd = txtTime.getText();
+            datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//            lostAndFound = txtLostAndFoundID.getText();
+            voorletters = txtVoorletters.getText();
+            tussenvoegsel = txtTussenvoegsel.getText();
+            achternaam = txtAchternaam.getText();
+            vluchtnummer = txtVluchtNummer.getText();
+            bagagelabel = txtBagageLabel.getText();
+            typeBagage = txtTypeBagage.getText();
+            merk = txtMerk.getText();
+            bijzondereOpmerking = txtBijzondereOpmerking.getText();
+        }
+        
     }
 
     /**
@@ -250,45 +271,6 @@ public class GevBagFormController implements Initializable {
      *
      * @throws SQLException
      */
-//    public void sendToDatabase() throws SQLException {
-//        // Making a new prepared statement 
-//        PreparedStatement myStmt = null;
-//        Connection conn = null;
-//        ConnectDB db = new ConnectDB();
-//        int numberAffected = 0;
-//
-//        // This is a test query 
-//        String query = "INSERT INTO `vermistebagage` "
-//                + "(`voorletters`,`tussenvoegsel`, `achternaam`) VALUES"
-//                + "(?, ?, ?)";
-//
-//        try {
-//            conn = db.getDBConnection();
-//            myStmt = conn.prepareStatement(query);
-//            // Filling in the question marks from the query
-//            myStmt.setString(1, voorLetters);
-//            myStmt.setString(2, tussenVoegsel);
-//            myStmt.setString(3, achternaam);
-//
-//            // Execute INSERT sql statement
-//            numberAffected = myStmt.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        } finally {
-//            // Closing the prepared statement for memory purposes
-//            if (myStmt != null) {
-//                myStmt.close();
-//            }
-//            // Closing the database connection for memory purposes
-//            if (conn != null) {
-//                conn.close();
-//            }
-//        }
-//
-//        System.out.println(numberAffected);
-//
-//    }
     public void sendToDatabase() throws SQLException {
         // Making a new prepared statement 
         PreparedStatement myStmt = null;
@@ -297,30 +279,35 @@ public class GevBagFormController implements Initializable {
         int numberAffected = 0;
 
         // Updates persoonsgegevens
-        String persoonsgegevens = "INSERT INTO `klant` "
-                + "(`Voorletter`,`Tussenvoegsel`, `Achternaam`, `VluchtNummer`,"
-                + "`State`, `Date`, `Time`, `LabelNummer`, `Type`, `Brand`, `Color1`, `Color2`,"
-                + "`Characteristics`, `Luchthaven`) VALUES"
-                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String persoonsgegevens = "INSERT INTO `bagage` "
+                + "(`State`, `Date`,`Time`, `Labelnumber`, `Type`, "
+                + "`Brand`,`Color1`, `Color2`, `Characteristics`, `Airport`,"
+                + "`Initial`, `Insertion`, `Surname`, "
+                + "`Flightnumber`, `From`, `To`) VALUES"
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             conn = db.getDBConnection();
             myStmt = conn.prepareStatement(persoonsgegevens);
             // Filling in the question marks from the query
-            myStmt.setString(1, voorLetters);
-            myStmt.setString(2, tussenVoegsel);
-            myStmt.setString(3, achterNaam);
-            myStmt.setString(4, vluchtNummer);
-            myStmt.setString(5, "Found");
-            myStmt.setString(6, datum);
-            myStmt.setString(7, tijd);
-            myStmt.setString(8, labelNummer);
-            myStmt.setString(9, typeBagage);
-            myStmt.setString(10, merk);
-            myStmt.setString(11, ralcode1);
-            myStmt.setString(12, ralcode2);
-            myStmt.setString(13, bijzondereOpmerking);
-            myStmt.setString(14, iataString);
+            myStmt.setString(1, "Found");
+            myStmt.setString(2, datum);
+            myStmt.setString(3, tijd);
+            myStmt.setString(4, bagagelabel);
+            myStmt.setString(5, typeBagage);
+            myStmt.setString(6, merk);
+            myStmt.setString(7, ralcode1);
+            myStmt.setString(8, ralcode2);
+            myStmt.setString(9, bijzondereOpmerking);
+            myStmt.setString(10, iataString);
+            myStmt.setString(11, voorletters);
+            myStmt.setString(12, tussenvoegsel);
+            myStmt.setString(13, achternaam);
+            myStmt.setString(14, vluchtnummer);
+            myStmt.setString(15, van);
+            myStmt.setString(16, naar);
+//            myStmt.setString(0, lostAndFound);
+//            myStmt.setString(0, gevondenPlaats);
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
@@ -349,6 +336,33 @@ public class GevBagFormController implements Initializable {
         btnVliegveldID.setText(iataString);
         System.out.println(iataString);
 
+    }
+    
+    @FXML
+    public void gevondenPlaats(ActionEvent event) {
+        RadioMenuItem item = (RadioMenuItem) plaats.getSelectedToggle();
+        gevondenPlaats = item.getText();
+        btnGevondenPlaats.setText(gevondenPlaats);
+        System.out.println(gevondenPlaats);
+        
+    }
+    
+    @FXML
+    public void vanDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
+        van = iattaItem.getText();
+        btnVanVliegveldID.setText(van);
+        System.out.println(van);
+        
+    }
+
+    @FXML
+    public void naarDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) IATA_NAAR.getSelectedToggle();
+        naar = iattaItem.getText();
+        btnNaarVliegveldID.setText(naar);
+        System.out.println(naar);
+        
     }
 
     @FXML

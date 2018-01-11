@@ -285,6 +285,7 @@ public class VermistBagFormController implements Initializable {
         van = iattaItem.getText();
         btnVanVliegveldID.setText(van);
         System.out.println(van);
+        
     }
 
     @FXML
@@ -293,6 +294,7 @@ public class VermistBagFormController implements Initializable {
         naar = iattaItem.getText();
         btnNaarVliegveldID.setText(naar);
         System.out.println(naar);
+        
     }
 
     @FXML
