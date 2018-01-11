@@ -6,15 +6,24 @@ package com.mycompany.lostbagagesystem.Controllers;
  * and open the template in the editor.
  */
 import com.mycompany.lostbagagesystem.MainApp;
+import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.LostAndFoundLuggageInventory;
+import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,12 +67,12 @@ public class ExcelImportExportController implements Initializable {
     private MenuButton filterBox;
 
     private String registrationNr;
-    private String dateFound;
+    private Date dateFound;
     private String timeFound;
     private String luggageType;
     private String brand;
     private String flightNumber;
-    private int luggageTag;
+    private String luggageTag;
     private String locationFound;
     private String mainColor;
     private String secondColor;
@@ -71,6 +80,8 @@ public class ExcelImportExportController implements Initializable {
     private String weight;
     private String passNameAndCity;
     private String charateristics;
+    private boolean imp = false;
+    private XSSFWorkbook workbook;
 
     private Time time;
 
@@ -92,9 +103,8 @@ public class ExcelImportExportController implements Initializable {
 
     }
 
-    public void importExcelFile(ActionEvent event) throws FileNotFoundException, IOException {
+    public void getDataFormDatabase() throws FileNotFoundException, IOException, SQLException {
 
-        XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(MainApp.selectFileToOpen()));
         XSSFSheet sheet = workbook.getSheetAt(0);
         XSSFRow row;
         String[] data = new String[]{};
@@ -105,9 +115,16 @@ public class ExcelImportExportController implements Initializable {
             registrationNr = row.getCell(0).getStringCellValue();
             System.out.println(registrationNr);
             XSSFCell cellDate = row.getCell(1);
-            dateFound = cellDate.toString();
+            String date = cellDate.toString();
             XSSFCell cellTime = row.getCell(2);
             timeFound = cellTime.toString();
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            try {
+                dateFound = formatter.parse(date);
+            } catch (ParseException ex) {
+
+            }
 
             if (timeFound.equals("31-Dec-1899")) {
                 // compute time in the day in seconds
@@ -124,10 +141,12 @@ public class ExcelImportExportController implements Initializable {
                 luggageType = row.getCell(3).getStringCellValue();
                 brand = row.getCell(4).getStringCellValue();
                 flightNumber = row.getCell(5).getStringCellValue();
-                luggageTag = (int) row.getCell(6).getNumericCellValue();
+                luggageTag = row.getCell(6).getStringCellValue();
                 locationFound = row.getCell(7).getStringCellValue();
-                mainColor = row.getCell(8).getStringCellValue();
-                secondColor = row.getCell(9).getStringCellValue();
+                String color = row.getCell(8).getStringCellValue();
+                mainColor = ColourPicker.GetColourExcel(color);
+                color = row.getCell(8).getStringCellValue();
+                secondColor = ColourPicker.GetColourExcel(color);
                 size = row.getCell(10).getStringCellValue();
                 weight = row.getCell(11).getStringCellValue();
                 passNameAndCity = row.getCell(12).getStringCellValue();
@@ -135,20 +154,84 @@ public class ExcelImportExportController implements Initializable {
 
                 bagagetabel.add(new LostAndFoundLuggageInventory(registrationNr, dateFound, timeFound, luggageType, brand, flightNumber, luggageTag, locationFound, mainColor, secondColor, size, weight, passNameAndCity, charateristics));
 
-                for (int j = 0; j < bagage.getColumns().size(); j++) {
-                    TableColumn column = (TableColumn) bagage.getColumns().get(j);
-                    column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+                if (imp) {
+                    sendToDatabase();
+                } else {
+
+                    for (int j = 0; j < bagage.getColumns().size(); j++) {
+                        TableColumn column = (TableColumn) bagage.getColumns().get(j);
+                        column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+                    }
+
+                    bagage.setItems(bagagetabel);
                 }
 
             }
 
-            bagage.setItems(bagagetabel);
-
         }
-        
+
+    }
+
+    public void sendToDatabase() throws SQLException {
+        // Making a new prepared statement 
+        PreparedStatement myStmt = null;
+        Connection conn = null;
+        ConnectDB db = new ConnectDB();
+        int numberAffected = 0;
+
+        // Updates persoonsgegevens
+        String persoonsgegevens = "INSERT INTO `bagage` "
+                + "(`State`, `Date`, `Time`, `Labelnumber`, `Type`, "
+                + "`Brand`,`Color1`, `Color2`, `Characteristics`, `Passnameandcity`,`RegistrationNr`, `Flightnumber`) VALUES"
+                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            conn = db.getDBConnection();
+            myStmt = conn.prepareStatement(persoonsgegevens);
+            // Filling in the question marks from the query
+            myStmt.setString(1, "Found"); //?
+            myStmt.setDate(2, (java.sql.Date) dateFound);
+            myStmt.setString(3, timeFound);
+            myStmt.setString(4, luggageTag);
+            myStmt.setString(5, luggageType);
+            myStmt.setString(6, brand);
+            myStmt.setString(7, mainColor);
+            myStmt.setString(8, secondColor);
+            myStmt.setString(9, charateristics);
+            myStmt.setString(10, passNameAndCity);
+            myStmt.setString(11, registrationNr);
+            myStmt.setString(12, flightNumber);
+
+            // Execute INSERT sql statement
+            numberAffected = myStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            // Closing the prepared statement for memory purposes
+            if (myStmt != null) {
+                myStmt.close();
+            }
+            // Closing the database connection for memory purposes
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        System.out.println(numberAffected);
+
+    }
+
+    public void importExcelFile(ActionEvent event) throws IOException, FileNotFoundException, SQLException {
+        imp = false;
+        workbook = new XSSFWorkbook(new FileInputStream(MainApp.selectFileToOpen()));
+        getDataFormDatabase();
+
+    }
+
+    public void importTable(ActionEvent event) throws IOException, FileNotFoundException, SQLException {
+        imp = true;
+        getDataFormDatabase();
+
     }
 }
-
-    
-    
-

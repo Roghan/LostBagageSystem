@@ -15,12 +15,12 @@ import java.util.Date;
 public class LostAndFoundLuggageInventory {
 
     private String registrationNr;
-    private String dateFound;
+    private Date dateFound;
     private String timeFound;
     private String luggageType;
     private String brand;
     private String flightNumber;
-    private int luggageTag;
+    private String luggageTag;
     private String locationFound;
     private String mainColor;
     private String secondColor;
@@ -29,7 +29,7 @@ public class LostAndFoundLuggageInventory {
     private String passNameAndCity;
     private String charateristics;
 
-    public LostAndFoundLuggageInventory(String registrationNr, String dateFound, String timeFound, String luggageType, String brand, String flightNumber, int luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
+    public LostAndFoundLuggageInventory(String registrationNr, Date dateFound, String timeFound, String luggageType, String brand, String flightNumber, String luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
         this.registrationNr = registrationNr;
         this.dateFound = dateFound;
         this.timeFound = timeFound;
@@ -54,11 +54,11 @@ public class LostAndFoundLuggageInventory {
         this.registrationNr = registrationNr;
     }
 
-    public String getDateFound() {
+    public Date getDateFound() {
         return dateFound;
     }
 
-    public void setDateFound(String dateFound) {
+    public void setDateFound(Date dateFound) {
         this.dateFound = dateFound;
     }
 
@@ -94,11 +94,11 @@ public class LostAndFoundLuggageInventory {
         this.flightNumber = flightNumber;
     }
 
-    public int getLuggageTag() {
+    public String getLuggageTag() {
         return luggageTag;
     }
 
-    public void setLuggageTag(int luggageTag) {
+    public void setLuggageTag(String luggageTag) {
         this.luggageTag = luggageTag;
     }
 
