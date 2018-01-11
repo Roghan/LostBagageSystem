@@ -87,7 +87,7 @@ public class FormulierZoekenController implements Initializable {
     private ResultSet resultSet = null;
     private String txtBoxFilterString;
     private String selectedListviewItem;
-    protected ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
+    private ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
 
     private static String labelNumberForMatch;
 

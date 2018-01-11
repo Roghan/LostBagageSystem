@@ -15,8 +15,8 @@ import java.util.Date;
 public class LostAndFoundLuggageInventory {
 
     private String registrationNr;
-    private Date dateFound;
-    private double timeFound;
+    private String dateFound;
+    private String timeFound;
     private String luggageType;
     private String brand;
     private String flightNumber;
@@ -29,7 +29,7 @@ public class LostAndFoundLuggageInventory {
     private String passNameAndCity;
     private String charateristics;
 
-    public LostAndFoundLuggageInventory(String registrationNr, Date dateFound, double timeFound, String luggageType, String brand, String flightNumber, int luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
+    public LostAndFoundLuggageInventory(String registrationNr, String dateFound, String timeFound, String luggageType, String brand, String flightNumber, int luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
         this.registrationNr = registrationNr;
         this.dateFound = dateFound;
         this.timeFound = timeFound;
@@ -54,19 +54,19 @@ public class LostAndFoundLuggageInventory {
         this.registrationNr = registrationNr;
     }
 
-    public Date getDateFound() {
+    public String getDateFound() {
         return dateFound;
     }
 
-    public void setDateFound(Date dateFound) {
+    public void setDateFound(String dateFound) {
         this.dateFound = dateFound;
     }
 
-    public double getTimeFound() {
+    public String getTimeFound() {
         return timeFound;
     }
 
-    public void setTimeFound(double timeFound) {
+    public void setTimeFound(String timeFound) {
         this.timeFound = timeFound;
     }
 
