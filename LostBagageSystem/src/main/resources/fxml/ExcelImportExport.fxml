@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.ExcelImportExportController">
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.ExcelImportExportController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -61,29 +60,32 @@
                         <Insets left="10.0" right="10.0" top="4.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <Button mnemonicParsing="false" onAction="#importExcelFile" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#importExcelFile" text="%TLK153" />
+                  <Button mnemonicParsing="false" onAction="#importTable" text="%TLK154">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </top>
          <center>
             <TableView fx:id="bagage">
               <columns>
-                <TableColumn fx:id="registrationNr" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="BagageID" />
-                <TableColumn fx:id="dateFound" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="State" />
-                  <TableColumn fx:id="timeFound" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="95.0" text="Labelnumber" />
-                  <TableColumn fx:id="luggageType" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="72.0" text="Type" />
-                  <TableColumn fx:id="Brand" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="58.0" text="Brand" />
-                  <TableColumn fx:id="brand" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color1" />
-                  <TableColumn fx:id="flightNumber" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="Color2" />
-                  <TableColumn fx:id="luggageTag" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="93.0" text="Characteristics" />
-                  <TableColumn fx:id="LocationFound" minWidth="0.0" prefWidth="113.0" text="Location" />
-                  <TableColumn fx:id="mainColor" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="Airport" />
-                  <TableColumn fx:id="secondColor" prefWidth="75.0" text="From" />
-                  <TableColumn fx:id="size" prefWidth="75.0" text="To" />
-                  <TableColumn fx:id="weight" prefWidth="75.0" text="Initial" />
-                  <TableColumn fx:id="passNameAndCity" prefWidth="75.0" text="Insertion" />
-                  <TableColumn fx:id="charateristics" prefWidth="75.0" text="Surname" />
-                  <TableColumn fx:id="IsReturned" prefWidth="75.0" text="IsReturned" />
+                <TableColumn fx:id="registrationNr" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="%TLK139" />
+                <TableColumn fx:id="dateFound" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="%TLK140" />
+                  <TableColumn fx:id="timeFound" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="95.0" text="%TLK141" />
+                  <TableColumn fx:id="luggageType" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="72.0" text="%TLK142" />
+                  <TableColumn fx:id="brand" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="58.0" text="%TLK143" />
+                  <TableColumn fx:id="flightNumber" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="%TLK144" />
+                  <TableColumn fx:id="luggageTag" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="%TLK145" />
+                  <TableColumn fx:id="locationFound" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="93.0" text="%TLK146" />
+                  <TableColumn fx:id="mainColor" minWidth="0.0" prefWidth="113.0" text="%TLK147" />
+                  <TableColumn fx:id="secondColor" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="%TLK148" />
+                  <TableColumn fx:id="size" prefWidth="75.0" text="%TLK149" />
+                  <TableColumn fx:id="weight" prefWidth="75.0" text="%TLK150" />
+                  <TableColumn fx:id="passNameAndCity" prefWidth="75.0" text="%TLK151" />
+                  <TableColumn fx:id="charateristics" prefWidth="75.0" text="%TLK152" />
               </columns>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

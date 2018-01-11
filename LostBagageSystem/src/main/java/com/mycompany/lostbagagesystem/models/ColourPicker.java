@@ -91,4 +91,83 @@ public class ColourPicker {
         return ralCode;
     }
 
+    public static String GetColourExcel(String colour) {
+
+        if (colour.equals("Yellow")) {
+            ralCode = "1003";
+            System.out.println(ralCode);
+        } else if (colour.equals("Olive")) {
+            ralCode = "1024";
+            System.out.println(ralCode);
+        } else if (colour.equals("Orange")) {
+            ralCode = "2004";
+            System.out.println(ralCode);
+        } else if (colour.equals("Red")) {
+            ralCode = "3000";
+            System.out.println(ralCode);
+        } else if (colour.equals("Darkred")) {
+            ralCode = "3005";
+            System.out.println(ralCode);
+        } else if (colour.equals("Pink")) {
+            ralCode = "3017";
+            System.out.println(ralCode);
+        } else if (colour.equals("Purple")) {
+            ralCode = "4005";
+            System.out.println(ralCode);
+        } else if (colour.equals("Violet")) {
+            ralCode = "4010";
+            System.out.println(ralCode);
+        } else if (colour.equals("Blue")) {
+            ralCode = "5002";
+            System.out.println(ralCode);
+        } else if (colour.equals("Lightblue")) {
+            ralCode = "5015";
+            System.out.println(ralCode);
+        } else if (colour.equals("Darkblue")) {
+            ralCode = "5022";
+            System.out.println(ralCode);
+        } else if (colour.equals("Bluegreen")) {
+            ralCode = "6004";
+            System.out.println(ralCode);
+        } else if (colour.equals("Green")) {
+            ralCode = "6002";
+            System.out.println(ralCode);
+        } else if (colour.equals("Darkgreen")) {
+            ralCode = "6022";
+            System.out.println(ralCode);
+        } else if (colour.equals("Lightgreen")) {
+            ralCode = "6038";
+            System.out.println(ralCode);
+        } else if (colour.equals("Gray")) {
+            ralCode = "7015";
+            System.out.println(ralCode);
+        } else if (colour.equals("Darkgray")) {
+            ralCode = "9011";
+            System.out.println(ralCode);
+        } else if (colour.equals("Lightgray")) {
+            ralCode = "7000";
+            System.out.println(ralCode);
+        } else if (colour.equals("Brown")) {
+            ralCode = "8002";
+            System.out.println(ralCode);
+        } else if (colour.equals("Darkbrown")) {
+            ralCode = "8011";
+            System.out.println(ralCode);
+        } else if (colour.equals("Lightbrown")) {
+            ralCode = "8023";
+            System.out.println(ralCode);
+        } else if (colour.equals("White")) {
+            ralCode = "9001";
+            System.out.println(ralCode);
+        } else if (colour.equals("Black")) {
+            ralCode = "9005";
+            System.out.println(ralCode);
+        } else if (colour.equals("Cream")) {
+            ralCode = "1015";
+            System.out.println(ralCode);
+        }
+
+        return ralCode;
+    }
+
 }
