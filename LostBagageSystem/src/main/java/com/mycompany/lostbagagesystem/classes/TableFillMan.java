@@ -179,7 +179,6 @@ public class TableFillMan {
         int[] aantalVerloren = new int[aantalDagen];
 
         resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage` WHERE IsReturned = '" + isGevonden + "'");
-        System.out.println(isGevonden);
         while (resultSet.next()) {
 
             for (int i = 0; i < aantalDagen; i++) {
