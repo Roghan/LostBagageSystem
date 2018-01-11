@@ -9,6 +9,7 @@ import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
+import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
@@ -66,16 +67,37 @@ public class InlogSchermController implements Initializable {
     private Locale locale;
 
     @FXML
+    public static String sha256(String base) {
+    try{
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(base.getBytes("UTF-8"));
+        StringBuffer hexString = new StringBuffer();
+
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
+    } catch(Exception ex){
+       throw new RuntimeException(ex);
+    }
+}
+    
+    @FXML
     public void handleButtonAction() throws SQLException, IOException {
         ConnectDB db = new ConnectDB("lbs_database");
         ResultSet resultSet;
         int rol;
         String user = username.getText();
         String pass = wachtwoord.getText();
-
+        
+        String shawachtwoord = sha256(pass);
+        int requiredBlok = 0;
         resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
                 + "FROM gebruiker WHERE acountnaam = " + "'" + user + "'"
-                + " AND wachtwoord = " + "'" + pass + "'");
+                + " AND wachtwoord = " + "'" + shawachtwoord + "'" + "AND blok = " + "'" + requiredBlok + "'");
 
         System.out.println(resultSet);
 
@@ -178,3 +200,8 @@ public class InlogSchermController implements Initializable {
     }
 
 }
+
+//wachtwoorden:
+//1    YouriPel     a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
+//2    Marcel     03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+//3    Donovan 5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5
