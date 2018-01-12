@@ -435,7 +435,7 @@
                      </VBox.margin></Line>
                   <HBox>
                      <children>
-                        <Button fx:id="btnAnnuleren3" mnemonicParsing="false" text="%TLK40">
+                        <Button fx:id="btnAnnuleren3" mnemonicParsing="false" onAction="#exportPDF" text="PDF">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

@@ -5,27 +5,30 @@ package com.mycompany.lostbagagesystem.Controllers;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -35,19 +38,25 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class FormulierZoekenController implements Initializable {
 
     @FXML
-    private ToggleGroup Filter;
+    protected ToggleGroup Filter;
 
     @FXML
-    private TextField txtFilter;
+    protected TextField txtFilter;
 
     @FXML
-    private TableView<MedewerkerBagageTable> bagage;
+    protected TableView<MedewerkerBagageTable> bagage;
 
     @FXML
-    private ToggleGroup txtBoxFilter;
+    protected ToggleGroup txtBoxFilter;
 
     @FXML
-    private MenuButton filterBox;
+    protected MenuButton filterBox;
+
+    @FXML
+    protected AnchorPane listViewLoader;
+
+    @FXML
+    private ListView listView;
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
@@ -73,6 +82,10 @@ public class FormulierZoekenController implements Initializable {
     private String IsReturned;
     private ResultSet resultSet = null;
     private String txtBoxFilterString;
+    private String selectedListviewItem;
+    private ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
+
+    private static String labelNumberForMatch;
 
     /**
      * Initializes the controller class.
@@ -82,12 +95,18 @@ public class FormulierZoekenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         try {
+            try {
+
+                filterSelector();
+            } catch (SQLException ex) {
+
+            }
             resultSetNoFilter();
             fillTable();
         } catch (SQLException ex) {
-            Logger.getLogger(FormulierZoekenController.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
         txtFilter.textProperty().addListener(new ChangeListener<String>() {
@@ -95,16 +114,15 @@ public class FormulierZoekenController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                     String oldValue, String newValue) {
-
                 try {
                     filterSelector();
                 } catch (SQLException ex) {
-                    Logger.getLogger(FormulierZoekenController.class.getName()).log(Level.SEVERE, null, ex);
+
                 }
+
             }
 
         });
-
     }
 
     @FXML
@@ -137,7 +155,6 @@ public class FormulierZoekenController implements Initializable {
 
         } else {
 
-
             //GetFilterState
             RadioButton r = (RadioButton) Filter.getSelectedToggle();
             String filter = r.getText();
@@ -160,14 +177,14 @@ public class FormulierZoekenController implements Initializable {
         }
     }
 
+    @FXML
     public void fillTable() throws SQLException {
 
-        ObservableList<MedewerkerBagageTable> bagagetabel = FXCollections.observableArrayList();
-        ObservableList<MedewerkerBagageTable> emptyList = FXCollections.observableArrayList();
-
-        bagage.setItems(emptyList);
-
+//        ObservableList<String> bagagetabel = FXCollections.observableArrayList();
+        ObservableList<String> bagagetabel = FXCollections.observableArrayList();
         //Get all the results out of the database
+
+        int bagageID = 0;
         while (resultSet.next()) {
             BagageID = resultSet.getString("BagageID");
             System.out.println(BagageID);
@@ -188,43 +205,56 @@ public class FormulierZoekenController implements Initializable {
             Surname = resultSet.getString("Surname");
             IsReturned = resultSet.getString("IsReturned");
 
-            bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2,
-                    Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
+            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
 
-            for (int i = 0; i < bagage.getColumns().size() ; i++) {
-                TableColumn column = (TableColumn) bagage.getColumns().get(i);
-                column.setCellValueFactory(new PropertyValueFactory(column.getId()));
-            }
+//            String bagageString = "BagageID: " + BagageID + " /State: " + State + " /LabelNummer: " + Labelnumber
+//                    + " /Type: " + Type
+//                    + " /Brand: " + Brand
+//                    + " /Color1: " + Color1
+//                    + " /Color2: " + Color2
+//                    + " /Characteristics: " + Characteristics
+//                    + " /Location: " + Location
+//                    + " /Airport: " + Airport
+//                    + " /From: " + From
+//                    + " /To: " + To
+//                    + " /Initial: " + Initial
+//                    + " /Insertion: " + Insertion
+//                    + " /Surname: " + Surname
+//                    + " /IsReturned: " + IsReturned;
+            String bagageString = bagageTables.get(bagageID).toString();
+            bagagetabel.add(bagageString);
+            bagageID++;
+
+            System.out.println(Labelnumber);
+            System.out.println(bagagetabel);
 
         }
-
-        bagage.setItems(bagagetabel);
-
+        listView.setItems(bagagetabel);
     }
 
     public void resultSetNoFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage`";
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
 
     }
 
     public void resultSetLost() throws SQLException {
         resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost'");
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost' AND  IsReturned NOT LIKE '1'");
 
     }
 
     public void resultSetFound() throws SQLException {
         resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'");
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'AND  IsReturned NOT LIKE '1'");
 
     }
 
     public void resultSetNoFilterWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage`"
-                + "WHERE `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'";
+                + "WHERE `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'AND  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
 
     }
@@ -232,7 +262,7 @@ public class FormulierZoekenController implements Initializable {
     public void resultSetLostWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost'"
-                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'";
+                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
 
     }
@@ -240,7 +270,7 @@ public class FormulierZoekenController implements Initializable {
     public void resultSetFoundWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'"
-                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'";
+                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1' ";
         resultSet = db.executeResultSetQuery(query);
 
     }
@@ -262,6 +292,45 @@ public class FormulierZoekenController implements Initializable {
         if (language.getTranslationString("TLK10").equals(menuTxt)) {
             txtBoxFilterString = "Surname";
         }
+
+    }
+
+    @FXML
+    public void findMatch(ActionEvent event) throws IOException {
+        int selectedBagage = listView.getSelectionModel().getSelectedIndex();
+        System.out.println(selectedBagage);
+        labelNumberForMatch = bagageTables.get(selectedBagage).getLabelnumber();
+        System.out.println(labelNumberForMatch);
+        setMatchWindow();
+
+    }
+
+    @FXML
+    public void setMatchWindow() throws IOException {
+
+        Stage stage = new Stage();
+        final String SCHERMNAAM = "MatchListView";
+
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+
+        stage.setTitle("Matching window");
+        stage.setMaximized(false);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void getFoundMatch() throws SQLException {
+        String query = "SELECT * FROM `bagage` WHERE State = 'Lost'"
+                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1'";
+        resultSet = db.executeResultSetQuery(query);
+    }
+
+    public static String getLabel() {
+        return labelNumberForMatch;
 
     }
 
