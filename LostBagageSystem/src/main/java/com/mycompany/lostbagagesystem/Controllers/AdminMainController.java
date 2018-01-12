@@ -84,12 +84,12 @@ public class AdminMainController implements Initializable {
         //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
+        AdminPane.getChildren().setAll();
         //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
+        AdminPane.getChildren().setAll(pane);
         //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
 
     }
 
