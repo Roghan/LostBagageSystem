@@ -42,11 +42,12 @@ public class Gev3DController implements Initializable {
     private AnchorPane gev21D;
     private int aantalDagen = 3;
     private String gevVer = "Teruggebracht";
+    private int isReturned = 1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, 1);
+            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, isReturned);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }

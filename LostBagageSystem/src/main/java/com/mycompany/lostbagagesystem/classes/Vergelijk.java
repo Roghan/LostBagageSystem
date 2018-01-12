@@ -77,7 +77,9 @@ public class Vergelijk {
         String date_found;
         int[] aantalGevonden = new int[aantalDagen];
 
-        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage`");
+        int isReturned = 1;
+        
+        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage` WHERE IsReturned = '" + isReturned + "'");
         while (resultSet.next()) {
             
             for (int i = 0; i < aantalDagen; i++) {
@@ -106,8 +108,10 @@ public class Vergelijk {
         int aantalKoffers = 0;
         String date_found;
         int[] aantalVerloren = new int[aantalDagen];
-
-        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage`");
+        
+        int isReturned = 0;
+        
+        resultSet = db.executeResultSetQuery("SELECT `Date` FROM `bagage` WHERE IsReturned = '" + isReturned + "'");
         while (resultSet.next()) {
             
             for (int i = 0; i < aantalDagen; i++) {
