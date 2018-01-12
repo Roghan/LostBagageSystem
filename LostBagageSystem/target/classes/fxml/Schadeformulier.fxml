@@ -95,7 +95,7 @@
                         <RadioMenuItem mnemonicParsing="false" onAction="#IATACHECK" text="DXB" toggleGroup="$IATA" />
                         <RadioMenuItem mnemonicParsing="false" onAction="#IATACHECK" text="BOJ" toggleGroup="$IATA" />
                         <RadioMenuItem mnemonicParsing="false" onAction="#IATACHECK" text="BJL" toggleGroup="$IATA" />
-                        <RadioMenuItem fx:id="IATACHECK" mnemonicParsing="false" onAction="#IATACHECK" text="CTA" toggleGroup="$IATA" />
+                        <RadioMenuItem fx:id="IATACHECK" mnemonicParsing="false" text="CTA" toggleGroup="$IATA" />
                      </items>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -323,7 +323,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <MenuButton mnemonicParsing="false" text="%TLK106">
+                  <MenuButton fx:id="kleur1Menu" mnemonicParsing="false" text="%TLK106">
                     <items>
                         <RadioMenuItem mnemonicParsing="false" onAction="#kleurkiezer1" text="%TLK63">
                            <toggleGroup>
@@ -373,7 +373,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <MenuButton mnemonicParsing="false" text="%TLK106">
+                  <MenuButton fx:id="kleur2Menu" mnemonicParsing="false" text="%TLK106">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

@@ -260,18 +260,20 @@ public class FormulierCheck {
     }
 
     public static boolean isInteger(TextField[] phoneFields) {
+        boolean isValidInteger = true;
 
-        boolean isValidInteger = false;
-        for (int i = 0; i < phoneFields.length; i++) {
-            try {
-                Long.parseLong(phoneFields[i].getText());
+        if (phoneFields != null) {
 
-                // s is a valid integer
-                isValidInteger = true;
-            } catch (NumberFormatException ex) {
-                // s is not an integer
+            for (int i = 0; i < phoneFields.length; i++) {
+                try {
+                    Long.parseLong(phoneFields[i].getText());
+
+                    // s is a valid integer
+                    isValidInteger = false;
+                } catch (NumberFormatException ex) {
+                    isValidInteger = true;
+                }
             }
-
         }
 
         return isValidInteger;
@@ -279,7 +281,7 @@ public class FormulierCheck {
 
     public static boolean isTextFieldInteger(TextField[] intTextFields) {
 
-        boolean isValidInteger = false;
+        boolean isValidInteger = true;
         for (int i = 0; i < intTextFields.length; i++) {
             try {
                 Long.parseLong(intTextFields[i].getText());
@@ -287,7 +289,7 @@ public class FormulierCheck {
                 // s is a valid integer
                 isValidInteger = true;
             } catch (NumberFormatException ex) {
-                // s is not an integer
+                isValidInteger = false;
             }
 
         }
@@ -298,7 +300,7 @@ public class FormulierCheck {
     public static boolean isNotInteger(TextField textField[]) {
         System.out.println("CHECK NOT INT");
 
-        boolean isNotInteger = false;
+        boolean isNotInteger = true;
         for (int i = 0; i < textField.length; i++) {
             try {
                 Long.parseLong(textField[i].getText());

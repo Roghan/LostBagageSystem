@@ -85,6 +85,9 @@ public class MedMainController implements Initializable {
         pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
     }
 
+    
+    
+
     /**
      * Initializes the controller class.
      *

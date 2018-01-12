@@ -4,8 +4,11 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.PDFExport;
+import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,15 +17,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -30,6 +36,8 @@ import javafx.scene.control.ToggleGroup;
  * @author Donovan Schaafsma
  */
 public class GevBagFormController implements Initializable {
+    
+    boolean active;
 
     @FXML
     private DatePicker txtDatum;
@@ -195,6 +203,8 @@ public class GevBagFormController implements Initializable {
     private MenuButton btnVanVliegveldID;
     @FXML
     private MenuButton btnNaarVliegveldID;
+    @FXML
+    private ScrollPane formulierLeeg;
 
     private String datum;
     private String tijd;
@@ -219,12 +229,7 @@ public class GevBagFormController implements Initializable {
         System.out.println("KNOP INSTUREN INGEDRUKT");
 
         TextField[] reqFields = new TextField[]{
-            txtVoorletters,
-            txtAchternaam,
-            txtTime,
-            txtLostAndFoundID,
-            txtLabelNummer,
-            txtVluchtNummer,
+
 
         };
 
@@ -236,7 +241,7 @@ public class GevBagFormController implements Initializable {
         TextField[] PhoneFields = new TextField[]{};
 
         TextField[] reqIntFields = new TextField[]{
-            txtTime
+            
                 
         };
 
@@ -248,7 +253,7 @@ public class GevBagFormController implements Initializable {
 
         };
 
-        boolean form = FormulierCheck.verification(reqIntFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
+        boolean form = true ;//FormulierCheck.verification(reqIntFields, PhoneFields, datePickers, reqIntFields, reqMenuButtons);
         if (form) {
             tijd = txtTime.getText();
             datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -261,6 +266,8 @@ public class GevBagFormController implements Initializable {
             typeBagage = txtTypeBagage.getText();
             merk = txtMerk.getText();
             bijzondereOpmerking = txtBijzondereOpmerking.getText();
+            
+            sendToDatabase();
         }
         
     }
@@ -339,7 +346,7 @@ public class GevBagFormController implements Initializable {
     }
     
     @FXML
-    public void gevondenPlaats(ActionEvent event) {
+    public void plaatsDropDown(ActionEvent event) {
         RadioMenuItem item = (RadioMenuItem) plaats.getSelectedToggle();
         gevondenPlaats = item.getText();
         btnGevondenPlaats.setText(gevondenPlaats);
@@ -383,8 +390,13 @@ public class GevBagFormController implements Initializable {
         System.out.println(kleur);
         ralcode2 = ColourPicker.GetColour(kleur);
     }
-
-    /**
+    
+    public void exportPDF(ActionEvent event) throws IOException {
+        PDFExport convert = new PDFExport();
+        convert.addPage();
+        convert.savePDF();
+    }
+        /**
      * Initializes the controller class.
      */
     @Override

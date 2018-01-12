@@ -388,7 +388,7 @@ public class SchadeformulierController implements Initializable {
 
         };
 
-        boolean form = FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqTextFields, reqMenuButtons);
+        boolean form = true; //FormulierCheck.verification(reqTextFields, PhoneFields, datePickers, reqTextFields, reqMenuButtons);
         if (form) {
             voorletters = txtVoorletters.getText();
             tussenvoegsel = txtTussenvoegsel.getText();
