@@ -6,6 +6,7 @@ package com.mycompany.lostbagagesystem.Controllers;
  * and open the template in the editor.
  */
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.PDFExport;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import java.io.IOException;
@@ -154,6 +155,12 @@ public class MatchListViewController implements Initializable {
         txtVoorletters.setText(initialForMatch);
         txtAchternaam.setText(surnameForMatch);
 
+    }
+    
+    public void exporterenPDF(ActionEvent event) throws IOException {
+        PDFExport export = new PDFExport();
+        export.addPage();
+        export.savePDF();
     }
 
 }

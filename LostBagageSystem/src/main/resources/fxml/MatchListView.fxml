@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MatchListViewController">
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MatchListViewController">
    <content>
       <HBox>
          <children>
@@ -266,7 +266,7 @@
                      </VBox.margin></Line>
                   <HBox>
                      <children>
-                        <Button fx:id="btnAnnuleren3" mnemonicParsing="false" text="%TLK40">
+                        <Button fx:id="btnAnnuleren3" mnemonicParsing="false" onAction="#exporterenPDF" text="%TLK155">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
