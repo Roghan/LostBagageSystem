@@ -37,6 +37,7 @@ public class PDFExport {
         PDImageXObject image = PDImageXObject.createFromFile("assets//corendonlogo.jpg", doc);
 
         content.drawImage(image, 25, 500);
+        
 
     }
 
