@@ -57,7 +57,7 @@
             </HBox>
          </top>
          <center>
-            <SplitPane dividerPositions="0.25" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.2" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <items>
                   <AnchorPane prefHeight="494.0" prefWidth="140.0">
                      <children>
@@ -74,6 +74,7 @@
                             <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
                               <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
+                              <TableColumn fx:id="manVrouw" prefWidth="75.0" text="ManVrouw" />
                               <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
                               <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
                           </columns>

@@ -26,34 +26,37 @@ public class NewMedewerker {
     @FXML
     private TextField wachtwoord;
     @FXML
-    private TextField voornaam;
-    @FXML
-    private TextField achternaam;
-    @FXML
-    private TextField geboortedatum;
-    @FXML
-    private TextField postcode;
-    @FXML
-    private TextField huisnummer;
-    @FXML
-    private TextField telefoonnummer;
-    @FXML
-    private TextField manVrouw;
-    @FXML
     private TextField rol;
     @FXML
-    private AnchorPane TableLeeg;
+    private AnchorPane AdminPane;
 
+    public void medewerkersView() throws IOException{
+        terug();
+    }
+    
+        @FXML
+    public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        AdminPane.getChildren().setAll();
+        //laad de nieuwe table in
+        AdminPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
+    }
+    
     public void terug() throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminMedewerkerView.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
+        AdminPane.getChildren().setAll();
         //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
+        AdminPane.getChildren().setAll(pane);
         //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
     }
 
     @FXML
@@ -93,7 +96,7 @@ public class NewMedewerker {
         
         String query = String.format("INSERT INTO `gebruiker` "
                 + "(`acountnaam`, `wachtwoord`, `rol`)"
-                + " VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                + " VALUES('%s', '%s', '%s')",
                 acountN, wachtwoord1, roll);
 
         int numberAffected = db.executeUpdateQuery(query);

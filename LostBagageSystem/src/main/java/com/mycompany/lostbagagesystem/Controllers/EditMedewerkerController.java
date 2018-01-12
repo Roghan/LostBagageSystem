@@ -5,8 +5,9 @@ package com.mycompany.lostbagagesystem.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.language;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +15,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,86 +29,74 @@ import javax.swing.JOptionPane;
  * @author dono
  */
 public class EditMedewerkerController implements Initializable {
-    
+
     @FXML
     private TextField txtAccountnaam;
-    
+
     @FXML
     private TextField txtWachtwoord;
-    
-    @FXML
-    private TextField txtVoornaam;
-    
-    @FXML
-    private TextField txtTussenvoegsel;
-            
-    @FXML
-    private TextField txtAchternaam;
-    
-    @FXML
-    private TextField txtGeboortedatum;
-    
-    @FXML
-    private TextField txtPostcode;
-    
-    @FXML
-    private TextField txtHuisnummer;
-    
-    @FXML
-    private TextField txtTelefoonnummer;
-    
-    @FXML
-    private TextField txtManVrouw;
-    
+
     @FXML
     private TextField txtRol;
-    
+
     @FXML
     private Button btnAnnuleren;
-    
+
     @FXML
     private Button btnVerzenden;
-    
+
     @FXML
     private ScrollPane editPane;
-    
+
     private String account;
     private String wachtwoord;
-    private String voornaam;
-    private String tussenvoegsel;
-    private String achternaam;
-    private String geboortedatum;
-    private String postcode;
-    private String huisnummer;
-    private String telefoonnummer;
-    private String manVrouw;
     private String rol;
-   
-    
+
     @FXML
-    public void medewerkerWijzigen() throws SQLException{
+    private AnchorPane AdminPane;
+
+    @FXML
+    public void annuleer() throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        AdminPane.getChildren().setAll();
+        //laad de nieuwe table in
+        AdminPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
+    }
+
+    @FXML
+    public void sendEdit() {
+
+    }
+
+    @FXML
+    public void medewerkerWijzigen() throws SQLException {
 //        PreparedStatement myStmt = null;
 //        Connection conn = null;
-        ConnectDB db = new ConnectDB();
-        ResultSet rs = null;
+//        ConnectDB db = new ConnectDB();
+//        ResultSet rs = null;
+//
+//        // This is a test query 
+//        String query = "SELECT `accountnaam`, `wachtwoord`, `rol`"
+//                + "FROM `gebruiker` WHERE `id` = 1";
+//        
+//        
+//        rs = db.executeResultSetQuery(query);
+//        try {
+//            if (true) {
+//                txtAccountnaam.setPromptText("text");
+//                //txtVoornaam.setText(voornaam);
+//                txtWachtwoord = rs.getString("wachtwoord");
+//                System.out.println(rs.getString("achternaam"));
+//                txtAchternaam.setText(achternaam);
+//            }
+//        } catch (Exception e) {
+//        }
 
-        // This is a test query 
-        String query = "SELECT `voornaam`, `achternaam`"
-                + "FROM `gebruiker` WHERE `id` = 1";
-        
-        
-        rs = db.executeResultSetQuery(query);
-        try {
-            if (true) {
-                 txtVoornaam.setPromptText("text");
-                //txtVoornaam.setText(voornaam);
-                achternaam = rs.getString("achternaam");
-                System.out.println(rs.getString("achternaam"));
-                txtAchternaam.setText(achternaam);
-            }
-        } catch (Exception e) {
-        }
-        
 //        try {
 //            conn = db.getDBConnection();
 //            myStmt = conn.prepareStatement(query);
@@ -138,20 +129,17 @@ public class EditMedewerkerController implements Initializable {
 //        }
 //        System.out.println("gelukt");
 //        return rs;
-        
     }
-    
+
 //    public ResultSet query() throws SQLException{
 //    
 //    }
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-}
+    }
 
+}

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fx:id="editPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.EditMedewerkerController">
+<ScrollPane fx:id="editPane" onDragDetected="#AdminPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.EditMedewerkerController">
    <content>
       <HBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -45,122 +45,18 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voornaam" wrappingWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtVoornaam" prefHeight="25.0" prefWidth="139.0" promptText="voornaam">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="84.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tussenvoegsel" wrappingWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtTussenvoegsel" prefHeight="25.0" prefWidth="139.0" promptText="tussenvoegsel">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Achternaam" wrappingWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtAchternaam" prefHeight="25.0" prefWidth="139.0" promptText="achternaam">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Geboortedatum" wrappingWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtGeboortedatum" prefHeight="25.0" prefWidth="139.0" promptText="yyyy-mm-dd">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode" wrappingWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtPostcode" prefHeight="25.0" prefWidth="139.0" promptText="postcode">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Huisnummer" wrappingWidth="100.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtHuisnummer" prefHeight="25.0" prefWidth="139.0" promptText="huisnummer">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
+                  <HBox />
+                  <HBox layoutX="10.0" layoutY="84.0" />
+                  <HBox />
+                  <HBox />
+                  <HBox />
+                  <HBox />
                </children>
             </VBox>
             <VBox fillWidth="false">
                <children>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefoonnummer" wrappingWidth="110.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtTelefoonnummer" prefHeight="25.0" prefWidth="139.0" promptText="telefoonnummer">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Man/Vrouw" wrappingWidth="110.0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="15.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField fx:id="txtManVrouw" prefHeight="25.0" prefWidth="139.0" promptText="man/vrouw 1/0">
-                           <HBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
+                  <HBox />
+                  <HBox />
                   <HBox>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rol" wrappingWidth="110.0">
@@ -177,12 +73,12 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Button fx:id="btnAnnuleren" mnemonicParsing="false" text="Annuleren">
+                        <Button fx:id="btnAnnuleren" mnemonicParsing="false" onAction="#annuleer" text="Annuleren">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="btnVerzenden" mnemonicParsing="false" text="Verzenden">
+                        <Button fx:id="btnVerzenden" mnemonicParsing="false" onAction="#sendEdit" text="Verzenden">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>

@@ -55,27 +55,29 @@ public class AdminMainController implements Initializable {
 //    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
-        ConnectDB db = new ConnectDB("lbs_database");
+        if (table.getSelectionModel().isEmpty() == false) {
+            ConnectDB db = new ConnectDB("lbs_database");
 
-        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-        String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
-        db.executeUpdateQuery(query);
-        user.setBlok(1);
-        table.refresh();
+            DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+            String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
+            db.executeUpdateQuery(query);
+            user.setBlok(1);
+            table.refresh();
+        }
     }
-    
+
     @FXML
-    private void handleEdit(ActionEvent event) throws IOException, SQLException{
+    private void handleEdit(ActionEvent event) throws IOException, SQLException {
         EditMedewerkerController Edit = new EditMedewerkerController();
-        //laad de nieuwe table in de bestaande anchorpane
+        //laad de nieuwe table in de bestaande anchorpane        
         ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
         //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
+        AdminPane.getChildren().setAll();
         //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
+        AdminPane.getChildren().setAll(pane);
         //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.widthProperty());
         Edit.medewerkerWijzigen();
     }
 
@@ -95,13 +97,16 @@ public class AdminMainController implements Initializable {
 
     @FXML
     private void deBlokkeer(ActionEvent event) {
-        ConnectDB db = new ConnectDB("lbs_database");
 
-        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-        String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
-        db.executeUpdateQuery(query);
-        user.setBlok(0);
-        table.refresh();
+        if (table.getSelectionModel().isEmpty() == false) {
+            ConnectDB db = new ConnectDB("lbs_database");
+
+            DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+            String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
+            db.executeUpdateQuery(query);
+            user.setBlok(0);
+            table.refresh();
+        }
     }
 
     @Override
