@@ -84,6 +84,7 @@ public class FormulierZoekenController implements Initializable {
     private ResultSet resultSet = null;
     private String txtBoxFilterString;
     private String selectedListviewItem;
+    private String Passnameandcity;
     private ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
 
     private static String labelNumberForMatch;
@@ -199,12 +200,10 @@ public class FormulierZoekenController implements Initializable {
             Airport = resultSet.getString("Airport");
             From = resultSet.getString("From");
             To = resultSet.getString("To");
-            Initial = resultSet.getString("Initial");
-            Insertion = resultSet.getString("Insertion");
-            Surname = resultSet.getString("Surname");
+            Passnameandcity = resultSet.getString("Passnameandcity");
             IsReturned = resultSet.getString("IsReturned");
 
-            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
+            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Passnameandcity, IsReturned));
 
             for (int i = 0; i < bagage.getColumns().size(); i++) {
                 TableColumn column = (TableColumn) bagage.getColumns().get(i);
@@ -217,26 +216,26 @@ public class FormulierZoekenController implements Initializable {
 
     public void resultSetNoFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE  IsReturned NOT LIKE '1'";
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
 
     }
 
     public void resultSetLost() throws SQLException {
         resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost' AND  IsReturned NOT LIKE '1'");
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Lost' AND  IsReturned NOT LIKE '1'");
 
     }
 
     public void resultSetFound() throws SQLException {
         resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'AND  IsReturned NOT LIKE '1'");
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Found'AND  IsReturned NOT LIKE '1'");
 
     }
 
     public void resultSetNoFilterWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage`"
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage`"
                 + "WHERE `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'AND  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
 
@@ -244,7 +243,7 @@ public class FormulierZoekenController implements Initializable {
 
     public void resultSetLostWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost'"
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Lost'"
                 + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1'";
         resultSet = db.executeResultSetQuery(query);
 
@@ -252,7 +251,7 @@ public class FormulierZoekenController implements Initializable {
 
     public void resultSetFoundWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'"
+                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Found'"
                 + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1' ";
         resultSet = db.executeResultSetQuery(query);
 
@@ -278,15 +277,6 @@ public class FormulierZoekenController implements Initializable {
 
     }
 
-//    @FXML
-//    public void findMatch(ActionEvent event) throws IOException {
-//        int selectedBagage = listView.getSelectionModel().getSelectedIndex();
-//        System.out.println(selectedBagage);
-//        labelNumberForMatch = bagageTables.get(selectedBagage).getLabelnumber();
-//        System.out.println(labelNumberForMatch);
-//        setMatchWindow();
-//
-//    }
     @FXML
     public void findMatch(ActionEvent event) throws IOException {
         MedewerkerBagageTable medewerkerBagageTable = bagage.getSelectionModel().getSelectedItem();

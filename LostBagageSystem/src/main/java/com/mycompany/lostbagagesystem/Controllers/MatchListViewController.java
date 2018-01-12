@@ -125,7 +125,7 @@ public class MatchListViewController implements Initializable {
             Surname = resultSet.getString("Surname");
             IsReturned = resultSet.getString("IsReturned");
 
-            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
+            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, BagageID, IsReturned));
 
             String bagageString = bagageTables.get(bagageID).getLabelnumber();
             bagagetabel.add(bagageString);
@@ -148,8 +148,6 @@ public class MatchListViewController implements Initializable {
     public void matchWith() {
         int selectedBagage = listView.getSelectionModel().getSelectedIndex();
         System.out.println(selectedBagage);
-        initialForMatch = bagageTables.get(selectedBagage).getInitial();
-        surnameForMatch = bagageTables.get(selectedBagage).getSurname();
         System.out.println(surnameForMatch);
         txtVoorletters.setText(initialForMatch);
         txtAchternaam.setText(surnameForMatch);
