@@ -37,13 +37,14 @@ public class Gev21DController implements Initializable {
     @FXML
     private AnchorPane gev21D;
     private int aantalDagen = 21;
-    private String gevVer = "Gevonden";
+    private String gevVer = "Teruggebracht";
+    private int isReturned = 1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer);
+            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, isReturned);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +52,7 @@ public class Gev21DController implements Initializable {
     }
 
     /**
-     * @throws SQLException Hiermeer word de tabel gevuld met alle verloren
+     * @throws SQLException Hiermee wordt de tabel gevuld met alle verloren
      * baggage die jonger is dan 21 dagen
      */
 }

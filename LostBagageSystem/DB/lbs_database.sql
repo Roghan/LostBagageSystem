@@ -50,7 +50,7 @@ CREATE TABLE `bagage` (
   `From` varchar(45) NOT NULL,
   `To` varchar(45) NOT NULL,
   `Vstreet` varchar(45) DEFAULT NULL,
-  `Vhuisnummer` varchar(45) DEFAULT NULL,
+  `Vhousenumber` varchar(45) DEFAULT NULL,
   `Vzipcode` varchar(45) DEFAULT NULL,
   `Vcity` varchar(45) DEFAULT NULL,
   `Hotelname` varchar(45) DEFAULT NULL,

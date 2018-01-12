@@ -17,7 +17,7 @@ public class bagageTabel {
         private int Color1;
         private int Color2;
         private String Characteristics;
-        private boolean IsReturned;
+        private int IsReturned;
         private String Airport;
         private String Location;
         private String Initial;
@@ -34,12 +34,12 @@ public class bagageTabel {
         private String From;
         private String To;
         private String Vstreet;
-        private String Vhuisnummer;
+        private String Vhousenumber;
         private String Vzipcode;
         private String Vcity;
         private String Hotelname;
 
-    public bagageTabel(int BagageID, String Date, String Time, String State, String Labelnumber, String Type, String Brand, int Color1, int Color2, String Characteristics, boolean IsReturned, String Airport, String Location, String Initial, String Insertion, String Surname, String Street, String Housenumber, String Zipcode, String City, String Email, String Phone1, String Phone2, String Flightnumber, String From, String To, String Vstreet, String Vhuisnummer, String Vzipcode, String Vcity, String Hotelname) {
+    public bagageTabel(int BagageID, String Date, String Time, String State, String Labelnumber, String Type, String Brand, int Color1, int Color2, String Characteristics, int IsReturned, String Airport, String Location, String Initial, String Insertion, String Surname, String Street, String Housenumber, String Zipcode, String City, String Email, String Phone1, String Phone2, String Flightnumber, String From, String To, String Vstreet, String Vhousenumber, String Vzipcode, String Vcity, String Hotelname) {
         this.BagageID = BagageID;
         this.Date = Date;
         this.Time = Time;
@@ -67,7 +67,7 @@ public class bagageTabel {
         this.From = From;
         this.To = To;
         this.Vstreet = Vstreet;
-        this.Vhuisnummer = Vhuisnummer;
+        this.Vhousenumber = Vhousenumber;
         this.Vzipcode = Vzipcode;
         this.Vcity = Vcity;
         this.Hotelname = Hotelname;
@@ -153,11 +153,11 @@ public class bagageTabel {
         this.Characteristics = Characteristics;
     }
 
-    public boolean getIsReturned() {
+    public int getIsReturned() {
         return IsReturned;
     }
 
-    public void setIsReturned(boolean IsReturned) {
+    public void setIsReturned(int IsReturned) {
         this.IsReturned = IsReturned;
     }
 
@@ -289,12 +289,12 @@ public class bagageTabel {
         this.Vstreet = Vstreet;
     }
 
-    public String getVhuisnummer() {
-        return Vhuisnummer;
+    public String getVhousenumber() {
+        return Vhousenumber;
     }
 
-    public void setVhuisnummer(String Vhuisnummer) {
-        this.Vhuisnummer = Vhuisnummer;
+    public void setVhousenumber(String Vhousenumber) {
+        this.Vhousenumber = Vhousenumber;
     }
 
     public String getVzipcode() {
