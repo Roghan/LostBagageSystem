@@ -14,6 +14,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,9 +26,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -54,9 +58,6 @@ public class FormulierZoekenController implements Initializable {
 
     @FXML
     protected AnchorPane listViewLoader;
-
-    @FXML
-    private ListView listView;
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
@@ -104,7 +105,6 @@ public class FormulierZoekenController implements Initializable {
 
             }
             resultSetNoFilter();
-            fillTable();
         } catch (SQLException ex) {
 
         }
@@ -116,6 +116,7 @@ public class FormulierZoekenController implements Initializable {
                     String oldValue, String newValue) {
                 try {
                     filterSelector();
+
                 } catch (SQLException ex) {
 
                 }
@@ -123,6 +124,7 @@ public class FormulierZoekenController implements Initializable {
             }
 
         });
+
     }
 
     @FXML
@@ -179,10 +181,7 @@ public class FormulierZoekenController implements Initializable {
 
     @FXML
     public void fillTable() throws SQLException {
-
-//        ObservableList<String> bagagetabel = FXCollections.observableArrayList();
-        ObservableList<String> bagagetabel = FXCollections.observableArrayList();
-        //Get all the results out of the database
+        bagageTables.removeAll(bagageTables);
 
         int bagageID = 0;
         while (resultSet.next()) {
@@ -207,29 +206,13 @@ public class FormulierZoekenController implements Initializable {
 
             bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
 
-//            String bagageString = "BagageID: " + BagageID + " /State: " + State + " /LabelNummer: " + Labelnumber
-//                    + " /Type: " + Type
-//                    + " /Brand: " + Brand
-//                    + " /Color1: " + Color1
-//                    + " /Color2: " + Color2
-//                    + " /Characteristics: " + Characteristics
-//                    + " /Location: " + Location
-//                    + " /Airport: " + Airport
-//                    + " /From: " + From
-//                    + " /To: " + To
-//                    + " /Initial: " + Initial
-//                    + " /Insertion: " + Insertion
-//                    + " /Surname: " + Surname
-//                    + " /IsReturned: " + IsReturned;
-            String bagageString = bagageTables.get(bagageID).toString();
-            bagagetabel.add(bagageString);
-            bagageID++;
-
-            System.out.println(Labelnumber);
-            System.out.println(bagagetabel);
+            for (int i = 0; i < bagage.getColumns().size(); i++) {
+                TableColumn column = (TableColumn) bagage.getColumns().get(i);
+                column.setCellValueFactory(new PropertyValueFactory(column.getId()));
+            }
 
         }
-        listView.setItems(bagagetabel);
+        bagage.setItems(bagageTables);
     }
 
     public void resultSetNoFilter() throws SQLException {
@@ -295,12 +278,19 @@ public class FormulierZoekenController implements Initializable {
 
     }
 
+//    @FXML
+//    public void findMatch(ActionEvent event) throws IOException {
+//        int selectedBagage = listView.getSelectionModel().getSelectedIndex();
+//        System.out.println(selectedBagage);
+//        labelNumberForMatch = bagageTables.get(selectedBagage).getLabelnumber();
+//        System.out.println(labelNumberForMatch);
+//        setMatchWindow();
+//
+//    }
     @FXML
     public void findMatch(ActionEvent event) throws IOException {
-        int selectedBagage = listView.getSelectionModel().getSelectedIndex();
-        System.out.println(selectedBagage);
-        labelNumberForMatch = bagageTables.get(selectedBagage).getLabelnumber();
-        System.out.println(labelNumberForMatch);
+        MedewerkerBagageTable medewerkerBagageTable = bagage.getSelectionModel().getSelectedItem();
+        labelNumberForMatch = medewerkerBagageTable.getLabelnumber();
         setMatchWindow();
 
     }
