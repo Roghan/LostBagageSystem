@@ -3,6 +3,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.PopupNietIngevuldeVelden;
@@ -68,23 +69,25 @@ public class InlogSchermController implements Initializable {
 
     @FXML
     public static String sha256(String base) {
-    try{
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] hash = digest.digest(base.getBytes("UTF-8"));
-        StringBuffer hexString = new StringBuffer();
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(base.getBytes("UTF-8"));
+            StringBuffer hexString = new StringBuffer();
 
-        for (int i = 0; i < hash.length; i++) {
-            String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
+            for (int i = 0; i < hash.length; i++) {
+                String hex = Integer.toHexString(0xff & hash[i]);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
-
-        return hexString.toString();
-    } catch(Exception ex){
-       throw new RuntimeException(ex);
     }
-}
-    
+
     @FXML
     public void handleButtonAction() throws SQLException, IOException {
         ConnectDB db = new ConnectDB("lbs_database");
@@ -92,7 +95,7 @@ public class InlogSchermController implements Initializable {
         int rol;
         String user = username.getText();
         String pass = wachtwoord.getText();
-        
+
         String shawachtwoord = sha256(pass);
         int requiredBlok = 0;
         resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
@@ -139,6 +142,7 @@ public class InlogSchermController implements Initializable {
     }
 
     public void changeLang() throws IOException {
+
         //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", setLang())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
@@ -149,48 +153,20 @@ public class InlogSchermController implements Initializable {
         //geeft de nieuwe table de juiste groote
         pane.prefWidthProperty().bind(TableLeeg.widthProperty());
         pane.prefHeightProperty().bind(TableLeeg.heightProperty());
-        
-        if (setLang().equals(GB)) {
-            langGB.setSelected(true);
-            
-        }
 
     }
 
     @FXML
     public void adminPad(int rol) throws IOException {
         if (rol == 1) {
-            //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-            //maakt de oude table leeg
-            TableLeeg.getChildren().setAll();
-            //laad de nieuwe table in
-            TableLeeg.getChildren().setAll(pane);
-
-            //geeft de nieuwe table de juiste groote
-            pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-            pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+            MainApp.loadFXMLFile(TableLeeg, "/fxml/Administratorscherm.fxml");
 
         } else if (rol == 2) {
-            //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-            //maakt de oude table leeg
-            TableLeeg.getChildren().setAll();
-            //laad de nieuwe table in
-            TableLeeg.getChildren().setAll(pane);
-            //geeft de nieuwe table de juiste groote
-            pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-            pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+            MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerScherm.fxml");
+
         } else if (rol == 3) {
-            //laad de nieuwe table in de bestaande anchorpane
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Medewerkersscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-            //maakt de oude table leeg
-            TableLeeg.getChildren().setAll();
-            //laad de nieuwe table in
-            TableLeeg.getChildren().setAll(pane);
-            //geeft de nieuwe table de juiste groote
-            pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-            pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+            MainApp.loadFXMLFile(TableLeeg, "/fxml/Medewerkersscherm.fxml");
+
         }
     }
 

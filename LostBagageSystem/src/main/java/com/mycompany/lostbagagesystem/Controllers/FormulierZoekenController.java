@@ -2,6 +2,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 /*Controller Class voor het zoeken naar gevonden en verloren bagage formulieren
  */
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
@@ -64,28 +65,26 @@ public class FormulierZoekenController implements Initializable {
     private final String noFilter = language.getTranslationString("TLK138");
     private final String lost = language.getTranslationString("TLK136");
     private final String found = language.getTranslationString("TLK137");
-    private String filterText;
-    private String BagageID;
-    private String State;
-    private String Labelnumber;
-    private String Type;
-    private String Brand;
-    private String Color1;
-    private String Color2;
-    private String Characteristics;
-    private String Location;
-    private String Airport;
-    private String From;
-    private String To;
-    private String Initial;
-    private String Insertion;
-    private String Surname;
-    private String IsReturned;
-    private ResultSet resultSet = null;
-    private String txtBoxFilterString;
-    private String selectedListviewItem;
-    private String Passnameandcity;
-    private ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
+    protected String filterText;
+    protected String BagageID;
+    protected String State;
+    protected String Labelnumber;
+    protected String Type;
+    protected String Brand;
+    protected String Color1;
+    protected String Color2;
+    protected String Characteristics;
+    protected String Location;
+    protected String Airport;
+    protected String From;
+    protected String To;
+    protected String IsReturned;
+    protected ResultSet resultSet = null;
+    protected String txtBoxFilterString;
+    protected String selectedListviewItem;
+    protected String Passnameandcity;
+    protected ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
+    private static MedewerkerBagageTable selectedBagage;
 
     private static String labelNumberForMatch;
 
@@ -279,27 +278,22 @@ public class FormulierZoekenController implements Initializable {
 
     @FXML
     public void findMatch(ActionEvent event) throws IOException {
-        MedewerkerBagageTable medewerkerBagageTable = bagage.getSelectionModel().getSelectedItem();
-        labelNumberForMatch = medewerkerBagageTable.getLabelnumber();
-        setMatchWindow();
+
+        if (bagage.getSelectionModel().getSelectedItem() != null) {
+            selectedBagage = bagage.getSelectionModel().getSelectedItem();
+            FormulierZoekenController form = (FormulierZoekenController) MainApp.loadFXMLFileInNewWindow("/fxml/MatchListView.fxml");
+
+        }
+
+    }
+
+    public static MedewerkerBagageTable getSelectedBagage() {
+        return selectedBagage;
 
     }
 
     @FXML
     public void setMatchWindow() throws IOException {
-
-        Stage stage = new Stage();
-        final String SCHERMNAAM = "MatchListView";
-
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
-
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-
-        stage.setTitle("Matching window");
-        stage.setMaximized(false);
-        stage.setScene(scene);
-        stage.show();
 
     }
 
@@ -312,6 +306,62 @@ public class FormulierZoekenController implements Initializable {
     public static String getLabel() {
         return labelNumberForMatch;
 
+    }
+
+    public String getBagageID() {
+        return BagageID;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public String getLabelnumber() {
+        return Labelnumber;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public String getBrand() {
+        return Brand;
+    }
+
+    public String getColor1() {
+        return Color1;
+    }
+
+    public String getColor2() {
+        return Color2;
+    }
+
+    public String getCharacteristics() {
+        return Characteristics;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public String getAirport() {
+        return Airport;
+    }
+
+    public String getFrom() {
+        return From;
+    }
+
+    public String getTo() {
+        return To;
+    }
+
+    public String getIsReturned() {
+        return IsReturned;
+    }
+
+    public String getPassnameandcity() {
+        return Passnameandcity;
     }
 
 }

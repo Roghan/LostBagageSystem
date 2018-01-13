@@ -14,36 +14,198 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author Marcel van Wilgenburg
  */
-public class MatchListViewController implements Initializable {
+public class MatchListViewController extends FormulierZoekenController implements Initializable {
 
     @FXML
-    TextField txtBagageLabelMatch;
+    private TextField txtBagageLabelMatch;
 
     @FXML
-    ListView listView;
+    private ListView<MedewerkerBagageTable> listView;
     @FXML
-    Button btnMatch;
+    private Button btnMatch;
     @FXML
-    TextField txtVoorletters;
+    private TextField txtNS;
     @FXML
-    TextField txtAchternaam;
+    private TextField txtAchternaam;
+
+    @FXML
+    private DatePicker txtDatum;
+
+    @FXML
+    private TextField txtTime;
+
+    @FXML
+    private TextField txtIATA;
+
+    @FXML
+    private TextField txtStraatnaam;
+
+    @FXML
+    private TextField txtHuisNummer;
+
+    @FXML
+    private TextField txtPostcode;
+
+    @FXML
+    private TextField txtWoonplaats;
+
+    @FXML
+    private TextField txtVakantieStraatnaam;
+
+    @FXML
+    private TextField txtVakantieHuisNummer;
+
+    @FXML
+    private TextField txtVakantiePostcode;
+
+    @FXML
+    private TextField txtVakantiePlaats;
+
+    @FXML
+    private TextField txthotelNaam;
+
+    @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtTelefoon;
+
+    @FXML
+    private TextField txtMobielNummer;
+
+    @FXML
+    private TextField txtVluchtNummer;
+
+    @FXML
+    private TextField txtVan;
+
+    @FXML
+    private TextField txtNaar;
+
+    @FXML
+    private TextField txtTypeBagage;
+
+    @FXML
+    private TextField txtMerk;
+
+    @FXML
+    private Text Kleur1Text;
+
+    @FXML
+    private TextField txtKleur1;
+
+    @FXML
+    private TextField txtKleur2;
+
+    @FXML
+    private TextArea txtBijzondereOpmerking;
+
+    @FXML
+    private DatePicker txtDatum1;
+
+    @FXML
+    private TextField txtTime1;
+
+    @FXML
+    private TextField txtIATA1;
+
+    @FXML
+    private TextField txtNS1;
+
+    @FXML
+    private TextField txtStraatnaam1;
+
+    @FXML
+    private TextField txtHuisNummer1;
+
+    @FXML
+    private TextField txtPostcode1;
+
+    @FXML
+    private TextField txtWoonplaats1;
+
+    @FXML
+    private TextField txtVakantieStraatnaam1;
+
+    @FXML
+    private TextField txtVakantieHuisNummer1;
+
+    @FXML
+    private TextField txtVakantiePostcode1;
+
+    @FXML
+    private TextField txtVakantiePlaats1;
+
+    @FXML
+    private TextField txthotelNaam1;
+
+    @FXML
+    private TextField txtEmail1;
+
+    @FXML
+    private TextField txtTelefoon1;
+
+    @FXML
+    private TextField txtMobielNummer1;
+
+    @FXML
+    private TextField txtVluchtNummer1;
+
+    @FXML
+    private TextField txtVan1;
+
+    @FXML
+    private TextField txtNaar1;
+
+    @FXML
+    private TextField txtBagageLabelMatch1;
+
+    @FXML
+    private TextField txtMerk1;
+
+    @FXML
+    private TextField txtTypeBagage1;
+
+    @FXML
+    private Text Kleur1Text1;
+
+    @FXML
+    private TextField txtKleur21;
+
+    @FXML
+    private TextField txtKleur11;
+
+    @FXML
+    private TextArea txtBijzondereOpmerking1;
+
+    @FXML
+    private Text txtState;
+
+    @FXML
+    private Button btnAnnuleren3;
+
+    @FXML
+    private Button btnInsturen;
+
+    @FXML
+    private Text bagageID;
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
@@ -62,16 +224,13 @@ public class MatchListViewController implements Initializable {
     private String Airport;
     private String From;
     private String To;
-    private String Initial;
-    private String Insertion;
-    private String Surname;
     private String IsReturned;
     private ResultSet resultSet = null;
-    private String txtBoxFilterString;
-    private String selectedListviewItem;
     protected ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
     private String initialForMatch;
     private String surnameForMatch;
+    private String Passnameandcity;
+    private MedewerkerBagageTable bagage;
 
     public void setTextBoxes() {
 
@@ -85,27 +244,50 @@ public class MatchListViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        labelNumberForMatch = FormulierZoekenController.getLabel();
-        txtBagageLabelMatch.setText(labelNumberForMatch);
-        System.out.println("TEST Run on load window");
-        System.out.println(labelNumberForMatch);
+
+        FormulierZoekenController parant = new FormulierZoekenController();
+        parant.getAirport();
+
+        txtBagageLabelMatch.setText(getSelectedBagage().getLabelnumber());
+
+        if (getSelectedBagage().getState().equals("Lost")) {
+            txtState.setText(getSelectedBagage().getState() + " " + language.getTranslationString("TLK203") + " Found");
+
+        } else {
+            txtState.setText(getSelectedBagage().getState() + " " + language.getTranslationString("TLK203") + " Lost");
+
+        }
+        txtTypeBagage.setText(getSelectedBagage().getType());
+        txtMerk.setText(getSelectedBagage().getBrand());
+        txtKleur1.setText(getSelectedBagage().getColor1());
+        txtKleur2.setText(getSelectedBagage().getColor2());
+        txtBijzondereOpmerking.setText(getSelectedBagage().getCharacteristics());
+        txtIATA.setText(getSelectedBagage().getAirport());
+        txtVan.setText(getSelectedBagage().getFrom());
+        txtNaar.setText(getSelectedBagage().getTo());
+        txtNS.setText(getSelectedBagage().getPassnameandcity());
+
+    }
+
+    public void setBagage(MedewerkerBagageTable medewerkerBagageTable) {
+        this.bagage = medewerkerBagageTable;
 
     }
 
     public void zoekMatch() throws SQLException {
 
-        resultSetNoFilter();
-        fillTable();
+        System.out.println(super.State);
 
+//        resultSetNoFilter();
+//        fillTable();
     }
 
     @FXML
+    @Override
     public void fillTable() throws SQLException {
 
         ObservableList<String> bagagetabel = FXCollections.observableArrayList();
         //Get all the results out of the database
-
-        int bagageID = 0;
         while (resultSet.next()) {
             BagageID = resultSet.getString("BagageID");
             System.out.println(BagageID);
@@ -121,40 +303,36 @@ public class MatchListViewController implements Initializable {
             Airport = resultSet.getString("Airport");
             From = resultSet.getString("From");
             To = resultSet.getString("To");
-            Initial = resultSet.getString("Initial");
-            Insertion = resultSet.getString("Insertion");
-            Surname = resultSet.getString("Surname");
+            Passnameandcity = resultSet.getString("Passnameandcity");
             IsReturned = resultSet.getString("IsReturned");
 
-            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, BagageID, IsReturned));
-
-            String bagageString = bagageTables.get(bagageID).getLabelnumber();
-            bagagetabel.add(bagageString);
-            bagageID++;
-
-            System.out.println(Labelnumber);
-            System.out.println(bagagetabel);
+            bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Passnameandcity, IsReturned));
 
         }
-        listView.setItems(bagagetabel);
-    }
-
-    public void resultSetNoFilter() throws SQLException {
-        String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE  IsReturned NOT LIKE '1' AND Labelnumber LIKE '" + labelNumberForMatch + "'";
-        resultSet = db.executeResultSetQuery(query);
-
+        listView.setItems(bagageTables);
     }
 
     public void matchWith() {
-        int selectedBagage = listView.getSelectionModel().getSelectedIndex();
-        System.out.println(selectedBagage);
-        System.out.println(surnameForMatch);
-        txtVoorletters.setText(initialForMatch);
-        txtAchternaam.setText(surnameForMatch);
+        if (listView.getSelectionModel().getSelectedItem() != null) {
+            MedewerkerBagageTable medewerkerBagageTable = listView.getSelectionModel().getSelectedItem();
+
+            txtBagageLabelMatch1.setText(medewerkerBagageTable.getLabelnumber());
+            bagageID.setText(medewerkerBagageTable.getBagageID());
+            txtState.setText(medewerkerBagageTable.getState());
+            txtTypeBagage1.setText(medewerkerBagageTable.getType());
+            txtMerk1.setText(medewerkerBagageTable.getBrand());
+            txtKleur11.setText(medewerkerBagageTable.getColor1());
+            txtKleur21.setText(medewerkerBagageTable.getColor2());
+            txtBijzondereOpmerking1.setText(medewerkerBagageTable.getCharacteristics());
+            txtIATA1.setText(medewerkerBagageTable.getAirport());
+            txtVan1.setText(medewerkerBagageTable.getFrom());
+            txtNaar.setText(medewerkerBagageTable.getTo());
+            txtNS1.setText(medewerkerBagageTable.getPassnameandcity());
+
+        }
 
     }
-    
+
     public void exporterenPDF(ActionEvent event) throws IOException {
         PDFExport export = new PDFExport();
         export.addPage();

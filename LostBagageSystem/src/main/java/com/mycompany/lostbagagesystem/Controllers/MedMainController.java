@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
 import java.net.URL;
@@ -31,69 +32,44 @@ public class MedMainController implements Initializable {
 
     @FXML
     public void schadeFormulier(ActionEvent event) throws IOException {
-        Locale locale = new Locale("en", "GB");
 
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/Schadeformulier.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
-
-        formulierLeeg.getChildren().setAll();
-        formulierLeeg.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
-        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+        MainApp.loadFXMLFile(formulierLeeg, "/fxml/Schadeformulier.fxml");
 
     }
 
     @FXML
     public void gevondenBagageFormulier(ActionEvent event) throws IOException {
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/GevondenBagageFormulier.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
-        formulierLeeg.getChildren().setAll();
-        formulierLeeg.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
-        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+
+        MainApp.loadFXMLFile(formulierLeeg, "/fxml/GevondenBagageFormulier.fxml");
+
     }
 
     @FXML
     public void verlorenBagageFormulier(ActionEvent event) throws IOException {
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/VermisteBagageFormulier.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
 
-        formulierLeeg.getChildren().setAll();
-        formulierLeeg.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
-        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+        MainApp.loadFXMLFile(formulierLeeg, "/fxml/VermisteBagageFormulier.fxml");
+
     }
 
     @FXML
     public void logUit(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        MedewerkerPane.getChildren().setAll();
-        //laad de nieuwe table in
-        MedewerkerPane.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(MedewerkerPane.widthProperty());
-        pane.prefHeightProperty().bind(MedewerkerPane.heightProperty());
+
+        MainApp.loadFXMLFile(formulierLeeg, "/fxml/InlogScherm.fxml");
+
     }
 
     @FXML
     public void zoekFormulier(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/FormulierZoeken.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
 
-        formulierLeeg.getChildren().setAll();
-        formulierLeeg.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
-        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+        MainApp.loadFXMLFile(formulierLeeg, "/fxml/FormulierZoeken.fxml");
+
     }
 
     @FXML
     public void importExcel(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ExcelImportExport.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
 
-        formulierLeeg.getChildren().setAll();
-        formulierLeeg.getChildren().setAll(pane);
-        pane.prefWidthProperty().bind(formulierLeeg.widthProperty());
-        pane.prefHeightProperty().bind(formulierLeeg.heightProperty());
+        MainApp.loadFXMLFile(formulierLeeg, "/fxml/ExcelImportExport.fxml");
+
     }
 
     /**
