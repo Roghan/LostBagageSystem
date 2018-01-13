@@ -45,8 +45,16 @@ public class AdminMainController implements Initializable {
 
     @FXML
     private AnchorPane AdminPane;
-    @FXML
-    private BorderPane PaneLeeg;
+
+//    private int userChangeId;
+//
+//    public AdminMainController(int userChangeId) {
+//        this.userChangeId = userChangeId;
+//    }
+//
+//    public int getuserChangeId() {
+//        return userChangeId;
+//    }
 
 //    @FXML
 //    private Button Blokkeren;
@@ -68,17 +76,22 @@ public class AdminMainController implements Initializable {
 
     @FXML
     private void handleEdit(ActionEvent event) throws IOException, SQLException {
-        EditMedewerkerController Edit = new EditMedewerkerController();
-        //laad de nieuwe table in de bestaande anchorpane        
-        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
-        //maakt de oude table leeg
-        AdminPane.getChildren().setAll();
-        //laad de nieuwe table in
-        AdminPane.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(AdminPane.widthProperty());
-        pane.prefHeightProperty().bind(AdminPane.widthProperty());
-        Edit.medewerkerWijzigen();
+        if (!table.getSelectionModel().isEmpty()){
+            DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+            int userChangeId = user.getId();
+            EditMedewerkerController emc = new EditMedewerkerController();
+            emc.medewerkerWijzigen(userChangeId);
+            System.out.println("userChangeId = " + userChangeId);
+            //laad de nieuwe table in de bestaande anchorpane        
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+            //maakt de oude table leeg
+            AdminPane.getChildren().setAll();
+            //laad de nieuwe table in
+            AdminPane.getChildren().setAll(pane);
+            //geeft de nieuwe table de juiste groote
+            pane.prefWidthProperty().bind(AdminPane.widthProperty());
+            pane.prefHeightProperty().bind(AdminPane.widthProperty());
+        }
     }
 
     @FXML
