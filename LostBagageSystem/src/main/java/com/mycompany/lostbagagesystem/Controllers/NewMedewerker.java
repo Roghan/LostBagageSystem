@@ -91,7 +91,9 @@ public class NewMedewerker {
         String acountN = acountnaam.getText();
         String wachtw = wachtwoord.getText();
         String roll = rol.getText();
-        
+        System.out.println("roll = " + roll);
+        System.out.println("wachtw = " + wachtw);
+        System.out.println("acountN = " + acountN);
         String wachtwoord1 = sha256(wachtw);
         
         String query = String.format("INSERT INTO `gebruiker` "

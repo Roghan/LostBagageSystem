@@ -64,7 +64,7 @@
                         <Button layoutX="16.0" layoutY="25.0" mnemonicParsing="false" onAction="#annuleer" prefHeight="25.0" prefWidth="125.0" text="Medewerkers" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane id="AnchorPane" onMouseDragOver="#handleMouseDrag" prefHeight="400.0" prefWidth="600.0">
+                  <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
                      <children>
                         <Text layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accountnaam" wrappingWidth="100.0" />
                         <TextField fx:id="txtAccountnaam" layoutX="134.0" layoutY="24.0" prefHeight="25.0" prefWidth="139.0" promptText="accountnaam" />

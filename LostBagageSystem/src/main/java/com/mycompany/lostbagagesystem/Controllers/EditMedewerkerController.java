@@ -32,20 +32,21 @@ import javax.swing.JOptionPane;
 public class EditMedewerkerController implements Initializable {
 
     @FXML
-    TextField txtAccountnaam;
+    private TextField txtAccountnaam;
 
     @FXML
-    TextField txtWachtwoord;
+    private TextField txtWachtwoord;
 
     @FXML
-    TextField txtRol;
+    private TextField txtRol;
 
     @FXML
     private AnchorPane AdminPane;
     
-    String acountnaam;
-    String wachtwoord;
-    int rol;
+    private static String acountnaam;
+    private static String wachtwoord;
+    private static int rol;
+    private static int userId;
 
     @FXML
     public void annuleer() throws IOException {
@@ -78,17 +79,17 @@ public class EditMedewerkerController implements Initializable {
 //        if(!changesMade){
 //            return;
 //        }
-        ConnectDB db = new ConnectDB("lbs_database");
-        
-            String query = "UPDATE gebruiker SET acountnaam = '"+txtAccountnaam + "',wachtwoord = '"+txtWachtwoord+"', rol ='"+txtRol+"'";
-            db.executeUpdateQuery(query);
-    }
+        String acountN = txtAccountnaam.getText();
+        String wachtw = txtWachtwoord.getText();
+        String roll = txtRol.getText();
 
-    @FXML
-    public void handleMouseDrag(ActionEvent event) {
-        txtAccountnaam.setText(acountnaam);
-        txtWachtwoord.setText(wachtwoord);
-        txtRol.setText(Integer.toString(rol));
+        
+        ConnectDB db = new ConnectDB("lbs_database");
+            String query = String.format("UPDATE gebruiker SET acountnaam = '%s',"
+                    + "wachtwoord = '%s', rol = '%s' WHERE id = '%s'", 
+                    acountN, wachtw, roll, userId);
+            db.executeUpdateQuery(query);
+            System.out.println("query = " + query);
     }
     
     public void medewerkerWijzigen(int userId) throws SQLException {
@@ -114,10 +115,10 @@ public class EditMedewerkerController implements Initializable {
         rol = resultSet.getInt("rol");
         System.out.println("rol = " + rol);
 
+        this.userId = userId;
         this.acountnaam = acountnaam;
         this.wachtwoord = wachtwoord;
         this.rol = rol;
-        
         
     }
     
@@ -126,11 +127,11 @@ public class EditMedewerkerController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String a = this.acountnaam;
+        String a = acountnaam;
         txtAccountnaam.setText(a);
-        String b = this.wachtwoord;
+        String b = wachtwoord;
         txtWachtwoord.setText(b);
-        String c = Integer.toString(this.rol);
+        String c = Integer.toString(rol);
         txtRol.setText(c);
     }
 
