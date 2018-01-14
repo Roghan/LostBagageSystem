@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -27,7 +27,7 @@
                </BorderPane.margin>
                <children>
                   <TextField fx:id="txtFilter" alignment="TOP_LEFT" onAction="#dbTableFill" prefHeight="25.0" prefWidth="711.0" />
-                  <MenuButton fx:id="filterBox" mnemonicParsing="false" text="%TLK310">
+                  <MenuButton fx:id="filterBox" mnemonicParsing="false" text="%TLK206">
                     <items>
                         <RadioMenuItem mnemonicParsing="false" onAction="#setTxtFilter" text="%TLK36">
                            <toggleGroup>
@@ -84,8 +84,7 @@
                         <TableColumn fx:id="Airport" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="Airport" />
                         <TableColumn fx:id="From" prefWidth="75.0" text="From" />
                         <TableColumn fx:id="To" prefWidth="75.0" text="To" />
-                        <TableColumn fx:id="Passnameandcity" prefWidth="75.0" text="Surname" />
-                        <TableColumn fx:id="IsReturned" prefWidth="75.0" text="IsReturned" />
+                        <TableColumn fx:id="Passnameandcity" prefWidth="175.0" text="Name" />
                     </columns>
                   </TableView>
                </children>
