@@ -5,6 +5,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -279,25 +280,25 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private Button annuleren3;
-    
+
     @FXML
     private DatePicker txtDatum;
-    
+
     @FXML
     private TextArea txtBijzondereOpmerking;
-    
+
     @FXML
     private TextField txtVluchtNummer;
 
     @FXML
     private Button insturen;
-    
+
     @FXML
     private ToggleGroup IATA;
-    
+
     @FXML
     private ToggleGroup IATA_VAN;
-    
+
     @FXML
     private ToggleGroup IATA_NAAR;
 
@@ -306,10 +307,10 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     private MenuButton btnVanVliegveldID;
-    
+
     @FXML
     private MenuButton btnNaarVliegveldID;
-    
+
     @FXML
     private MenuButton btnVliegveldID;
 
@@ -347,8 +348,6 @@ public class SchadeformulierController implements Initializable {
     @FXML
     void insturen(ActionEvent event) throws SQLException {
         System.out.println("KNOP INSTUREN INGEDRUKT");
-
-        
 
         TextField[] reqTextFields = new TextField[]{
             txtVoorletters,
@@ -408,10 +407,10 @@ public class SchadeformulierController implements Initializable {
             typeBagage = txtTypeBagage.getText();
             merk = txtMerk.getText();
             bijzondereOpmerking = txtBijzondereOpmerking.getText();
-            
+
             sendToDatabase();
         }
-        
+
     }
 
     public void sendToDatabase() throws SQLException {
@@ -474,6 +473,9 @@ public class SchadeformulierController implements Initializable {
         }
 
         System.out.println(numberAffected);
+        if (numberAffected == 1) {
+            PopupMeldingen.gegevensVerstuurd();
+        }
 
     }
 
@@ -485,7 +487,7 @@ public class SchadeformulierController implements Initializable {
         System.out.println(iataString);
 
     }
-    
+
     @FXML
     public void vanDropDown(ActionEvent event) {
         RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
@@ -501,7 +503,7 @@ public class SchadeformulierController implements Initializable {
         btnNaarVliegveldID.setText(naar);
         System.out.println(naar);
     }
-    
+
     @FXML
     public void kleurkiezer1(ActionEvent event) {
         RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();

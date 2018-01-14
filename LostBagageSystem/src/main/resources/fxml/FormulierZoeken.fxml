@@ -84,9 +84,7 @@
                         <TableColumn fx:id="Airport" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="148.0" text="Airport" />
                         <TableColumn fx:id="From" prefWidth="75.0" text="From" />
                         <TableColumn fx:id="To" prefWidth="75.0" text="To" />
-                        <TableColumn fx:id="Initial" prefWidth="75.0" text="Initial" />
-                        <TableColumn fx:id="Insertion" prefWidth="75.0" text="Insertion" />
-                        <TableColumn fx:id="Surname" prefWidth="75.0" text="Surname" />
+                        <TableColumn fx:id="Passnameandcity" prefWidth="75.0" text="Surname" />
                         <TableColumn fx:id="IsReturned" prefWidth="75.0" text="IsReturned" />
                     </columns>
                   </TableView>

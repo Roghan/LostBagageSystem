@@ -8,58 +8,62 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.Ver3DController">
-   <items>
-      <AnchorPane>
-         <children>
-            <TableView fx:id="table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <columns>
-                  <TableColumn fx:id="BagageID" prefWidth="75.0" text="BagageID" />
-                  <TableColumn fx:id="Date" prefWidth="75.0" text="Date" />
-                  <TableColumn fx:id="Time" prefWidth="75.0" text="Time" />
-                  <TableColumn fx:id="State" prefWidth="75.0" text="State" />
-                  <TableColumn fx:id="Labelnumber" prefWidth="75.0" text="Labelnumber" />
-                  <TableColumn fx:id="Type" prefWidth="75.0" text="Type" />
-                  <TableColumn fx:id="Brand" prefWidth="75.0" text="Brand" />
-                  <TableColumn fx:id="Color1" prefWidth="75.0" text="Color1" />
-                  <TableColumn fx:id="Color2" prefWidth="75.0" text="Color2" />
-                  <TableColumn fx:id="Characteristics" prefWidth="75.0" text="Characteristics" />
-                  <TableColumn fx:id="IsReturned" prefWidth="75.0" text="IsReturned" />
-                  <TableColumn fx:id="Airport" prefWidth="75.0" text="Airport" />
-                  <TableColumn fx:id="Location" prefWidth="75.0" text="Location" />
-                  <TableColumn fx:id="Initial" prefWidth="75.0" text="Initial" />
-                  <TableColumn fx:id="Insertion" prefWidth="75.0" text="Insertion" />
-                  <TableColumn fx:id="Surname" prefWidth="75.0" text="Surname" />
-                  <TableColumn fx:id="Street" prefWidth="75.0" text="Street" />
-                  <TableColumn fx:id="CharHousenumberacteristics1" prefWidth="75.0" text="Housenumber" />
-                  <TableColumn fx:id="Zipcode" prefWidth="75.0" text="Zipcode" />
-                  <TableColumn fx:id="City" prefWidth="75.0" text="City" />
-                  <TableColumn fx:id="Email" prefWidth="75.0" text="Email" />
-                  <TableColumn fx:id="Phone1" prefWidth="75.0" text="Phone1" />
-                  <TableColumn fx:id="Phone2" prefWidth="75.0" text="Phone2" />
-                  <TableColumn fx:id="Flightnumber" prefWidth="75.0" text="Flightnumber" />
-                  <TableColumn fx:id="From" prefWidth="75.0" text="From" />
-                  <TableColumn fx:id="To" prefWidth="75.0" text="To" />
-                  <TableColumn fx:id="Vstreet" prefWidth="75.0" text="Vstreet" />
-                  <TableColumn fx:id="Vhousenumber" prefWidth="75.0" text="Vhousenumber" />
-                  <TableColumn fx:id="Vzipcode" prefWidth="75.0" text="Vzipcode" />
-                  <TableColumn fx:id="Vcity" prefWidth="75.0" text="Vcity" />
-                  <TableColumn fx:id="Hotelname" prefWidth="75.0" text="Hotelname" />
-               </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="gev21D">
-         <children>
-            <LineChart layoutX="-64.0" title="Verloren 3 dagen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
-         </children>
-      </AnchorPane>
-   </items>
-</SplitPane>
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.Ver3DController">
+   <children>
+      <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane>
+               <children>
+                  <TableView fx:id="table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="BagageID" prefWidth="75.0" text="BagageID" />
+                        <TableColumn fx:id="Date" prefWidth="75.0" text="Date" />
+                        <TableColumn fx:id="Time" prefWidth="75.0" text="Time" />
+                        <TableColumn fx:id="State" prefWidth="75.0" text="State" />
+                        <TableColumn fx:id="Labelnumber" prefWidth="75.0" text="Labelnumber" />
+                        <TableColumn fx:id="Type" prefWidth="75.0" text="Type" />
+                        <TableColumn fx:id="Brand" prefWidth="75.0" text="Brand" />
+                        <TableColumn fx:id="Color1" prefWidth="75.0" text="Color1" />
+                        <TableColumn fx:id="Color2" prefWidth="75.0" text="Color2" />
+                        <TableColumn fx:id="Characteristics" prefWidth="75.0" text="Characteristics" />
+                        <TableColumn fx:id="IsReturned" prefWidth="75.0" text="IsReturned" />
+                        <TableColumn fx:id="Airport" prefWidth="75.0" text="Airport" />
+                        <TableColumn fx:id="Location" prefWidth="75.0" text="Location" />
+                        <TableColumn fx:id="Initial" prefWidth="75.0" text="Initial" />
+                        <TableColumn fx:id="Insertion" prefWidth="75.0" text="Insertion" />
+                        <TableColumn fx:id="Surname" prefWidth="75.0" text="Surname" />
+                        <TableColumn fx:id="Street" prefWidth="75.0" text="Street" />
+                        <TableColumn fx:id="CharHousenumberacteristics1" prefWidth="75.0" text="Housenumber" />
+                        <TableColumn fx:id="Zipcode" prefWidth="75.0" text="Zipcode" />
+                        <TableColumn fx:id="City" prefWidth="75.0" text="City" />
+                        <TableColumn fx:id="Email" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="Phone1" prefWidth="75.0" text="Phone1" />
+                        <TableColumn fx:id="Phone2" prefWidth="75.0" text="Phone2" />
+                        <TableColumn fx:id="Flightnumber" prefWidth="75.0" text="Flightnumber" />
+                        <TableColumn fx:id="From" prefWidth="75.0" text="From" />
+                        <TableColumn fx:id="To" prefWidth="75.0" text="To" />
+                        <TableColumn fx:id="Vstreet" prefWidth="75.0" text="Vstreet" />
+                        <TableColumn fx:id="Vhousenumber" prefWidth="75.0" text="Vhousenumber" />
+                        <TableColumn fx:id="Vzipcode" prefWidth="75.0" text="Vzipcode" />
+                        <TableColumn fx:id="Vcity" prefWidth="75.0" text="Vcity" />
+                        <TableColumn fx:id="Hotelname" prefWidth="75.0" text="Hotelname" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="gev21D">
+               <children>
+                  <LineChart layoutX="-64.0" title="Verloren 3 dagen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

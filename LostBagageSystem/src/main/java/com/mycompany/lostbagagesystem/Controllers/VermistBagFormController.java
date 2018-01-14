@@ -6,6 +6,7 @@ import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -269,6 +270,9 @@ public class VermistBagFormController implements Initializable {
         }
 
         System.out.println(numberAffected);
+        if (numberAffected == 1) {
+            PopupMeldingen.gegevensVerstuurd();
+        }
 
     }
 

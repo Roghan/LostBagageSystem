@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
@@ -45,6 +46,9 @@ public class NewMedewerker {
     private AnchorPane TableLeeg;
 
     public void terug() throws IOException {
+        
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/AdminMedewerkerView.fxml");
+        
         //laad de nieuwe table in de bestaande anchorpane
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/AdminMedewerkerView.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
