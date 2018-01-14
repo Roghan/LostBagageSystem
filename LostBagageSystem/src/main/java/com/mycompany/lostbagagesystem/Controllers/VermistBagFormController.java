@@ -325,7 +325,7 @@ public class VermistBagFormController implements Initializable {
         //Call the PDFExport class
         PDFExport doc = new PDFExport();
         //Add a new page to the pdf file
-        doc.addPage(txtBagageLabel.getText());
+        doc.addPage();
         //Prompts the FileChooser
         doc.savePDF();
 

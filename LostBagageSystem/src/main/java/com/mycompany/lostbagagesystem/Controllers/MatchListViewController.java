@@ -1,4 +1,4 @@
-package com.mycompany.lostbagagesystem.Controllers;
+ package com.mycompany.lostbagagesystem.Controllers;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -8,11 +8,13 @@ package com.mycompany.lostbagagesystem.Controllers;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
 import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,8 +25,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 /**
  * FXML Controller class
@@ -34,16 +41,75 @@ import javafx.scene.control.TextField;
 public class MatchListViewController implements Initializable {
 
     @FXML
-    TextField txtBagageLabelMatch;
+    private TextField txtBagageLabelMatch;
 
     @FXML
-    ListView listView;
+    private ListView listView;
     @FXML
-    Button btnMatch;
+    private Button btnMatch;
     @FXML
-    TextField txtVoorletters;
+    private TextField txtVoorletters;
     @FXML
-    TextField txtAchternaam;
+    private TextField txtAchternaam;
+    @FXML
+    private TextField txtTussenvoegsel;
+    @FXML
+    private DatePicker txtDatum;
+    @FXML
+    private TextField txtTijd;
+    @FXML
+    private TextField txtStraatnaam;
+    @FXML
+    private TextField txtHuisnummer;
+    @FXML
+    private TextField txtPostcode;
+    @FXML
+    private TextField txtWoonplaats;
+    @FXML
+    private TextField txtVakantieStraatnaam;
+    @FXML
+    private TextField txtVakantieHuisnummer;
+    @FXML
+    private TextField txtVakantiePostcode;
+    @FXML
+    private TextField txtVakantiePlaats;
+    @FXML
+    private TextField txtHotelNaam;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private TextField txtTelefoon;
+    @FXML
+    private TextField txtMobielnummer;
+    @FXML
+    private TextField txtVluchtnummer;
+    @FXML
+    private TextField txtTypeBagage;
+    @FXML
+    private TextField txtMerk;
+    @FXML
+    private TextArea txtBijzondereOpmerking;
+    @FXML
+    private MenuButton btnVliegveldID;
+    @FXML
+    private MenuButton btnVanVliegveldID;
+    @FXML
+    private MenuButton btnNaarVliegveldID;
+    @FXML
+    private MenuButton kleur1Menu;
+    @FXML
+    private MenuButton kleur2Menu;
+    @FXML
+    private ToggleGroup kleur1;
+    @FXML
+    private ToggleGroup kleur2;
+    @FXML
+    private ToggleGroup iata;
+    @FXML
+    private ToggleGroup iataVan;
+    @FXML
+    private ToggleGroup iataNaar;
+    
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
@@ -72,6 +138,11 @@ public class MatchListViewController implements Initializable {
     protected ObservableList<MedewerkerBagageTable> bagageTables = FXCollections.observableArrayList();
     private String initialForMatch;
     private String surnameForMatch;
+    private String iataString;
+    private String van;
+    private String naar;
+    private String ralcode1;
+    private String ralcode2;
 
     public void setTextBoxes() {
 
@@ -159,8 +230,82 @@ public class MatchListViewController implements Initializable {
     
     public void exporterenPDF(ActionEvent event) throws IOException {
         PDFExport export = new PDFExport();
-        export.addPage();
+        String staat = "Returned";
+        String datum = txtDatum.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String tijd = txtTijd.getText(); 
+        String voorletters = txtVoorletters.getText();
+        String tussenvoegsel = txtTussenvoegsel.getText();
+        String achternaam = txtAchternaam.getText();
+        String adres = txtStraatnaam.getText();
+        String huisnummer = txtWoonplaats.getText();
+        String postcode = txtPostcode.getText();
+        String woonplaats = txtWoonplaats.getText();
+        String vStraatnaam = txtVakantieStraatnaam.getText();
+        String vHuisnummer = txtVakantieHuisnummer.getText();
+        String vPostcode = txtVakantiePostcode.getText();
+        String vPlaats = txtVakantiePlaats.getText();
+        String hotelnaam = txtHotelNaam.getText();
+        String email = txtEmail.getText();
+        String telefoon = txtTelefoon.getText();
+        String mobiel = txtMobielnummer.getText();
+        String vluchtnummer = txtVluchtnummer.getText(); 
+        String labelnummer = txtBagageLabelMatch.getText();
+        String typeBagage = txtTypeBagage.getText();
+        String merk = txtMerk.getText();
+        String bijzondereKenmerken = txtBijzondereOpmerking.getText();
+        export.addPage(staat, datum, tijd, voorletters, tussenvoegsel, 
+                achternaam, adres, huisnummer, postcode, woonplaats, 
+                vStraatnaam, vHuisnummer, vPostcode, vPlaats, hotelnaam, 
+                email, telefoon, mobiel, vluchtnummer, van, naar, 
+                labelnummer, typeBagage, merk, 
+                ralcode1, ralcode2, bijzondereKenmerken);
         export.savePDF();
+    }
+    
+    @FXML
+    public void IATACHECK(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) iata.getSelectedToggle();
+        iataString = iattaItem.getText();
+        btnVliegveldID.setText(iataString);
+        System.out.println(iataString);
+
+    }
+
+    @FXML
+    public void vanDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) iataVan.getSelectedToggle();
+        van = iattaItem.getText();
+        btnVanVliegveldID.setText(van);
+        System.out.println(van);
+
+    }
+
+    @FXML
+    public void naarDropDown(ActionEvent event) {
+        RadioMenuItem iattaItem = (RadioMenuItem) iataNaar.getSelectedToggle();
+        naar = iattaItem.getText();
+        btnNaarVliegveldID.setText(naar);
+        System.out.println(naar);
+
+    }
+
+    @FXML
+    public void kleurkiezer1(ActionEvent event) {
+        RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();
+        String kleur = item.getText();
+        kleur1Menu.setText(kleur);
+        System.out.println(kleur);
+        ralcode1 = ColourPicker.GetColour(kleur);
+
+    }
+
+    @FXML
+    public void kleurkiezer2(ActionEvent event) {
+        RadioMenuItem item = (RadioMenuItem) kleur2.getSelectedToggle();
+        String kleur = item.getText();
+        kleur2Menu.setText(kleur);
+        System.out.println(kleur);
+        ralcode2 = ColourPicker.GetColour(kleur);
     }
 
 }

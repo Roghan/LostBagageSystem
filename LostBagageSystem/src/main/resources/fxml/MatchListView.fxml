@@ -5,9 +5,11 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
@@ -39,15 +41,51 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <TextField fx:id="txtTime" prefHeight="30.0" prefWidth="360.0" promptText="%TLK7">
+                  <TextField fx:id="txtTijd" prefHeight="30.0" prefWidth="360.0" promptText="%TLK7">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <MenuButton mnemonicParsing="false" text="%TLK6">
+                  <MenuButton fx:id="btnVliegveldID" mnemonicParsing="false" onAction="#IATACHECK" text="%TLK6">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" text="AMS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="iata" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="AYT" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="IST" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="BJV" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="DLM" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="ADB" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="GZP" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="ECN" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="RAK" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="HER" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="KGS" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="RHO" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="ZTH" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="CFU" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="MJT" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="OHD" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="SMI" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="LPA" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="TFO" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="PMI" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="AGP" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="FUE" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="FAO" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="ACE" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="HRG" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="NBE" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="DXB" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="BOJ" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="BJL" toggleGroup="$iata" />
+                        <RadioMenuItem mnemonicParsing="false" text="CTA" toggleGroup="$iata" />
+                     </items>
                   </MenuButton>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
@@ -119,7 +157,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtVakantieHuisNummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK20">
+                  <TextField fx:id="txtVakantieHuisnummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK20">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -134,7 +172,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txthotelNaam" prefHeight="30.0" prefWidth="360.0" promptText="%TLK134">
+                  <TextField fx:id="txtHotelNaam" prefHeight="30.0" prefWidth="360.0" promptText="%TLK134">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -159,7 +197,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtMobielNummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK27">
+                  <TextField fx:id="txtMobielnummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK27">
                      <VBox.margin>
                         <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -184,20 +222,92 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Line>
-                  <TextField fx:id="txtVluchtNummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK37">
+                  <TextField fx:id="txtVluchtnummer" prefHeight="30.0" prefWidth="360.0" promptText="%TLK37">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <MenuButton mnemonicParsing="false" text="%TLK130">
+                  <MenuButton fx:id="btnVanVliegveldID" mnemonicParsing="false" onAction="#vanDropDown" text="%TLK130">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" text="AMS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="iataVan" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="AYT" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="IST" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="BJV" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="DLM" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="ADB" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="GZP" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="ECN" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="RAK" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="HER" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="KGS" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="RHO" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="ZTH" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="CFU" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="MJT" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="OHD" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="SMI" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="LPA" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="TFO" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="PMI" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="AGP" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="FUE" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="FAO" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="ACE" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="HRG" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="NBE" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="DXB" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="BOJ" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="BJL" toggleGroup="$iataVan" />
+                        <RadioMenuItem mnemonicParsing="false" text="CTA" toggleGroup="$iataVan" />
+                     </items>
                   </MenuButton>
-                  <MenuButton mnemonicParsing="false" text="%TLK131">
+                  <MenuButton fx:id="btnNaarVliegveldID" mnemonicParsing="false" onAction="#naarDropDown" text="%TLK131">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" text="AMS">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="iataNaar" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="AYT" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="IST" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="BJV" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="DLM" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="ADB" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="GZP" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="ECN" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="RAK" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="HER" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="KGS" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="RHO" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="ZTH" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="CFU" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="MJT" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="OHD" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="SMI" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="LPA" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="TFO" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="PMI" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="AGP" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="FUE" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="FAO" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="ACE" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="HRG" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="NBE" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="DXB" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="BOJ" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="BJL" toggleGroup="$iataNaar" />
+                        <RadioMenuItem mnemonicParsing="false" text="CTA" toggleGroup="$iataNaar" />
+                     </items>
                   </MenuButton>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
@@ -228,10 +338,132 @@
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin></Text>
-                  <MenuButton mnemonicParsing="false" text="%TLK106">
+                  <MenuButton fx:id="kleur1Menu" mnemonicParsing="false" onAction="#kleurkiezer1" text="%TLK106">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK63">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK59">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK107">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK51">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK108">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK61">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK65">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK109">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK53">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK110">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK111">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK64">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK56">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK112">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK113">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK62">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK114">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK115">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK116">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK117">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK118">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK54">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK50">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK119">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                     </items>
                   </MenuButton>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
@@ -242,10 +474,40 @@
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin></Text>
-                  <MenuButton mnemonicParsing="false" text="%TLK106">
+                  <MenuButton fx:id="kleur2Menu" mnemonicParsing="false" onAction="#kleurkiezer2" text="%TLK106">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK63">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="kleur2" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK59" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK107" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK51" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK108" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK61" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK65" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK109" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK53" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK110" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK111" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK64" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK56" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK112" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK113" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK62" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK114" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK115" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK116" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK117" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK118" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK54" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK50" toggleGroup="$kleur2" />
+                        <RadioMenuItem mnemonicParsing="false" text="%TLK119" toggleGroup="$kleur2" />
+                     </items>
                   </MenuButton>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
