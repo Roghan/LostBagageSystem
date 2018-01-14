@@ -58,7 +58,7 @@ public class FormulierCheck {
                         }
                     }
 
-                    PopupNietIngevuldeVelden.warningBoxPhone();
+                    PopupMeldingen.warningBoxPhone();
                 }
 
                 if (txtIsNotInt != true) {
@@ -69,7 +69,7 @@ public class FormulierCheck {
 
                         }
                     }
-                    PopupNietIngevuldeVelden.warningBoxText();
+                    PopupMeldingen.warningBoxText();
 
                 }
 
@@ -82,7 +82,7 @@ public class FormulierCheck {
                         }
                     }
 
-                    PopupNietIngevuldeVelden.warningBoxIsNotInt();
+                    PopupMeldingen.warningBoxIsNotInt();
                 }
 
             }
@@ -255,7 +255,7 @@ public class FormulierCheck {
     }
 
     public static void warningBox() {
-        PopupNietIngevuldeVelden.warningBox();
+        PopupMeldingen.warningBox();
 
     }
 

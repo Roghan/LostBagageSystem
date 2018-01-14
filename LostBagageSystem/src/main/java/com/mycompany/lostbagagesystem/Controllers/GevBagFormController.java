@@ -6,6 +6,7 @@ import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
+import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -326,6 +327,9 @@ public class GevBagFormController implements Initializable {
         }
 
         System.out.println(numberAffected);
+         if (numberAffected == 1) {
+            PopupMeldingen.gegevensVerstuurd();
+        }
 
     }
 

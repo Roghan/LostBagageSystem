@@ -54,7 +54,7 @@ public class MedMainController implements Initializable {
     @FXML
     public void logUit(ActionEvent event) throws IOException {
 
-        MainApp.loadFXMLFile(formulierLeeg, "/fxml/InlogScherm.fxml");
+        MainApp.loadFXMLFile(MedewerkerPane, "/fxml/InlogScherm.fxml");
 
     }
 

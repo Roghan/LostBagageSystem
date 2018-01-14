@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
  *
  * @author MarcelVanWilgenburg
  */
-public class PopupNietIngevuldeVelden {
+public class PopupMeldingen {
 
     /**
      *
@@ -53,12 +53,22 @@ public class PopupNietIngevuldeVelden {
         alert.showAndWait();
 
     }
-    
-        public static void warningBoxPass() {
+
+    public static void warningBoxPass() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(language.getTranslationString("TLK105"));
         alert.setHeaderText(null);
         alert.setContentText(language.getTranslationString("TLK105"));
+
+        alert.showAndWait();
+
+    }
+
+    public static void gegevensVerstuurd() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(language.getTranslationString("TLK207"));
+        alert.setHeaderText(null);
+        alert.setContentText(language.getTranslationString("TLK207"));
 
         alert.showAndWait();
 

@@ -93,23 +93,19 @@ public class MainApp extends Application {
 
     public static Object loadFXMLFileInNewWindow(String fxmlFileName) throws IOException {
 
-       
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        Pane pane = fxmlLoader.load();
 
-            Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
-            Pane pane = fxmlLoader.load();
+        Scene scene = new Scene(pane);
+        scene.getStylesheets().add("/styles/Styles.css");
 
-            Scene scene = new Scene(pane);
-            scene.getStylesheets().add("/styles/Styles.css");
+        stage.setTitle("Matching window");
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
 
-            stage.setTitle("Matching window");
-            stage.setMaximized(false);
-            stage.setScene(scene);
-            stage.show();
-
-            return fxmlLoader.getController();
-
-        
+        return fxmlLoader.getController();
 
     }
 
