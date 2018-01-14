@@ -72,7 +72,7 @@ public class ExcelImportExportController implements Initializable {
     private String luggageType;
     private String brand;
     private String flightNumber;
-    private String luggageTag;
+    private int luggageTag;
     private String locationFound;
     private String mainColor;
     private String secondColor;
@@ -104,14 +104,15 @@ public class ExcelImportExportController implements Initializable {
     }
 
     public void getDataFormDatabase() throws FileNotFoundException, IOException, SQLException {
-
-        XSSFSheet sheet = workbook.getSheetAt(0);
-        XSSFRow row;
-        String[] data = new String[]{};
+        int numberOfSheets = workbook.getNumberOfSheets();
         ObservableList<LostAndFoundLuggageInventory> bagagetabel = FXCollections.observableArrayList();
 
-        for (int i = 5; i < sheet.getLastRowNum(); i++) {
-            row = sheet.getRow(i);
+        XSSFSheet sheet = workbook.getSheetAt(0);
+
+        XSSFRow row;
+
+        for (int j = 5; j < sheet.getLastRowNum(); j++) {
+            row = sheet.getRow(j);
             registrationNr = row.getCell(0).getStringCellValue();
             System.out.println(registrationNr);
             XSSFCell cellDate = row.getCell(1);
@@ -141,7 +142,7 @@ public class ExcelImportExportController implements Initializable {
                 luggageType = row.getCell(3).getStringCellValue();
                 brand = row.getCell(4).getStringCellValue();
                 flightNumber = row.getCell(5).getStringCellValue();
-                luggageTag = row.getCell(6).getStringCellValue();
+                luggageTag = (int) row.getCell(6).getNumericCellValue();
                 locationFound = row.getCell(7).getStringCellValue();
                 String color = row.getCell(8).getStringCellValue();
                 mainColor = ColourPicker.GetColourExcel(color);
@@ -158,16 +159,15 @@ public class ExcelImportExportController implements Initializable {
                     sendToDatabase();
                 } else {
 
-                    for (int j = 0; j < bagage.getColumns().size(); j++) {
-                        TableColumn column = (TableColumn) bagage.getColumns().get(j);
+                    for (int k = 0; k < bagage.getColumns().size(); k++) {
+                        TableColumn column = (TableColumn) bagage.getColumns().get(k);
                         column.setCellValueFactory(new PropertyValueFactory(column.getId()));
                     }
 
-                    bagage.setItems(bagagetabel);
                 }
 
             }
-
+            bagage.setItems(bagagetabel);
         }
 
     }
@@ -192,7 +192,7 @@ public class ExcelImportExportController implements Initializable {
             myStmt.setString(1, "Found"); //?
             myStmt.setDate(2, (java.sql.Date) dateFound);
             myStmt.setString(3, timeFound);
-            myStmt.setString(4, luggageTag);
+            myStmt.setInt(4, luggageTag);
             myStmt.setString(5, luggageType);
             myStmt.setString(6, brand);
             myStmt.setString(7, mainColor);

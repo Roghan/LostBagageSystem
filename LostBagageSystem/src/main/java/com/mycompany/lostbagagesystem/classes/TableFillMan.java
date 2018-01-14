@@ -34,7 +34,7 @@ public class TableFillMan {
     public static ResultSet resultSet;
 
     @FXML
-    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer, boolean isGevonden) throws SQLException {
+    public static void dbTableFill(int aantalDagen, TableView table, AnchorPane gev21D, String gevVer, int isGevonden) throws SQLException {
 
         int BagageID;
         String Date;
@@ -46,7 +46,7 @@ public class TableFillMan {
         int Color1;
         int Color2;
         String Characteristics;
-        boolean IsReturned;
+        int IsReturned;
         String Airport;
         String Location;
         String Initial;
@@ -91,7 +91,7 @@ public class TableFillMan {
             Color1 = resultSet.getInt("Color1");
             Color2 = resultSet.getInt("Color2");
             Characteristics = resultSet.getString("Characteristics");
-            IsReturned = resultSet.getBoolean("IsReturned");
+            IsReturned = resultSet.getInt("IsReturned");
             Airport = resultSet.getString("Airport");
             Location = resultSet.getString("Location");
             Initial = resultSet.getString("Initial");
@@ -120,10 +120,10 @@ public class TableFillMan {
             String date = sdf.format(c.getTime());
             //database date
             String datadb = Date + " " + Time;
-            boolean returnBagage = IsReturned;
+            int returnBagage = IsReturned;
 
             //if currentdate -aantaldagen <= to database date than show
-            if (date.compareTo(datadb) <= 0 && isGevonden == returnBagage) {
+            if (date.compareTo(datadb) <= 0 && returnBagage == isGevonden) {
                 bagagetabel.add(new bagageTabel(BagageID, Date, Time, State,
                         Labelnumber, Type, Brand, Color1, Color2, Characteristics,
                         IsReturned, Airport, Location, Initial, Insertion, Surname,
@@ -172,7 +172,7 @@ public class TableFillMan {
 
     }
 
-    public static int[] aantalVerloren(int aantalDagen, boolean isGevonden) throws SQLException {
+    public static int[] aantalVerloren(int aantalDagen, int isGevonden) throws SQLException {
         int aantalKoffers = 0;
         String date_found;
         int[] aantalVerloren = new int[aantalDagen];

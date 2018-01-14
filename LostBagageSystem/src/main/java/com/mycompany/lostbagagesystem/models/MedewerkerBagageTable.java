@@ -25,12 +25,10 @@ public class MedewerkerBagageTable {
     private String Airport;
     private String From;
     private String To;
-    private String Initial;
-    private String Insertion;
-    private String Surname;
+    private String Passnameandcity;
     private String IsReturned;
 
-    public MedewerkerBagageTable(String BagageID, String State, String Labelnumber, String Type, String Brand, String Color1, String Color2, String Characteristics, String Location, String Airport, String From, String To, String Initial, String Insertion, String Surname, String IsReturned) {
+    public MedewerkerBagageTable(String BagageID, String State, String Labelnumber, String Type, String Brand, String Color1, String Color2, String Characteristics, String Location, String Airport, String From, String To, String Passnameandcity, String IsReturned) {
         this.BagageID = BagageID;
         this.State = State;
         this.Labelnumber = Labelnumber;
@@ -43,9 +41,7 @@ public class MedewerkerBagageTable {
         this.Airport = Airport;
         this.From = From;
         this.To = To;
-        this.Initial = Initial;
-        this.Insertion = Insertion;
-        this.Surname = Surname;
+        this.Passnameandcity = Passnameandcity;
         this.IsReturned = IsReturned;
     }
 
@@ -145,28 +141,12 @@ public class MedewerkerBagageTable {
         this.To = To;
     }
 
-    public String getInitial() {
-        return Initial;
+    public String getPassnameandcity() {
+        return Passnameandcity;
     }
 
-    public void setInitial(String Initial) {
-        this.Initial = Initial;
-    }
-
-    public String getInsertion() {
-        return Insertion;
-    }
-
-    public void setInsertion(String Insertion) {
-        this.Insertion = Insertion;
-    }
-
-    public String getSurname() {
-        return Surname;
-    }
-
-    public void setSurname(String Surname) {
-        this.Surname = Surname;
+    public void setPassnameandcity(String Passnameandcity) {
+        this.Passnameandcity = Passnameandcity;
     }
 
     public String getIsReturned() {
@@ -175,6 +155,11 @@ public class MedewerkerBagageTable {
 
     public void setIsReturned(String IsReturned) {
         this.IsReturned = IsReturned;
+    }
+
+    @Override
+    public String toString() {
+        return "State : " + State + " , Labelnumber : " + Labelnumber + " , Type : " + Type + " , Characteristics : " + Characteristics + " , Passnameandcity : " + Passnameandcity;
     }
 
 }

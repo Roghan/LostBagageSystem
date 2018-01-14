@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;

@@ -39,11 +39,12 @@ public class Ver3DController implements Initializable {
     private AnchorPane gev21D;
     private int aantalDagen = 3;
     private String gevVer = "Verloren";
+    private int isReturned = 0;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, false);
+            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, isReturned);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }

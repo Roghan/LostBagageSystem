@@ -4,22 +4,24 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MatchListViewController">
-   <content>
-      <HBox>
+<AnchorPane prefHeight="882.0" prefWidth="1336.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.MatchListViewController">
+   <children>
+      <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fillWidth="false" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="952.0" prefWidth="235.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK2">
+                  <Text fx:id="bagageID" strokeType="OUTSIDE" strokeWidth="0.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -34,7 +36,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <DatePicker fx:id="txtDatum" prefHeight="30.0" prefWidth="360.0" promptText="%TLK68">
+                  <DatePicker fx:id="txtDatum" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK68">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -44,11 +46,11 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <MenuButton mnemonicParsing="false" text="%TLK6">
+                  <TextField fx:id="txtIATA" prefHeight="30.0" prefWidth="360.0" promptText="%TLK6">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </MenuButton>
+                  </TextField>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -59,17 +61,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </Text>
-                  <TextField fx:id="txtVoorletters" prefHeight="30.0" prefWidth="360.0" promptText="%TLK8">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="txtTussenvoegsel" prefHeight="30.0" prefWidth="360.0" promptText="%TLK9">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <TextField fx:id="txtAchternaam" prefHeight="30.0" prefWidth="360.0" promptText="%TLK10">
+                  <TextField fx:id="txtNS" prefHeight="30.0" prefWidth="360.0" promptText="%TLK151">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -172,9 +164,9 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </VBox>
-            <VBox fillWidth="false" HBox.hgrow="ALWAYS">
+            <VBox prefHeight="952.0" prefWidth="235.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK35" wrappingWidth="333.453125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK35" wrappingWidth="135.453125">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -189,16 +181,16 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <MenuButton mnemonicParsing="false" text="%TLK130">
+                  <TextField fx:id="txtVan" prefHeight="30.0" prefWidth="360.0" promptText="%TLK130">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </MenuButton>
-                  <MenuButton mnemonicParsing="false" text="%TLK131">
+                  </TextField>
+                  <TextField fx:id="txtNaar" prefHeight="30.0" prefWidth="360.0" promptText="%TLK131">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </MenuButton>
+                  </TextField>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -207,32 +199,38 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK43">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></Text>
+                     </VBox.margin>
+                  </Text>
                   <TextField fx:id="txtBagageLabelMatch" prefHeight="30.0" prefWidth="360.0" promptText="%TLK44">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></TextField>
+                     </VBox.margin>
+                  </TextField>
                   <TextField fx:id="txtTypeBagage" prefHeight="30.0" prefWidth="360.0" promptText="%TLK45">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></TextField>
+                     </VBox.margin>
+                  </TextField>
                   <TextField fx:id="txtMerk" prefHeight="30.0" prefWidth="360.0" promptText="%TLK46">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></TextField>
+                     </VBox.margin>
+                  </TextField>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></Line>
+                     </VBox.margin>
+                  </Line>
                   <Text fx:id="Kleur1Text" strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK47">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></Text>
-                  <MenuButton mnemonicParsing="false" text="%TLK106">
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtKleur1" prefHeight="30.0" prefWidth="360.0" promptText="%TLK147">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </MenuButton>
+                  </TextField>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -241,12 +239,13 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK48">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></Text>
-                  <MenuButton mnemonicParsing="false" text="%TLK106">
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtKleur2" prefHeight="30.0" prefWidth="360.0" promptText="%TLK148">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </MenuButton>
+                  </TextField>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
@@ -255,44 +254,391 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK67">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></Text>
+                     </VBox.margin>
+                  </Text>
                   <TextArea fx:id="txtBijzondereOpmerking" prefHeight="100.0" prefWidth="360.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></TextArea>
+                     </VBox.margin>
+                  </TextArea>
                   <Line endX="100.0" startX="-100.0">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></Line>
-                  <HBox>
-                     <children>
-                        <Button fx:id="btnAnnuleren3" mnemonicParsing="false" text="%TLK40">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="btnInsturen" mnemonicParsing="false" onAction="#zoekMatch" text="Find Match">
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="btnMatch" mnemonicParsing="false" onAction="#matchWith" text="Match" />
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </HBox>
-                  <ListView fx:id="listView" prefHeight="235.0" prefWidth="351.0">
+                  </Line>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <Line fill="BLACK" startY="1500.0" strokeWidth="2.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox prefHeight="952.0" prefWidth="235.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK201">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
-                  </ListView>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK4">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <DatePicker fx:id="txtDatum1" editable="false" prefHeight="30.0" prefWidth="229.0" promptText="%TLK68">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <TextField fx:id="txtTime1" editable="false" prefHeight="30.0" promptText="%TLK7">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtIATA1" editable="false" prefHeight="30.0" promptText="%TLK6">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK5">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtNS1" editable="false" prefHeight="30.0" promptText="Naam">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK18">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtStraatnaam1" editable="false" prefHeight="30.0" promptText="%TLK19">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtHuisNummer1" editable="false" prefHeight="30.0" promptText="%TLK20">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtPostcode1" editable="false" prefHeight="30.0" promptText="%TLK21">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtWoonplaats1" editable="false" prefHeight="30.0" promptText="%TLK22">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK132">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtVakantieStraatnaam1" editable="false" prefHeight="30.0" promptText="%TLK19">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtVakantieHuisNummer1" editable="false" prefHeight="30.0" promptText="%TLK20">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtVakantiePostcode1" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK21">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtVakantiePlaats1" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK133">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txthotelNaam1" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK134">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK24">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtEmail1" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK25">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtTelefoon1" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK26">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMobielNummer1" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK27">
+                     <VBox.margin>
+                        <Insets bottom="40.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="946.0" prefWidth="235.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK35" wrappingWidth="180.453125">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="23.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK35">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtVluchtNummer1" editable="false" prefHeight="30.0" promptText="%TLK37">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtVan1" editable="false" prefHeight="30.0" promptText="%TLK130">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtNaar1" editable="false" prefHeight="30.0" promptText="%TLK131">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK43">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtBagageLabelMatch1" editable="false" prefHeight="30.0" promptText="%TLK44">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMerk1" editable="false" prefHeight="30.0" promptText="%TLK46">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtTypeBagage1" editable="false" prefHeight="30.0" promptText="%TLK45">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text fx:id="Kleur1Text1" strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK47">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtKleur11" editable="false" prefHeight="30.0" promptText="%TLK147">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK48">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="txtKleur21" editable="false" prefHeight="30.0" promptText="%TLK148">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK67">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextArea fx:id="txtBijzondereOpmerking1" editable="false" prefHeight="100.0" prefWidth="230.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
                </children>
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </VBox>
+            <VBox>
+               <children>
+                  <Line fill="BLACK" startY="1500.0" strokeWidth="2.0" />
+               </children>
+            </VBox>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK202">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtState" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <HBox>
+                     <children>
+                        <Button fx:id="btnAnnuleren3" mnemonicParsing="false" onAction="#exporterenPDF" prefWidth="100.0" text="%TLK156">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnInsturen" mnemonicParsing="false" onAction="#zoekMatch" prefWidth="100.0" text="Find Match">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnMatch" mnemonicParsing="false" onAction="#mergeFields" prefWidth="100.0" text="%TLK209">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnMatch1" mnemonicParsing="false" onAction="#vervang" prefWidth="100.0" text="%TLK210">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnSendToDB" mnemonicParsing="false" onAction="#sendToDatabase" prefWidth="100.0" text="%TLK208">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnAnnuleren" mnemonicParsing="false" onAction="#close" prefWidth="100.0" text="%TLK40">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%TLK206">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                  <HBox>
+                     <children>
+                        <RadioButton fx:id="filterSlim" mnemonicParsing="false" onAction="#getFilters" selected="true" text="%TLK204">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="filter" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="FilterAll" mnemonicParsing="false" onAction="#getFilters" text="%TLK205" toggleGroup="$filter">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <Line endX="100.0" startX="-100.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <ListView fx:id="listView" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </ListView>
+               </children>
+            </VBox>
          </children>
       </HBox>
-   </content>
-</ScrollPane>
+   </children>
+</AnchorPane>

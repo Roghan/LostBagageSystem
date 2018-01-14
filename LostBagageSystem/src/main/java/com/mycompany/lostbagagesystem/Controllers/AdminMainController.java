@@ -2,7 +2,9 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.Medewerker;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.DbNaam;
 import javafx.scene.control.TableView;
@@ -135,15 +137,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     public void logUit(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        AdminPane.getChildren().setAll();
-        //laad de nieuwe table in
-        AdminPane.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(AdminPane.widthProperty());
-        pane.prefHeightProperty().bind(AdminPane.heightProperty());
+        MainApp.loadFXMLFile(AdminPane, "/fxml/InlogScherm.fxml");
     }
 
     public void dbTableFill() throws SQLException {
