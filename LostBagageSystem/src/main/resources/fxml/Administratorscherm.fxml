@@ -74,7 +74,6 @@
                             <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
                               <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
-                              <TableColumn fx:id="manVrouw" prefWidth="75.0" text="ManVrouw" />
                               <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
                               <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
                           </columns>

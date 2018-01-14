@@ -5,6 +5,7 @@ package com.mycompany.lostbagagesystem.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import static com.mycompany.lostbagagesystem.Controllers.InlogSchermController.sha256;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class EditMedewerkerController implements Initializable {
 
     @FXML
     private AnchorPane AdminPane;
-    
+
     private static String acountnaam;
     private static String wachtwoord;
     private static int rol;
@@ -75,7 +76,7 @@ public class EditMedewerkerController implements Initializable {
     }
 
     @FXML
-    public void sendEdit(ActionEvent event) {
+    public void sendEdit(ActionEvent event) throws IOException {
 //        if(!changesMade){
 //            return;
 //        }
@@ -83,30 +84,40 @@ public class EditMedewerkerController implements Initializable {
         String wachtw = txtWachtwoord.getText();
         String roll = txtRol.getText();
 
-        
-        ConnectDB db = new ConnectDB("lbs_database");
-            String query = String.format("UPDATE gebruiker SET acountnaam = '%s',"
-                    + "wachtwoord = '%s', rol = '%s' WHERE id = '%s'", 
-                    acountN, wachtw, roll, userId);
+        System.out.println("wachtw = " + wachtw);
+        System.out.println("wachtwoord = " + wachtwoord);
+        if (wachtwoord.equals(wachtw)) {
+            ConnectDB db = new ConnectDB("lbs_database");
+            String query = String.format("UPDATE gebruiker SET acountnaam = '%s', "
+                    + "rol = '%s' WHERE id = '%s'",
+                    acountN, roll, userId);
             db.executeUpdateQuery(query);
-            System.out.println("query = " + query);
+            System.out.println("____query = " + query);
+        } else {
+            String shawachtwoord = sha256(wachtw);
+            ConnectDB db = new ConnectDB("lbs_database");
+            String query1 = String.format("UPDATE gebruiker SET acountnaam = '%s',"
+                    + "wachtwoord = '%s', rol = '%s' WHERE id = '%s'",
+                    acountN, shawachtwoord, roll, userId);
+            db.executeUpdateQuery(query1);
+            System.out.println("query1 = " + query1);
+        }
+        annuleer();
     }
-    
+
     public void medewerkerWijzigen(int userId) throws SQLException {
         ConnectDB db = new ConnectDB("lbs_database");
-        ResultSet resultSet; 
+        ResultSet resultSet;
         String acountnaam;
         String wachtwoord;
         int rol;
-        
+
 //        String user = txtAccountnaam.getText();
 //        String pass = txtWachtwoord.getText();
 //        String rol = txtRol.getText();
-        
-               
         resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
                 + "FROM gebruiker WHERE id = " + "'" + userId + "'");
-        
+
         resultSet.next();
         acountnaam = resultSet.getString("acountnaam");
         System.out.println("acountnaam = " + acountnaam);
@@ -119,9 +130,9 @@ public class EditMedewerkerController implements Initializable {
         this.acountnaam = acountnaam;
         this.wachtwoord = wachtwoord;
         this.rol = rol;
-        
+
     }
-    
+
     /**
      * Initializes the controller class.
      */
