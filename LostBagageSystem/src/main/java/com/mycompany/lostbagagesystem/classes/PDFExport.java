@@ -35,319 +35,188 @@ public class PDFExport {
 
     }
 
-    public void addPage(String staat, String datum, String tijd,
-            String voorletters, String tussenvoegsel, String achternaam,
-            String straat, String huisnummer, String postcode,
+    public void addPage(String datum, String tijd,
+            String naamEnStad, String straat, String huisnummer, String postcode,
             String woonplaats, String vStraatnaam, String vHuisnummer, String vPostcode,
             String vPlaats, String hotelnaam, String email, String telefoon, 
-            String mobiel, String vluchtnummer, String van, 
-            String naar, String labelnummer,
-            String typeBagage, String merk, String kleur1, String kleur2, 
-            String bijzondereKenmerken) throws IOException {
+            String mobiel) throws IOException {
         doc.addPage(page);
-        PDImageXObject image = PDImageXObject.createFromFile("assets//formPag1.png", doc);
+        PDImageXObject image = PDImageXObject.createFromFile("assets//formPag.png", doc);
         content.drawImage(image, 0, 0);
         
         content.beginText();
-        content.setFont(PDType1Font.HELVETICA_BOLD, 36);
-        content.newLineAtOffset(335, 742);
-        content.showText("Luggage form");
+        content.setFont(PDType1Font.HELVETICA_BOLD, 32);
+        content.newLineAtOffset(368, 738);
+        content.showText("DHL");
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 642);
-        content.showText(language.getTranslationString("TLK300"));
+        content.newLineAtOffset(50, 643);
+        content.showText((language.getTranslationString("TLK301") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 642);
-        content.showText(staat);
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 591);
-        content.showText(language.getTranslationString("TLK301"));
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 591);
+        content.newLineAtOffset(172, 643);
         content.showText(datum);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 540);
-        content.showText(language.getTranslationString("TLK302"));
+        content.newLineAtOffset(50, 590);
+        content.showText((language.getTranslationString("TLK302") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 540);
+        content.newLineAtOffset(172, 590);
         content.showText(tijd);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 485);
-        content.showText(language.getTranslationString("TLK303"));
+        content.newLineAtOffset(50, 537);
+        content.showText((language.getTranslationString("TLK309") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 485);
-        content.showText(voorletters);
+        content.newLineAtOffset(172, 537);
+        content.showText(naamEnStad);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(265, 485);
-        content.showText(tussenvoegsel);
+        content.newLineAtOffset(50, 484);
+        content.showText((language.getTranslationString("TLK18") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(365, 485);
-        content.showText(achternaam);
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 440);
-        content.showText(language.getTranslationString("TLK18"));
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 440);
+        content.newLineAtOffset(172, 484);
         content.showText(straat);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(265, 440);
+        content.newLineAtOffset(372, 484);
         content.showText(huisnummer);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 410);
-        content.showText(language.getTranslationString("TLK21"));
+        content.newLineAtOffset(50, 451);
+        content.showText((language.getTranslationString("TLK22") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 410);
-        content.showText(postcode);
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 382);
-        content.showText(language.getTranslationString("TLK22"));
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 382);
+        content.newLineAtOffset(172, 451);
         content.showText(woonplaats);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 319);
-        content.showText(language.getTranslationString("TLK304"));
+        content.newLineAtOffset(50, 419);
+        content.showText((language.getTranslationString("TLK21") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 319);
-        content.showText(vStraatnaam);
+        content.newLineAtOffset(172, 419);
+        content.showText(postcode);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(265, 319);
-        content.showText(vHuisnummer);
+        content.newLineAtOffset(50, 356);
+        content.showText((language.getTranslationString("TLK308") + ":"));
         content.endText();
-        
+                               
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 290);
-        content.showText(language.getTranslationString("TLK305"));
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 290);
-        content.showText(vPostcode);
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 261);
-        content.showText(language.getTranslationString("TLK306"));
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 261);
-        content.showText(vPlaats);
-        content.endText();
-        
-        content.beginText();
-        content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(265, 201);
+        content.newLineAtOffset(172, 356);
         content.showText(hotelnaam);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 201);
-        content.showText(language.getTranslationString("TLK307"));
+        content.newLineAtOffset(50, 324);
+        content.showText((language.getTranslationString("TLK304") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 201);
+        content.newLineAtOffset(172, 324);
+        content.showText(vStraatnaam);
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(372, 324);
+        content.showText(vHuisnummer);
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(50, 292);
+        content.showText((language.getTranslationString("TLK305") + ":"));
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(172, 292);
+        content.showText(vPlaats);
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(50, 259);
+        content.showText((language.getTranslationString("TLK306") + ":"));
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(172, 259);
+        content.showText(vPostcode);
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(50, 196);
+        content.showText((language.getTranslationString("TLK307") + ":"));
+        content.endText();
+        
+        content.beginText();
+        content.setFont(PDType1Font.HELVETICA, 12);
+        content.newLineAtOffset(172, 196);
         content.showText(email);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 148);
-        content.showText(language.getTranslationString("TLK26"));
+        content.newLineAtOffset(50, 143);
+        content.showText((language.getTranslationString("TLK26") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 148);
+        content.newLineAtOffset(172, 143);
         content.showText(telefoon);
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(50, 96);
-        content.showText(language.getTranslationString("TLK27"));
+        content.newLineAtOffset(50, 90);
+        content.showText((language.getTranslationString("TLK27") + ":"));
         content.endText();
         
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
-        content.newLineAtOffset(165, 96);
+        content.newLineAtOffset(172, 90);
         content.showText(mobiel);
         content.endText();
-        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(165, 742);
-//        content.showText(vluchtnummer);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(165, 742);
-//        content.showText(van);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(165, 742);
-//        content.showText(naar);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(165, 742);
-//        content.showText(labelnummer);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(165, 742);
-//        content.showText(typeBagage);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(165, 742);
-//        content.showText(merk);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText(kleur1);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText(kleur2);
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText("Luggage form");
-//        content.endText();
-//        
-//        content.beginText();
-//        content.setFont(PDType1Font.HELVETICA, 12);
-//        content.newLineAtOffset(50, 742);
-//        content.showText(bijzondereKenmerken);
-//        content.endText();
-        
         
         
 //        String[] array = {"%TLK50"};
@@ -407,17 +276,6 @@ public class PDFExport {
 //            content.showText(gegevens[i]);
 //            content.endText();
 //        }
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
     }
 
     public void savePDF() {

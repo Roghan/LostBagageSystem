@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.FormulierZoekenController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
@@ -27,7 +27,7 @@
                </BorderPane.margin>
                <children>
                   <TextField fx:id="txtFilter" alignment="TOP_LEFT" onAction="#dbTableFill" prefHeight="25.0" prefWidth="711.0" />
-                  <MenuButton fx:id="filterBox" mnemonicParsing="false" text="MenuButton">
+                  <MenuButton fx:id="filterBox" mnemonicParsing="false" text="%TLK310">
                     <items>
                         <RadioMenuItem mnemonicParsing="false" onAction="#setTxtFilter" text="%TLK36">
                            <toggleGroup>
