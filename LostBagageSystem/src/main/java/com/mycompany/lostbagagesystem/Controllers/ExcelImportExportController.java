@@ -113,6 +113,10 @@ public class ExcelImportExportController implements Initializable {
 
         for (int j = 5; j < sheet.getLastRowNum(); j++) {
             row = sheet.getRow(j);
+//            if (row.getCell(0).getCe) {
+//                
+//            }
+            
             registrationNr = row.getCell(0).getStringCellValue();
             System.out.println(registrationNr);
             XSSFCell cellDate = row.getCell(1);

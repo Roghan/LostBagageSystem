@@ -38,7 +38,7 @@
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Text>
-                        <DatePicker fx:id="txtDatum" prefHeight="30.0" prefWidth="360.0" promptText="%TLK68">
+                        <DatePicker fx:id="txtDatum" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK68">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>

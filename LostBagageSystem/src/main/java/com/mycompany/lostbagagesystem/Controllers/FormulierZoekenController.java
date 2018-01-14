@@ -6,6 +6,7 @@ import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -264,7 +265,7 @@ public class FormulierZoekenController implements Initializable {
             txtBoxFilterString = "To";
         }
         if (language.getTranslationString("TLK10").equals(menuTxt)) {
-            txtBoxFilterString = "Surname";
+            txtBoxFilterString = "Passnameandcity";
         }
 
     }
