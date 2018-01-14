@@ -6,6 +6,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.models.Manual;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -173,6 +175,12 @@ public class InlogSchermController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    
+    public void openManual(ActionEvent event) throws IOException{
+        Manual.openPFD();
+        
+        
     }
 
 }
