@@ -45,174 +45,174 @@ import javafx.stage.Stage;
  * @author Marcel van Wilgenburg
  */
 public class MatchListViewController extends FormulierZoekenController implements Initializable {
-    
+
     @FXML
     private TextField txtBagageLabelMatch;
-    
+
     @FXML
     private ListView<MedewerkerBagageTable> listView;
-    
+
     @FXML
     private DatePicker txtDatum;
-    
+
     @FXML
     private TextField txtTime;
-    
+
     @FXML
     private TextField txtIATA;
-    
+
     @FXML
     private TextField txtStraatnaam;
-    
+
     @FXML
     private TextField txtHuisNummer;
-    
+
     @FXML
     private TextField txtPostcode;
-    
+
     @FXML
     private TextField txtWoonplaats;
-    
+
     @FXML
     private TextField txtVakantieStraatnaam;
-    
+
     @FXML
     private TextField txtVakantieHuisNummer;
-    
+
     @FXML
     private TextField txtVakantiePlaats;
-    
+
     @FXML
     private TextField txthotelNaam;
-    
+
     @FXML
     private TextField txtEmail;
-    
+
     @FXML
     private TextField txtTelefoon;
-    
+
     @FXML
     private TextField txtVluchtNummer;
-    
+
     @FXML
     private TextField txtVan;
-    
+
     @FXML
     private TextField txtNaar;
-    
+
     @FXML
     private TextField txtTypeBagage;
-    
+
     @FXML
     private TextField txtMerk;
-    
+
     @FXML
     private TextField txtKleur1;
-    
+
     @FXML
     private TextField txtKleur2;
-    
+
     @FXML
     private TextArea txtBijzondereOpmerking;
-    
+
     @FXML
     private DatePicker txtDatum1;
-    
+
     @FXML
     private TextField txtTime1;
-    
+
     @FXML
     private TextField txtIATA1;
-    
+
     @FXML
     private TextField txtNS1;
-    
+
     @FXML
     private TextField txtStraatnaam1;
-    
+
     @FXML
     private TextField txtHuisNummer1;
-    
+
     @FXML
     private TextField txtPostcode1;
-    
+
     @FXML
     private TextField txtWoonplaats1;
-    
+
     @FXML
     private TextField txtVakantieStraatnaam1;
-    
+
     @FXML
     private TextField txtVakantieHuisNummer1;
-    
+
     @FXML
     private TextField txtVakantiePlaats1;
-    
+
     @FXML
     private TextField txthotelNaam1;
-    
+
     @FXML
     private TextField txtEmail1;
-    
+
     @FXML
     private TextField txtTelefoon1;
-    
+
     @FXML
     private TextField txtMobielNummer1;
-    
+
     @FXML
     private TextField txtVluchtNummer1;
-    
+
     @FXML
     private TextField txtVan1;
-    
+
     @FXML
     private TextField txtNaar1;
-    
+
     @FXML
     private TextField txtBagageLabelMatch1;
-    
+
     @FXML
     private TextField txtMerk1;
-    
+
     @FXML
     private TextField txtTypeBagage1;
-    
+
     @FXML
     private Text Kleur1Text1;
-    
+
     @FXML
     private TextField txtKleur21;
-    
+
     @FXML
     private TextField txtKleur11;
-    
+
     @FXML
     private TextArea txtBijzondereOpmerking1;
-    
+
     @FXML
     private Text txtState;
-    
+
     @FXML
     private ToggleGroup filter;
-    
+
     @FXML
     private TextField txtNS;
-    
+
     @FXML
     private Button btnAnnuleren;
-    
+
     @FXML
     private TextField txtMobielNummer;
     @FXML
     private TextField txtVakantiePostcode;
     @FXML
     private TextField txtVakantiePostcode1;
-    
+
     private ConnectDB db = new ConnectDB("lbs_database");
-    
+
     private String labelNumberForMatch;
-    
+
     private String filterText;
     private String BagageID;
     private String State;
@@ -234,9 +234,9 @@ public class MatchListViewController extends FormulierZoekenController implement
     private String Passnameandcity;
     private MedewerkerBagageTable bagage;
     private String filterState;
-    
+
     public void setTextBoxes() {
-        
+
     }
 
     /**
@@ -249,7 +249,7 @@ public class MatchListViewController extends FormulierZoekenController implement
     public void initialize(URL url, ResourceBundle rb) {
         RadioButton r = (RadioButton) filter.getSelectedToggle();
         filterState = r.getText();
-        
+
         try {
             BagageID = getSelectedBagage().getBagageID();
             if (getSelectedBagage().getState().equals("Lost")) {
@@ -258,15 +258,15 @@ public class MatchListViewController extends FormulierZoekenController implement
             } else {
                 State = "Lost";
                 txtState.setText(getSelectedBagage().getState() + " " + language.getTranslationString("TLK203") + " Lost");
-                
+
             }
-            
+
             getSelectedBagageInfo();
             fillFields();
         } catch (SQLException ex) {
-            
+
         }
-        
+
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<MedewerkerBagageTable>() {
             @Override
             public void changed(ObservableValue<? extends MedewerkerBagageTable> observableValue, MedewerkerBagageTable s, MedewerkerBagageTable s2) {
@@ -274,43 +274,41 @@ public class MatchListViewController extends FormulierZoekenController implement
                     BagageID = listView.getSelectionModel().getSelectedItem().getBagageID();
                     getSelectedBagageInfoForMatch();
                     fillCompareFields();
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(MatchListViewController.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-        
+
     }
-    
+
     public void zoekMatch(ActionEvent event) throws SQLException {
-        
+
         if (filterState.equals(language.getTranslationString("TLK204"))) {
             getFoundMatch();
             fillList();
         } else if (filterState.equals(language.getTranslationString("TLK205"))) {
             getFoundMatchAll();
             fillList();
-            
+
         }
-        
+
     }
-    
+
     @FXML
     public void fillFields() throws SQLException {
-        
+
         while (resultSet.next()) {
             Date date = resultSet.getDate("Date");
-            
+
             if (date != null) {
                 txtDatum.setValue(resultSet.getDate("Date").toLocalDate());
             }
 
 //            for (int i = 0; i < textFields.length; i++) {
 //                textFields[i].setText(resultSet.getString(databaseStrings[i]));
-
-
             txtTime.setText(resultSet.getString("Time"));
             txtIATA.setText(resultSet.getString("Airport"));
             txtNS.setText(resultSet.getString("Passnameandcity"));
@@ -336,12 +334,12 @@ public class MatchListViewController extends FormulierZoekenController implement
             txtKleur2.setText(resultSet.getString("Color2"));
             txtBijzondereOpmerking.setText(resultSet.getString("Characteristics"));
         }
-        
+
     }
-    
+
     @FXML
     public void fillList() throws SQLException {
-        
+
         listView.getItems().clear();
 
         //Get all the results out of the database
@@ -360,52 +358,51 @@ public class MatchListViewController extends FormulierZoekenController implement
             To = resultSet.getString("To");
             Passnameandcity = resultSet.getString("Passnameandcity");
             IsReturned = resultSet.getString("IsReturned");
-            
+
             bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Passnameandcity, IsReturned));
-            
+
         }
         listView.setItems(bagageTables);
-        
+
     }
-    
+
     public void getFoundMatch() throws SQLException {
         String query = "SELECT * FROM `bagage` WHERE `State` = '" + State + "' AND (  `Labelnumber` = '" + txtBagageLabelMatch.getText() + "' "
                 + " OR `Flightnumber` = '" + txtVluchtNummer.getText() + "' OR `Type` = '" + txtTypeBagage.getText() + "')";
         resultSet = db.executeResultSetQuery(query);
     }
-    
+
     public void getFoundMatchAll() throws SQLException {
         String query = "SELECT * FROM `bagage` WHERE `State` = '" + State + "'  ";
         resultSet = db.executeResultSetQuery(query);
     }
-    
+
     public void getSelectedBagageInfo() throws SQLException {
         String query = "SELECT * FROM `bagage` WHERE `BagageID` = '" + BagageID + "' ";
         resultSet = db.executeResultSetQuery(query);
     }
-    
+
     public void getSelectedBagageInfoForMatch() throws SQLException {
         String query = "SELECT * FROM `bagage` WHERE `BagageID` = '" + BagageID + "' ";
         resultSet = db.executeResultSetQuery(query);
     }
-    
-    
+
     public void exporterenPDF(ActionEvent event) throws IOException {
         PDFExport export = new PDFExport();
         export.addPage();
         export.savePDF();
     }
-    
+
     @FXML
     public void fillCompareFields() throws SQLException {
-        
+
         while (resultSet.next()) {
             Date date = resultSet.getDate("Date");
-            
+
             if (date != null) {
                 txtDatum1.setValue(resultSet.getDate("Date").toLocalDate());
             }
-            
+
             txtTime1.setText("");
             txtIATA1.setText("");
             txtNS1.setText("");
@@ -430,7 +427,7 @@ public class MatchListViewController extends FormulierZoekenController implement
             txtKleur11.setText("");
             txtKleur21.setText("");
             txtBijzondereOpmerking1.setText("");
-            
+
             txtTime1.setText(resultSet.getString("Time"));
             txtIATA1.setText(resultSet.getString("Airport"));
             txtNS1.setText(resultSet.getString("Passnameandcity"));
@@ -455,32 +452,32 @@ public class MatchListViewController extends FormulierZoekenController implement
             txtKleur11.setText(resultSet.getString("Color1"));
             txtKleur21.setText(resultSet.getString("Color2"));
             txtBijzondereOpmerking1.setText(resultSet.getString("Characteristics"));
-            
+
         }
-        
+
     }
-    
+
     public void getFilters(ActionEvent event) throws SQLException {
-        
+
         RadioButton r = (RadioButton) filter.getSelectedToggle();
         filterState = r.getText();
-        
+
         zoekMatch(event);
-        
+
     }
-    
+
     @FXML
     public void mergeFields(ActionEvent event) throws SQLException {
-        
+
         if (txtDatum.getValue() == null) {
             txtDatum.setValue(txtDatum1.getValue());
-            
+
         }
-        
+
         if (txtTime.getText() == null) {
             txtTime.setText(txtTime1.getText());
         }
-        
+
         if (txtIATA.getText() == null) {
             txtIATA.setText(txtIATA1.getText());
         }
@@ -490,11 +487,11 @@ public class MatchListViewController extends FormulierZoekenController implement
         if (txtStraatnaam.getText() == null) {
             txtStraatnaam.setText(txtStraatnaam1.getText());
         }
-        
+
         if (txtHuisNummer.getText() == null) {
             txtHuisNummer.setText(txtHuisNummer1.getText());
         }
-        
+
         if (txtPostcode.getText() == null) {
             txtPostcode.setText(txtPostcode1.getText());
         }
@@ -553,10 +550,10 @@ public class MatchListViewController extends FormulierZoekenController implement
             txtBijzondereOpmerking.setText(txtBijzondereOpmerking1.getText());
         }
     }
-    
+
     @FXML
     public void vervang(ActionEvent event) {
-        
+
         txtTime.setText("");
         txtIATA.setText("");
         txtNS.setText("");
@@ -581,7 +578,7 @@ public class MatchListViewController extends FormulierZoekenController implement
         txtKleur1.setText("");
         txtKleur2.setText("");
         txtBijzondereOpmerking.setText("");
-        
+
         txtDatum.setValue(txtDatum1.getValue());
         txtTime.setText(txtTime1.getText());
         txtIATA.setText(txtIATA1.getText());
@@ -607,9 +604,9 @@ public class MatchListViewController extends FormulierZoekenController implement
         txtKleur1.setText(txtKleur11.getText());
         txtKleur2.setText(txtKleur21.getText());
         txtBijzondereOpmerking.setText(txtBijzondereOpmerking1.getText());
-        
+
     }
-    
+
     @FXML
     public void sendToDatabase(ActionEvent event) throws SQLException {
         // Making a new prepared statement 
@@ -626,7 +623,7 @@ public class MatchListViewController extends FormulierZoekenController implement
                 + "`Phone1`, `Phone2`, `Flightnumber`, `From`, `To`,"
                 + "`Vstreet`, `Vhousenumber`, `Vzipcode`, `Vcity`, `Hotelname`,`IsReturned`) VALUES"
                 + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
+
         try {
             conn = db.getDBConnection();
             myStmt = conn.prepareStatement(persoonsgegevens);
@@ -660,7 +657,7 @@ public class MatchListViewController extends FormulierZoekenController implement
 
             // Execute INSERT sql statement
             numberAffected = myStmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -673,20 +670,20 @@ public class MatchListViewController extends FormulierZoekenController implement
                 conn.close();
             }
         }
-        
+
         System.out.println(numberAffected);
-        
+
         if (numberAffected == 1) {
             PopupMeldingen.gegevensVerstuurd();
         }
-        
+
     }
-    
+
     @FXML
     public void close(ActionEvent event) {
         Stage stage = (Stage) btnAnnuleren.getScene().getWindow();
         stage.close();
-        
+
     }
-    
+
 }
