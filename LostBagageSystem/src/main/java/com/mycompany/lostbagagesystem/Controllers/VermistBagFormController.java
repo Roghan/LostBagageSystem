@@ -3,14 +3,12 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.PDFExport;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
-<<<<<<< HEAD
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import com.mycompany.lostbagagesystem.models.SetRadioMenuButtonText;
 import java.io.IOException;
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -130,10 +128,7 @@ public class VermistBagFormController implements Initializable {
     private String ralcode1;
     private String ralcode2;
     private String iataString;
-<<<<<<< HEAD
     private String Passnameandcity;
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     @FXML
     void annuleren3(ActionEvent event) {
@@ -205,11 +200,8 @@ public class VermistBagFormController implements Initializable {
             vakantieWoonPlaats = txtVakantiePlaats.getText();
             naamHotel = txthotelNaam.getText();
 
-<<<<<<< HEAD
             Passnameandcity = voorLetters + ", " + tussenVoegsel + " " + achterNaam + ", " + woonPlaats;
 
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
             sendToDatabase();
         }
 
@@ -230,11 +222,7 @@ public class VermistBagFormController implements Initializable {
                 + "`Street`, `Housenumber`, `Zipcode`, `Email`,"
                 + "`Phone1`, `Phone2`, `Flightnumber`, `From`, `To`,"
                 + "`Vstreet`, `Vhousenumber`, `Vzipcode`, `Vcity`, `Hotelname`) VALUES"
-<<<<<<< HEAD
                 + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-=======
-                + "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
         try {
             conn = db.getDBConnection();
@@ -283,65 +271,33 @@ public class VermistBagFormController implements Initializable {
         }
 
         System.out.println(numberAffected);
-<<<<<<< HEAD
         if (numberAffected == 1) {
             PopupMeldingen.gegevensVerstuurd();
         }
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     }
 
     @FXML
     public void IATACHECK(ActionEvent event) {
-<<<<<<< HEAD
         SetRadioMenuButtonText.dropDown(btnVliegveldID, IATA);
-=======
-        RadioMenuItem iattaItem = (RadioMenuItem) IATA.getSelectedToggle();
-        iataString = iattaItem.getText();
-        btnVliegveldID.setText(iataString);
-        System.out.println(iataString);
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     }
 
     @FXML
     public void vanDropDown(ActionEvent event) {
-<<<<<<< HEAD
         SetRadioMenuButtonText.dropDown(btnVanVliegveldID, IATA_VAN);
 
-=======
-        RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
-        van = iattaItem.getText();
-        btnVanVliegveldID.setText(van);
-        System.out.println(van);
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
     }
 
     @FXML
     public void naarDropDown(ActionEvent event) {
-<<<<<<< HEAD
         SetRadioMenuButtonText.dropDown(btnNaarVliegveldID, IATA_NAAR);
 
-=======
-        RadioMenuItem iattaItem = (RadioMenuItem) IATA_NAAR.getSelectedToggle();
-        naar = iattaItem.getText();
-        btnNaarVliegveldID.setText(naar);
-        System.out.println(naar);
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
     }
 
     @FXML
     public void kleurkiezer1(ActionEvent event) {
-<<<<<<< HEAD
         ralcode1 = SetRadioMenuButtonText.kleurkiezer(kleur1Menu, kleur1);
-=======
-        RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();
-        String kleur = item.getText();
-        kleur1Menu.setText(kleur);
-        System.out.println(kleur);
-        ralcode1 = ColourPicker.GetColour(kleur);
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     }
 
@@ -349,7 +305,6 @@ public class VermistBagFormController implements Initializable {
     public void kleurkiezer2(ActionEvent event) {
         ralcode2 = SetRadioMenuButtonText.kleurkiezer(kleur2Menu, kleur2);
     }
-<<<<<<< HEAD
 
     @FXML
     public void exportPDF(ActionEvent event) throws IOException {
@@ -363,13 +318,5 @@ public class VermistBagFormController implements Initializable {
         doc.savePDF();
 
     }
-=======
-    
-    
-    
-    
-    
-    
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
 }

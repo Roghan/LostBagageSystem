@@ -6,17 +6,12 @@ import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
-<<<<<<< HEAD
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import java.io.IOException;
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -32,11 +27,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-<<<<<<< HEAD
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
 /**
  * FXML Controller class
@@ -46,33 +38,28 @@ import javafx.scene.layout.Border;
 public class FormulierZoekenController implements Initializable {
 
     @FXML
-    private ToggleGroup Filter;
+    protected ToggleGroup Filter;
 
     @FXML
-    private TextField txtFilter;
+    protected TextField txtFilter;
 
     @FXML
-    private TableView<MedewerkerBagageTable> bagage;
+    protected TableView<MedewerkerBagageTable> bagage;
 
     @FXML
-    private ToggleGroup txtBoxFilter;
+    protected ToggleGroup txtBoxFilter;
 
     @FXML
-<<<<<<< HEAD
     protected MenuButton filterBox;
 
     @FXML
     protected AnchorPane listViewLoader;
-=======
-    private MenuButton filterBox;
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
     private final String noFilter = language.getTranslationString("TLK138");
     private final String lost = language.getTranslationString("TLK136");
     private final String found = language.getTranslationString("TLK137");
-<<<<<<< HEAD
     protected String filterText;
     protected String BagageID;
     protected String State;
@@ -95,27 +82,6 @@ public class FormulierZoekenController implements Initializable {
     private static MedewerkerBagageTable selectedBagage;
 
     private static String labelNumberForMatch;
-=======
-    private String filterText;
-    private String BagageID;
-    private String State;
-    private String Labelnumber;
-    private String Type;
-    private String Brand;
-    private String Color1;
-    private String Color2;
-    private String Characteristics;
-    private String Location;
-    private String Airport;
-    private String From;
-    private String To;
-    private String Initial;
-    private String Insertion;
-    private String Surname;
-    private String IsReturned;
-    private ResultSet resultSet = null;
-    private String txtBoxFilterString;
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     /**
      * Initializes the controller class.
@@ -125,11 +91,17 @@ public class FormulierZoekenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         try {
+            try {
+
+                filterSelector();
+            } catch (SQLException ex) {
+
+            }
             resultSetNoFilter();
         } catch (SQLException ex) {
-            Logger.getLogger(FormulierZoekenController.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
         txtFilter.textProperty().addListener(new ChangeListener<String>() {
@@ -137,7 +109,6 @@ public class FormulierZoekenController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                     String oldValue, String newValue) {
-
                 try {
 
                     if (filterBox.getText().equals(language.getTranslationString("TLK206"))) {
@@ -148,8 +119,9 @@ public class FormulierZoekenController implements Initializable {
                         filterBox.setStyle("");
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(FormulierZoekenController.class.getName()).log(Level.SEVERE, null, ex);
+
                 }
+
             }
 
         });
@@ -186,7 +158,6 @@ public class FormulierZoekenController implements Initializable {
 
         } else {
 
-
             //GetFilterState
             RadioButton r = (RadioButton) Filter.getSelectedToggle();
             String filter = r.getText();
@@ -209,18 +180,11 @@ public class FormulierZoekenController implements Initializable {
         }
     }
 
+    @FXML
     public void fillTable() throws SQLException {
-<<<<<<< HEAD
         bagageTables.removeAll(bagageTables);
-=======
 
-        ObservableList<MedewerkerBagageTable> bagagetabel = FXCollections.observableArrayList();
-        ObservableList<MedewerkerBagageTable> emptyList = FXCollections.observableArrayList();
-
-        bagage.setItems(emptyList);
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
-
-        //Get all the results out of the database
+        int bagageID = 0;
         while (resultSet.next()) {
             BagageID = resultSet.getString("BagageID");
             System.out.println(BagageID);
@@ -239,96 +203,56 @@ public class FormulierZoekenController implements Initializable {
             Passnameandcity = resultSet.getString("Passnameandcity");
             IsReturned = resultSet.getString("IsReturned");
 
-<<<<<<< HEAD
             bagageTables.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2, Characteristics, Location, Airport, From, To, Passnameandcity, IsReturned));
 
             for (int i = 0; i < bagage.getColumns().size(); i++) {
-=======
-            bagagetabel.add(new MedewerkerBagageTable(BagageID, State, Labelnumber, Type, Brand, Color1, Color2,
-                    Characteristics, Location, Airport, From, To, Initial, Insertion, Surname, IsReturned));
-
-            for (int i = 0; i < bagage.getColumns().size() ; i++) {
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
                 TableColumn column = (TableColumn) bagage.getColumns().get(i);
                 column.setCellValueFactory(new PropertyValueFactory(column.getId()));
             }
 
         }
-<<<<<<< HEAD
         bagage.setItems(bagageTables);
-=======
-
-        bagage.setItems(bagagetabel);
-
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
     }
 
     public void resultSetNoFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-<<<<<<< HEAD
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE  IsReturned NOT LIKE '1'";
-=======
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage`";
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
         resultSet = db.executeResultSetQuery(query);
 
     }
 
     public void resultSetLost() throws SQLException {
         resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-<<<<<<< HEAD
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Lost' AND  IsReturned NOT LIKE '1'");
-=======
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost'");
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     }
 
     public void resultSetFound() throws SQLException {
         resultSet = db.executeResultSetQuery("SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-<<<<<<< HEAD
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Found'AND  IsReturned NOT LIKE '1'");
-=======
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'");
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
     }
 
     public void resultSetNoFilterWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-<<<<<<< HEAD
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage`"
                 + "WHERE `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'AND  IsReturned NOT LIKE '1'";
-=======
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage`"
-                + "WHERE `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'";
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
         resultSet = db.executeResultSetQuery(query);
 
     }
 
     public void resultSetLostWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-<<<<<<< HEAD
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Lost'"
                 + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1'";
-=======
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Lost'"
-                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'";
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
         resultSet = db.executeResultSetQuery(query);
 
     }
 
     public void resultSetFoundWithTextFilter() throws SQLException {
         String query = "SELECT `BagageID`,`State`,`Labelnumber`, `Type`,`Brand`,`Color1`,`Color2`,"
-<<<<<<< HEAD
                 + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Passnameandcity`,`IsReturned` FROM `bagage` WHERE State = 'Found'"
                 + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%' AND  IsReturned NOT LIKE '1' ";
-=======
-                + "`Characteristics`,`Location`,`Airport`,`From`,`To`,`Initial`,`Insertion`,`Surname`,`IsReturned` FROM `bagage` WHERE State = 'Found'"
-                + "AND `" + txtBoxFilterString + "` LIKE '%" + filterText + "%'";
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
         resultSet = db.executeResultSetQuery(query);
 
     }
@@ -353,7 +277,6 @@ public class FormulierZoekenController implements Initializable {
 
     }
 
-<<<<<<< HEAD
     @FXML
     public void findMatch(ActionEvent event) throws IOException {
 
@@ -379,6 +302,4 @@ public class FormulierZoekenController implements Initializable {
 
     }
 
-=======
->>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 }
