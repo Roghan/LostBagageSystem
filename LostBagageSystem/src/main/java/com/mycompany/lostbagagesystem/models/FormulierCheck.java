@@ -18,82 +18,14 @@ import javafx.scene.control.TextField;
 public class FormulierCheck {
 
     private static boolean fieldsAreFilled;
-    private static boolean phoneIsInt;
-    private static boolean txtIsNotInt;
     private static int totalArrayLenght;
-    private static boolean txtIsInt;
-    private static boolean menuButtonIsFilled;
 
     public static boolean verification(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields, MenuButton[] reqMenuButtons) {
 
         totalArrayLenght = (reqTextFields.length + datePickers.length + PhoneFields.length + intTextFields.length + reqMenuButtons.length);
         fieldsAreFilled = fieldsAreFilled(reqTextFields, datePickers, PhoneFields, intTextFields, totalArrayLenght, reqMenuButtons);
-        phoneIsInt = isInteger(PhoneFields);
-        txtIsNotInt = isNotInteger(reqTextFields);
-        txtIsInt = isTextFieldInteger(intTextFields);
-        menuButtonIsFilled = isMenuButtonFilled(reqMenuButtons);
+        return fieldsAreFilled;
 
-        return checkForm(reqTextFields, PhoneFields, datePickers, intTextFields, reqMenuButtons);
-
-    }
-
-    public static boolean checkForm(TextField[] reqTextFields, TextField[] PhoneFields, DatePicker[] datePickers, TextField[] intTextFields, MenuButton menuButtons[]) {
-        System.out.println(fieldsAreFilled);
-        System.out.println(phoneIsInt);
-        System.out.println(txtIsNotInt);
-        System.out.println(txtIsInt);
-        System.out.println(menuButtonIsFilled);
-        if (fieldsAreFilled) {
-            if (phoneIsInt && txtIsNotInt && txtIsInt && menuButtonIsFilled) {
-                System.out.println("Document is goed ingevuld");
-                return true;
-
-            } else {
-
-                if (phoneIsInt != true) {
-                    for (int i = 0; i < PhoneFields.length; i++) {
-
-                        if (PhoneFields[i].getText().isEmpty() != true) {
-                            reqFieldWarning(PhoneFields[i]);
-                        }
-                    }
-
-                    PopupMeldingen.warningBoxPhone();
-                }
-
-                if (txtIsNotInt != true) {
-                    for (int i = 0; i < reqTextFields.length; i++) {
-                        boolean wrongField = isWrongField(reqTextFields[i]);
-                        if (wrongField) {
-                            reqFieldWarning(reqTextFields[i]);
-
-                        }
-                    }
-                    PopupMeldingen.warningBoxText();
-
-                }
-
-                if (txtIsInt != true) {
-                    for (int i = 0; i < intTextFields.length; i++) {
-                        boolean wrongField = isWrongField(intTextFields[i]);
-                        if (wrongField != true) {
-                            reqFieldWarning(intTextFields[i]);
-
-                        }
-                    }
-
-                    PopupMeldingen.warningBoxIsNotInt();
-                }
-
-            }
-
-        } else {
-
-            System.out.println("WARNING BOX TRIGGER");
-            warningBox();
-
-        }
-        return false;
     }
 
     public static boolean fieldsAreFilled(TextField reqTextFields[], DatePicker datePickers[], TextField PhoneFields[], TextField intIsTextField[], int totalArrayLenght, MenuButton[] reqMenuButtons) {
@@ -185,6 +117,12 @@ public class FormulierCheck {
             }
 
         }
+        if (formIsComplete != true) {
+
+            warningBox();
+
+        }
+
         return formIsComplete;
     }
 
@@ -256,84 +194,6 @@ public class FormulierCheck {
 
     public static void warningBox() {
         PopupMeldingen.warningBox();
-
-    }
-
-    public static boolean isInteger(TextField[] phoneFields) {
-
-        boolean isValidInteger = false;
-        for (int i = 0; i < phoneFields.length; i++) {
-            try {
-                Long.parseLong(phoneFields[i].getText());
-
-                // s is a valid integer
-                isValidInteger = true;
-            } catch (NumberFormatException ex) {
-                // s is not an integer
-            }
-
-        }
-
-        return isValidInteger;
-    }
-
-    public static boolean isTextFieldInteger(TextField[] intTextFields) {
-
-        boolean isValidInteger = false;
-        for (int i = 0; i < intTextFields.length; i++) {
-            try {
-                Long.parseLong(intTextFields[i].getText());
-
-                // s is a valid integer
-                isValidInteger = true;
-            } catch (NumberFormatException ex) {
-                // s is not an integer
-            }
-
-        }
-
-        return isValidInteger;
-    }
-
-    public static boolean isNotInteger(TextField textField[]) {
-        System.out.println("CHECK NOT INT");
-
-        boolean isNotInteger = false;
-        for (int i = 0; i < textField.length; i++) {
-            try {
-                Long.parseLong(textField[i].getText());
-                System.out.println("NOT INT FALSE");
-                isNotInteger = false;
-                break;
-
-            } catch (NumberFormatException ex) {
-                isNotInteger = true;
-                System.out.println("NOT INT TRUE");
-
-            }
-
-        }
-
-        return isNotInteger;
-
-    }
-
-    public static boolean isWrongField(TextField textField) {
-        System.out.println("CHECK WRONG FIELD");
-
-        boolean wrongField = false;
-
-        try {
-            Long.parseLong(textField.getText());
-            System.out.println("WRONG FIELD");
-            wrongField = true;
-
-        } catch (NumberFormatException ex) {
-            System.out.println("NOT WRONG FIELD");
-
-        }
-
-        return wrongField;
 
     }
 

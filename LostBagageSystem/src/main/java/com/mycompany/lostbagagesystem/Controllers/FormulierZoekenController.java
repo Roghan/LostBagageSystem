@@ -6,6 +6,7 @@ import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
+import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -27,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 
 /**
  * FXML Controller class
@@ -108,8 +110,14 @@ public class FormulierZoekenController implements Initializable {
             public void changed(ObservableValue<? extends String> observable,
                     String oldValue, String newValue) {
                 try {
-                    filterSelector();
 
+                    if (filterBox.getText().equals(language.getTranslationString("TLK206"))) {
+                        PopupMeldingen.kiesEerstEenFilter();
+                        filterBox.setStyle("-fx-border-color : #ff0000;");
+                    } else {
+                        filterSelector();
+                        filterBox.setStyle("");
+                    }
                 } catch (SQLException ex) {
 
                 }
@@ -264,7 +272,7 @@ public class FormulierZoekenController implements Initializable {
             txtBoxFilterString = "To";
         }
         if (language.getTranslationString("TLK10").equals(menuTxt)) {
-            txtBoxFilterString = "Surname";
+            txtBoxFilterString = "Passnameandcity";
         }
 
     }
@@ -275,6 +283,10 @@ public class FormulierZoekenController implements Initializable {
         if (bagage.getSelectionModel().getSelectedItem() != null) {
             selectedBagage = bagage.getSelectionModel().getSelectedItem();
             FormulierZoekenController form = (FormulierZoekenController) MainApp.loadFXMLFileInNewWindow("/fxml/MatchListView.fxml");
+
+        } else {
+
+            PopupMeldingen.maakEerstEenSelectie();
 
         }
 

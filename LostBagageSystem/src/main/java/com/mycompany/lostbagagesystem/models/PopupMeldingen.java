@@ -16,39 +16,9 @@ public class PopupMeldingen {
      */
     public static void warningBox() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("informatie vereist");
+        alert.setTitle(language.getTranslationString("TLK211"));
         alert.setHeaderText(null);
-        alert.setContentText("Vul alle vereiste informatie in!");
-
-        alert.showAndWait();
-
-    }
-
-    public static void warningBoxPhone() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Telefoonnummer");
-        alert.setHeaderText(null);
-        alert.setContentText("Telefoonnummer mag alleen uit cijfers bestaan");
-
-        alert.showAndWait();
-
-    }
-
-    public static void warningBoxText() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Text");
-        alert.setHeaderText(null);
-        alert.setContentText("Textvelden mogen geen cijfers bevatten!");
-
-        alert.showAndWait();
-
-    }
-
-    public static void warningBoxIsNotInt() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Text");
-        alert.setHeaderText(null);
-        alert.setContentText("Cijfer velden mogen alleen cijfers Bevatten");
+        alert.setContentText(language.getTranslationString("TLK211"));
 
         alert.showAndWait();
 
@@ -69,6 +39,26 @@ public class PopupMeldingen {
         alert.setTitle(language.getTranslationString("TLK207"));
         alert.setHeaderText(null);
         alert.setContentText(language.getTranslationString("TLK207"));
+
+        alert.showAndWait();
+
+    }
+
+    public static void maakEerstEenSelectie() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(language.getTranslationString("TLK212"));
+        alert.setHeaderText(null);
+        alert.setContentText(language.getTranslationString("TLK212"));
+
+        alert.showAndWait();
+
+    }
+
+    public static void kiesEerstEenFilter() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(language.getTranslationString("TLK212"));
+        alert.setHeaderText(null);
+        alert.setContentText(language.getTranslationString("TLK212"));
 
         alert.showAndWait();
 

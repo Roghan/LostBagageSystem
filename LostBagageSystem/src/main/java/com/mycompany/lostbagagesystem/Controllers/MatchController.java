@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -44,7 +45,7 @@ import javafx.stage.Stage;
  *
  * @author Marcel van Wilgenburg
  */
-public class MatchListViewController extends FormulierZoekenController implements Initializable {
+public class MatchController extends FormulierZoekenController implements Initializable {
 
     @FXML
     private TextField txtBagageLabelMatch;
@@ -234,6 +235,7 @@ public class MatchListViewController extends FormulierZoekenController implement
     private String Passnameandcity;
     private MedewerkerBagageTable bagage;
     private String filterState;
+    private String BagageIDSelected;
 
     public void setTextBoxes() {
 
@@ -271,12 +273,19 @@ public class MatchListViewController extends FormulierZoekenController implement
             @Override
             public void changed(ObservableValue<? extends MedewerkerBagageTable> observableValue, MedewerkerBagageTable s, MedewerkerBagageTable s2) {
                 try {
-                    BagageID = listView.getSelectionModel().getSelectedItem().getBagageID();
-                    getSelectedBagageInfoForMatch();
-                    fillCompareFields();
+
+                    if (listView.getSelectionModel().getSelectedItem() == null) {
+
+                    } else {
+                        BagageID = listView.getSelectionModel().getSelectedItem().getBagageID();
+                        BagageIDSelected = listView.getSelectionModel().getSelectedItem().getBagageID();
+                        getSelectedBagageInfoForMatch();
+                        fillCompareFields();
+
+                    }
 
                 } catch (SQLException ex) {
-                    Logger.getLogger(MatchListViewController.class
+                    Logger.getLogger(MatchController.class
                             .getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -389,7 +398,70 @@ public class MatchListViewController extends FormulierZoekenController implement
 
     public void exporterenPDF(ActionEvent event) throws IOException {
         PDFExport export = new PDFExport();
-        export.addPage();
+
+        LocalDate lokaleDatum = LocalDate.now();
+        DateTimeFormatter formaat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String datum = lokaleDatum.format(formaat);
+
+        String tijd = txtTime.getText();
+        if (tijd == null) {
+            tijd = " ";
+        }
+        String naamEnStad = txtNS.getText();
+        if (naamEnStad == null) {
+            naamEnStad = " ";
+        }
+        String adres = txtStraatnaam.getText();
+        if (adres == null) {
+            adres = " ";
+        }
+        String huisnummer = txtWoonplaats.getText();
+        if (huisnummer == null) {
+            huisnummer = " ";
+        }
+        String postcode = txtPostcode.getText();
+        if (postcode == null) {
+            postcode = " ";
+        }
+        String woonplaats = txtWoonplaats.getText();
+        if (woonplaats == null) {
+            woonplaats = " ";
+        }
+        String vStraatnaam = txtVakantieStraatnaam.getText();
+        if (vStraatnaam == null) {
+            vStraatnaam = " ";
+        }
+        String vHuisnummer = txtVakantieHuisNummer.getText();
+        if (vHuisnummer == null) {
+            vHuisnummer = " ";
+        }
+        String vPostcode = txtVakantiePostcode.getText();
+        if (vPostcode == null) {
+            vPostcode = " ";
+        }
+        String vPlaats = txtVakantiePlaats.getText();
+        if (vPlaats == null) {
+            vPlaats = " ";
+        }
+        String hotelnaam = txthotelNaam.getText();
+        if (hotelnaam == null) {
+            hotelnaam = " ";
+        }
+        String email = txtEmail.getText();
+        if (email == null) {
+            email = " ";
+        }
+        String telefoon = txtTelefoon.getText();
+        if (telefoon == null) {
+            telefoon = " ";
+        }
+        String mobiel = txtMobielNummer.getText();
+        if (mobiel == null) {
+            mobiel = " ";
+        }
+        export.addPage(datum, tijd, naamEnStad, adres, huisnummer, postcode, woonplaats,
+                vStraatnaam, vHuisnummer, vPostcode, vPlaats, hotelnaam,
+                email, telefoon, mobiel);
         export.savePDF();
     }
 
@@ -671,9 +743,11 @@ public class MatchListViewController extends FormulierZoekenController implement
             }
         }
 
+        removeOldEntry();
+
         System.out.println(numberAffected);
 
-        if (numberAffected == 1) {
+        if (numberAffected >= 1) {
             PopupMeldingen.gegevensVerstuurd();
         }
 
@@ -683,6 +757,29 @@ public class MatchListViewController extends FormulierZoekenController implement
     public void close(ActionEvent event) {
         Stage stage = (Stage) btnAnnuleren.getScene().getWindow();
         stage.close();
+
+    }
+
+    public void removeOldEntry() throws SQLException {
+
+        if (getSelectedBagage().getState().equals("Lost")) {
+            String id = getSelectedBagage().getBagageID();
+            String query = "UPDATE `lbs_database`.`bagage` SET `IsReturned`='1' WHERE `BagageID`= '" + id + "' ;";
+            db.executeUpdateQuery(query);
+
+            query = "DELETE FROM `bagage` WHERE BagageID = '" + BagageIDSelected + "' ";
+            db.executeUpdateQuery(query);
+
+        } else {
+
+            String id = getSelectedBagage().getBagageID();
+            String query = "UPDATE `lbs_database`.`bagage` SET `IsReturned`='1' WHERE `BagageID`= '" + BagageIDSelected + "' ;";
+            db.executeUpdateQuery(query);
+
+            query = "DELETE FROM `bagage` WHERE BagageID = '" + id + "' ";
+            db.executeUpdateQuery(query);
+
+        }
 
     }
 

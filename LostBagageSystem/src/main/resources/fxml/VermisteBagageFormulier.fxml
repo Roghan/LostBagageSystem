@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.VermistBagFormController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.VermistBagFormController">
    <children>
       <ScrollPane hbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -38,7 +38,7 @@
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Text>
-                        <DatePicker fx:id="txtDatum" prefHeight="30.0" prefWidth="360.0" promptText="%TLK68">
+                        <DatePicker fx:id="txtDatum" editable="false" prefHeight="30.0" prefWidth="360.0" promptText="%TLK68">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
@@ -448,11 +448,6 @@
                         </Line>
                         <HBox>
                            <children>
-                              <Button fx:id="btnAnnuleren3" mnemonicParsing="false" onAction="#exportPDF" text="PDF">
-                                 <HBox.margin>
-                                    <Insets right="10.0" />
-                                 </HBox.margin>
-                              </Button>
                               <Button fx:id="btnInsturen" mnemonicParsing="false" onAction="#insturen" text="%TLK41">
                                  <HBox.margin>
                                     <Insets right="10.0" />

@@ -6,6 +6,7 @@ import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
+import com.mycompany.lostbagagesystem.models.SetRadioMenuButtonText;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -481,46 +482,31 @@ public class SchadeformulierController implements Initializable {
 
     @FXML
     public void IATACHECK(ActionEvent event) {
-        RadioMenuItem iattaItem = (RadioMenuItem) IATA.getSelectedToggle();
-        iataString = iattaItem.getText();
-        btnVliegveldID.setText(iataString);
-        System.out.println(iataString);
+        SetRadioMenuButtonText.dropDown(btnVliegveldID, IATA);
 
     }
 
     @FXML
     public void vanDropDown(ActionEvent event) {
-        RadioMenuItem iattaItem = (RadioMenuItem) IATA_VAN.getSelectedToggle();
-        van = iattaItem.getText();
-        btnVanVliegveldID.setText(van);
-        System.out.println(van);
+        SetRadioMenuButtonText.dropDown(btnVanVliegveldID, IATA_VAN);
+
     }
 
     @FXML
     public void naarDropDown(ActionEvent event) {
-        RadioMenuItem iattaItem = (RadioMenuItem) IATA_NAAR.getSelectedToggle();
-        naar = iattaItem.getText();
-        btnNaarVliegveldID.setText(naar);
-        System.out.println(naar);
+        SetRadioMenuButtonText.dropDown(btnNaarVliegveldID, IATA_NAAR);
+
     }
 
     @FXML
     public void kleurkiezer1(ActionEvent event) {
-        RadioMenuItem item = (RadioMenuItem) kleur1.getSelectedToggle();
-        String kleur = item.getText();
-        kleur1Menu.setText(kleur);
-        System.out.println(kleur);
-        ralcode1 = ColourPicker.GetColour(kleur);
+        ralcode1 = SetRadioMenuButtonText.kleurkiezer(kleur1Menu, kleur1);
 
     }
 
     @FXML
     public void kleurkiezer2(ActionEvent event) {
-        RadioMenuItem item = (RadioMenuItem) kleur2.getSelectedToggle();
-        String kleur = item.getText();
-        kleur2Menu.setText(kleur);
-        System.out.println(kleur);
-        ralcode2 = ColourPicker.GetColour(kleur);
+        ralcode2 = SetRadioMenuButtonText.kleurkiezer(kleur2Menu, kleur2);
     }
 
     /**
