@@ -4,6 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.TableFillMan;
 import com.mycompany.lostbagagesystem.classes.Vergelijk;
+import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.bagageTabel;
 import javafx.fxml.FXML;
 import java.net.URL;
@@ -23,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
  * @author is Koen van der Tuin
  */
 public class Verg21DController implements Initializable {
-
+    
     @FXML
     private AnchorPane gev21D;
     public int aantalDagen = 21;

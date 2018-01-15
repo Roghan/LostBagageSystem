@@ -143,15 +143,15 @@ public class TableFillMan {
         //defining the axes
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Aantal dagen");
+        xAxis.setLabel(language.getTranslationString("TLK43"));
         //creating the chart
         final BarChart<String, Number> bc
                 = new BarChart<>(xAxis, yAxis);
 
-        bc.setTitle(gevVer + " bagage, " + aantalDagen + " dagen");
+        bc.setTitle(gevVer + " " + language.getTranslationString("TLK316") + " " +  aantalDagen + " " + language.getTranslationString("TLK317"));
         //defining a series
         XYChart.Series series = new XYChart.Series();
-        series.setName("Bagage");
+        series.setName(language.getTranslationString("TLK316"));
         //populating the series with data
         int j = 0;
         int[] aantalKoffers = aantalVerloren(aantalDagen, isGevonden);

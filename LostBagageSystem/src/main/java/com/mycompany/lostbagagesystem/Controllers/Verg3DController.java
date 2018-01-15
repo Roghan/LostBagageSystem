@@ -4,6 +4,7 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.Vergelijk;
+import com.mycompany.lostbagagesystem.classes.language;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class Verg3DController implements Initializable {
     @FXML
     private AnchorPane gev21D;
     public int aantalDagen = 3;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         {

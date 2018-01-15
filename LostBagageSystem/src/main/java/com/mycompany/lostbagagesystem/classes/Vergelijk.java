@@ -26,21 +26,23 @@ import javafx.scene.layout.AnchorPane;
  */
 public class Vergelijk {
         
+    static String  bagGev = language.getTranslationString("TLK313");
+    static String bagVer = language.getTranslationString("TLK314");
     
     
         public static void vergelijken(int aantalDagen, AnchorPane gev21D) throws SQLException{
             
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Aantal dagen");
+        xAxis.setLabel(language.getTranslationString("TLK315"));
         //creating the chart
         final BarChart<String, Number> bc
                 = new BarChart<>(xAxis, yAxis);
 
-        bc.setTitle("Bagage, " + aantalDagen +" dagen");
+        bc.setTitle(language.getTranslationString("TLK316") + ", " + aantalDagen + " " + language.getTranslationString("TLK317"));
         //defining a series
         XYChart.Series series = new XYChart.Series();
-        series.setName("Bagage gevonden");
+        series.setName(bagGev);
         //populating the series with data
         int j = 0;
         int[] gevondenKoffers = aantalGevonden(aantalDagen);
@@ -52,7 +54,7 @@ public class Vergelijk {
         j = 0;
         int[] verlorenKoffers = aantalVerloren(aantalDagen);
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Bagage verloren");
+        series2.setName(bagVer);
         //populating the series with data
             for (int i = 0; i < aantalDagen; i++) {
                 j++;

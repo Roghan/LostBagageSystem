@@ -40,6 +40,7 @@ public class Ver3DController implements Initializable {
     private AnchorPane gev21D;
     private int aantalDagen = 3;
     private String gevVer = language.getTranslationString("TLK136");
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
