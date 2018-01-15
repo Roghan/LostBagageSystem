@@ -3,6 +3,7 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.TableFillMan;
+import com.mycompany.lostbagagesystem.classes.language;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -37,12 +38,12 @@ public class Ver21DController implements Initializable {
     @FXML
     private AnchorPane gev21D;
     private int aantalDagen = 21;
-    private String gevVer = "Verloren";
+    private String gevVer = language.getTranslationString("TLK136");
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         try {
-            TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, 0);
+                TableFillMan.dbTableFill(aantalDagen, table, gev21D, gevVer, 0);
         } catch (SQLException ex) {
             Logger.getLogger(Gev21DController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -4,6 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.TableFillMan;
+import com.mycompany.lostbagagesystem.classes.language;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -37,7 +38,7 @@ public class Gev21DController implements Initializable {
     @FXML
     private AnchorPane gev21D;
     private int aantalDagen = 21;
-    private String gevVer = "Teruggebracht";
+    private String gevVer = language.getTranslationString("TLK91");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
