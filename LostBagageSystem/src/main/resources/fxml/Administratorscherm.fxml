@@ -2,9 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,44 +12,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 
-<AnchorPane id="AnchorPane" fx:id="AdminPane" prefHeight="625.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.AdminMainController">
+<AnchorPane id="AnchorPane" fx:id="AdminPane" prefHeight="625.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.AdminMainController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
    <children>
-      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox alignment="CENTER" style="-fx-background-color: #d81e05;" BorderPane.alignment="CENTER">
                <children>
                   <Pane HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="Uitloggen" />
+                        <Button fx:id="Loguit" layoutX="73.0" layoutY="16.0" mnemonicParsing="false" onAction="#logUit" text="%TLK78" />
                      </children></Pane>
                   <Pane />
-                  <Pane prefHeight="57.0" prefWidth="480.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <TextField layoutX="320.0" layoutY="14.0" promptText="Zoek medewerker" />
-                     </children>
-                  </Pane>
+                  <Pane prefHeight="57.0" prefWidth="480.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </top>
@@ -61,23 +35,30 @@
                <items>
                   <AnchorPane prefHeight="494.0" prefWidth="140.0">
                      <children>
-                        <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="Toevoegen" />
-                        <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="Blokkeren" />
-                        <Button fx:id="DeBlokkeer" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#deBlokkeer" prefHeight="25.0" prefWidth="125.0" text="DeBlokkeer" />
-                        <Button fx:id="btnEdit" layoutX="13.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="125.0" text="Wijzigen" />
+                        <Button fx:id="Toevoegen" layoutX="13.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="125.0" text="%TLK99" />
+                        <Button fx:id="Blokkeren" layoutX="13.0" layoutY="53.0" mnemonicParsing="false" onAction="#blokkeer" prefHeight="25.0" prefWidth="125.0" text="%TLK100" />
+                        <Button fx:id="DeBlokkeer" layoutX="13.0" layoutY="79.0" mnemonicParsing="false" onAction="#deBlokkeer" prefHeight="25.0" prefWidth="125.0" text="%TLK311" />
+                        <Button fx:id="btnEdit" layoutX="13.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="125.0" text="%TLK312" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="TableLeeg" prefHeight="200.0" prefWidth="644.0">
                      <children>
-                        <TableView fx:id="table" layoutX="-42.0" prefHeight="501.0" prefWidth="637.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columns>
-                            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-                            <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
-                              <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
-                              <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
-                              <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
-                          </columns>
-                        </TableView>
+                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <center>
+                              <TableView fx:id="table" prefHeight="501.0" prefWidth="637.0">
+                                <columns>
+                                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
+                                    <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
+                                    <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
+                                    <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
+                                </columns>
+                              </TableView>
+                           </center>
+                           <top>
+                              <TextField fx:id="txtZoek" promptText="%TLK96" BorderPane.alignment="CENTER" />
+                           </top>
+                        </BorderPane>
                      </children>
                   </AnchorPane>
                </items>
