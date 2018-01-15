@@ -6,13 +6,15 @@ import com.mycompany.lostbagagesystem.MainApp;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.DatePicker;
+=======
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 /**
@@ -35,6 +37,7 @@ public class PDFExport {
 
     }
 
+<<<<<<< HEAD
     public void addPage(String datum, String tijd,
             String naamEnStad, String straat, String huisnummer, String postcode,
             String woonplaats, String vStraatnaam, String vHuisnummer, String vPostcode,
@@ -276,23 +279,28 @@ public class PDFExport {
 //            content.showText(gegevens[i]);
 //            content.endText();
 //        }
+=======
+    public void addPage() throws IOException {
+
+        doc.addPage(page);
+        PDImageXObject image = PDImageXObject.createFromFile("assets//corendonlogo.jpg", doc);
+
+        content.drawImage(image, 25, 500);
+
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
     }
 
-    public void savePDF() {
+    public void savePDF() throws IOException {
         File selectedFile = MainApp.selectFileToSave();
 
         if (selectedFile != null) {
-            try {
-                fileName = selectedFile.getAbsolutePath();
+            fileName = selectedFile.getAbsolutePath();
 
-                content.close(); //Makes sure the ContentStream is Closed before saving
+            content.close(); //Makes sure the ContentStream is Closed before saving
 
-                doc.save(fileName); //Saves The PDF
+            doc.save(fileName); //Saves The PDF
 
-                doc.close(); //Cleans the Memory
-            } catch (IOException ex) {
-                Logger.getLogger(PDFExport.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            doc.close(); //Cleans the Memory
         }
 
     }
@@ -301,10 +309,6 @@ public class PDFExport {
         this.lableText = "Het bestand is opgeslagen in : " + fileName;
 
         return lableText;
-    }
-
-    public void addPage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

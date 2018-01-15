@@ -5,8 +5,6 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
-import java.util.Date;
-
 /**
  *
  * @author Marcel van Wilgenburg
@@ -157,9 +155,12 @@ public class MedewerkerBagageTable {
         this.IsReturned = IsReturned;
     }
 
+<<<<<<< HEAD
     @Override
     public String toString() {
         return "State : " + State + " , Labelnumber : " + Labelnumber + " , Type : " + Type + " , Characteristics : " + Characteristics + " , Passnameandcity : " + Passnameandcity;
     }
 
+=======
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 }

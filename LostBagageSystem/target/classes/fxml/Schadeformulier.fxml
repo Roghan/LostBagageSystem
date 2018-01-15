@@ -15,11 +15,19 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
    <children>
       <ScrollPane hbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
             <HBox>
+=======
+<ScrollPane hbarPolicy="NEVER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.SchadeformulierController">
+   <content>
+      <HBox>
+         <children>
+            <VBox fillWidth="false" HBox.hgrow="ALWAYS">
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
                <children>
                   <VBox fillWidth="false" HBox.hgrow="ALWAYS">
                      <children>

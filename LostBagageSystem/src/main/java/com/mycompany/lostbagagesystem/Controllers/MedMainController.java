@@ -65,6 +65,7 @@ public class MedMainController implements Initializable {
 
     }
 
+<<<<<<< HEAD
     @FXML
     public void importExcel(ActionEvent event) throws IOException {
 
@@ -72,6 +73,8 @@ public class MedMainController implements Initializable {
 
     }
 
+=======
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
     /**
      * Initializes the controller class.
      *

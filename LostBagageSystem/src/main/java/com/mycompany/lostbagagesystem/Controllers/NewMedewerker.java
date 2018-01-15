@@ -6,9 +6,6 @@ import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.language;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,26 +61,7 @@ public class NewMedewerker {
     public void annuleeredit(ActionEvent event) throws IOException {
         terug();
     }
-    
-        @FXML
-    public static String sha256(String base) {
-    try{
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] hash = digest.digest(base.getBytes("UTF-8"));
-        StringBuffer hexString = new StringBuffer();
 
-        for (int i = 0; i < hash.length; i++) {
-            String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
-        }
-
-        return hexString.toString();
-    } catch(Exception ex){
-       throw new RuntimeException(ex);
-    }
-}
-    
     @FXML
     public void sendtodatabase() throws IOException {
 
@@ -91,7 +69,15 @@ public class NewMedewerker {
 
         String acountN = acountnaam.getText();
         String wachtw = wachtwoord.getText();
+        String voorN = voornaam.getText();
+        String achterN = achternaam.getText();
+        String geboorteD = geboortedatum.getText();
+        String postC = postcode.getText();
+        String huisN = huisnummer.getText();
+        String telefoonN = telefoonnummer.getText();
+        String manV = manVrouw.getText();
         String roll = rol.getText();
+<<<<<<< HEAD
         System.out.println("roll = " + roll);
         System.out.println("wachtw = " + wachtw);
         System.out.println("acountN = " + acountN);
@@ -101,6 +87,15 @@ public class NewMedewerker {
                 + "(`acountnaam`, `wachtwoord`, `rol`)"
                 + " VALUES('%s', '%s', '%s')",
                 acountN, wachtwoord1, roll);
+=======
+
+        String query = String.format("INSERT INTO `gebruiker` "
+                + "(`acountnaam`, `wachtwoord`, `voornaam`, `achternaam`, "
+                + "`geboortedatum`, `postcode`, `huisnummer`, `telefoonnummer`, "
+                + "`man/vrouw`, `rol`)"
+                + " VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                acountN, wachtw, voorN, achterN, geboorteD, postC, huisN, telefoonN, manV, roll);
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
 
         int numberAffected = db.executeUpdateQuery(query);
         System.out.println(numberAffected);

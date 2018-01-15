@@ -4,7 +4,6 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.Medewerker;
 import com.mycompany.lostbagagesystem.classes.language;
 import com.mycompany.lostbagagesystem.models.DbNaam;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
@@ -83,8 +82,9 @@ public class AdminMainController implements Initializable {
             table.refresh();
         }
     }
-
+    
     @FXML
+<<<<<<< HEAD
     private void handleEdit(ActionEvent event) throws IOException, SQLException {
         if (!table.getSelectionModel().isEmpty()) {
             DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
@@ -102,6 +102,20 @@ public class AdminMainController implements Initializable {
             pane.prefWidthProperty().bind(AdminPane.widthProperty());
             pane.prefHeightProperty().bind(AdminPane.widthProperty());
         }
+=======
+    private void handleEdit(ActionEvent event) throws IOException, SQLException{
+        EditMedewerkerController Edit = new EditMedewerkerController();
+        //laad de nieuwe table in de bestaande anchorpane
+        ScrollPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+        //maakt de oude table leeg
+        TableLeeg.getChildren().setAll();
+        //laad de nieuwe table in
+        TableLeeg.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
+        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
+        Edit.medewerkerWijzigen();
+>>>>>>> parent of 5fd570c... Merge branch 'master' into statistiekenScherm
     }
 
     @FXML
