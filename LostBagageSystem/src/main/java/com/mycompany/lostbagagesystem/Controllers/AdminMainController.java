@@ -47,8 +47,16 @@ public class AdminMainController implements Initializable {
 
     @FXML
     private AnchorPane AdminPane;
-    @FXML
-    private BorderPane PaneLeeg;
+
+//    private int userChangeId;
+//
+//    public AdminMainController(int userChangeId) {
+//        this.userChangeId = userChangeId;
+//    }
+//
+//    public int getuserChangeId() {
+//        return userChangeId;
+//    }
 
 //    @FXML
 //    private Button Blokkeren;
@@ -57,48 +65,63 @@ public class AdminMainController implements Initializable {
 //    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
-        ConnectDB db = new ConnectDB("lbs_database");
+        if (table.getSelectionModel().isEmpty() == false) {
+            ConnectDB db = new ConnectDB("lbs_database");
 
-        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-        String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
-        db.executeUpdateQuery(query);
-        user.setBlok(1);
-        table.refresh();
+            DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+            String query = "UPDATE gebruiker SET blok = '1' WHERE id = '" + user.getId() + "'";
+            db.executeUpdateQuery(query);
+            user.setBlok(1);
+            table.refresh();
+        }
     }
 
     @FXML
     private void handleEdit(ActionEvent event) throws IOException, SQLException {
-        Object object;
-
-//        EditMedewerkerController Edit = new EditMedewerkerController();
-//        //laad de nieuwe table in de bestaande anchorpane
-//        ScrollPane psane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
-//        //maakt de oude table leeg
-//        TableLeeg.getChildren().setAll();
-//        //laad de nieuwe table in
-//        TableLeeg.getChildren().setAll(pane);
-//        //geeft de nieuwe table de juiste groote
-//        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-//        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
-        //Edit.medewerkerWijzigen();
+        if (!table.getSelectionModel().isEmpty()){
+            DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+            int userChangeId = user.getId();
+            EditMedewerkerController emc = new EditMedewerkerController();
+            emc.medewerkerWijzigen(userChangeId);
+            System.out.println("userChangeId = " + userChangeId);
+            //laad de nieuwe table in de bestaande anchorpane        
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
+            //maakt de oude table leeg
+            AdminPane.getChildren().setAll();
+            //laad de nieuwe table in
+            AdminPane.getChildren().setAll(pane);
+            //geeft de nieuwe table de juiste groote
+            pane.prefWidthProperty().bind(AdminPane.widthProperty());
+            pane.prefHeightProperty().bind(AdminPane.widthProperty());
+        }
     }
 
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
-
-        MainApp.loadFXMLFile(TableLeeg, "/fxml/NewMedewerker.fxml");
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        AdminPane.getChildren().setAll();
+        //laad de nieuwe table in
+        AdminPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
 
     }
 
     @FXML
     private void deBlokkeer(ActionEvent event) {
-        ConnectDB db = new ConnectDB("lbs_database");
 
-        DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
-        String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
-        db.executeUpdateQuery(query);
-        user.setBlok(0);
-        table.refresh();
+        if (table.getSelectionModel().isEmpty() == false) {
+            ConnectDB db = new ConnectDB("lbs_database");
+
+            DbNaam user = (DbNaam) table.getSelectionModel().getSelectedItem();
+            String query = "UPDATE gebruiker SET blok = '0' WHERE id = '" + user.getId() + "'";
+            db.executeUpdateQuery(query);
+            user.setBlok(0);
+            table.refresh();
+        }
     }
 
     @Override

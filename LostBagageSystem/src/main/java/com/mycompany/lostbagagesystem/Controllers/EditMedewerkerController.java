@@ -5,19 +5,24 @@ package com.mycompany.lostbagagesystem.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import static com.mycompany.lostbagagesystem.Controllers.InlogSchermController.sha256;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
+import com.mycompany.lostbagagesystem.classes.language;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,132 +31,119 @@ import javax.swing.JOptionPane;
  * @author dono
  */
 public class EditMedewerkerController implements Initializable {
-    
+
     @FXML
     private TextField txtAccountnaam;
-    
+
     @FXML
     private TextField txtWachtwoord;
-    
-    @FXML
-    private TextField txtVoornaam;
-    
-    @FXML
-    private TextField txtTussenvoegsel;
-            
-    @FXML
-    private TextField txtAchternaam;
-    
-    @FXML
-    private TextField txtGeboortedatum;
-    
-    @FXML
-    private TextField txtPostcode;
-    
-    @FXML
-    private TextField txtHuisnummer;
-    
-    @FXML
-    private TextField txtTelefoonnummer;
-    
-    @FXML
-    private TextField txtManVrouw;
-    
+
     @FXML
     private TextField txtRol;
-    
-    @FXML
-    private Button btnAnnuleren;
-    
-    @FXML
-    private Button btnVerzenden;
-    
-    @FXML
-    private ScrollPane editPane;
-    
-    private String account;
-    private String wachtwoord;
-    private String voornaam;
-    private String tussenvoegsel;
-    private String achternaam;
-    private String geboortedatum;
-    private String postcode;
-    private String huisnummer;
-    private String telefoonnummer;
-    private String manVrouw;
-    private String rol;
-   
-    
-    @FXML
-    public void medewerkerWijzigen() throws SQLException{
-//        PreparedStatement myStmt = null;
-//        Connection conn = null;
-        ConnectDB db = new ConnectDB();
-        ResultSet rs = null;
 
-        // This is a test query 
-        String query = "SELECT `voornaam`, `achternaam`"
-                + "FROM `gebruiker` WHERE `id` = 1";
-        
-        
-        rs = db.executeResultSetQuery(query);
-        try {
-            if (true) {
-                 txtVoornaam.setPromptText("text");
-                //txtVoornaam.setText(voornaam);
-                achternaam = rs.getString("achternaam");
-                System.out.println(rs.getString("achternaam"));
-                txtAchternaam.setText(achternaam);
-            }
-        } catch (Exception e) {
-        }
-        
-//        try {
-//            conn = db.getDBConnection();
-//            myStmt = conn.prepareStatement(query);
-//            myStmt.setInt(1, 1);
-//            // Execute INSERT sql statement
-//            rs = myStmt.executeQuery();
-//            System.out.println(myStmt.executeQuery());
-//            //System.out.println(rs);
-//            if (rs.next()) {
-//                System.out.println("yee");
-//                txtVoornaam.setText(rs.getString("voornaam"));
-//                System.out.println("huh");
-//                achternaam = rs.getString("achternaam");
-//                txtAchternaam.setText(achternaam);
-//                System.out.println("hode");
-//            }
-//            
-//            
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        } finally {
-//            // Closing the prepared statement for memory purposes
-//            if (myStmt != null) {
-//                myStmt.close();
-//            }
-//            // Closing the database connection for memory purposes
-//            if (conn != null) {
-//                conn.close();
-//            }
-//        }
-//        System.out.println("gelukt");
-//        return rs;
-        
+    @FXML
+    private AnchorPane AdminPane;
+
+    private static String acountnaam;
+    private static String wachtwoord;
+    private static int rol;
+    private static int userId;
+
+    @FXML
+    public void annuleer() throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        AdminPane.getChildren().setAll();
+        //laad de nieuwe table in
+        AdminPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
     }
-    
-//    public ResultSet query() throws SQLException{
-//    
-//    }
-    
+
+    @FXML
+    public void logUit(ActionEvent event) throws IOException {
+        //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        //maakt de oude table leeg
+        AdminPane.getChildren().setAll();
+        //laad de nieuwe table in
+        AdminPane.getChildren().setAll(pane);
+        //geeft de nieuwe table de juiste groote
+        pane.prefWidthProperty().bind(AdminPane.widthProperty());
+        pane.prefHeightProperty().bind(AdminPane.heightProperty());
+    }
+
+    @FXML
+    public void sendEdit(ActionEvent event) throws IOException {
+//        if(!changesMade){
+//            return;
+//        }
+        String acountN = txtAccountnaam.getText();
+        String wachtw = txtWachtwoord.getText();
+        String roll = txtRol.getText();
+
+        System.out.println("wachtw = " + wachtw);
+        System.out.println("wachtwoord = " + wachtwoord);
+        if (wachtwoord.equals(wachtw)) {
+            ConnectDB db = new ConnectDB("lbs_database");
+            String query = String.format("UPDATE gebruiker SET acountnaam = '%s', "
+                    + "rol = '%s' WHERE id = '%s'",
+                    acountN, roll, userId);
+            db.executeUpdateQuery(query);
+            System.out.println("____query = " + query);
+        } else {
+            String shawachtwoord = sha256(wachtw);
+            ConnectDB db = new ConnectDB("lbs_database");
+            String query1 = String.format("UPDATE gebruiker SET acountnaam = '%s',"
+                    + "wachtwoord = '%s', rol = '%s' WHERE id = '%s'",
+                    acountN, shawachtwoord, roll, userId);
+            db.executeUpdateQuery(query1);
+            System.out.println("query1 = " + query1);
+        }
+        annuleer();
+    }
+
+    public void medewerkerWijzigen(int userId) throws SQLException {
+        ConnectDB db = new ConnectDB("lbs_database");
+        ResultSet resultSet;
+        String acountnaam;
+        String wachtwoord;
+        int rol;
+
+//        String user = txtAccountnaam.getText();
+//        String pass = txtWachtwoord.getText();
+//        String rol = txtRol.getText();
+        resultSet = db.executeResultSetQuery("SELECT `acountnaam`, `wachtwoord`, `rol` "
+                + "FROM gebruiker WHERE id = " + "'" + userId + "'");
+
+        resultSet.next();
+        acountnaam = resultSet.getString("acountnaam");
+        System.out.println("acountnaam = " + acountnaam);
+        wachtwoord = resultSet.getString("wachtwoord");
+        System.out.println("wachtwoord = " + wachtwoord);
+        rol = resultSet.getInt("rol");
+        System.out.println("rol = " + rol);
+
+        this.userId = userId;
+        this.acountnaam = acountnaam;
+        this.wachtwoord = wachtwoord;
+        this.rol = rol;
+
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-}
+        String a = acountnaam;
+        txtAccountnaam.setText(a);
+        String b = wachtwoord;
+        txtWachtwoord.setText(b);
+        String c = Integer.toString(rol);
+        txtRol.setText(c);
+    }
 
+}
