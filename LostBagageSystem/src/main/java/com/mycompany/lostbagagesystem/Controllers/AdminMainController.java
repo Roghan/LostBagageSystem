@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.Medewerker;
 import com.mycompany.lostbagagesystem.classes.language;
@@ -68,9 +69,7 @@ public class AdminMainController implements Initializable {
     @FXML
     private void handleEdit(ActionEvent event) throws IOException, SQLException {
         Object object;
-        
-                
-        
+
 //        EditMedewerkerController Edit = new EditMedewerkerController();
 //        //laad de nieuwe table in de bestaande anchorpane
 //        ScrollPane psane = FXMLLoader.load(getClass().getResource("/fxml/EditMedewerker.fxml"));
@@ -81,22 +80,13 @@ public class AdminMainController implements Initializable {
 //        //geeft de nieuwe table de juiste groote
 //        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
 //        pane.prefHeightProperty().bind(TableLeeg.widthProperty());
-
-
         //Edit.medewerkerWijzigen();
     }
 
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/NewMedewerker.fxml");
 
     }
 
@@ -124,15 +114,7 @@ public class AdminMainController implements Initializable {
 
     @FXML
     public void logUit(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        AdminPane.getChildren().setAll();
-        //laad de nieuwe table in
-        AdminPane.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(AdminPane.widthProperty());
-        pane.prefHeightProperty().bind(AdminPane.heightProperty());
+        MainApp.loadFXMLFile(AdminPane, "/fxml/InlogScherm.fxml");
     }
 
     public void dbTableFill() throws SQLException {

@@ -2,6 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
+import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.FoundLuggage;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
 import com.mycompany.lostbagagesystem.classes.language;
@@ -79,110 +80,47 @@ public class ManMainController implements Initializable {
 
     @FXML
     public void logUit(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        ManagerPane.getChildren().setAll();
-        //laad de nieuwe table in
-        ManagerPane.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(ManagerPane.widthProperty());
-        pane.prefHeightProperty().bind(ManagerPane.heightProperty());
+        MainApp.loadFXMLFile(ManagerPane, "/fxml/InlogScherm.fxml");
     }
 
     @FXML
     public void medewerkers(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerMedewerkerview.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerMedewerkerview.fxml");
+
     }
 
     public void gevonden3Dagen(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden3Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerschermGevonden3Dagen.fxml");
 
     }
 
     @FXML
     public void gevonden21Dagen(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermGevonden21Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerschermGevonden21Dagen.fxml");
 
     }
 
     @FXML
     public void verloren3Dagen(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVerloren3Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerschermVerloren3Dagen.fxml");
 
     }
 
     @FXML
     public void verloren21Dagen(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        SplitPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVerloren21Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerschermVerloren21Dagen.fxml");
 
     }
 
     @FXML
     public void vergelijk3Dagen(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVergelijk3Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerschermVergelijk3Dagen.fxml");
 
     }
 
     @FXML
     public void vergelijk21Dagen(ActionEvent event) throws IOException {
-        //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/ManagerschermVergelijk21Dagen.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
-        //maakt de oude table leeg
-        TableLeeg.getChildren().setAll();
-        //laad de nieuwe table in
-        TableLeeg.getChildren().setAll(pane);
-        //geeft de nieuwe table de juiste groote
-        pane.prefWidthProperty().bind(TableLeeg.widthProperty());
-        pane.prefHeightProperty().bind(TableLeeg.heightProperty());
+        MainApp.loadFXMLFile(TableLeeg, "/fxml/ManagerschermVergelijk21Dagen.fxml");
 
     }
 
