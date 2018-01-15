@@ -44,4 +44,24 @@ public class PopupMeldingen {
 
     }
 
+    public static void maakEerstEenSelectie() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(language.getTranslationString("TLK212"));
+        alert.setHeaderText(null);
+        alert.setContentText(language.getTranslationString("TLK212"));
+
+        alert.showAndWait();
+
+    }
+
+    public static void kiesEerstEenFilter() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(language.getTranslationString("TLK212"));
+        alert.setHeaderText(null);
+        alert.setContentText(language.getTranslationString("TLK212"));
+
+        alert.showAndWait();
+
+    }
+
 }

@@ -9,6 +9,8 @@ import com.mycompany.lostbagagesystem.MainApp;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import javafx.application.HostServices;
 
 /**
@@ -17,11 +19,11 @@ import javafx.application.HostServices;
  */
 public class Manual {
     
-    public static void openPFD() throws IOException {
+    
+    public void openFile(){
         
-        File file = new File("assets//man.pdf");
-        
-        Desktop.getDesktop().open(file.getAbsoluteFile());
+        getClass().getResource("/man/man.pdf");
+
         
     }
     

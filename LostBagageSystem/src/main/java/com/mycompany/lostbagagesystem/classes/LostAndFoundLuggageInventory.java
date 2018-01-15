@@ -6,6 +6,7 @@
 package com.mycompany.lostbagagesystem.classes;
 
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,12 +16,12 @@ import java.util.Date;
 public class LostAndFoundLuggageInventory {
 
     private String registrationNr;
-    private Date dateFound;
+    private LocalDate dateFound;
     private String timeFound;
     private String luggageType;
     private String brand;
     private String flightNumber;
-    private int luggageTag;
+    private String luggageTag;
     private String locationFound;
     private String mainColor;
     private String secondColor;
@@ -29,7 +30,7 @@ public class LostAndFoundLuggageInventory {
     private String passNameAndCity;
     private String charateristics;
 
-    public LostAndFoundLuggageInventory(String registrationNr, Date dateFound, String timeFound, String luggageType, String brand, String flightNumber, int luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
+    public LostAndFoundLuggageInventory(String registrationNr, LocalDate dateFound, String timeFound, String luggageType, String brand, String flightNumber, String luggageTag, String locationFound, String mainColor, String secondColor, String size, String weight, String passNameAndCity, String charateristics) {
         this.registrationNr = registrationNr;
         this.dateFound = dateFound;
         this.timeFound = timeFound;
@@ -54,11 +55,11 @@ public class LostAndFoundLuggageInventory {
         this.registrationNr = registrationNr;
     }
 
-    public Date getDateFound() {
+    public LocalDate getDateFound() {
         return dateFound;
     }
 
-    public void setDateFound(Date dateFound) {
+    public void setDateFound(LocalDate dateFound) {
         this.dateFound = dateFound;
     }
 
@@ -94,11 +95,11 @@ public class LostAndFoundLuggageInventory {
         this.flightNumber = flightNumber;
     }
 
-    public int getLuggageTag() {
+    public String getLuggageTag() {
         return luggageTag;
     }
 
-    public void setLuggageTag(int luggageTag) {
+    public void setLuggageTag(String luggageTag) {
         this.luggageTag = luggageTag;
     }
 

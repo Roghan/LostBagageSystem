@@ -178,7 +178,6 @@ public class InlogSchermController implements Initializable {
     }
     
     public void openManual(ActionEvent event) throws IOException{
-        Manual.openPFD();
         
         
     }
