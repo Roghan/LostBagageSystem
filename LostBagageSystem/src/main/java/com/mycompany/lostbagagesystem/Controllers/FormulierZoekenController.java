@@ -4,7 +4,7 @@ package com.mycompany.lostbagagesystem.Controllers;
  */
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import java.io.IOException;
@@ -28,7 +28,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 
 /**
  * FXML Controller class
@@ -57,9 +56,9 @@ public class FormulierZoekenController implements Initializable {
 
     private ConnectDB db = new ConnectDB("lbs_database");
 
-    private final String noFilter = language.getTranslationString("TLK138");
-    private final String lost = language.getTranslationString("TLK136");
-    private final String found = language.getTranslationString("TLK137");
+    private final String noFilter = Language.getTranslationString("TLK138");
+    private final String lost = Language.getTranslationString("TLK136");
+    private final String found = Language.getTranslationString("TLK137");
     protected String filterText;
     protected String BagageID;
     protected String State;
@@ -111,7 +110,7 @@ public class FormulierZoekenController implements Initializable {
                     String oldValue, String newValue) {
                 try {
 
-                    if (filterBox.getText().equals(language.getTranslationString("TLK206"))) {
+                    if (filterBox.getText().equals(Language.getTranslationString("TLK206"))) {
                         PopupMeldingen.kiesEerstEenFilter();
                         filterBox.setStyle("-fx-border-color : #ff0000;");
                     } else {
@@ -262,16 +261,16 @@ public class FormulierZoekenController implements Initializable {
         RadioMenuItem tg = (RadioMenuItem) txtBoxFilter.getSelectedToggle();
         String menuTxt = tg.getText();
         filterBox.setText(menuTxt);
-        if (language.getTranslationString("TLK36").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK36").equals(menuTxt)) {
             txtBoxFilterString = "Labelnumber";
         }
-        if (language.getTranslationString("TLK130").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK130").equals(menuTxt)) {
             txtBoxFilterString = "From";
         }
-        if (language.getTranslationString("TLK131").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK131").equals(menuTxt)) {
             txtBoxFilterString = "To";
         }
-        if (language.getTranslationString("TLK10").equals(menuTxt)) {
+        if (Language.getTranslationString("TLK10").equals(menuTxt)) {
             txtBoxFilterString = "Passnameandcity";
         }
 

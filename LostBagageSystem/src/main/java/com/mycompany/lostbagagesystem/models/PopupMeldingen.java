@@ -2,7 +2,7 @@
  */
 package com.mycompany.lostbagagesystem.models;
 
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import javafx.scene.control.Alert;
 
 /**
@@ -16,9 +16,9 @@ public class PopupMeldingen {
      */
     public static void warningBox() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(language.getTranslationString("TLK211"));
+        alert.setTitle(Language.getTranslationString("TLK211"));
         alert.setHeaderText(null);
-        alert.setContentText(language.getTranslationString("TLK211"));
+        alert.setContentText(Language.getTranslationString("TLK211"));
 
         alert.showAndWait();
 
@@ -26,9 +26,9 @@ public class PopupMeldingen {
 
     public static void warningBoxPass() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(language.getTranslationString("TLK105"));
+        alert.setTitle(Language.getTranslationString("TLK105"));
         alert.setHeaderText(null);
-        alert.setContentText(language.getTranslationString("TLK105"));
+        alert.setContentText(Language.getTranslationString("TLK105"));
 
         alert.showAndWait();
 
@@ -36,9 +36,9 @@ public class PopupMeldingen {
 
     public static void gegevensVerstuurd() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(language.getTranslationString("TLK207"));
+        alert.setTitle(Language.getTranslationString("TLK207"));
         alert.setHeaderText(null);
-        alert.setContentText(language.getTranslationString("TLK207"));
+        alert.setContentText(Language.getTranslationString("TLK207"));
 
         alert.showAndWait();
 
@@ -46,9 +46,9 @@ public class PopupMeldingen {
 
     public static void maakEerstEenSelectie() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(language.getTranslationString("TLK212"));
+        alert.setTitle(Language.getTranslationString("TLK212"));
         alert.setHeaderText(null);
-        alert.setContentText(language.getTranslationString("TLK212"));
+        alert.setContentText(Language.getTranslationString("TLK212"));
 
         alert.showAndWait();
 
@@ -56,9 +56,9 @@ public class PopupMeldingen {
 
     public static void kiesEerstEenFilter() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(language.getTranslationString("TLK212"));
+        alert.setTitle(Language.getTranslationString("TLK212"));
         alert.setHeaderText(null);
-        alert.setContentText(language.getTranslationString("TLK212"));
+        alert.setContentText(Language.getTranslationString("TLK212"));
 
         alert.showAndWait();
 

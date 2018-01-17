@@ -4,7 +4,6 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
-import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.FormulierCheck;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import com.mycompany.lostbagagesystem.models.SetRadioMenuButtonText;
@@ -20,7 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;

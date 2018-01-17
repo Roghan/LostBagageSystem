@@ -7,11 +7,9 @@ package com.mycompany.lostbagagesystem.Controllers;
  */
 import static com.mycompany.lostbagagesystem.Controllers.InlogSchermController.sha256;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -19,11 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -52,7 +47,7 @@ public class EditMedewerkerController implements Initializable {
     @FXML
     public void annuleer() throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in
@@ -65,7 +60,7 @@ public class EditMedewerkerController implements Initializable {
     @FXML
     public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in

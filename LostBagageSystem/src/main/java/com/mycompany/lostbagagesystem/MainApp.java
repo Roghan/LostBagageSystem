@@ -2,13 +2,11 @@
  */
 package com.mycompany.lostbagagesystem;
 
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -29,11 +27,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        language.setCurrentLocale(NL);
+        Language.setCurrentLocale(NL);
 
         final String SCHERMNAAM = "InlogScherm";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/" + SCHERMNAAM + ".fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale()));
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
@@ -75,7 +73,7 @@ public class MainApp extends Application {
     public static Object loadFXMLFile(Pane parent, String fxmlFileName) {
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale()));
             Pane pane = fxmlLoader.load();
 
             parent.getChildren().clear();
@@ -94,7 +92,7 @@ public class MainApp extends Application {
     public static Object loadFXMLFileInNewWindow(String fxmlFileName) throws IOException {
 
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale()));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale()));
         Pane pane = fxmlLoader.load();
 
         Scene scene = new Scene(pane);

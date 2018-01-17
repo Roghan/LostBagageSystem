@@ -2,22 +2,14 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import com.mycompany.lostbagagesystem.classes.TableFillMan;
 import com.mycompany.lostbagagesystem.classes.Vergelijk;
-import com.mycompany.lostbagagesystem.classes.language;
-import com.mycompany.lostbagagesystem.models.bagageTabel;
 import javafx.fxml.FXML;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 /**
