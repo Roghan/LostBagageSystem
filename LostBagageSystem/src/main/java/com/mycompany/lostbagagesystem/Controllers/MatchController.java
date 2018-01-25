@@ -541,86 +541,86 @@ public class MatchController extends FormulierZoekenController implements Initia
     @FXML
     public void mergeFields(ActionEvent event) throws SQLException {
 
-        if (txtDatum.getValue() == null) {
+   //     if (txtDatum.getValue() == null) {
             txtDatum.setValue(txtDatum1.getValue());
 
-        }
+  //      }
 
-        if (txtTime.getText() == null) {
+        //if (txtTime.getText() == null) {
             txtTime.setText(txtTime1.getText());
-        }
+    //    }
 
-        if (txtIATA.getText() == null) {
-            txtIATA.setText(txtIATA1.getText());
-        }
-        if (txtNS.getText() == null) {
+//        if (txtIATA.getText() == null) {
+           txtIATA.setText(txtIATA1.getText());
+//        }
+       if (txtNS.getText() == null) {
             txtNS.setText(txtNS1.getText());
-        }
-        if (txtStraatnaam.getText() == null) {
-            txtStraatnaam.setText(txtStraatnaam1.getText());
-        }
-
-        if (txtHuisNummer.getText() == null) {
-            txtHuisNummer.setText(txtHuisNummer1.getText());
-        }
-
-        if (txtPostcode.getText() == null) {
+      }
+//        if (txtStraatnaam.getText() == null) {
+          txtStraatnaam.setText(txtStraatnaam1.getText());
+//        }
+//
+//        if (txtHuisNummer.getText() == null) {
+          txtHuisNummer.setText(txtHuisNummer1.getText());
+//        }
+//
+//        if (txtPostcode.getText() == null) {
             txtPostcode.setText(txtPostcode1.getText());
-        }
-        if (txtWoonplaats.getText() == null) {
+//        }
+//        if (txtWoonplaats.getText() == null) {
             txtWoonplaats.setText(txtWoonplaats1.getText());
-        }
-        if (txtVakantieStraatnaam.getText() == null) {
+//        }
+//        if (txtVakantieStraatnaam.getText() == null) {
             txtVakantieStraatnaam.setText(txtVakantieStraatnaam1.getText());
-        }
-        if (txtVakantieHuisNummer.getText() == null) {
+//        }
+//        if (txtVakantieHuisNummer.getText() == null) {
             txtVakantieHuisNummer.setText(txtVakantieHuisNummer1.getText());
-        }
-        if (txtPostcode.getText() == null) {
+//        }
+//        if (txtPostcode.getText() == null) {
             txtPostcode.setText(txtPostcode1.getText());
-        }
-        if (txtVakantiePlaats.getText() == null) {
+//        }
+//        if (txtVakantiePlaats.getText() == null) {
             txtVakantiePlaats.setText(txtVakantiePlaats1.getText());
-        }
-        if (txthotelNaam.getText() == null) {
+//        }
+//        if (txthotelNaam.getText() == null) {
             txthotelNaam.setText(txthotelNaam1.getText());
-        }
-        if (txtEmail.getText() == null) {
+//        }
+//        if (txtEmail.getText() == null) {
             txtEmail.setText(txtEmail1.getText());
-        }
+//        }
         if (txtTelefoon.getText() == null) {
             txtTelefoon.setText(txtTelefoon1.getText());
         }
         if (txtMobielNummer.getText() == null) {
             txtMobielNummer.setText(txtMobielNummer1.getText());
         }
-        if (txtVluchtNummer.getText() == null) {
+//        if (txtVluchtNummer.getText() == null) {
             txtVluchtNummer.setText(txtVluchtNummer1.getText());
-        }
-        if (txtVan.getText() == null) {
+//        }
+//        if (txtVan.getText() == null) {
             txtVan.setText(txtVan1.getText());
-        }
-        if (txtNaar.getText() == null) {
+//        }
+//        if (txtNaar.getText() == null) {
             txtNaar.setText(txtNaar1.getText());
-        }
-        if (txtBagageLabelMatch.getText() == null) {
+//        }
+//        if (txtBagageLabelMatch.getText() == null) {
             txtBagageLabelMatch.setText(txtBagageLabelMatch1.getText());
-        }
-        if (txtTypeBagage.getText() == null) {
+//        }
+//        if (txtTypeBagage.getText() == null) {
             txtTypeBagage.setText(txtTypeBagage1.getText());
-        }
-        if (txtMerk.getText() == null) {
+//        }
+//        if (txtMerk.getText() == null) {
             txtMerk.setText(txtMerk1.getText());
-        }
-        if (txtKleur1.getText() == null) {
+//        }
+//        if (txtKleur1.getText() == null) {
             txtKleur1.setText(txtKleur11.getText());
-        }
-        if (txtKleur2.getText() == null) {
+//        }
+//        if (txtKleur2.getText() == null) {
             txtKleur2.setText(txtKleur21.getText());
-        }
-        if (txtBijzondereOpmerking.getText() == null) {
+//        }
+//        if (txtBijzondereOpmerking.getText() == null) {
             txtBijzondereOpmerking.setText(txtBijzondereOpmerking1.getText());
-        }
+//        }
     }
 
     @FXML
