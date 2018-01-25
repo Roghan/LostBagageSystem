@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lostbagagesystem.models;
 
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
@@ -166,10 +161,10 @@ public class FormulierCheck {
     public static boolean menuButtonCheck(MenuButton menuButton) {
         boolean check;
         boolean result;
-        check = (menuButton.getText().equals(language.getTranslationString("TLK6")) != true
-                && menuButton.getText().equals(language.getTranslationString("TLK130")) != true
-                && menuButton.getText().equals(language.getTranslationString("TLK131")) != true
-                && menuButton.getText().equals(language.getTranslationString("TLK106")) != true);
+        check = (menuButton.getText().equals(Language.getTranslationString("TLK6")) != true
+                && menuButton.getText().equals(Language.getTranslationString("TLK130")) != true
+                && menuButton.getText().equals(Language.getTranslationString("TLK131")) != true
+                && menuButton.getText().equals(Language.getTranslationString("TLK106")) != true);
         if (check != true) {
             menuButton.setStyle("-fx-border-color : #ff0000;");
             return true;
@@ -200,10 +195,10 @@ public class FormulierCheck {
     public static boolean isMenuButtonFilled(MenuButton menuButton[]) {
         boolean menuButtonStatus = true;
         for (int i = 0; i < menuButton.length; i++) {
-            if (menuButton[i].getText().equals(language.getTranslationString("TLK6"))
-                    || menuButton[i].getText().equals(language.getTranslationString("TLK130"))
-                    || menuButton[i].getText().equals(language.getTranslationString("TLK131"))
-                    || menuButton[i].getText().equals(language.getTranslationString("TLK106"))) {
+            if (menuButton[i].getText().equals(Language.getTranslationString("TLK6"))
+                    || menuButton[i].getText().equals(Language.getTranslationString("TLK130"))
+                    || menuButton[i].getText().equals(Language.getTranslationString("TLK131"))
+                    || menuButton[i].getText().equals(Language.getTranslationString("TLK106"))) {
                 menuButtonStatus = false;
                 System.out.println(menuButtonStatus + " MENU BUTTON STATE ");
                 break;

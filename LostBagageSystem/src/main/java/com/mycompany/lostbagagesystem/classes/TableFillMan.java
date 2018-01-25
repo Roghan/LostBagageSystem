@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lostbagagesystem.classes;
 
 import com.mycompany.lostbagagesystem.models.bagageTabel;
@@ -143,15 +138,15 @@ public class TableFillMan {
         //defining the axes
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel(language.getTranslationString("TLK43"));
+        xAxis.setLabel(Language.getTranslationString("TLK43"));
         //creating the chart
         final BarChart<String, Number> bc
                 = new BarChart<>(xAxis, yAxis);
 
-        bc.setTitle(gevVer + " " + language.getTranslationString("TLK316") + " " +  aantalDagen + " " + language.getTranslationString("TLK317"));
+        bc.setTitle(gevVer + " " + Language.getTranslationString("TLK316") + " " +  aantalDagen + " " + Language.getTranslationString("TLK317"));
         //defining a series
         XYChart.Series series = new XYChart.Series();
-        series.setName(language.getTranslationString("TLK316"));
+        series.setName(Language.getTranslationString("TLK316"));
         //populating the series with data
         int j = 0;
         int[] aantalKoffers = aantalVerloren(aantalDagen, isGevonden);

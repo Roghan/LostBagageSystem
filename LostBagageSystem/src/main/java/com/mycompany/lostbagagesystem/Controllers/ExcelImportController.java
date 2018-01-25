@@ -1,15 +1,9 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.LostAndFoundLuggageInventory;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
-import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,23 +16,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Cell;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -49,7 +37,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author Marcel van Wilgenburg
  */
-public class ExcelImportExportController implements Initializable {
+public class ExcelImportController implements Initializable {
 
     @FXML
     private ToggleGroup Filter;
@@ -116,7 +104,7 @@ public class ExcelImportExportController implements Initializable {
 //            if (row.getCell(0).getCe) {
 //                
 //            }
-            
+
             registrationNr = row.getCell(0).getStringCellValue();
             System.out.println(registrationNr);
             XSSFCell cellDate = row.getCell(1);

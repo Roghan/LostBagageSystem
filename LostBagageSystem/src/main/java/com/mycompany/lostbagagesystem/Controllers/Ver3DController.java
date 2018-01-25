@@ -4,25 +4,17 @@
 package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.classes.TableFillMan;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.lostbagagesystem.models.User;
 import com.mycompany.lostbagagesystem.models.bagageTabel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -39,7 +31,7 @@ public class Ver3DController implements Initializable {
     @FXML
     private AnchorPane gev21D;
     private int aantalDagen = 3;
-    private String gevVer = language.getTranslationString("TLK136");
+    private String gevVer = Language.getTranslationString("TLK136");
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

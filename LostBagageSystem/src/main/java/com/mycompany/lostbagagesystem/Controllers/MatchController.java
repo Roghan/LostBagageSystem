@@ -7,7 +7,7 @@ package com.mycompany.lostbagagesystem.Controllers;
  */
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
 import com.mycompany.lostbagagesystem.classes.PDFExport;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.ColourPicker;
 import com.mycompany.lostbagagesystem.models.MedewerkerBagageTable;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
@@ -256,10 +256,10 @@ public class MatchController extends FormulierZoekenController implements Initia
             BagageID = getSelectedBagage().getBagageID();
             if (getSelectedBagage().getState().equals("Lost")) {
                 State = "Found";
-                txtState.setText(getSelectedBagage().getState() + " " + language.getTranslationString("TLK203") + " Found");
+                txtState.setText(getSelectedBagage().getState() + " " + Language.getTranslationString("TLK203") + " Found");
             } else {
                 State = "Lost";
-                txtState.setText(getSelectedBagage().getState() + " " + language.getTranslationString("TLK203") + " Lost");
+                txtState.setText(getSelectedBagage().getState() + " " + Language.getTranslationString("TLK203") + " Lost");
 
             }
 
@@ -295,10 +295,10 @@ public class MatchController extends FormulierZoekenController implements Initia
 
     public void zoekMatch(ActionEvent event) throws SQLException {
 
-        if (filterState.equals(language.getTranslationString("TLK204"))) {
+        if (filterState.equals(Language.getTranslationString("TLK204"))) {
             getFoundMatch();
             fillList();
-        } else if (filterState.equals(language.getTranslationString("TLK205"))) {
+        } else if (filterState.equals(Language.getTranslationString("TLK205"))) {
             getFoundMatchAll();
             fillList();
 

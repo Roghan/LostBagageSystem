@@ -4,20 +4,16 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.Medewerker;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.DbNaam;
-import com.mycompany.lostbagagesystem.models.PopupMeldingen;
 import javafx.scene.control.TableView;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,10 +25,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
 /**
  * @author is Youri Pel
@@ -57,20 +51,6 @@ public class AdminMainController implements Initializable {
 
     private String filter;
 
-//    private int userChangeId;
-//
-//    public AdminMainController(int userChangeId) {
-//        this.userChangeId = userChangeId;
-//    }
-//
-//    public int getuserChangeId() {
-//        return userChangeId;
-//    }
-//    @FXML
-//    private Button Blokkeren;
-//
-//    @FXML
-//    private Button Verwijderen;
     @FXML
     private void blokkeer(ActionEvent event) throws IOException {
         if (table.getSelectionModel().isEmpty() == false) {
@@ -107,7 +87,7 @@ public class AdminMainController implements Initializable {
     @FXML
     public void handleAdd(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/NewMedewerker.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in

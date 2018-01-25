@@ -7,7 +7,7 @@ package com.mycompany.lostbagagesystem.classes;
  *
  * @author Marcel van Wilgenburg
  */
-public class FoundLuggage {
+public class GevondenBagage {
 
     private String registrationNumber;
     private String dateFound;
@@ -15,7 +15,7 @@ public class FoundLuggage {
     private String luggageType;
     private String brand;
 
-    public FoundLuggage(String registrationNumber, String dateFound, String timeFound, String luggageType, String brand) {
+    public GevondenBagage(String registrationNumber, String dateFound, String timeFound, String luggageType, String brand) {
         this.registrationNumber = registrationNumber;
         this.dateFound = dateFound;
         this.timeFound = timeFound;

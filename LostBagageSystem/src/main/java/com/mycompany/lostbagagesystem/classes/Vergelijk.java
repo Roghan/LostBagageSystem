@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.lostbagagesystem.classes;
 
-import static com.mycompany.lostbagagesystem.classes.TableFillMan.aantalVerloren;
 import static com.mycompany.lostbagagesystem.classes.TableFillMan.db;
 import static com.mycompany.lostbagagesystem.classes.TableFillMan.resultSet;
 import static com.mycompany.lostbagagesystem.classes.Vergelijk.aantalVerloren;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
@@ -26,20 +18,20 @@ import javafx.scene.layout.AnchorPane;
  */
 public class Vergelijk {
         
-    static String  bagGev = language.getTranslationString("TLK313");
-    static String bagVer = language.getTranslationString("TLK314");
+    static String  bagGev = Language.getTranslationString("TLK313");
+    static String bagVer = Language.getTranslationString("TLK314");
     
     
         public static void vergelijken(int aantalDagen, AnchorPane gev21D) throws SQLException{
             
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel(language.getTranslationString("TLK315"));
+        xAxis.setLabel(Language.getTranslationString("TLK315"));
         //creating the chart
         final BarChart<String, Number> bc
                 = new BarChart<>(xAxis, yAxis);
 
-        bc.setTitle(language.getTranslationString("TLK316") + ", " + aantalDagen + " " + language.getTranslationString("TLK317"));
+        bc.setTitle(Language.getTranslationString("TLK316") + ", " + aantalDagen + " " + Language.getTranslationString("TLK317"));
         //defining a series
         XYChart.Series series = new XYChart.Series();
         series.setName(bagGev);

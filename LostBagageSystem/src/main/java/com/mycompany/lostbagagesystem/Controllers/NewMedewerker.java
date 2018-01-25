@@ -2,13 +2,10 @@
  */
 package com.mycompany.lostbagagesystem.Controllers;
 
-import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
+import com.mycompany.lostbagagesystem.classes.Language;
 import java.io.IOException;
 import java.security.MessageDigest;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +35,7 @@ public class NewMedewerker {
         @FXML
     public void logUit(ActionEvent event) throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/InlogScherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in
@@ -50,7 +47,7 @@ public class NewMedewerker {
     
     public void terug() throws IOException {
         //laad de nieuwe table in de bestaande anchorpane
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Administratorscherm.fxml"), ResourceBundle.getBundle("Bundles.Lang", Language.getCurrentLocale())); //laad de nieuwe table in de bestaande anchorpane
         //maakt de oude table leeg
         AdminPane.getChildren().setAll();
         //laad de nieuwe table in

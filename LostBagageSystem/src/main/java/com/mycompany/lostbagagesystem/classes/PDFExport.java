@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.DatePicker;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -53,7 +52,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 643);
-        content.showText((language.getTranslationString("TLK301") + ":"));
+        content.showText((Language.getTranslationString("TLK301") + ":"));
         content.endText();
         
         content.beginText();
@@ -65,7 +64,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 590);
-        content.showText((language.getTranslationString("TLK302") + ":"));
+        content.showText((Language.getTranslationString("TLK302") + ":"));
         content.endText();
         
         content.beginText();
@@ -77,7 +76,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 537);
-        content.showText((language.getTranslationString("TLK309") + ":"));
+        content.showText((Language.getTranslationString("TLK309") + ":"));
         content.endText();
         
         content.beginText();
@@ -89,7 +88,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 484);
-        content.showText((language.getTranslationString("TLK18") + ":"));
+        content.showText((Language.getTranslationString("TLK18") + ":"));
         content.endText();
         
         content.beginText();
@@ -107,7 +106,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 451);
-        content.showText((language.getTranslationString("TLK22") + ":"));
+        content.showText((Language.getTranslationString("TLK22") + ":"));
         content.endText();
         
         content.beginText();
@@ -119,7 +118,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 419);
-        content.showText((language.getTranslationString("TLK21") + ":"));
+        content.showText((Language.getTranslationString("TLK21") + ":"));
         content.endText();
         
         content.beginText();
@@ -131,7 +130,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 356);
-        content.showText((language.getTranslationString("TLK308") + ":"));
+        content.showText((Language.getTranslationString("TLK308") + ":"));
         content.endText();
                                
         content.beginText();
@@ -143,7 +142,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 324);
-        content.showText((language.getTranslationString("TLK304") + ":"));
+        content.showText((Language.getTranslationString("TLK304") + ":"));
         content.endText();
         
         content.beginText();
@@ -161,7 +160,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 292);
-        content.showText((language.getTranslationString("TLK305") + ":"));
+        content.showText((Language.getTranslationString("TLK305") + ":"));
         content.endText();
         
         content.beginText();
@@ -173,7 +172,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 259);
-        content.showText((language.getTranslationString("TLK306") + ":"));
+        content.showText((Language.getTranslationString("TLK306") + ":"));
         content.endText();
         
         content.beginText();
@@ -185,7 +184,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 196);
-        content.showText((language.getTranslationString("TLK307") + ":"));
+        content.showText((Language.getTranslationString("TLK307") + ":"));
         content.endText();
         
         content.beginText();
@@ -197,7 +196,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 143);
-        content.showText((language.getTranslationString("TLK26") + ":"));
+        content.showText((Language.getTranslationString("TLK26") + ":"));
         content.endText();
         
         content.beginText();
@@ -209,7 +208,7 @@ public class PDFExport {
         content.beginText();
         content.setFont(PDType1Font.HELVETICA, 12);
         content.newLineAtOffset(50, 90);
-        content.showText((language.getTranslationString("TLK27") + ":"));
+        content.showText((Language.getTranslationString("TLK27") + ":"));
         content.endText();
         
         content.beginText();

@@ -5,10 +5,8 @@ package com.mycompany.lostbagagesystem.Controllers;
 
 import com.mycompany.lostbagagesystem.MainApp;
 import com.mycompany.lostbagagesystem.classes.ConnectDB;
-import com.mycompany.lostbagagesystem.classes.language;
-import com.mycompany.lostbagagesystem.models.Manual;
+import com.mycompany.lostbagagesystem.classes.Language;
 import com.mycompany.lostbagagesystem.models.PopupMeldingen;
-import com.mycompany.lostbagagesystem.models.ToggleGroupResult;
 import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -20,7 +18,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -124,19 +121,19 @@ public class InlogSchermController implements Initializable {
     public Locale setLang() {
 
         if (langNL.isSelected()) {
-            language.setCurrentLocale(NL);
+            Language.setCurrentLocale(NL);
             return NL;
 
         } else if (langGB.isSelected()) {
-            language.setCurrentLocale(GB);
+            Language.setCurrentLocale(GB);
             return GB;
 
         } else if (langTR.isSelected()) {
-            language.setCurrentLocale(TR);
+            Language.setCurrentLocale(TR);
             return TR;
 
         } else if (langES.isSelected()) {
-            language.setCurrentLocale(ES);
+            Language.setCurrentLocale(ES);
             return ES;
 
         }
