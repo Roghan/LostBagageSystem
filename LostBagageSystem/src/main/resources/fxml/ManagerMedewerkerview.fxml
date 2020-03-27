@@ -3,21 +3,30 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" fx:id="tablepane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.ManMedewerkerViewController">
+<AnchorPane id="AnchorPane" fx:id="tablepane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.lostbagagesystem.Controllers.ManMedewerkerViewController">
     <stylesheets>
         <URL value="@/styles/Styles.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="table" layoutX="10.0" layoutY="10.0" prefHeight="501.0" prefWidth="639.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <columns>
-            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
-            <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
-            <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
-            <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
-         </columns>
-      </TableView>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TableView fx:id="table" prefHeight="501.0" prefWidth="639.0">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="acountnaam" prefWidth="75.0" text="Accountnaam" />
+                  <TableColumn fx:id="wachtwoord" prefWidth="75.0" text="Wachtwoord" />
+                  <TableColumn fx:id="rol" prefWidth="75.0" text="Rol" />
+                  <TableColumn fx:id="blok" prefWidth="75.0" text="Blok" />
+               </columns>
+            </TableView>
+         </center>
+         <top>
+            <TextField fx:id="txtZoek" promptText="%TLK96" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

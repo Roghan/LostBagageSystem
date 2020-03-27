@@ -10,3 +10,5 @@ LostBagageSystem/target/classes/META-INF/LICENSE
 LostBagageSystem/target/classes/org/apache/fontbox/cmap/Adobe-GB1-2
 LostBagageSystem/target/LostBagageSystem-1.0-SNAPSHOT.jar
 
+LostBagageSystem/src/main/java/com/mycompany/lostbagagesystem/Controllers/ManMedewerkerViewController.java
+LostBagageSystem/src/main/resources/fxml/ManagerMedewerkerview.fxml
